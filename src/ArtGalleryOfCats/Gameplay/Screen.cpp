@@ -355,6 +355,11 @@ void Screen::render_hud()
    AllegroFlare::Camera2D hud_camera;
    ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
    hud_camera.setup_dimentional_projection(render_surface);
+
+   hud_camera.position.x = -800;
+   hud_camera.position.y = -400;
+
+   hud_camera.start_reverse_transform();
    //hud_camera.start_transform();
 
    //ALLEGRO_FONT *font = al_create_builtin_font();
@@ -382,10 +387,10 @@ void Screen::render_hud()
       //AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
 
       AllegroFlare::Physics::AABB2D aabb2d(
-         placement.position.x,
-         placement.position.z,
-         1.0, // Our object will be a 1x1 square
-         1.0
+         placement.position.x * 16,
+         placement.position.z * 16,
+         16.0, // Our object will be a 1x1 square
+         16.0
          //velocity.position.x,
          //velocity.position.z
       );
@@ -396,6 +401,7 @@ void Screen::render_hud()
    }
 
 
+   hud_camera.restore_transform();
 
    //render_tile_map(&collision_tile_map, 16.0f, 16.0f);
    //render_aabb2d(
