@@ -99,7 +99,7 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
    return result;
 }
 
-ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_object(AllegroFlare::Vec3D position, std::string model_filename, std::string texture_filename)
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_object(AllegroFlare::Vec3D position, std::string model_filename)
 {
    if (!(bitmap_bin))
    {
@@ -118,10 +118,10 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_ob
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
    AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
-   ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
+   //ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
    result->set_model(model);
-   result->set_texture(texture);
+   //result->set_texture(texture);
 
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 

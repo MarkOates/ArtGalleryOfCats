@@ -113,6 +113,13 @@ void LevelFactory::load_primary_map()
    camera->get_placement_ref().position.x = spawn_point.x;
    camera->get_placement_ref().position.z = spawn_point.y;
 
+   // Create a collectable
+   ArtGalleryOfCats::Gameplay::Entities::Base* collectable_object = entity_factory.create_collectable_object(
+      AllegroFlare::Vec3D(12.0, 0.0, 12.0),
+      "rounded_unit_cube-01.obj"
+   );
+   entity_pool->add(collectable_object);
+
    return;
 }
 

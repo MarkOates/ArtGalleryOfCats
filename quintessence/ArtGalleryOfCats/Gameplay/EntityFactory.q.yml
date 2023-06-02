@@ -65,18 +65,15 @@ functions:
       - name: model_filename
         type: std::string
         default_argument: '"[unset-model_filename]"'
-      - name: texture_filename
-        type: std::string
-        default_argument: '"[unset-texture_filename]"'
     guards: [ bitmap_bin, model_bin ]
     body: |
       ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
       AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
-      ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
+      //ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
       result->set_model(model);
-      result->set_texture(texture);
+      //result->set_texture(texture);
 
       result->set(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 
