@@ -1,0 +1,95 @@
+{
+  "ALLEGRO_EVENT": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Screens/Base": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/EventEmitter": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/FontBin": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/ModelBin": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "al_is_primitives_addon_initialized": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Player": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/VirtualControllers/Base": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/Screen": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Frameworks/Full": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/GameEvent": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "CubeShooter/Screen": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Routers/Standard": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/Storyboard": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/Achievements": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/TitleScreen": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/GameOverScreen": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/GameWonScreen": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/RollingCredits": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/Version": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Achievements": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/StoryboardFactory": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Logger": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/LevelSelectScreen": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/RouteEventDatas/StartLevel": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Color": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Elements/Backgrounds/ClearToColor": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ReleaseInfo": [
+    "ArtGalleryOfCats/Runner"
+  ]
+}
