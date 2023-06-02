@@ -69,13 +69,28 @@ functions:
          new ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap();
 
       AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = result->get_collision_tile_map_ref();
-      collision_tile_map.resize(10, 10);
       collision_tile_map.initialize();
-      //collision_tile_map.resize(10, 10);
 
       std::string tmj_filename = "tests/fixtures/maps/gallery-map-02.tmj"; // TODO: Fix this path
       AllegroFlare::Prototypes::Platforming2D::TMJDataLoader tmj_data_loader(tmj_filename);
       tmj_data_loader.load();
+
+      // Fill our map with the data loaded from the TMJ file
+      int num_columns = tmj_data_loader.get_num_columns();
+      int num_rows = tmj_data_loader.get_num_columns();
+      collision_tile_map.resize(num_columns, num_rows);
+
+      std::vector<int> contiguous_collision_layer_tile_data = tmj_data_loader.get_collision_layer_tile_data();
+      // Gut check:
+      if (contiguous_collision_layer_tile_data.size() != collision_tile_map.infer_num_tiles())
+      {
+         throw std::runtime_error("Maps are of unequal dimensions");
+      }
+
+      for (int i=0; i<contiguous_collision_layer_tile_data.size(); i++)
+      {
+         collision_tile_map.set_contiguous_tile(i, contiguous_collision_layer_tile_data[i]);
+      }
 
       return result;
     body_dependency_symbols:
