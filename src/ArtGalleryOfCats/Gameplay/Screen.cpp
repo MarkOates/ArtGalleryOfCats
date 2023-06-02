@@ -3,6 +3,7 @@
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
+#include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
@@ -245,8 +246,12 @@ void Screen::render()
 void Screen::scene_renderer_render()
 {
    // Extract out the camera
-   AllegroFlare::SceneGraph::Entities::Base *camera = entity_pool.find_with_attribute("primary_camera");
-   if (!camera) throw std::runtime_error("no camera presen");
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+   if (!entity) throw std::runtime_error("no camera present");
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+      static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+   ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
+   as_camera->setup_projection_on(render_surface);
 
    // TODO: validate the camera is of type Entities::Camera
    // TODO: here

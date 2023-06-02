@@ -29,7 +29,8 @@
     "ArtGalleryOfCats/Runner"
   ],
   "ArtGalleryOfCats/Gameplay/Entities/Camera3D": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory"
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "ALLEGRO_EVENT": [
     "ArtGalleryOfCats/Gameplay/Screen"
