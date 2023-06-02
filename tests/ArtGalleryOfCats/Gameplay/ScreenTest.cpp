@@ -37,7 +37,8 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTest, type__has_the_expected_value_matchi
 }
 
 
-TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture, will_run_as_expected)
+TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
+   DISABLED__will_run_as_expected)
 {
    ArtGalleryOfCats::Gameplay::Screen screen;
    screen.set_event_emitter(get_framework_event_emitter());

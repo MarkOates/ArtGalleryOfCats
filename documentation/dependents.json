@@ -1,4 +1,36 @@
 {
+  "AllegroFlare/SceneGraph/Entities/Base": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "AllegroFlare/Model3D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "ArtGalleryOfCats/Gameplay/Entities/Base": [
+    "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Camera3D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Camera3D"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/FontBin": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/ModelBin": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ArtGalleryOfCats/Gameplay/Entities/Camera3D": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory"
+  ],
   "ALLEGRO_EVENT": [
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
@@ -6,19 +38,7 @@
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
-  "AllegroFlare/BitmapBin": [
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
   "AllegroFlare/EventEmitter": [
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/FontBin": [
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/ModelBin": [
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
@@ -34,6 +54,12 @@
   "ArtGalleryOfCats/Gameplay/Screen": [
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/SceneGraph/EntityPool": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/EntityFactory": [
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Frameworks/Full": [
     "ArtGalleryOfCats/Runner"

@@ -49,10 +49,111 @@ table td
 <body>
 <h1>TOC</h1>
 <ul>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Runner.q.yml">quintessence/ArtGalleryOfCats/Runner.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">type</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">model</td>
+  <td class="property">AllegroFlare::Model3D*</td>
+</tr>
+<tr>
+  <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SceneGraph::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SceneGraph/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Model3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Model3D.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">type</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Camera3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Camera3D.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">model_bin</td>
+  <td class="property">AllegroFlare::ModelBin*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">create_environment_mesh()</td>
+</tr>
+<tr>
+  <td class="method">create_camera()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ModelBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ModelBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Camera3D&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
 <ul>
   <div class="component">
     <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml</h3>
@@ -72,6 +173,10 @@ table td
 <tr>
   <td class="property">model_bin</td>
   <td class="property">AllegroFlare::ModelBin*</td>
+</tr>
+<tr>
+  <td class="property">entity_pool</td>
+  <td class="property">AllegroFlare::SceneGraph::EntityPool</td>
 </tr>
 <tr>
   <td class="property">current_level_identifier</td>
@@ -115,6 +220,9 @@ table td
   <td class="method">load_level_by_identifier(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
 </tr>
 <tr>
+  <td class="private_method">load_level()</td>
+</tr>
+<tr>
   <td class="method">initialize()</td>
 </tr>
 <tr>
@@ -128,6 +236,9 @@ table td
 </tr>
 <tr>
   <td class="method">render()</td>
+</tr>
+<tr>
+  <td class="method">scene_renderer_render()</td>
 </tr>
 <tr>
   <td class="method">call_on_finished_callback_func()</td>
@@ -175,6 +286,15 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Screen&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Screen.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SceneGraph::EntityPool&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SceneGraph/EntityPool.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::EntityFactory&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/EntityFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -369,6 +489,38 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
+  "AllegroFlare/SceneGraph/Entities/Base": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "AllegroFlare/Model3D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "ArtGalleryOfCats/Gameplay/Entities/Base": [
+    "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Camera3D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Camera3D"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/FontBin": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/ModelBin": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ArtGalleryOfCats/Gameplay/Entities/Camera3D": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory"
+  ],
   "ALLEGRO_EVENT": [
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
@@ -376,19 +528,7 @@ table td
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
-  "AllegroFlare/BitmapBin": [
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
   "AllegroFlare/EventEmitter": [
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/FontBin": [
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/ModelBin": [
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
@@ -404,6 +544,12 @@ table td
   "ArtGalleryOfCats/Gameplay/Screen": [
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/SceneGraph/EntityPool": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/EntityFactory": [
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Frameworks/Full": [
     "ArtGalleryOfCats/Runner"

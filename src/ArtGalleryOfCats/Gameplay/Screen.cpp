@@ -130,8 +130,15 @@ void Screen::load_level()
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
 
+   // Create the environment
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh();
    entity_pool.add(environment_mesh);
+
+   // Create the camera, define it as the primary camera
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
+   camera->set("primary_camera");
+   entity_pool.add(camera);
+
    return;
 }
 
@@ -237,6 +244,13 @@ void Screen::render()
 
 void Screen::scene_renderer_render()
 {
+   // Extract out the camera
+   AllegroFlare::SceneGraph::Entities::Base *camera = entity_pool.find_with_attribute("primary_camera");
+   if (!camera) throw std::runtime_error("no camera presen");
+
+   // TODO: validate the camera is of type Entities::Camera
+   // TODO: here
+
    //std::unordered_set<AllegroFlare::SceneGraph::Entities::Base*>
    for (auto &entity : entity_pool.get_entity_pool_ref())
    {
