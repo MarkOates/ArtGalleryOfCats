@@ -3,12 +3,13 @@
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 
 #include <AllegroFlare/Camera2D.hpp>
+#include <AllegroFlare/Camera3D.hpp>
 #include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
-#include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
+#include <ArtGalleryOfCats/Gameplay/SceneRenderer.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -300,6 +301,14 @@ void Screen::render()
 
 void Screen::scene_renderer_render()
 {
+   ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
+   scene_renderer.set_entity_pool(&entity_pool);
+   scene_renderer.render();
+   return;
+
+   //headers: [ ArtGalleryOfCats/Gameplay/SceneRenderer.hpp ]
+   /*
+
    // Extract out the camera and render the scene
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
    if (!entity) throw std::runtime_error("no camera present");
@@ -329,6 +338,7 @@ void Screen::scene_renderer_render()
          model->draw();
       }
    }
+   */
 
    //as_camera->start_reverse_transform();
    return;
