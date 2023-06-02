@@ -128,6 +128,7 @@ functions:
 
 
   - name: load_level
+    private: true
     body: |
       ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
       entity_factory.set_model_bin(model_bin);
@@ -183,7 +184,27 @@ functions:
 
   - name: render
     body: |
+      scene_renderer_render();
       return;
+
+
+  - name: scene_renderer_render
+    body: |
+      //std::unordered_set<AllegroFlare::SceneGraph::Entities::Base*>
+      for (auto &entity : entity_pool.get_entity_pool_ref())
+      {
+         ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+            static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+
+         AllegroFlare::Model3D *model = as_agc_entity->get_model();
+         if (model)
+         {
+            model->draw();
+         }
+      }
+      return;
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::Entities::Base
 
 
   - name: call_on_finished_callback_func
@@ -288,5 +309,7 @@ dependencies:
     headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::EntityFactory
     headers: [ ArtGalleryOfCats/Gameplay/EntityFactory.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Entities::Base
+    headers: [ ArtGalleryOfCats/Gameplay/Entities/Base.hpp ]
 
 

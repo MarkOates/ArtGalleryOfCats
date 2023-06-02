@@ -2,6 +2,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 
+#include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
@@ -230,6 +231,24 @@ void Screen::update()
 
 void Screen::render()
 {
+   scene_renderer_render();
+   return;
+}
+
+void Screen::scene_renderer_render()
+{
+   //std::unordered_set<AllegroFlare::SceneGraph::Entities::Base*>
+   for (auto &entity : entity_pool.get_entity_pool_ref())
+   {
+      ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+
+      AllegroFlare::Model3D *model = as_agc_entity->get_model();
+      if (model)
+      {
+         model->draw();
+      }
+   }
    return;
 }
 

@@ -35,6 +35,7 @@ namespace ArtGalleryOfCats
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
          bool initialized;
+         void load_level();
 
       protected:
 
@@ -52,12 +53,12 @@ namespace ArtGalleryOfCats
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
-         void load_level();
          void initialize();
          virtual void on_activate() override;
          virtual void on_deactivate() override;
          void update();
          void render();
+         void scene_renderer_render();
          void call_on_finished_callback_func();
          virtual void primary_timer_func() override;
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;

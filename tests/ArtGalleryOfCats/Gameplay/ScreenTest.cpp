@@ -37,8 +37,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTest, type__has_the_expected_value_matchi
 }
 
 
-TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
-   TIMED_INTERACTIVE__will_run_as_expected)
+TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture, will_run_as_expected)
 {
    ArtGalleryOfCats::Gameplay::Screen screen;
    screen.set_event_emitter(get_framework_event_emitter());
@@ -46,6 +45,24 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    screen.set_font_bin(get_framework_font_bin());
    screen.set_model_bin(get_framework_model_bin());
    screen.initialize();
+
+   framework_register_and_activate_screen("screen", &screen);
+
+   framework_run_loop(0.001);
+}
+
+
+TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
+   with_level_loaded__will_run_as_expected)
+{
+   ArtGalleryOfCats::Gameplay::Screen screen;
+   screen.set_event_emitter(get_framework_event_emitter());
+   screen.set_bitmap_bin(get_framework_bitmap_bin());
+   screen.set_font_bin(get_framework_font_bin());
+   screen.set_model_bin(get_framework_model_bin());
+   screen.initialize();
+
+   screen.load_level_by_identifier();
 
    framework_register_and_activate_screen("screen", &screen);
 
