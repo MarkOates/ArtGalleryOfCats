@@ -125,6 +125,11 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_ob
 
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 
+   //object_placement.rotation.y += 0.001;
+   //object_placement.rotation.x += 0.00073;
+   result->get_velocity_ref().rotation.x = 0.001;
+   result->get_velocity_ref().rotation.y = 0.00073;
+
    result->get_placement_ref().position = position;
 
    return result;

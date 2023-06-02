@@ -289,7 +289,7 @@ void Screen::scene_physics_updater()
 
       placement.position = AllegroFlare::Vec3D(aabb2d.get_x() + box_h_size, 0.0f, aabb2d.get_y() + box_h_size);
       velocity.position = { aabb2d.get_velocity_x(), 0.0f, aabb2d.get_velocity_y() };
-      //placement.rotation += velocity.rotation; // TODO: Uncomment this
+      placement.rotation += velocity.rotation;
    }
 
    // HACK: Extract out the camera and assign it's position
