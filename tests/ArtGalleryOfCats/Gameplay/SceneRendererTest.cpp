@@ -5,6 +5,7 @@
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <AllegroFlare/SceneGraph/EntityPool.hpp>
+#include <AllegroFlare/CubemapBuilder.hpp>
 
 
 class ArtGalleryOfCats_Gameplay_SceneRendererTest : public ::testing::Test {};
@@ -30,6 +31,13 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_bitmap_bin(&get_bitmap_bin_ref());
    entity_factory.set_model_bin(&model_bin);
+
+   AllegroFlare::CubemapBuilder builder;
+   std::string cube_map_texture_filename = get_fixtures_path() + "bitmaps/black_prism_1-01.png";
+   cubemap = builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
+
+   //cubemap_shader.initialize();
+   //cubemap_shader.set_cube_map(cubemap);
 
    cubemap_shader.initialize();
    cubemap_shader.set_cube_map(cubemap);
@@ -61,6 +69,9 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
    {
       collectable->get_placement_ref().rotation.x += 0.005;
       collectable->get_placement_ref().rotation.z += 0.003547;
+
+      camera->stepout.z += 0.001;
+      camera->spin += 0.001;
 
       scene_renderer.render();
       al_flip_display();
