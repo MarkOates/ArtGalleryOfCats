@@ -471,7 +471,7 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    }
    // TODO: Validate spin change
    float spin_delta = ev->mouse.dx;
-   float spin_multiplier = 0.0001;
+   float spin_multiplier = 0.001;
    player_spin_change(spin_delta * spin_multiplier);
    //float x_delta = ev->mouse->dx;
    //result->tilt = 0.13;            // look up(-)/down(+)
