@@ -62,6 +62,11 @@ namespace ArtGalleryOfCats
          void render();
          void call_on_finished_callback_func();
          virtual void primary_timer_func() override;
+         void player_stop_moving();
+         void player_strafe_right();
+         void player_strafe_left();
+         void player_move_forward();
+         void player_move_backward();
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;

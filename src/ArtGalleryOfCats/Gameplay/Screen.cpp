@@ -326,6 +326,62 @@ void Screen::primary_timer_func()
    return;
 }
 
+void Screen::player_stop_moving()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         as_camera->get_velocity_ref().position.x = 0.0;
+         as_camera->get_velocity_ref().position.z = 0.0;
+   return;
+}
+
+void Screen::player_strafe_right()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         as_camera->get_velocity_ref().position.x = 0.1;
+   return;
+}
+
+void Screen::player_strafe_left()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         as_camera->get_velocity_ref().position.x = -0.1;
+   return;
+}
+
+void Screen::player_move_forward()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         as_camera->get_velocity_ref().position.z = -0.1;
+   return;
+}
+
+void Screen::player_move_backward()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         as_camera->get_velocity_ref().position.z = 0.1;
+   return;
+}
+
 void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, AllegroFlare::VirtualControllers::Base* virtual_controller, int virtual_controller_button_num, bool is_repeat)
 {
    if (!(initialized))
@@ -335,7 +391,7 @@ void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, Allegr
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::virtual_control_button_up_func: error: guard \"initialized\" not met");
    }
-   // TODO: this function
+   player_stop_moving(); // TODO: Improve this movement
    return;
 }
 
@@ -352,13 +408,20 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
 
    switch(virtual_controller_button_num)
    {
-      case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
-         AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
+         player_strafe_left();
+      } break;
 
-         as_camera->get_velocity_ref().position.x = 0.1;
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
+         player_strafe_right();
+      } break;
+
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
+         player_move_forward();
+      } break;
+
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
+         player_move_backward();
       } break;
 
       default: {
