@@ -28,8 +28,16 @@ functions:
 
   - name: create_environment_mesh
     type: ArtGalleryOfCats::Gameplay::Entities::Base*
+    guards: [ bitmap_bin, model_bin ]
     body: |
       ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
+
+      std::string model_filename = "agc-map-01.obj";
+      model_bin->preload(model_filename);
+      AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
+
+      result->set_model(model);
+
       return result;
 
 
