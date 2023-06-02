@@ -326,6 +326,17 @@ void Screen::primary_timer_func()
    return;
 }
 
+void Screen::player_spin_change(float delta)
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         as_camera->spin += delta;
+   return;
+}
+
 void Screen::player_stop_moving()
 {
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
@@ -443,6 +454,26 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
       throw std::runtime_error("Screen::virtual_control_axis_change_func: error: guard \"initialized\" not met");
    }
    //if (ev->mouse
+   //result->tilt = 0.13;            // look up(-)/down(+)
+   //result->spin = 0.2;             // set a good start initial spin
+   // TODO: this function
+   return;
+}
+
+void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::mouse_axes_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::mouse_axes_func: error: guard \"initialized\" not met");
+   }
+   // TODO: Validate spin change
+   float spin_delta = ev->mouse.dx;
+   float spin_multiplier = 0.0001;
+   player_spin_change(spin_delta * spin_multiplier);
+   //float x_delta = ev->mouse->dx;
    //result->tilt = 0.13;            // look up(-)/down(+)
    //result->spin = 0.2;             // set a good start initial spin
    // TODO: this function
