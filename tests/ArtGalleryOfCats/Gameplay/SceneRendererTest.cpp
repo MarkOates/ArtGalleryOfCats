@@ -46,7 +46,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
 
    ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
    camera->set("primary_camera");
-   camera->stepout = { 0, 1.0, 3.0 };
+   camera->stepout = { 0, 0, 3.0 };
    entity_pool.add(camera);
 
    ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
@@ -56,7 +56,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
    // Add some items to our scene
 
    ArtGalleryOfCats::Gameplay::Entities::Base* collectable = entity_factory.create_collectable_object(
-      { 0, 0.5, 0 },
+      { 0, 0, 0 },
       "rounded_unit_cube-01.obj"
    );
    collectable->get_placement_ref().rotation.x = 0.05;
@@ -64,14 +64,14 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
    entity_pool.add(collectable);
 
    // Render the scene
-   int frames = 60;
+   int frames = 90;
    for (int i=0; i<frames; i++)
    {
       collectable->get_placement_ref().rotation.x += 0.005;
       collectable->get_placement_ref().rotation.z += 0.003547;
 
-      camera->stepout.z += 0.001;
-      camera->spin += 0.001;
+      camera->stepout.z += 0.03;
+      camera->spin += 0.01;
 
       scene_renderer.render();
       al_flip_display();
