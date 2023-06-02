@@ -17,3 +17,12 @@ TEST(ArtGalleryOfCats_Gameplay_EntityFactoryTest, create_collision_tile_map__wil
 }
 
 
+TEST(ArtGalleryOfCats_Gameplay_EntityFactoryTest, create_collision_tile_map__will_initialize_the_map)
+{
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *actual_map = entity_factory.create_collision_tile_map();
+   AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = actual_map->get_collision_tile_map_ref();
+   EXPECT_EQ(true, collision_tile_map.get_initialized());
+}
+
+

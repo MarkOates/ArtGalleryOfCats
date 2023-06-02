@@ -212,9 +212,9 @@ functions:
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
          static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
 
-      // TODO: Create our collision stepper
-      //AllegroFlare::Physics::TileMapCollisionStepper collision_stepper;
-      //collision_stepper.set_collision_tile_map();
+      // Create our collision stepper
+      AllegroFlare::Physics::TileMapCollisionStepper collision_stepper;
+      collision_stepper.set_collision_tile_map(&as_collision_tile_map->get_collision_tile_map_ref());
 
       float box_h_size = 0.5;
       for (auto &entity : entity_pool.get_entity_pool_ref())
@@ -224,10 +224,20 @@ functions:
          AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
          AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
 
-         //AllegroFlare::Physics::AABB2D aabb2d();
+         AllegroFlare::Physics::AABB2D aabb2d(
+            placement.position.x,
+            placement.position.y,
+            1.0, // Our object will be a 1x1 square
+            1.0
+         );
 
-         placement.position += velocity.position;
-         placement.rotation += velocity.rotation;
+         collision_stepper.set_aabb2d(&aabb2d);
+
+         std::vector<AllegroFlare::Physics::TileMapCollisionStepperCollisionInfo> stepper_step_result =
+            collision_stepper.step();
+
+         //placement.position += velocity.position;
+         //placement.rotation += velocity.rotation;
       }
 
       // HACK: Extract out the camera and assign it's position

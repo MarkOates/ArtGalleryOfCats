@@ -117,6 +117,7 @@ ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* EntityFactory::create_co
 
    AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = result->get_collision_tile_map_ref();
    collision_tile_map.resize(10, 10);
+   collision_tile_map.initialize();
    //collision_tile_map.resize(10, 10);
 
    std::string tmj_filename = "tests/fixtures/maps/gallery-map-02.tmj"; // TODO: Fix this path
