@@ -1,0 +1,10 @@
+properties:
+
+
+  - name: RENDERS_WITH_IRIDESCENT
+    type: char*
+    init_with: '(char*)"renders_with_iridescent"'
+    static: true
+    constexpr: true
+
+
