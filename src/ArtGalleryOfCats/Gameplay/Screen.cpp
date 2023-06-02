@@ -253,7 +253,17 @@ void Screen::scene_physics_updater()
       placement.position += velocity.position;
       std::cout << "   position: " << placement.position.x << std::endl;
       placement.rotation += velocity.rotation;
+      //std::cout << "   position: " << placement.position.x << std::endl;
+      std::cout << "   as_agc_position " << as_agc_entity->get_placement_ref().position.x << std::endl;
    }
+
+   // HACK: Extract out the camera and assign it's position
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+   if (!entity) throw std::runtime_error("no camera present");
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+      static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+   as_camera->AllegroFlare::Camera3D::position = as_camera->get_placement_ref().position;
+
    return;
 }
 
@@ -265,18 +275,22 @@ void Screen::render()
 
 void Screen::scene_renderer_render()
 {
-   // Extract out the camera
+   // Extract out the camera and render the scene
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
    if (!entity) throw std::runtime_error("no camera present");
    ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
       static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
    ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
-
-
    al_clear_depth_buffer(1);
    al_clear_to_color(ALLEGRO_COLOR{0.1, 0.105, 0.12, 1.0});
 
    as_camera->setup_projection_on(render_surface);
+
+   //as_camera->start_reverse_transform();
+
+      std::cout << "===" << std::endl;
+      std::cout << "   position: " << as_camera->get_placement_ref().position.x << std::endl;
 
    // TODO: validate the camera is of type Entities::Camera
    // TODO: here
@@ -295,6 +309,8 @@ void Screen::scene_renderer_render()
          model->draw();
       }
    }
+
+   //as_camera->start_reverse_transform();
    return;
 }
 
@@ -345,7 +361,7 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    {
       default: {
          AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("no camera present");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
          static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
 
