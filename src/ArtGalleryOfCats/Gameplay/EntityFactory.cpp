@@ -89,6 +89,12 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
    return result;
 }
 
+ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
+{
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D* result = new ArtGalleryOfCats::Gameplay::Entities::Camera3D();
+   return result;
+}
+
 
 } // namespace Gameplay
 } // namespace ArtGalleryOfCats

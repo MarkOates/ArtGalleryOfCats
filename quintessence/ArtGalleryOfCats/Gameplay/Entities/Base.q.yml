@@ -9,6 +9,13 @@ parent_classes:
 properties:
 
 
+  - name: type
+    type: std::string
+    init_with: ArtGalleryOfCats::Gameplay::Entities::Base::TYPE
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: model
     type: AllegroFlare::Model3D*
     init_with: nullptr

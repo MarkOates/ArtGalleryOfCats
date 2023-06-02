@@ -5,6 +5,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/ModelBin.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
+#include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 
 
 namespace ArtGalleryOfCats
@@ -32,6 +33,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::FontBin* get_font_bin() const;
          AllegroFlare::ModelBin* get_model_bin() const;
          ArtGalleryOfCats::Gameplay::Entities::Base* create_environment_mesh();
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D* create_camera();
       };
    }
 }

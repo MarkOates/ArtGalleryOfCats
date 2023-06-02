@@ -41,6 +41,13 @@ functions:
       return result;
 
 
+  - name: create_camera
+    type: ArtGalleryOfCats::Gameplay::Entities::Camera3D*
+    body: |
+      ArtGalleryOfCats::Gameplay::Entities::Camera3D* result = new ArtGalleryOfCats::Gameplay::Entities::Camera3D();
+      return result;
+
+
 dependencies:
 
 
@@ -52,5 +59,7 @@ dependencies:
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: AllegroFlare::ModelBin
     headers: [ AllegroFlare/ModelBin.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Entities::Camera3D
+    headers: [ ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp ]
 
 

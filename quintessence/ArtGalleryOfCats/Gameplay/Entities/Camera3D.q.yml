@@ -1,0 +1,38 @@
+parent_classes:
+
+
+  - class: ArtGalleryOfCats::Gameplay::Entities::Base
+    scope: public
+    init_with: ArtGalleryOfCats::Gameplay::Entities::Camera3D::TYPE
+
+  - class: AllegroFlare::Camera3D
+    scope: public
+    init_with: '{}'
+
+
+properties:
+
+
+  - name: type
+    type: std::string
+    init_with: '"[unset-Camera3D_type]"'
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: TYPE
+    type: char*
+    init_with: '(char*)"ArtGalleryOfCats/Gameplay/Entities/Camera3D"'
+    static: true
+    constexpr: true
+
+
+dependencies:
+
+
+  - symbol: ArtGalleryOfCats::Gameplay::Entities::Base
+    headers: [ ArtGalleryOfCats/Gameplay/Entities/Base.hpp ]
+  - symbol: AllegroFlare::Camera3D
+    headers: [ AllegroFlare/Camera3D.hpp ]
+
+

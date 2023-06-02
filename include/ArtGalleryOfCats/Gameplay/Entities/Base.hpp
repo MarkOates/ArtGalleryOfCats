@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/Model3D.hpp>
 #include <AllegroFlare/SceneGraph/Entities/Base.hpp>
+#include <string>
 
 
 namespace ArtGalleryOfCats
@@ -17,16 +18,19 @@ namespace ArtGalleryOfCats
             static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Gameplay/Entities/Base";
 
          private:
+            std::string type;
             AllegroFlare::Model3D* model;
 
          protected:
 
 
          public:
-            Base(AllegroFlare::Model3D* model=nullptr);
+            Base(std::string type=ArtGalleryOfCats::Gameplay::Entities::Base::TYPE, AllegroFlare::Model3D* model=nullptr);
             ~Base();
 
+            void set_type(std::string type);
             void set_model(AllegroFlare::Model3D* model);
+            std::string get_type() const;
             AllegroFlare::Model3D* get_model() const;
          };
       }
