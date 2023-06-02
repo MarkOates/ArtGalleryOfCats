@@ -355,7 +355,7 @@ void Screen::render_hud()
    AllegroFlare::Camera2D hud_camera;
    ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
    hud_camera.setup_dimentional_projection(render_surface);
-   hud_camera.start_transform();
+   //hud_camera.start_transform();
 
    //ALLEGRO_FONT *font = al_create_builtin_font();
    //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 10, 10, ALLEGRO_ALIGN_LEFT, ".ul");
@@ -367,9 +367,47 @@ void Screen::render_hud()
    if (!entity) throw std::runtime_error("no collision_tile_map present");
    ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
       static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
+   AllegroFlare::TileMaps::TileMap<int> &collision_tile_map= as_collision_tile_map->get_collision_tile_map_ref();
 
 
-   render_tile_map(collision_tile_map, 16.0f, 16.0f);
+
+   render_tile_map(&collision_tile_map, 16.0f, 16.0f);
+
+
+   for (auto &entity : entity_pool.get_entity_pool_ref())
+   {
+      ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+      AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+      //AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
+
+      AllegroFlare::Physics::AABB2D aabb2d(
+         placement.position.x,
+         placement.position.z,
+         1.0, // Our object will be a 1x1 square
+         1.0
+         //velocity.position.x,
+         //velocity.position.z
+      );
+
+      render_aabb2d(
+               &aabb2d
+            );
+   }
+
+
+
+   //render_tile_map(&collision_tile_map, 16.0f, 16.0f);
+   //render_aabb2d(
+               //aabb2d,
+               //aabb2d_adjacent_to_top_edge,
+               //aabb2d_adjacent_to_right_edge,
+               //aabb2d_adjacent_to_bottom_edge,
+               //aabb2d_adjacent_to_left_edge
+            //);
+
+
+   //hud_camera.restore_transform();
 
    /*
    AllegroFlare::Placement2D camera;
@@ -400,6 +438,79 @@ void Screen::render_hud()
 
 
 
+   return;
+}
+
+void Screen::render_tile_map(AllegroFlare::TileMaps::TileMap<int>* tile_map, float tile_width, float tile_height)
+{
+   if (!(tile_map))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::render_tile_map]: error: guard \"tile_map\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::render_tile_map: error: guard \"tile_map\" not met");
+   }
+   if (!al_is_primitives_addon_initialized()) throw std::runtime_error("render_tile_map: primitives must be init");
+
+   for (int y=0; y<tile_map->get_num_rows(); y++)
+   {
+      for (int x=0; x<tile_map->get_num_columns(); x++)
+      {
+         int tile_type = tile_map->get_tile(x, y);
+         switch(tile_type)
+         {
+            case 0:
+              //al_draw_rectangle(x * tile_width, y * tile_height, (x+1) * tile_width, (y+1) * tile_height, 
+                 //ALLEGRO_COLOR{0.2, 0.2, 0.21, 0.21}, 1.0);
+            break;
+
+            case 1:
+              al_draw_filled_rectangle(x * tile_width, y * tile_height, (x+1) * tile_width, (y+1) * tile_height, 
+                 ALLEGRO_COLOR{0.65, 0.62, 0.6, 1.0});
+            break;
+
+            default:
+              //al_draw_filled_rectangle(x * tile_width, y * tile_height, (x+1) * tile_width, (y+1) * tile_height, 
+                 //ALLEGRO_COLOR{0.8, 0.32, 0.4, 1.0});
+            break;
+         }
+      }
+   }
+   return;
+}
+
+void Screen::render_aabb2d(AllegroFlare::Physics::AABB2D* aabb2d, bool adjacent_to_top_edge, bool adjacent_to_right_edge, bool adjacent_to_bottom_edge, bool adjacent_to_left_edge)
+{
+   if (!(aabb2d))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::render_aabb2d]: error: guard \"aabb2d\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::render_aabb2d: error: guard \"aabb2d\" not met");
+   }
+   al_draw_filled_rectangle(aabb2d->get_x(), aabb2d->get_y(), aabb2d->get_right_edge(), aabb2d->get_bottom_edge(),
+      ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
+
+   ALLEGRO_COLOR orange = ALLEGRO_COLOR{1.0, 0.5, 0.0, 1.0};
+
+   /*
+   if (adjacent_to_bottom_edge)
+   {
+      al_draw_line(aabb2d->get_x(), aabb2d->get_bottom_edge(), aabb2d->get_right_edge(), aabb2d->get_bottom_edge(), orange, 2.0);
+   }
+   if (adjacent_to_top_edge)
+   {
+      al_draw_line(aabb2d.get_x(), aabb2d.get_y(), aabb2d.get_right_edge(), aabb2d.get_y(), orange, 2.0);
+   }
+   if (adjacent_to_left_edge)
+   {
+      al_draw_line(aabb2d.get_x(), aabb2d.get_y(), aabb2d.get_x(), aabb2d.get_bottom_edge(), orange, 2.0);
+   }
+   if (adjacent_to_right_edge)
+   {
+      al_draw_line(aabb2d.get_right_edge(), aabb2d.get_y(), aabb2d.get_right_edge(), aabb2d.get_bottom_edge(), orange, 2.0);
+   }
+   */
    return;
 }
 

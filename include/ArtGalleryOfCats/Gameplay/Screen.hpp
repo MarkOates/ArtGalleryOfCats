@@ -5,9 +5,11 @@
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/ModelBin.hpp>
+#include <AllegroFlare/Physics/AABB2D.hpp>
 #include <AllegroFlare/Player.hpp>
 #include <AllegroFlare/SceneGraph/EntityPool.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
+#include <AllegroFlare/TileMaps/TileMap.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <allegro5/allegro.h>
@@ -61,6 +63,8 @@ namespace ArtGalleryOfCats
          virtual void on_deactivate() override;
          void update();
          void render();
+         void render_tile_map(AllegroFlare::TileMaps::TileMap<int>* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f);
+         void render_aabb2d(AllegroFlare::Physics::AABB2D* aabb2d=nullptr, bool adjacent_to_top_edge=false, bool adjacent_to_right_edge=false, bool adjacent_to_bottom_edge=false, bool adjacent_to_left_edge=false);
          void call_on_finished_callback_func();
          virtual void primary_timer_func() override;
          void player_spin_change(float delta=0.0f);
