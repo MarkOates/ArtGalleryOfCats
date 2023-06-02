@@ -56,10 +56,16 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
    entity_pool.add(collectable);
 
    // Render the scene
-   scene_renderer.render();
+   int frames = 60;
+   for (int i=0; i<frames; i++)
+   {
+      collectable->get_placement_ref().rotation.x += 0.005;
+      collectable->get_placement_ref().rotation.z += 0.003547;
 
-   al_flip_display();
-   al_rest(1);
+      scene_renderer.render();
+      al_flip_display();
+      al_rest(1.0/60.0f);
+   }
 }
 
 

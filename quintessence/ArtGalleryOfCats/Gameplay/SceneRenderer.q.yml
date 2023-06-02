@@ -53,12 +53,13 @@ functions:
          {
             // Collect render flags
             bool renders_with_iridescent =
-               //true;
-               as_agc_entity->exists(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
+               true;
+               //as_agc_entity->exists(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 
             // Setup the render for this object
             if (renders_with_iridescent)
             {
+               std::cout << "AAAAAAAA" << std::endl;
                ArtGalleryOfCats::Gameplay::Entities::Base *as_gac_base =
                   static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
                cubemap_shader->set_object_placement(&as_gac_base->get_placement_ref()); // NOTE: For now, this has to be set before activating the shader
