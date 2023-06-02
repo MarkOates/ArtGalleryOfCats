@@ -138,14 +138,19 @@ void Screen::load_level()
    entity_pool.add(environment_mesh);
 
    // Create the environment visual mesh
-   //ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
-      //entity_factory.create_collision_tile_map();
-   //entity_pool.add(collision_tile_map);
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
+      entity_factory.create_collision_tile_map();
+   entity_pool.add(collision_tile_map);
 
    // Create the camera, define it as the primary camera
    ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
    camera->set("primary_camera");
    entity_pool.add(camera);
+
+   // Move our camera to the "spawn point"
+   AllegroFlare::Vec2D spawn_point = { 11, 18 }; // TODO: Update this spawn point to pull from map
+   camera->get_placement_ref().position.x = spawn_point.x;
+   camera->get_placement_ref().position.z = spawn_point.y;
 
    return;
 }
