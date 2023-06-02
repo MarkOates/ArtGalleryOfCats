@@ -8,6 +8,9 @@
   "ALLEGRO_BITMAP": [
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
+  "AllegroFlare/Placement3D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
   "ArtGalleryOfCats/Gameplay/Entities/Base": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
     "ArtGalleryOfCats/Gameplay/EntityFactory",

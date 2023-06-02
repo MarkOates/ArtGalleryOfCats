@@ -73,6 +73,14 @@ table td
   <td class="property">ALLEGRO_BITMAP*</td>
 </tr>
 <tr>
+  <td class="property">placement</td>
+  <td class="property">AllegroFlare::Placement3D</td>
+</tr>
+<tr>
+  <td class="property">velocity</td>
+  <td class="property">AllegroFlare::Placement3D</td>
+</tr>
+<tr>
   <td class="property">TYPE</td>
   <td class="property">char*</td>
 </tr>
@@ -88,6 +96,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Placement3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Placement3D.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -242,10 +253,13 @@ table td
   <td class="method">update()</td>
 </tr>
 <tr>
+  <td class="private_method">scene_physics_updater()</td>
+</tr>
+<tr>
   <td class="method">render()</td>
 </tr>
 <tr>
-  <td class="method">scene_renderer_render()</td>
+  <td class="private_method">scene_renderer_render()</td>
 </tr>
 <tr>
   <td class="method">call_on_finished_callback_func()</td>
@@ -506,6 +520,9 @@ table td
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
   "ALLEGRO_BITMAP": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "AllegroFlare/Placement3D": [
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
   "ArtGalleryOfCats/Gameplay/Entities/Base": [

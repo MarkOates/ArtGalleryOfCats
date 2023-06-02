@@ -36,6 +36,8 @@ namespace ArtGalleryOfCats
          void* on_finished_callback_func_user_data;
          bool initialized;
          void load_level();
+         void scene_physics_updater();
+         void scene_renderer_render();
 
       protected:
 
@@ -58,7 +60,6 @@ namespace ArtGalleryOfCats
          virtual void on_deactivate() override;
          void update();
          void render();
-         void scene_renderer_render();
          void call_on_finished_callback_func();
          virtual void primary_timer_func() override;
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;

@@ -234,6 +234,20 @@ void Screen::on_deactivate()
 
 void Screen::update()
 {
+   scene_physics_updater();
+   return;
+}
+
+void Screen::scene_physics_updater()
+{
+   for (auto &entity : entity_pool.get_entity_pool_ref())
+   {
+      ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+
+      AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+      AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
+   }
    return;
 }
 
@@ -329,6 +343,9 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::virtual_control_axis_change_func: error: guard \"initialized\" not met");
    }
+   //if (ev->mouse
+   //result->tilt = 0.13;            // look up(-)/down(+)
+   //result->spin = 0.2;             // set a good start initial spin
    // TODO: this function
    return;
 }

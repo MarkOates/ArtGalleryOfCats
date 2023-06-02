@@ -13,11 +13,13 @@ namespace Entities
 {
 
 
-Base::Base(std::string type, AllegroFlare::Model3D* model, ALLEGRO_BITMAP* texture)
+Base::Base(std::string type, AllegroFlare::Model3D* model, ALLEGRO_BITMAP* texture, AllegroFlare::Placement3D placement, AllegroFlare::Placement3D velocity)
    : AllegroFlare::SceneGraph::Entities::Base(ArtGalleryOfCats::Gameplay::Entities::Base::TYPE)
    , type(type)
    , model(model)
    , texture(texture)
+   , placement(placement)
+   , velocity(velocity)
 {
 }
 
@@ -45,6 +47,18 @@ void Base::set_texture(ALLEGRO_BITMAP* texture)
 }
 
 
+void Base::set_placement(AllegroFlare::Placement3D placement)
+{
+   this->placement = placement;
+}
+
+
+void Base::set_velocity(AllegroFlare::Placement3D velocity)
+{
+   this->velocity = velocity;
+}
+
+
 std::string Base::get_type() const
 {
    return type;
@@ -60,6 +74,30 @@ AllegroFlare::Model3D* Base::get_model() const
 ALLEGRO_BITMAP* Base::get_texture() const
 {
    return texture;
+}
+
+
+AllegroFlare::Placement3D Base::get_placement() const
+{
+   return placement;
+}
+
+
+AllegroFlare::Placement3D Base::get_velocity() const
+{
+   return velocity;
+}
+
+
+AllegroFlare::Placement3D &Base::get_placement_ref()
+{
+   return placement;
+}
+
+
+AllegroFlare::Placement3D &Base::get_velocity_ref()
+{
+   return velocity;
 }
 
 

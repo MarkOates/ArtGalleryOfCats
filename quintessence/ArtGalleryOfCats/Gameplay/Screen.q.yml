@@ -186,6 +186,21 @@ functions:
 
   - name: update
     body: |
+      scene_physics_updater();
+      return;
+
+
+  - name: scene_physics_updater
+    private: true
+    body: |
+      for (auto &entity : entity_pool.get_entity_pool_ref())
+      {
+         ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+            static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+
+         AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+         AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
+      }
       return;
 
 
@@ -196,6 +211,7 @@ functions:
 
 
   - name: scene_renderer_render
+    private: true
     body: |
       // Extract out the camera
       AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
@@ -298,6 +314,9 @@ functions:
         default_argument: nullptr
     guards: [ initialized ]
     body: |
+      //if (ev->mouse
+      //result->tilt = 0.13;            // look up(-)/down(+)
+      //result->spin = 0.2;             // set a good start initial spin
       // TODO: this function
       return;
 

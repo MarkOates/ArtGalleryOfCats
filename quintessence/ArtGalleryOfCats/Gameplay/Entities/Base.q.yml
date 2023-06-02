@@ -30,6 +30,22 @@ properties:
     getter: true
     setter: true
 
+  - name: placement
+    type: AllegroFlare::Placement3D
+    init_with: '{}'
+    constructor_arg: true
+    getter: true
+    setter: true
+    getter_ref: true
+
+  - name: velocity
+    type: AllegroFlare::Placement3D
+    init_with: '{}'
+    constructor_arg: true
+    getter: true
+    setter: true
+    getter_ref: true
+
   - name: TYPE
     type: char*
     init_with: '(char*)"ArtGalleryOfCats/Gameplay/Entities/Base"'
@@ -46,5 +62,7 @@ dependencies:
     headers: [ AllegroFlare/Model3D.hpp ]
   - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::Placement3D
+    headers: [ AllegroFlare/Placement3D.hpp ]
 
 
