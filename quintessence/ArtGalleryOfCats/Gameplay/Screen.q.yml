@@ -212,13 +212,19 @@ functions:
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
          static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
 
+      // TODO: Create our collision stepper
+      //AllegroFlare::Physics::TileMapCollisionStepper collision_stepper;
+      //collision_stepper.set_collision_tile_map();
+
+      float box_h_size = 0.5;
       for (auto &entity : entity_pool.get_entity_pool_ref())
       {
          ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
             static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
-
          AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
          AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
+
+         //AllegroFlare::Physics::AABB2D aabb2d();
 
          placement.position += velocity.position;
          placement.rotation += velocity.rotation;
