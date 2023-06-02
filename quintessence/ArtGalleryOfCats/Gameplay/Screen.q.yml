@@ -29,6 +29,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: resources_path
+    type: std::string
+    init_with: DEFAULT_RESOURCES_PATH
+    constructor_arg: true
+
   - name: entity_pool
     type: AllegroFlare::SceneGraph::EntityPool
     init_with: '{}'
@@ -69,6 +74,12 @@ properties:
   - name: TYPE
     type: char*
     init_with: '(char*)"ArtGalleryOfCats/Gameplay/Screen"'
+    static: true
+    constexpr: true
+
+  - name: DEFAULT_RESOURCES_PATH
+    type: char*
+    init_with: '(char*)"[unset-resources_path]"'
     static: true
     constexpr: true
 
@@ -118,6 +129,16 @@ functions:
     body: |
       this->model_bin = model_bin;
       return;
+
+
+  - name: set_resources_path
+    guards: [ (!initialized) ]
+    parameters:
+      - name: resources_path
+        type: std::string
+        default_argument: DEFAULT_RESOURCES_PATH
+    body: |
+      this->resources_path = resources_path;
       return;
 
 
@@ -160,10 +181,12 @@ functions:
       - bitmap_bin
       - font_bin
       - model_bin
+      - (resources_path != DEFAULT_RESOURCES_PATH)
     body: |
       // TODO: Fix this section
       AllegroFlare::CubemapBuilder builder;
-      std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
+      std::string cube_map_texture_filename = resources_path + "bitmaps/black_prism_1-01.png";
+      //std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
       cubemap = builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
 
       cubemap_shader.initialize();

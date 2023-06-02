@@ -27,12 +27,14 @@ namespace ArtGalleryOfCats
       {
       public:
          static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Gameplay/Screen";
+         static constexpr char* DEFAULT_RESOURCES_PATH = (char*)"[unset-resources_path]";
 
       private:
          AllegroFlare::EventEmitter* event_emitter;
          AllegroFlare::BitmapBin* bitmap_bin;
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
+         std::string resources_path;
          AllegroFlare::SceneGraph::EntityPool entity_pool;
          std::string current_level_identifier;
          void* current_level;
@@ -50,7 +52,7 @@ namespace ArtGalleryOfCats
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AllegroFlare::SceneGraph::EntityPool entity_pool={});
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, AllegroFlare::SceneGraph::EntityPool entity_pool={});
          virtual ~Screen();
 
          void set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func);
@@ -61,6 +63,7 @@ namespace ArtGalleryOfCats
          void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
+         void set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
          void initialize();
          virtual void on_activate() override;

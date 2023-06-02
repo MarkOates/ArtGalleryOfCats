@@ -23,12 +23,13 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool entity_pool)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, AllegroFlare::SceneGraph::EntityPool entity_pool)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , resources_path(resources_path)
    , entity_pool(entity_pool)
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -120,6 +121,18 @@ void Screen::set_model_bin(AllegroFlare::ModelBin* model_bin)
    }
    this->model_bin = model_bin;
    return;
+}
+
+void Screen::set_resources_path(std::string resources_path)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_resources_path]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_resources_path: error: guard \"(!initialized)\" not met");
+   }
+   this->resources_path = resources_path;
    return;
 }
 
@@ -203,9 +216,17 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
+   if (!((resources_path != DEFAULT_RESOURCES_PATH)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::initialize]: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::initialize: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met");
+   }
    // TODO: Fix this section
    AllegroFlare::CubemapBuilder builder;
-   std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
+   std::string cube_map_texture_filename = resources_path + "bitmaps/black_prism_1-01.png";
+   //std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
    cubemap = builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
 
    cubemap_shader.initialize();
