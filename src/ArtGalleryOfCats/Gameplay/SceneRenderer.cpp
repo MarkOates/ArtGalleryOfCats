@@ -83,6 +83,11 @@ void SceneRenderer::render()
    // TODO: validate the camera is of type Entities::Camera
    // TODO: here
 
+
+   // Set the camera position in the iridescent shder
+   cubemap_shader->set_camera_position(as_camera->get_real_position());
+
+
    //std::unordered_set<AllegroFlare::SceneGraph::Entities::Base*>
    for (auto &entity : entity_pool->get_entity_pool_ref())
    {
@@ -93,9 +98,8 @@ void SceneRenderer::render()
       if (model)
       {
          // Collect render flags
-         bool renders_with_iridescent = as_agc_entity->exists(
-               ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT
-            );
+         bool renders_with_iridescent =
+            as_agc_entity->exists(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 
          // Setup the render for this object
          if (renders_with_iridescent)
