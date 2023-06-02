@@ -28,16 +28,24 @@ functions:
 
   - name: create_environment_mesh
     type: ArtGalleryOfCats::Gameplay::Entities::Base*
+    parameters:
+      - name: model_filename
+        type: std::string
+        default_argument: '"[unset-model_filename]"'
+      - name: texture_filename
+        type: std::string
+        default_argument: '"[unset-texture_filename]"'
     guards: [ bitmap_bin, model_bin ]
     body: |
       ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
-      std::string model_filename = "gallery-map-02.obj";
+      //std::string model_filename = "gallery-map-02.obj";
       //std::string model_filename = "agc-map-04.obj";
       //model_bin->preload(model_filename);
       AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
 
-      std::string texture_filename = "gallery-map-02.png";
+      //std::string model_filename = "gallery-map-02.obj";
+      //std::string texture_filename = "gallery-map-02.png";
       //std::string texture_filename = "agc-map-04.png";
       //bitmap_bin->preload(texture_filename);
       ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
@@ -64,6 +72,10 @@ functions:
 
   - name: create_collision_tile_map
     type: ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*
+    parameters:
+      - name: tmj_filename
+        type: std::string
+        default_argument: '"[unset-tmj_filename]"'
     body: |
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* result =
          new ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap();
@@ -71,7 +83,7 @@ functions:
       AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = result->get_collision_tile_map_ref();
       collision_tile_map.initialize();
 
-      std::string tmj_filename = "tests/fixtures/maps/gallery-map-03.tmj"; // TODO: Fix this path
+      //std::string tmj_filename = "tests/fixtures/maps/gallery-map-03.tmj"; // TODO: Fix this path
       AllegroFlare::Prototypes::Platforming2D::TMJDataLoader tmj_data_loader(tmj_filename);
       tmj_data_loader.load();
 

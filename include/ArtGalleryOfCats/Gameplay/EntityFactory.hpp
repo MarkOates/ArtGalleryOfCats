@@ -7,6 +7,7 @@
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
+#include <string>
 
 
 namespace ArtGalleryOfCats
@@ -33,9 +34,9 @@ namespace ArtGalleryOfCats
          AllegroFlare::BitmapBin* get_bitmap_bin() const;
          AllegroFlare::FontBin* get_font_bin() const;
          AllegroFlare::ModelBin* get_model_bin() const;
-         ArtGalleryOfCats::Gameplay::Entities::Base* create_environment_mesh();
+         ArtGalleryOfCats::Gameplay::Entities::Base* create_environment_mesh(std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D* create_camera();
-         ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* create_collision_tile_map();
+         ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* create_collision_tile_map(std::string tmj_filename="[unset-tmj_filename]");
       };
    }
 }
