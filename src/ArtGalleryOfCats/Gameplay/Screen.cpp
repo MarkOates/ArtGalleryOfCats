@@ -268,7 +268,7 @@ void Screen::scene_physics_updater()
    collision_stepper.set_tile_width(1);
    collision_stepper.set_tile_height(1);
 
-   float box_size = 1.0;
+   float box_size = 2.0;
    float box_h_size = box_size * 0.5f;
    for (auto &entity : entity_pool.get_entity_pool_ref())
    {
@@ -278,8 +278,8 @@ void Screen::scene_physics_updater()
       AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
 
       AllegroFlare::Physics::AABB2D aabb2d(
-         placement.position.x,
-         placement.position.z,
+         placement.position.x - box_h_size,
+         placement.position.z - box_h_size,
          box_size, // Each object will have the size of the "box_size"
          box_size,
          velocity.position.x,
@@ -291,7 +291,7 @@ void Screen::scene_physics_updater()
       std::vector<AllegroFlare::Physics::TileMapCollisionStepperCollisionInfo> stepper_step_result =
          collision_stepper.step();
 
-      placement.position = AllegroFlare::Vec3D(aabb2d.get_x(), 0.0f, aabb2d.get_y());
+      placement.position = AllegroFlare::Vec3D(aabb2d.get_x() + box_h_size, 0.0f, aabb2d.get_y() + box_h_size);
       velocity.position = { aabb2d.get_velocity_x(), 0.0f, aabb2d.get_velocity_y() };
       //placement.rotation += velocity.rotation; // TODO: Uncomment this
    }
@@ -390,8 +390,8 @@ void Screen::render_hud()
       //AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
 
       AllegroFlare::Physics::AABB2D aabb2d(
-         placement.position.x * 16,
-         placement.position.z * 16,
+         placement.position.x * 16 - (16 * 0.5),
+         placement.position.z * 16 - (16 * 0.5),
          16.0, // Our object will be a 1x1 square
          16.0
          //velocity.position.x,
@@ -401,6 +401,8 @@ void Screen::render_hud()
       render_aabb2d(
                &aabb2d
             );
+
+      al_draw_filled_circle(placement.position.x * 16, placement.position.z * 16, 8, ALLEGRO_COLOR{0, 1, 0.8, 1.0});
    }
 
 
