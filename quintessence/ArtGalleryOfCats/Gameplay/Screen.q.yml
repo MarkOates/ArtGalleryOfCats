@@ -209,7 +209,7 @@ functions:
       // Extract out the collision map
       entity = entity_pool.find_with_attribute("collision_tile_map");
       if (!entity) throw std::runtime_error("no collision_tile_map present");
-      ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
+      ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map =
          static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
 
       // Create our collision stepper
@@ -306,14 +306,56 @@ functions:
   - name: render_hud
     private: true
     body: |
+      // Local vars;
+      AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
+
       AllegroFlare::Camera2D hud_camera;
       ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
       hud_camera.setup_dimentional_projection(render_surface);
       hud_camera.start_transform();
 
-      ALLEGRO_FONT *font = al_create_builtin_font();
-      al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 10, 10, ALLEGRO_ALIGN_LEFT, ".ul");
-      al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920-10, 1080-10, ALLEGRO_ALIGN_RIGHT, "br.");
+      //ALLEGRO_FONT *font = al_create_builtin_font();
+      //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 10, 10, ALLEGRO_ALIGN_LEFT, ".ul");
+      //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920-10, 1080-10, ALLEGRO_ALIGN_RIGHT, "br.");
+
+
+      // Extract out the collision map
+      entity = entity_pool.find_with_attribute("collision_tile_map");
+      if (!entity) throw std::runtime_error("no collision_tile_map present");
+      ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
+
+
+      render_tile_map(collision_tile_map, 16.0f, 16.0f);
+
+      /*
+      AllegroFlare::Placement2D camera;
+      camera.scale.x = 4.8;
+      camera.scale.y = 4.5;
+
+
+      camera.start_transform();
+      render_tile_map(collision_tile_map, 16.0f, 16.0f);
+      camera.restore_transform();
+      */
+
+       /*
+            { // draw
+               //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
+               camera.start_transform();
+               render_tile_map(collision_tile_map, 16.0f, 16.0f);
+               render_aabb2d(
+                  aabb2d,
+                  aabb2d_adjacent_to_top_edge,
+                  aabb2d_adjacent_to_right_edge,
+                  aabb2d_adjacent_to_bottom_edge,
+                  aabb2d_adjacent_to_left_edge
+               );
+               camera.restore_transform();
+               al_flip_display();
+      */
+
+
    
       return;
     body_dependency_symbols:

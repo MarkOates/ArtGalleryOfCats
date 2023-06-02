@@ -118,7 +118,7 @@ ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* EntityFactory::create_co
    AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = result->get_collision_tile_map_ref();
    collision_tile_map.initialize();
 
-   std::string tmj_filename = "tests/fixtures/maps/gallery-map-02.tmj"; // TODO: Fix this path
+   std::string tmj_filename = "tests/fixtures/maps/gallery-map-03.tmj"; // TODO: Fix this path
    AllegroFlare::Prototypes::Platforming2D::TMJDataLoader tmj_data_loader(tmj_filename);
    tmj_data_loader.load();
 
