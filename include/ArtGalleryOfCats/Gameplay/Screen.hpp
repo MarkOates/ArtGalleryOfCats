@@ -38,6 +38,7 @@ namespace ArtGalleryOfCats
          void load_level();
          void scene_physics_updater();
          void scene_renderer_render();
+         void render_hud();
 
       protected:
 

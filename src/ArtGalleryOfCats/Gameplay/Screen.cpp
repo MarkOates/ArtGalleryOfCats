@@ -306,6 +306,7 @@ void Screen::scene_physics_updater()
 void Screen::render()
 {
    scene_renderer_render();
+   render_hud();
    return;
 }
 
@@ -342,6 +343,11 @@ void Screen::scene_renderer_render()
    }
 
    //as_camera->start_reverse_transform();
+   return;
+}
+
+void Screen::render_hud()
+{
    return;
 }
 

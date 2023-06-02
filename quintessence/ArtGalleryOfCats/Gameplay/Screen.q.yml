@@ -259,6 +259,7 @@ functions:
   - name: render
     body: |
       scene_renderer_render();
+      render_hud();
       return;
 
 
@@ -300,6 +301,12 @@ functions:
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::Entities::Base
       - ArtGalleryOfCats::Gameplay::Entities::Camera3D
+
+
+  - name: render_hud
+    private: true
+    body: |
+      return;
 
 
   - name: call_on_finished_callback_func
