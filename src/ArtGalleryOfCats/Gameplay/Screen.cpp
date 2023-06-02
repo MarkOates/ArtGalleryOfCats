@@ -265,8 +265,11 @@ void Screen::scene_physics_updater()
    // Create our collision stepper
    AllegroFlare::Physics::TileMapCollisionStepper collision_stepper;
    collision_stepper.set_collision_tile_map(&as_collision_tile_map->get_collision_tile_map_ref());
+   collision_stepper.set_tile_width(1);
+   collision_stepper.set_tile_height(1);
 
-   float box_h_size = 0.5;
+   float box_size = 1.0;
+   float box_h_size = box_size * 0.5f;
    for (auto &entity : entity_pool.get_entity_pool_ref())
    {
       ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
@@ -277,8 +280,8 @@ void Screen::scene_physics_updater()
       AllegroFlare::Physics::AABB2D aabb2d(
          placement.position.x,
          placement.position.z,
-         1.0, // Our object will be a 1x1 square
-         1.0,
+         box_size, // Each object will have the size of the "box_size"
+         box_size,
          velocity.position.x,
          velocity.position.z
       );
