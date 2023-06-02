@@ -1,0 +1,67 @@
+properties:
+
+
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: model_bin
+    type: AllegroFlare::ModelBin*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: entity_pool
+    type: AllegroFlare::SceneGraph::EntityPool*
+    init_with: '{}'
+    constructor_arg: true
+
+
+functions:
+
+
+  - name: load_primary_map
+    guards: [ bitmap_bin, model_bin, entity_pool ]
+    body: |
+      ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+      entity_factory.set_model_bin(model_bin);
+      entity_factory.set_bitmap_bin(bitmap_bin);
+
+      // Create the environment visual mesh
+      ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh();
+      entity_pool->add(environment_mesh);
+
+      // Create the environment visual mesh
+      ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
+         entity_factory.create_collision_tile_map();
+      collision_tile_map->set("collision_tile_map");
+      entity_pool->add(collision_tile_map);
+
+      // Create the camera, define it as the primary camera
+      ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
+      camera->set("primary_camera");
+      entity_pool->add(camera);
+
+      // Move our camera to the "spawn point"
+      AllegroFlare::Vec2D spawn_point = { 11, 18 }; // TODO: Update this spawn point to pull from map
+      camera->get_placement_ref().position.x = spawn_point.x;
+      camera->get_placement_ref().position.z = spawn_point.y;
+
+      return;
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::EntityFactory
+
+
+dependencies:
+
+
+  - symbol: AllegroFlare::BitmapBin
+    headers: [ AllegroFlare/BitmapBin.hpp ]
+  - symbol: AllegroFlare::ModelBin
+    headers: [ AllegroFlare/ModelBin.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::EntityFactory
+    headers: [ ArtGalleryOfCats/Gameplay/EntityFactory.hpp ]
+  - symbol: AllegroFlare::SceneGraph::EntityPool
+    headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
+
+
