@@ -2,6 +2,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 
+#include <AllegroFlare/Camera2D.hpp>
 #include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
@@ -348,6 +349,15 @@ void Screen::scene_renderer_render()
 
 void Screen::render_hud()
 {
+   AllegroFlare::Camera2D hud_camera;
+   ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
+   hud_camera.setup_dimentional_projection(render_surface);
+   hud_camera.start_transform();
+
+   ALLEGRO_FONT *font = al_create_builtin_font();
+   al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 10, 10, ALLEGRO_ALIGN_LEFT, ".ul");
+   al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920-10, 1080-10, ALLEGRO_ALIGN_RIGHT, "br.");
+
    return;
 }
 

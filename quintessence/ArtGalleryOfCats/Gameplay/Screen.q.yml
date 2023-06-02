@@ -306,7 +306,18 @@ functions:
   - name: render_hud
     private: true
     body: |
+      AllegroFlare::Camera2D hud_camera;
+      ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
+      hud_camera.setup_dimentional_projection(render_surface);
+      hud_camera.start_transform();
+
+      ALLEGRO_FONT *font = al_create_builtin_font();
+      al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 10, 10, ALLEGRO_ALIGN_LEFT, ".ul");
+      al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920-10, 1080-10, ALLEGRO_ALIGN_RIGHT, "br.");
+   
       return;
+    body_dependency_symbols:
+      - AllegroFlare::Camera2D
 
 
   - name: call_on_finished_callback_func
@@ -538,5 +549,7 @@ dependencies:
     headers: [ AllegroFlare/VirtualControllers/GenericController.hpp ]
   - symbol: AllegroFlare::Physics::TileMapCollisionStepper
     headers: [ AllegroFlare/Physics/TileMapCollisionStepper.hpp ]
+  - symbol: AllegroFlare::Camera2D
+    headers: [ AllegroFlare/Camera2D.hpp ]
 
 
