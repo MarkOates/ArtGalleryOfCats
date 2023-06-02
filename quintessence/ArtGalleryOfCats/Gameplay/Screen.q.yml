@@ -54,6 +54,10 @@ properties:
     getter: true
     setter: true
 
+  - name: cubemap_shader
+    type: AllegroFlare::Shaders::Cubemap
+    init_with: '{}'
+
   - name: initialized
     type: bool
     init_with: false
@@ -153,6 +157,7 @@ functions:
       - font_bin
       - model_bin
     body: |
+      cubemap_shader.initialize();
       initialized = true;
       return;
     body_dependency_symbols:
@@ -698,5 +703,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::SceneRenderer
     headers: [ ArtGalleryOfCats/Gameplay/SceneRenderer.hpp ]
+  - symbol: AllegroFlare::Shaders::Cubemap
+    headers: [ AllegroFlare/Shaders/Cubemap.hpp ]
 
 

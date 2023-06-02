@@ -1,6 +1,13 @@
 properties:
 
 
+  - name: cubemap_shader
+    type: AllegroFlare::Shaders::Cubemap*
+    init_with: nullptr
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: entity_pool
     type: AllegroFlare::SceneGraph::EntityPool*
     init_with: nullptr
@@ -13,7 +20,7 @@ functions:
 
 
   - name: render
-    guards: [ entity_pool ]
+    guards: [ entity_pool, cubemap_shader ]
     body: |
       // Extract out the camera and render the scene
       AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool->find_with_attribute("primary_camera");
@@ -39,9 +46,31 @@ functions:
          AllegroFlare::Model3D *model = as_agc_entity->get_model();
          if (model)
          {
-            ALLEGRO_BITMAP *texture = as_agc_entity->get_texture();
-            if (texture) model->set_texture(texture);
+            // Collect render flags
+            bool renders_with_iridescent = as_agc_entity->exists(
+                  ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT
+               );
+
+            // Setup the render for this object
+            if (renders_with_iridescent)
+            {
+               // TODO: turn on shader
+               // TODO: assign textures
+            }
+            else
+            {
+               ALLEGRO_BITMAP *texture = as_agc_entity->get_texture();
+               if (texture) model->set_texture(texture);
+            }
+
+            // Draw the model
             model->draw();
+
+            // Teardown the render for this object
+            if (renders_with_iridescent)
+            {
+               // TODO: turn off shader
+            }
          }
       }
 
@@ -50,6 +79,7 @@ functions:
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::Entities::Base
       - ArtGalleryOfCats::Gameplay::Entities::Camera3D
+      - ArtGalleryOfCats::Gameplay::EntityFlags
 
 
 dependencies:
@@ -61,5 +91,9 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp ]
   - symbol: AllegroFlare::SceneGraph::EntityPool
     headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
+  - symbol: AllegroFlare::Shaders::Cubemap
+    headers: [ AllegroFlare/Shaders/Cubemap.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::EntityFlags
+    headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
 
 

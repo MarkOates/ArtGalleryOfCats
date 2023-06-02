@@ -4,6 +4,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
+#include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -15,8 +16,9 @@ namespace Gameplay
 {
 
 
-SceneRenderer::SceneRenderer(AllegroFlare::SceneGraph::EntityPool* entity_pool)
-   : entity_pool(entity_pool)
+SceneRenderer::SceneRenderer(AllegroFlare::Shaders::Cubemap* cubemap_shader, AllegroFlare::SceneGraph::EntityPool* entity_pool)
+   : cubemap_shader(cubemap_shader)
+   , entity_pool(entity_pool)
 {
 }
 
@@ -26,9 +28,21 @@ SceneRenderer::~SceneRenderer()
 }
 
 
+void SceneRenderer::set_cubemap_shader(AllegroFlare::Shaders::Cubemap* cubemap_shader)
+{
+   this->cubemap_shader = cubemap_shader;
+}
+
+
 void SceneRenderer::set_entity_pool(AllegroFlare::SceneGraph::EntityPool* entity_pool)
 {
    this->entity_pool = entity_pool;
+}
+
+
+AllegroFlare::Shaders::Cubemap* SceneRenderer::get_cubemap_shader() const
+{
+   return cubemap_shader;
 }
 
 
@@ -46,6 +60,13 @@ void SceneRenderer::render()
       error_message << "[SceneRenderer::render]: error: guard \"entity_pool\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("SceneRenderer::render: error: guard \"entity_pool\" not met");
+   }
+   if (!(cubemap_shader))
+   {
+      std::stringstream error_message;
+      error_message << "[SceneRenderer::render]: error: guard \"cubemap_shader\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("SceneRenderer::render: error: guard \"cubemap_shader\" not met");
    }
    // Extract out the camera and render the scene
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool->find_with_attribute("primary_camera");
@@ -71,9 +92,31 @@ void SceneRenderer::render()
       AllegroFlare::Model3D *model = as_agc_entity->get_model();
       if (model)
       {
-         ALLEGRO_BITMAP *texture = as_agc_entity->get_texture();
-         if (texture) model->set_texture(texture);
+         // Collect render flags
+         bool renders_with_iridescent = as_agc_entity->exists(
+               ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT
+            );
+
+         // Setup the render for this object
+         if (renders_with_iridescent)
+         {
+            // TODO: turn on shader
+            // TODO: assign textures
+         }
+         else
+         {
+            ALLEGRO_BITMAP *texture = as_agc_entity->get_texture();
+            if (texture) model->set_texture(texture);
+         }
+
+         // Draw the model
          model->draw();
+
+         // Teardown the render for this object
+         if (renders_with_iridescent)
+         {
+            // TODO: turn off shader
+         }
       }
    }
 

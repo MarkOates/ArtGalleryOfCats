@@ -9,6 +9,7 @@
 #include <AllegroFlare/Player.hpp>
 #include <AllegroFlare/SceneGraph/EntityPool.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
+#include <AllegroFlare/Shaders/Cubemap.hpp>
 #include <AllegroFlare/TileMaps/TileMap.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
@@ -36,6 +37,7 @@ namespace ArtGalleryOfCats
          void* current_level;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
+         AllegroFlare::Shaders::Cubemap cubemap_shader;
          bool initialized;
          void load_level();
          void scene_physics_updater();

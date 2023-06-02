@@ -33,6 +33,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , current_level(nullptr)
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
+   , cubemap_shader({})
    , initialized(false)
 {
 }
@@ -200,6 +201,7 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
+   cubemap_shader.initialize();
    initialized = true;
    return;
 }
