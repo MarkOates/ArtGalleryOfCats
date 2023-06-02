@@ -9,11 +9,12 @@ parent_classes:
 properties:
 
 
-  - name: property
-    type: std::string
-    init_with: '"[unset-property]"'
+  - name: model
+    type: AllegroFlare::Model3D*
+    init_with: nullptr
     constructor_arg: true
     getter: true
+    setter: true
 
   - name: TYPE
     type: char*
@@ -22,23 +23,12 @@ properties:
     constexpr: true
 
 
-functions:
-
-
-  - name: property_is
-    type: bool
-    parameters:
-      - name: possible_type
-        type: std::string
-        default_argument: '""'
-    body: |
-      return (possible_type == get_property());
-
-
 dependencies:
 
 
   - symbol: AllegroFlare::SceneGraph::Entities::Base
     headers: [ AllegroFlare/SceneGraph/Entities/Base.hpp ]
+  - symbol: AllegroFlare::Model3D
+    headers: [ AllegroFlare/Model3D.hpp ]
 
 

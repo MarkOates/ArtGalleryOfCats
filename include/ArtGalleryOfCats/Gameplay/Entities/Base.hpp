@@ -1,8 +1,8 @@
 #pragma once
 
 
+#include <AllegroFlare/Model3D.hpp>
 #include <AllegroFlare/SceneGraph/Entities/Base.hpp>
-#include <string>
 
 
 namespace ArtGalleryOfCats
@@ -17,17 +17,17 @@ namespace ArtGalleryOfCats
             static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Gameplay/Entities/Base";
 
          private:
-            std::string property;
+            AllegroFlare::Model3D* model;
 
          protected:
 
 
          public:
-            Base(std::string property="[unset-property]");
+            Base(AllegroFlare::Model3D* model=nullptr);
             ~Base();
 
-            std::string get_property() const;
-            bool property_is(std::string possible_type="");
+            void set_model(AllegroFlare::Model3D* model);
+            AllegroFlare::Model3D* get_model() const;
          };
       }
    }

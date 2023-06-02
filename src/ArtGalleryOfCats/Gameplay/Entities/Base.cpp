@@ -13,9 +13,9 @@ namespace Entities
 {
 
 
-Base::Base(std::string property)
+Base::Base(AllegroFlare::Model3D* model)
    : AllegroFlare::SceneGraph::Entities::Base(ArtGalleryOfCats::Gameplay::Entities::Base::TYPE)
-   , property(property)
+   , model(model)
 {
 }
 
@@ -25,16 +25,18 @@ Base::~Base()
 }
 
 
-std::string Base::get_property() const
+void Base::set_model(AllegroFlare::Model3D* model)
 {
-   return property;
+   this->model = model;
 }
 
 
-bool Base::property_is(std::string possible_type)
+AllegroFlare::Model3D* Base::get_model() const
 {
-   return (possible_type == get_property());
+   return model;
 }
+
+
 
 
 } // namespace Entities
