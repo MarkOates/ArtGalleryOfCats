@@ -140,6 +140,7 @@ void Screen::load_level()
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
       entity_factory.create_collision_tile_map();
+   collision_tile_map->set("collision_tile_map");
    entity_pool.add(collision_tile_map);
 
    // Create the camera, define it as the primary camera
@@ -252,6 +253,14 @@ void Screen::update()
 
 void Screen::scene_physics_updater()
 {
+   AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
+
+   // Extract out the collision map
+   entity = entity_pool.find_with_attribute("collision_tile_map");
+   if (!entity) throw std::runtime_error("no collision_tile_map present");
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
+      static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
+
    for (auto &entity : entity_pool.get_entity_pool_ref())
    {
       ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
@@ -266,7 +275,7 @@ void Screen::scene_physics_updater()
 
    // HACK: Extract out the camera and assign it's position
    // TODO: Create a separate entity, then assign the camera values to the live camera (or something)
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+   entity = entity_pool.find_with_attribute("primary_camera");
    if (!entity) throw std::runtime_error("no camera present");
    ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
       static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
