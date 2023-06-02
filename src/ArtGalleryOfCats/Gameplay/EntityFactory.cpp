@@ -2,6 +2,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 
+#include <AllegroFlare/Prototypes/Platforming2D/TMJDataLoader.hpp>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -80,11 +81,11 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
-   std::string model_filename = "agc-map-04.obj";
+   std::string model_filename = "gallery-map-02.obj";
    model_bin->preload(model_filename);
    AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
 
-   std::string texture_filename = "agc-map-04.png";
+   std::string texture_filename = "gallery-map-02.png";
    bitmap_bin->preload(texture_filename);
    ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
@@ -103,6 +104,22 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
    result->tilt = 0.13;            // look up(-)/down(+)
    result->spin = 0.0;             // set a good start initial spin
    //result->spin = 0.2;             // set a good start initial spin
+
+   return result;
+}
+
+ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* EntityFactory::create_collision_tile_map()
+{
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* result =
+      new ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap();
+
+   AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = result->get_collision_tile_map_ref();
+   collision_tile_map.resize(10, 10);
+   //collision_tile_map.resize(10, 10);
+
+   std::string tmj_filename = "tests/fixtures/maps/gallery-map-02.tmj"; // TODO: Fix this path
+   AllegroFlare::Prototypes::Platforming2D::TMJDataLoader tmj_data_loader(tmj_filename);
+   tmj_data_loader.load();
 
    return result;
 }

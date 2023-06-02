@@ -1,0 +1,34 @@
+parent_classes:
+
+
+  - class: ArtGalleryOfCats::Gameplay::Entities::Base
+    scope: public
+    init_with: ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap::TYPE
+
+
+properties:
+
+
+  - name: collision_tile_map
+    type: AllegroFlare::TileMaps::TileMap<int>
+    init_with: '{}'
+    getter: true
+    setter: true
+    getter_ref: true
+
+  - name: TYPE
+    type: char*
+    init_with: '(char*)"ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap"'
+    static: true
+    constexpr: true
+
+
+dependencies:
+
+
+  - symbol: ArtGalleryOfCats::Gameplay::Entities::Base
+    headers: [ ArtGalleryOfCats/Gameplay/Entities/Base.hpp ]
+  - symbol: AllegroFlare::TileMaps::TileMap
+    headers: [ AllegroFlare/TileMaps/TileMap.hpp ]
+
+

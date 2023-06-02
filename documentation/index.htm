@@ -152,6 +152,9 @@ table td
 <tr>
   <td class="method">create_camera()</td>
 </tr>
+<tr>
+  <td class="method">create_collision_tile_map()</td>
+</tr>
     </table>
      <table>
 <tr>
@@ -168,6 +171,12 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Camera3D&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::Platforming2D::TMJDataLoader&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/Platforming2D/TMJDataLoader.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -578,6 +587,12 @@ table td
   "ArtGalleryOfCats/Gameplay/Entities/Camera3D": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",
     "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory"
+  ],
+  "AllegroFlare/Prototypes/Platforming2D/TMJDataLoader": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory"
   ],
   "ALLEGRO_EVENT": [
     "ArtGalleryOfCats/Gameplay/Screen"

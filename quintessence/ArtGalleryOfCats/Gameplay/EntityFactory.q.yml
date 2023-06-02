@@ -32,11 +32,11 @@ functions:
     body: |
       ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
-      std::string model_filename = "agc-map-04.obj";
+      std::string model_filename = "gallery-map-02.obj";
       model_bin->preload(model_filename);
       AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
 
-      std::string texture_filename = "agc-map-04.png";
+      std::string texture_filename = "gallery-map-02.png";
       bitmap_bin->preload(texture_filename);
       ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
@@ -60,6 +60,25 @@ functions:
       return result;
 
 
+  - name: create_collision_tile_map
+    type: ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*
+    body: |
+      ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* result =
+         new ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap();
+
+      AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = result->get_collision_tile_map_ref();
+      collision_tile_map.resize(10, 10);
+      //collision_tile_map.resize(10, 10);
+
+      std::string tmj_filename = "tests/fixtures/maps/gallery-map-02.tmj"; // TODO: Fix this path
+      AllegroFlare::Prototypes::Platforming2D::TMJDataLoader tmj_data_loader(tmj_filename);
+      tmj_data_loader.load();
+
+      return result;
+    body_dependency_symbols:
+     - AllegroFlare::Prototypes::Platforming2D::TMJDataLoader
+
+
 dependencies:
 
 
@@ -73,5 +92,9 @@ dependencies:
     headers: [ AllegroFlare/ModelBin.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::Entities::Camera3D
     headers: [ ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap
+    headers: [ ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp ]
+  - symbol: AllegroFlare::Prototypes::Platforming2D::TMJDataLoader
+    headers: [ AllegroFlare/Prototypes/Platforming2D/TMJDataLoader.hpp ]
 
 

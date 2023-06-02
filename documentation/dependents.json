@@ -38,6 +38,12 @@
     "ArtGalleryOfCats/Gameplay/EntityFactory",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
+  "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory"
+  ],
+  "AllegroFlare/Prototypes/Platforming2D/TMJDataLoader": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory"
+  ],
   "ALLEGRO_EVENT": [
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
