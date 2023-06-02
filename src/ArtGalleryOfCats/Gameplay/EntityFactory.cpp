@@ -97,6 +97,12 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
 ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
 {
    ArtGalleryOfCats::Gameplay::Entities::Camera3D* result = new ArtGalleryOfCats::Gameplay::Entities::Camera3D();
+
+   result->stepout = { 0, 1.0, 4 };
+   //camera.stepout = {0, 1.0, 4};  // step back from the origin
+   result->tilt = 0.13;            // look up(-)/down(+)
+   result->spin = 0.2;             // set a good start initial spin
+
    return result;
 }
 
