@@ -17,9 +17,17 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTest, can_be_created_without_blowi
 }
 
 
-TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTest, render__renders_the_scene)
+TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTest, render__renders_the_scene)
 {
+   AllegroFlare::Shaders::Cubemap cubemap_shader;
+   AllegroFlare::Cubemap* cubemap = nullptr;
+
+   cubemap_shader.initialize();
+   cubemap_shader.set_cube_map(cubemap);
+
    ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
+
+   //scene_renderer.render();
 }
 
 

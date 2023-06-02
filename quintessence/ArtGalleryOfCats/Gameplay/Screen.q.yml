@@ -58,7 +58,7 @@ properties:
     type: AllegroFlare::Shaders::Cubemap
     init_with: '{}'
 
-  - name: cube_map_texture
+  - name: cubemap
     type: AllegroFlare::Cubemap*
     init_with: nullptr
 
@@ -161,13 +161,13 @@ functions:
       - font_bin
       - model_bin
     body: |
-      cubemap_shader.initialize();
-
       // TODO: Fix this section
       AllegroFlare::CubemapBuilder builder;
       std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
-      AllegroFlare::Cubemap *cube_map =
-         builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
+      cubemap = builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
+
+      cubemap_shader.initialize();
+      cubemap_shader.set_cube_map(cubemap);
 
       initialized = true;
       return;
