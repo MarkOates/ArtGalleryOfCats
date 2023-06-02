@@ -7,7 +7,8 @@
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
-#include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
+#include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
+#include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -130,29 +131,12 @@ void Screen::load_level_by_identifier(std::string level_identifier)
 
 void Screen::load_level()
 {
-   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
-   entity_factory.set_model_bin(model_bin);
-   entity_factory.set_bitmap_bin(bitmap_bin);
+   ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
+   level_factory.set_model_bin(model_bin);
+   level_factory.set_bitmap_bin(bitmap_bin);
+   level_factory.set_entity_pool(&entity_pool);
 
-   // Create the environment visual mesh
-   ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh();
-   entity_pool.add(environment_mesh);
-
-   // Create the environment visual mesh
-   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
-      entity_factory.create_collision_tile_map();
-   collision_tile_map->set("collision_tile_map");
-   entity_pool.add(collision_tile_map);
-
-   // Create the camera, define it as the primary camera
-   ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
-   camera->set("primary_camera");
-   entity_pool.add(camera);
-
-   // Move our camera to the "spawn point"
-   AllegroFlare::Vec2D spawn_point = { 11, 18 }; // TODO: Update this spawn point to pull from map
-   camera->get_placement_ref().position.x = spawn_point.x;
-   camera->get_placement_ref().position.z = spawn_point.y;
+   level_factory.load_primary_map();
 
    return;
 }

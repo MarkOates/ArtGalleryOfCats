@@ -5,16 +5,22 @@ properties:
     type: AllegroFlare::BitmapBin*
     init_with: nullptr
     constructor_arg: true
+    getter: true
+    setter: true
 
   - name: model_bin
     type: AllegroFlare::ModelBin*
     init_with: nullptr
     constructor_arg: true
+    getter: true
+    setter: true
 
   - name: entity_pool
     type: AllegroFlare::SceneGraph::EntityPool*
     init_with: '{}'
     constructor_arg: true
+    getter: true
+    setter: true
 
 
 functions:

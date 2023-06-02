@@ -27,6 +27,42 @@ LevelFactory::~LevelFactory()
 }
 
 
+void LevelFactory::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   this->bitmap_bin = bitmap_bin;
+}
+
+
+void LevelFactory::set_model_bin(AllegroFlare::ModelBin* model_bin)
+{
+   this->model_bin = model_bin;
+}
+
+
+void LevelFactory::set_entity_pool(AllegroFlare::SceneGraph::EntityPool* entity_pool)
+{
+   this->entity_pool = entity_pool;
+}
+
+
+AllegroFlare::BitmapBin* LevelFactory::get_bitmap_bin() const
+{
+   return bitmap_bin;
+}
+
+
+AllegroFlare::ModelBin* LevelFactory::get_model_bin() const
+{
+   return model_bin;
+}
+
+
+AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
+{
+   return entity_pool;
+}
+
+
 void LevelFactory::load_primary_map()
 {
    if (!(bitmap_bin))
