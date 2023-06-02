@@ -2,6 +2,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 
+#include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -124,7 +125,12 @@ void Screen::load_level_by_identifier(std::string level_identifier)
 
 void Screen::load_level()
 {
-   //entity_pool.push_back(...) // HERE
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   entity_factory.set_model_bin(model_bin);
+   entity_factory.set_bitmap_bin(bitmap_bin);
+
+   ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh();
+   entity_pool.add(environment_mesh);
    return;
 }
 

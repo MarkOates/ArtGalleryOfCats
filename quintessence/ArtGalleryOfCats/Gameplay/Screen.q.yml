@@ -129,9 +129,15 @@ functions:
 
   - name: load_level
     body: |
-      //entity_pool.push_back(...) // HERE
+      ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+      entity_factory.set_model_bin(model_bin);
+      entity_factory.set_bitmap_bin(bitmap_bin);
+
+      ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh();
+      entity_pool.add(environment_mesh);
       return;
-    body_dependency_symbols: []
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::EntityFactory
 
 
   - name: initialize
@@ -280,5 +286,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Screen.hpp ]
   - symbol: AllegroFlare::SceneGraph::EntityPool
     headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::EntityFactory
+    headers: [ ArtGalleryOfCats/Gameplay/EntityFactory.hpp ]
 
 
