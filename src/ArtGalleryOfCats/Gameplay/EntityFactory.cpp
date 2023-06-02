@@ -80,11 +80,11 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
-   std::string model_filename = "agc-map-01.obj";
+   std::string model_filename = "agc-map-02.obj";
    model_bin->preload(model_filename);
    AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
 
-   std::string texture_filename = "agc-map-01.png";
+   std::string texture_filename = "agc-map-02.png";
    bitmap_bin->preload(texture_filename);
    ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
@@ -101,7 +101,8 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
    result->stepout = { 0, 1.0, 4 };
    //camera.stepout = {0, 1.0, 4};  // step back from the origin
    result->tilt = 0.13;            // look up(-)/down(+)
-   result->spin = 0.2;             // set a good start initial spin
+   result->spin = 0.0;             // set a good start initial spin
+   //result->spin = 0.2;             // set a good start initial spin
 
    return result;
 }
