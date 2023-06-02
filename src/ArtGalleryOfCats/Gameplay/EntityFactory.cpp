@@ -82,11 +82,13 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
    std::string model_filename = "gallery-map-02.obj";
-   model_bin->preload(model_filename);
+   //std::string model_filename = "agc-map-04.obj";
+   //model_bin->preload(model_filename);
    AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
 
    std::string texture_filename = "gallery-map-02.png";
-   bitmap_bin->preload(texture_filename);
+   //std::string texture_filename = "agc-map-04.png";
+   //bitmap_bin->preload(texture_filename);
    ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
    result->set_model(model);

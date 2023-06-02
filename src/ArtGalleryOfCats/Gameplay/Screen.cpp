@@ -133,9 +133,14 @@ void Screen::load_level()
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
 
-   // Create the environment
+   // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh();
    entity_pool.add(environment_mesh);
+
+   // Create the environment visual mesh
+   //ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
+      //entity_factory.create_collision_tile_map();
+   //entity_pool.add(collision_tile_map);
 
    // Create the camera, define it as the primary camera
    ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();

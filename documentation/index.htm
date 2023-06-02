@@ -51,6 +51,7 @@ table td
 <ul>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Runner.q.yml">quintessence/ArtGalleryOfCats/Runner.q.yml</a></li>
@@ -124,6 +125,31 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Camera3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Camera3D.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">collision_tile_map</td>
+  <td class="property">AllegroFlare::TileMaps::TileMap&lt;int&gt;</td>
+</tr>
+<tr>
+  <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::TileMaps::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/TileMaps/TileMap.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -563,11 +589,15 @@ table td
   ],
   "ArtGalleryOfCats/Gameplay/Entities/Base": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
+    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap",
     "ArtGalleryOfCats/Gameplay/EntityFactory",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Camera3D": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D"
+  ],
+  "AllegroFlare/TileMaps/TileMap": [
+    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap"
   ],
   "AllegroFlare/BitmapBin": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",

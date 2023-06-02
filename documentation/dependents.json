@@ -13,11 +13,15 @@
   ],
   "ArtGalleryOfCats/Gameplay/Entities/Base": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
+    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap",
     "ArtGalleryOfCats/Gameplay/EntityFactory",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Camera3D": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D"
+  ],
+  "AllegroFlare/TileMaps/TileMap": [
+    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap"
   ],
   "AllegroFlare/BitmapBin": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",
