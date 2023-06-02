@@ -3,6 +3,7 @@
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 
 #include <AllegroFlare/Prototypes/Platforming2D/TMJDataLoader.hpp>
+#include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -94,6 +95,37 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
 
    result->set_model(model);
    result->set_texture(texture);
+
+   return result;
+}
+
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_object(AllegroFlare::Vec3D position, std::string model_filename, std::string texture_filename)
+{
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[EntityFactory::create_collectable_object]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_collectable_object: error: guard \"bitmap_bin\" not met");
+   }
+   if (!(model_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[EntityFactory::create_collectable_object]: error: guard \"model_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_collectable_object: error: guard \"model_bin\" not met");
+   }
+   ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
+
+   AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
+   ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
+
+   result->set_model(model);
+   result->set_texture(texture);
+
+   result->set(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
+
+   result->get_placement_ref().position = position;
 
    return result;
 }
