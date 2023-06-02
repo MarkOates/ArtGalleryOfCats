@@ -58,6 +58,10 @@ properties:
     type: AllegroFlare::Shaders::Cubemap
     init_with: '{}'
 
+  - name: cube_map_texture
+    type: AllegroFlare::Cubemap*
+    init_with: nullptr
+
   - name: initialized
     type: bool
     init_with: false
@@ -158,10 +162,18 @@ functions:
       - model_bin
     body: |
       cubemap_shader.initialize();
+
+      // TODO: Fix this section
+      AllegroFlare::CubemapBuilder builder;
+      std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
+      AllegroFlare::Cubemap *cube_map =
+         builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
+
       initialized = true;
       return;
     body_dependency_symbols:
       - al_is_primitives_addon_initialized
+      - AllegroFlare::CubemapBuilder
 
 
   - name: on_activate
@@ -262,6 +274,7 @@ functions:
     body: |
       ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
       scene_renderer.set_entity_pool(&entity_pool);
+      scene_renderer.set_cubemap_shader(&cubemap_shader);
       scene_renderer.render();
       return;
     body_dependency_symbols:
@@ -705,5 +718,9 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/SceneRenderer.hpp ]
   - symbol: AllegroFlare::Shaders::Cubemap
     headers: [ AllegroFlare/Shaders/Cubemap.hpp ]
+  - symbol: AllegroFlare::Cubemap
+    headers: [ AllegroFlare/Cubemap.hpp ]
+  - symbol: AllegroFlare::CubemapBuilder
+    headers: [ AllegroFlare/CubemapBuilder.hpp ]
 
 

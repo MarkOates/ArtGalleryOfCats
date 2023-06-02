@@ -4,6 +4,7 @@
 
 #include <AllegroFlare/Camera2D.hpp>
 #include <AllegroFlare/Camera3D.hpp>
+#include <AllegroFlare/CubemapBuilder.hpp>
 #include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
@@ -34,6 +35,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
    , cubemap_shader({})
+   , cube_map_texture(nullptr)
    , initialized(false)
 {
 }
@@ -202,6 +204,13 @@ void Screen::initialize()
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
    cubemap_shader.initialize();
+
+   // TODO: Fix this section
+   AllegroFlare::CubemapBuilder builder;
+   std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
+   AllegroFlare::Cubemap *cube_map =
+      builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
+
    initialized = true;
    return;
 }
@@ -305,6 +314,7 @@ void Screen::scene_renderer_render()
 {
    ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
    scene_renderer.set_entity_pool(&entity_pool);
+   scene_renderer.set_cubemap_shader(&cubemap_shader);
    scene_renderer.render();
    return;
 }

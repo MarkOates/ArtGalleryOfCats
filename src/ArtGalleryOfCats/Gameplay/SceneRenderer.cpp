@@ -100,6 +100,7 @@ void SceneRenderer::render()
          // Setup the render for this object
          if (renders_with_iridescent)
          {
+            cubemap_shader->activate();
             // TODO: turn on shader
             // TODO: assign textures
          }
@@ -115,6 +116,7 @@ void SceneRenderer::render()
          // Teardown the render for this object
          if (renders_with_iridescent)
          {
+            cubemap_shader->deactivate();
             // TODO: turn off shader
          }
       }

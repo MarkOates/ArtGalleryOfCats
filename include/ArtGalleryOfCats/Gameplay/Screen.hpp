@@ -2,6 +2,7 @@
 
 
 #include <AllegroFlare/BitmapBin.hpp>
+#include <AllegroFlare/Cubemap.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/ModelBin.hpp>
@@ -38,6 +39,7 @@ namespace ArtGalleryOfCats
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
          AllegroFlare::Shaders::Cubemap cubemap_shader;
+         AllegroFlare::Cubemap* cube_map_texture;
          bool initialized;
          void load_level();
          void scene_physics_updater();
