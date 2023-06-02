@@ -35,14 +35,14 @@ functions:
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
-         "gallery-map-02.obj",
-         "gallery-map-02.png"
+         "gallery-map-05.obj",
+         "gallery-map-05.png"
       );
       entity_pool->add(environment_mesh);
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
-         entity_factory.create_collision_tile_map("tests/fixtures/maps/gallery-map-03.tmj");
+         entity_factory.create_collision_tile_map("tests/fixtures/maps/gallery-map-05.tmj");
       collision_tile_map->set("collision_tile_map");
       entity_pool->add(collision_tile_map);
 
