@@ -275,9 +275,11 @@ void Screen::scene_physics_updater()
 
       AllegroFlare::Physics::AABB2D aabb2d(
          placement.position.x,
-         placement.position.y,
+         placement.position.z,
          1.0, // Our object will be a 1x1 square
-         1.0
+         1.0,
+         velocity.position.x,
+         velocity.position.z
       );
 
       collision_stepper.set_aabb2d(&aabb2d);
@@ -285,8 +287,9 @@ void Screen::scene_physics_updater()
       std::vector<AllegroFlare::Physics::TileMapCollisionStepperCollisionInfo> stepper_step_result =
          collision_stepper.step();
 
-      //placement.position += velocity.position;
-      //placement.rotation += velocity.rotation;
+      placement.position = AllegroFlare::Vec3D(aabb2d.get_x(), 0.0f, aabb2d.get_y());
+      velocity.position = { aabb2d.get_velocity_x(), 0.0f, aabb2d.get_velocity_y() };
+      //placement.rotation += velocity.rotation; // TODO: Uncomment this
    }
 
    // HACK: Extract out the camera and assign it's position
