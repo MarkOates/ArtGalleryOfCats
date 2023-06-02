@@ -2,6 +2,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 
+#include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>

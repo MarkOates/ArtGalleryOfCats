@@ -71,6 +71,9 @@
   "AllegroFlare/VirtualControllers/GenericController": [
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
+  "AllegroFlare/Physics/TileMapCollisionStepper": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
   "AllegroFlare/Frameworks/Full": [
     "ArtGalleryOfCats/Runner"
   ],

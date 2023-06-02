@@ -214,6 +214,8 @@ functions:
       as_camera->AllegroFlare::Camera3D::position = as_camera->get_placement_ref().position;
 
       return;
+    body_dependency_symbols:
+      - AllegroFlare::Physics::TileMapCollisionStepper
 
 
   - name: render
@@ -489,5 +491,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp ]
   - symbol: AllegroFlare::VirtualControllers::GenericController
     headers: [ AllegroFlare/VirtualControllers/GenericController.hpp ]
+  - symbol: AllegroFlare::Physics::TileMapCollisionStepper
+    headers: [ AllegroFlare/Physics/TileMapCollisionStepper.hpp ]
 
 
