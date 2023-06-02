@@ -14,12 +14,13 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool entity_pool)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , entity_pool(entity_pool)
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
    , on_finished_callback_func()
@@ -116,6 +117,14 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    current_level_identifier = level_identifier;
    if (current_level) delete (int*)(current_level);
    current_level = (void*)(new int(3));
+
+   load_level(); // TODO: replace this with name of level
+   return;
+}
+
+void Screen::load_level()
+{
+   //entity_pool.push_back(...) // HERE
    return;
 }
 

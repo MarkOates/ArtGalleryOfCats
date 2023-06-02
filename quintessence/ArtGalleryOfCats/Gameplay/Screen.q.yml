@@ -29,6 +29,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: entity_pool
+    type: AllegroFlare::SceneGraph::EntityPool
+    init_with: '{}'
+    constructor_arg: true
+
   - name: current_level_identifier
     type: std::string
     init_with: '"[unset-current_level]"'
@@ -117,7 +122,16 @@ functions:
       current_level_identifier = level_identifier;
       if (current_level) delete (int*)(current_level);
       current_level = (void*)(new int(3));
+
+      load_level(); // TODO: replace this with name of level
       return;
+
+
+  - name: load_level
+    body: |
+      //entity_pool.push_back(...) // HERE
+      return;
+    body_dependency_symbols: []
 
 
   - name: initialize
@@ -264,5 +278,7 @@ dependencies:
     headers: [ AllegroFlare/VirtualControllers/Base.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::Screen
     headers: [ ArtGalleryOfCats/Gameplay/Screen.hpp ]
+  - symbol: AllegroFlare::SceneGraph::EntityPool
+    headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
 
 

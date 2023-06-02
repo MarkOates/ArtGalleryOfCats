@@ -6,6 +6,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/ModelBin.hpp>
 #include <AllegroFlare/Player.hpp>
+#include <AllegroFlare/SceneGraph/EntityPool.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
@@ -28,6 +29,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::BitmapBin* bitmap_bin;
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
+         AllegroFlare::SceneGraph::EntityPool entity_pool;
          std::string current_level_identifier;
          void* current_level;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
@@ -38,7 +40,7 @@ namespace ArtGalleryOfCats
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr);
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AllegroFlare::SceneGraph::EntityPool entity_pool={});
          virtual ~Screen();
 
          void set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func);
@@ -50,6 +52,7 @@ namespace ArtGalleryOfCats
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
+         void load_level();
          void initialize();
          virtual void on_activate() override;
          virtual void on_deactivate() override;
