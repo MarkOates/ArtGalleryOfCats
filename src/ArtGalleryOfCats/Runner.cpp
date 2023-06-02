@@ -138,19 +138,19 @@ void Runner::initialize()
    intro_storyboard_screen.set_background(&solid_black_background);
    intro_storyboard_screen.initialize();
    intro_storyboard_screen.get_storyboard_element_ref().set_pages({
-      page_factory.create_image_with_advancing_text_page(
-         "storyboard-1-01-1165x500.png",
-         "Once upon a time, in a magical kingdom ruled by a wise and just queen, a young hero sets out on a "
-            "journey to prove himself and save his people from a terrible curse."
-      ),
-      page_factory.create_image_with_advancing_text_page(
-         "storyboard-2-01-1165x500.png",
-         "With the help of his trusty sidekick and a band of unlikely allies, he must navigate treacherous "
-            "terrain and battle fierce foes."
-      ),
-      page_factory.create_advancing_text_page(
-        "And achieve his goal to save the kingdom."
-      ),
+      //page_factory.create_image_with_advancing_text_page(
+         //"storyboard-1-01-1165x500.png",
+         //"Once upon a time, in a magical kingdom ruled by a wise and just queen, a young hero sets out on a "
+            //"journey to prove himself and save his people from a terrible curse."
+      //),
+      //page_factory.create_image_with_advancing_text_page(
+         //"storyboard-2-01-1165x500.png",
+         //"With the help of his trusty sidekick and a band of unlikely allies, he must navigate treacherous "
+            //"terrain and battle fierce foes."
+      //),
+      //page_factory.create_advancing_text_page(
+        //"And achieve his goal to save the kingdom."
+      //),
    });
 
    // TODO: Setup title screen
@@ -172,6 +172,7 @@ void Runner::initialize()
    title_screen.set_font_bin(font_bin);
    std::string copyright_text = "© 2023 CLUBCATT Games         clubcatt.com         version " + release_info.get_version();
    title_screen.set_copyright_text(copyright_text);
+   title_screen.set_title_text("Art Gallery of Cats");
    title_screen.set_background(&solid_black_background);
    //title_screen.initialize(); // NOTE: Initialization is not necessary for this screen
 
