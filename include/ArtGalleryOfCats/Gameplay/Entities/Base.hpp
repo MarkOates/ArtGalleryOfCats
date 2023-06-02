@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <ArtGalleryOfCats/Gameplay/Entities/Base.hpp>
+#include <AllegroFlare/SceneGraph/Entities/Base.hpp>
 #include <string>
 
 
@@ -11,7 +11,7 @@ namespace ArtGalleryOfCats
    {
       namespace Entities
       {
-         class Base : public ArtGalleryOfCats::Gameplay::Entities::Base
+         class Base : public AllegroFlare::SceneGraph::Entities::Base
          {
          public:
             static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Gameplay/Entities/Base";

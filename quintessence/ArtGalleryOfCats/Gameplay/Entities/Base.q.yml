@@ -1,7 +1,7 @@
 parent_classes:
 
 
-  - class: ArtGalleryOfCats::Gameplay::Entities::Base
+  - class: AllegroFlare::SceneGraph::Entities::Base
     scope: public
     init_with: ArtGalleryOfCats::Gameplay::Entities::Base::TYPE
 
@@ -38,7 +38,7 @@ functions:
 dependencies:
 
 
-  - symbol: ArtGalleryOfCats::Gameplay::Entities::Base
-    headers: [ ArtGalleryOfCats/Gameplay/Entities/Base.hpp ]
+  - symbol: AllegroFlare::SceneGraph::Entities::Base
+    headers: [ AllegroFlare/SceneGraph/Entities/Base.hpp ]
 
 

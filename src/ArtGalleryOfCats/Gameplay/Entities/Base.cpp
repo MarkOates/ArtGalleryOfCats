@@ -14,7 +14,7 @@ namespace Entities
 
 
 Base::Base(std::string property)
-   : ArtGalleryOfCats::Gameplay::Entities::Base(ArtGalleryOfCats::Gameplay::Entities::Base::TYPE)
+   : AllegroFlare::SceneGraph::Entities::Base(ArtGalleryOfCats::Gameplay::Entities::Base::TYPE)
    , property(property)
 {
 }
