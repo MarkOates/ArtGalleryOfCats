@@ -265,6 +265,8 @@ void Screen::scene_renderer_render()
       AllegroFlare::Model3D *model = as_agc_entity->get_model();
       if (model)
       {
+         ALLEGRO_BITMAP *texture = as_agc_entity->get_texture();
+         if (texture) model->set_texture(texture);
          model->draw();
       }
    }

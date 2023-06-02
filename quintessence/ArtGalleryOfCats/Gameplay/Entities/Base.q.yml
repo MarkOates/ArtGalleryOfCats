@@ -23,6 +23,13 @@ properties:
     getter: true
     setter: true
 
+  - name: texture
+    type: ALLEGRO_BITMAP*
+    init_with: nullptr
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: TYPE
     type: char*
     init_with: '(char*)"ArtGalleryOfCats/Gameplay/Entities/Base"'
@@ -37,5 +44,7 @@ dependencies:
     headers: [ AllegroFlare/SceneGraph/Entities/Base.hpp ]
   - symbol: AllegroFlare::Model3D
     headers: [ AllegroFlare/Model3D.hpp ]
+  - symbol: ALLEGRO_BITMAP
+    headers: [ allegro5/allegro.h ]
 
 

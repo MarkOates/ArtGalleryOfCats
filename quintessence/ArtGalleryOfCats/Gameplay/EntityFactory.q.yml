@@ -36,7 +36,12 @@ functions:
       model_bin->preload(model_filename);
       AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
 
+      std::string texture_filename = "agc-map-01.png";
+      bitmap_bin->preload(texture_filename);
+      ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
+
       result->set_model(model);
+      result->set_texture(texture);
 
       return result;
 
