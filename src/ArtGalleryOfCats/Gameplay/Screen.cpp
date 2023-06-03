@@ -284,6 +284,17 @@ AllegroFlare::Vec3D Screen::calculate_strafe_xy(float spin, float displacement)
      
 }
 
+AllegroFlare::Vec3D Screen::calculate_forward_back_xy(float spin, float displacement)
+{
+   type: AllegroFlare::Vec3D result;
+   AllegroFlare::Vec2D move_vec(-sin(spin), cos(spin));
+   result.x = move_vec.x * displacement;
+   result.y = 0;
+   result.z = move_vec.y * displacement;
+   return result;
+     
+}
+
 void Screen::scene_physics_updater()
 {
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
@@ -294,8 +305,10 @@ void Screen::scene_physics_updater()
       static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
 
    // Update our camera velocity to match the "player_velocity"
-   //AllegroFlare::Vec3D camera_strafe_speed = calculate_strafe_xy(as_camera->spin, player_velocity.x);
-   //as_camera->get_velocity_ref().position = camera_strafe_speed;
+   AllegroFlare::Vec3D camera_strafe_speed = calculate_strafe_xy(as_camera->spin, player_velocity.x);
+   AllegroFlare::Vec3D camera_forward_back_speed = calculate_forward_back_xy(as_camera->spin, player_velocity.y);
+   as_camera->get_velocity_ref().position = camera_strafe_speed + camera_forward_back_speed;
+
 
 
    // Extract out the collision map
