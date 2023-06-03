@@ -674,6 +674,28 @@ functions:
       return;
 
 
+  - name: key_down_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized, event_emitter ]
+    body: |
+      // This method is DEBUGGING
+      switch(ev->keyboard.keycode)
+      {
+         case ALLEGRO_KEY_C: {
+            // TODO: Sort out route event:
+            //event_emitter->emit_route_event(EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN);
+         } break;
+      }
+
+      return;
+
+
+
   - name: mouse_axes_func
     virtual: true
     override: true

@@ -673,6 +673,34 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
    return;
 }
 
+void Screen::key_down_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_down_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_down_func: error: guard \"initialized\" not met");
+   }
+   if (!(event_emitter))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_down_func]: error: guard \"event_emitter\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_down_func: error: guard \"event_emitter\" not met");
+   }
+   // This method is DEBUGGING
+   switch(ev->keyboard.keycode)
+   {
+      case ALLEGRO_KEY_C: {
+         // TODO: Sort out route event:
+         //event_emitter->emit_route_event(EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN);
+      } break;
+   }
+
+   return;
+}
+
 void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
 {
    if (!(initialized))
