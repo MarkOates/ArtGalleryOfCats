@@ -122,6 +122,8 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::
    //AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
    ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
 
+   //if (!texture) throw std::runtime_error("Gameplay::EntityFactory::create_wall_art: texture could not be loaded.");
+
    //result->set_model(model);
    result->set_texture(texture);
 
@@ -139,6 +141,12 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::
 
    //float art_scale = 0.002; // An arbitrary number to set the dimensionality of the art
    result->get_placement_ref().scale = { art_scale, art_scale, art_scale };
+   //result->get_placement_ref().size = AllegroFlare::Vec3D(
+         //al_get_bitmap_width(texture),
+         //al_get_bitmap_height(texture),
+         //0.0
+      //);
+   //result->get_placement_ref().align = { 0.5, 0.5, 0.5 };
 
    return result;
 }
