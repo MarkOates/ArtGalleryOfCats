@@ -299,6 +299,7 @@ void Screen::scene_physics_updater()
 {
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
+   // Extract our out camera
    entity = entity_pool.find_with_attribute("primary_camera");
    if (!entity) throw std::runtime_error("no camera present");
    ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
@@ -308,8 +309,6 @@ void Screen::scene_physics_updater()
    AllegroFlare::Vec3D camera_strafe_speed = calculate_strafe_xy(as_camera->spin, player_velocity.x);
    AllegroFlare::Vec3D camera_forward_back_speed = calculate_forward_back_xy(as_camera->spin, player_velocity.y);
    as_camera->get_velocity_ref().position = camera_strafe_speed + camera_forward_back_speed;
-
-
 
    // Extract out the collision map
    entity = entity_pool.find_with_attribute("collision_tile_map");
@@ -606,66 +605,30 @@ void Screen::player_stop_moving()
 {
    player_velocity.x = 0;
    player_velocity.y = 0;
-
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
-
-         as_camera->get_velocity_ref().position.x = 0.0;
-         as_camera->get_velocity_ref().position.z = 0.0;
    return;
 }
 
 void Screen::player_strafe_right()
 {
    player_velocity.x = 0.1;
-
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
-
-         as_camera->get_velocity_ref().position.x = 0.1;
    return;
 }
 
 void Screen::player_strafe_left()
 {
    player_velocity.x = -0.1;
-
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
-
-         as_camera->get_velocity_ref().position.x = -0.1;
    return;
 }
 
 void Screen::player_move_forward()
 {
    player_velocity.y = -0.1;
-
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
-
-         as_camera->get_velocity_ref().position.z = -0.1;
    return;
 }
 
 void Screen::player_move_backward()
 {
    player_velocity.y = 0.1;
-
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
-
-   as_camera->get_velocity_ref().position.z = 0.1;
    return;
 }
 
