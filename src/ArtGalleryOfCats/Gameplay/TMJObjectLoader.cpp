@@ -132,7 +132,8 @@ void TMJObjectLoader::load()
    }
    for (auto &object_json : object_layer_json["objects"].items())
    {
-      std::string name_property = object_json.value()["nema"].get<std::string>();
+      // TODO: validate the presence of these keys
+      std::string name_property = object_json.value()["name"].get<std::string>();
       std::string class_property = object_json.value()["class"].get<std::string>();
       float x_property = object_json.value()["x"].get<float>();
       float y_property = object_json.value()["y"].get<float>();
