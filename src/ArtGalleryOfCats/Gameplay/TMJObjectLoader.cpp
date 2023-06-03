@@ -139,8 +139,18 @@ void TMJObjectLoader::load()
       float y_property = object_json.value()["y"].get<float>();
       float width_property = object_json.value()["width"].get<float>();
       float height_property = object_json.value()["height"].get<float>();
+      std::vector<std::pair<std::string, std::string>> custom_properties;
 
-      std::vector<std::pair<std::string, std::string>> custom_properties = { { "foo", "bar" } };
+      // Collect custom properties
+      // TODO: Test this
+      if (object_json.value().contains("properties"))
+      {
+         for (auto &custom_property: object_json.value()["properties"].items())
+         {
+            custom_properties.push_back({ "foo", "bar" });
+         }
+         //float y_property = object_json.value()["y"].get<float>();
+      }
 
       // call the callback (if present)
       if (object_parsed_callback)

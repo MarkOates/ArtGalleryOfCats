@@ -5,6 +5,21 @@
 #include <AllegroFlare/Testing/ErrorAssertions.hpp>
 
 
+void object_parsed_callback(
+      std::string name_property,
+      std::string class_property,
+      float x_property,
+      float y_property,
+      float width_property,
+      float height_property,
+      std::vector<std::pair<std::string, std::string>> custom_properties,
+      void* user_data
+   )
+{
+   return;
+}
+
+
 TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, can_be_created_without_blowing_up)
 {
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmjobject_loader;
