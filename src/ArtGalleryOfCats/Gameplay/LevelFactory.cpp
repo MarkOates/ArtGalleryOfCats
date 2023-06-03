@@ -202,7 +202,7 @@ void LevelFactory::load_primary_map()
    entity_pool->add(camera);
 
    // Move our camera to the "spawn point"
-   AllegroFlare::Vec2D spawn_point = { 11, 18 }; // TODO: Update this spawn point to pull from map
+   AllegroFlare::Vec2D spawn_point = { 14.5, 25 }; // TODO: Update this spawn point to pull from map
    camera->get_placement_ref().position.x = spawn_point.x;
    camera->get_placement_ref().position.z = spawn_point.y;
 
