@@ -90,7 +90,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
          name_property, //"art-01",
          "art-01.obj",
          "art-01.png",
-         { x_property, 0, y_property },
+         { x_property - width_property * 0.5f, 0, y_property - height_property * 0.5f },
          0.0f,
          hit_box_2d,
          {}
