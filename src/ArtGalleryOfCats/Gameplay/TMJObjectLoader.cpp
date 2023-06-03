@@ -145,11 +145,16 @@ void TMJObjectLoader::load()
       // TODO: Test this
       if (object_json.value().contains("properties"))
       {
-         for (auto &custom_property: object_json.value()["properties"].items())
+         for (auto &custom_property : object_json.value()["properties"].items())
          {
-            custom_properties.push_back({ "foo", "bar" });
+            // TODO: validate presence of keys
+            std::string custom_property_name = custom_property.value()["name"].get<std::string>();
+            std::string custom_property_type = custom_property.value()["type"].get<std::string>();
+            if (custom_property_type != "string") throw std::runtime_error("TMJObjectLoader, expecting type string");
+            std::string custom_property_value = custom_property.value()["value"].get<std::string>();
+
+            custom_properties.push_back({ custom_property_name, custom_property_value });
          }
-         //float y_property = object_json.value()["y"].get<float>();
       }
 
       // call the callback (if present)
