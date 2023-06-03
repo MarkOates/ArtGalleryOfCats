@@ -26,6 +26,44 @@ properties:
 functions:
 
 
+  - name: create_art
+    type: ArtGalleryOfCats::Gameplay::Entities::Base*
+    parameters:
+      - name: art_identifier
+        type: std::string
+        default_argument: '"[unset-art_identifier]"'
+      - name: model_filename
+        type: std::string
+        default_argument: '"[unset-model_filename]"'
+      - name: texture_filename
+        type: std::string
+        default_argument: '"[unset-texture_filename]"'
+      - name: position
+        type: AllegroFlare::Vec3D
+        default_argument: '{}'
+      - name: rotation_x
+        type: float
+        default_argument: 0.0f
+    guards: [ bitmap_bin, model_bin ]
+    body: |
+      ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
+      AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
+      ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
+
+      result->set_model(model);
+      result->set_texture(texture);
+
+      result->set(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
+      result->set(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER, art_identifier);
+
+      result->get_placement_ref().position = position;
+      result->get_placement_ref().rotation.x = rotation_x;
+
+      return result;
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::EntityFlags
+
+
   - name: create_environment_mesh
     type: ArtGalleryOfCats::Gameplay::Entities::Base*
     parameters:

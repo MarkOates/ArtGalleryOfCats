@@ -64,6 +64,38 @@ AllegroFlare::ModelBin* EntityFactory::get_model_bin() const
 }
 
 
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_x)
+{
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[EntityFactory::create_art]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_art: error: guard \"bitmap_bin\" not met");
+   }
+   if (!(model_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[EntityFactory::create_art]: error: guard \"model_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("EntityFactory::create_art: error: guard \"model_bin\" not met");
+   }
+   ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
+   AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
+   ALLEGRO_BITMAP *texture = bitmap_bin->auto_get(texture_filename);
+
+   result->set_model(model);
+   result->set_texture(texture);
+
+   result->set(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
+   result->set(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER, art_identifier);
+
+   result->get_placement_ref().position = position;
+   result->get_placement_ref().rotation.x = rotation_x;
+
+   return result;
+}
+
 ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_mesh(std::string model_filename, std::string texture_filename)
 {
    if (!(bitmap_bin))

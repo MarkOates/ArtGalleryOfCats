@@ -1,9 +1,21 @@
 properties:
 
 
+  - name: PLAYER_CAN_INTERACT
+    type: char*
+    init_with: '(char*)"player_can_interact"'
+    static: true
+    constexpr: true
+
   - name: RENDERS_WITH_IRIDESCENT
     type: char*
     init_with: '(char*)"renders_with_iridescent"'
+    static: true
+    constexpr: true
+
+  - name: ART_IDENTIFIER
+    type: char*
+    init_with: '(char*)"art_identifier"'
     static: true
     constexpr: true
 
