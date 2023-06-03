@@ -110,13 +110,12 @@ void SceneRenderer::render()
             cubemap_shader->set_object_placement(&as_gac_base->get_placement_ref()); // NOTE: For now, this has to be set before activating the shader
 
             cubemap_shader->activate();
-            // TODO: turn on shader
-            // TODO: assign textures
          }
          else
          {
             ALLEGRO_BITMAP *texture = as_agc_entity->get_texture();
             if (texture) model->set_texture(texture);
+            as_agc_entity->get_placement_ref().start_transform();
          }
 
          // Draw the model
@@ -127,6 +126,10 @@ void SceneRenderer::render()
          {
             cubemap_shader->deactivate();
             // TODO: turn off shader
+         }
+         else
+         {
+            as_agc_entity->get_placement_ref().restore_transform();
          }
       }
    }
