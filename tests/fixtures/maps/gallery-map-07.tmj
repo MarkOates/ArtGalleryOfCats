@@ -90,7 +90,7 @@
          "name":"interactables",
          "objects":[
                 {
-                 "class":"",
+                 "class":"sculpture",
                  "height":64,
                  "id":1,
                  "name":"art4",
@@ -107,7 +107,7 @@
                  "y":224
                 }, 
                 {
-                 "class":"",
+                 "class":"sculpture",
                  "height":64,
                  "id":3,
                  "name":"art3",
@@ -118,7 +118,7 @@
                  "y":96
                 }, 
                 {
-                 "class":"",
+                 "class":"sculpture",
                  "height":96,
                  "id":4,
                  "name":"art1",
@@ -129,7 +129,7 @@
                  "y":336
                 }, 
                 {
-                 "class":"",
+                 "class":"sculpture",
                  "height":64,
                  "id":5,
                  "name":"art2",
@@ -140,7 +140,7 @@
                  "y":112
                 }, 
                 {
-                 "class":"",
+                 "class":"wall_art",
                  "height":64,
                  "id":7,
                  "name":"art5",
@@ -148,7 +148,7 @@
                         {
                          "name":"facing",
                          "type":"string",
-                         "value":"right"
+                         "value":"left"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -157,7 +157,7 @@
                  "y":160
                 }, 
                 {
-                 "class":"",
+                 "class":"wall_art",
                  "height":64,
                  "id":10,
                  "name":"art6",
@@ -174,7 +174,7 @@
                  "y":352
                 }, 
                 {
-                 "class":"",
+                 "class":"wall_art",
                  "height":32,
                  "id":11,
                  "name":"art8",
@@ -191,7 +191,7 @@
                  "y":32
                 }, 
                 {
-                 "class":"",
+                 "class":"wall_art",
                  "height":32,
                  "id":13,
                  "name":"art7",

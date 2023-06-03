@@ -92,7 +92,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    );
    entity_pool.add(art);
 
-   std::cout << "-------- " << custom_properties.size() << std::endl; // DEBUGGING
+   //if (custom_properties.size()
 
    // TODO: This function
    return;
@@ -126,7 +126,7 @@ void LevelFactory::load_primary_map()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-06.tmj";
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-07.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(

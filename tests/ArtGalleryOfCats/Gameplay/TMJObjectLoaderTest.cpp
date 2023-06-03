@@ -5,7 +5,10 @@
 #include <AllegroFlare/Testing/ErrorAssertions.hpp>
 
 
-void object_parsed_callback(
+static std::vector<std::pair<std::string, std::string>> custom_properties;
+
+
+static void object_parsed_callback(
       std::string name_property,
       std::string class_property,
       float x_property,
@@ -16,6 +19,9 @@ void object_parsed_callback(
       void* user_data
    )
 {
+   std::cout << "- name: \"" << name_property << "\"" << std::endl;
+   std::cout << "  class: \"" << class_property << "\"" << std::endl;
+   std::cout << std::endl;
    return;
 }
 
@@ -40,8 +46,17 @@ TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__on_a_file_that_does_no
 
 TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__will_not_blow_up)
 {
-   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-06.tmj";
+   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-07.tmj";
    ArtGalleryOfCats::Gameplay::TMJObjectLoader loader(filename);
+   loader.load();
+}
+
+
+TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__will_pass_the_values_into_the_callback)
+{
+   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-07.tmj";
+   ArtGalleryOfCats::Gameplay::TMJObjectLoader loader(filename);
+   loader.set_object_parsed_callback(object_parsed_callback);
    loader.load();
 }
 
