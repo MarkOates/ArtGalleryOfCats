@@ -386,6 +386,10 @@ void Runner::setup_router()
       NPC_CONVERSATIONS_SCREEN,
       &npc_conversations_screen
    );
+   router.register_screen(
+      USER_TEXT_INPUT_SCREEN,
+      &user_text_input_screen
+   );
 
    // Set the callbacks
    intro_logos_screen.set_on_finished_callback_func(
