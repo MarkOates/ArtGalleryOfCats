@@ -291,6 +291,30 @@ functions:
     body: |
       // TODO: Implement this function
       //entity_player_is_currently_colliding_with
+
+      // Select all the entities that the player can collide with
+      std::vector<AllegroFlare::SceneGraph::Entities::Base*> entities_player_can_interact_with =
+         entity_pool.select_A(ArtGalleryOfCats::EntityFlags::PLAYER_CAN_INTERACT);
+
+      // Find the entity that the player, in this frame, is colliding with (find the first one)
+      ArtGalleryOfCats::Gameplay::Entities::Base *found_colliding_entity = nullptr;
+      for (auto &entity_player_can_interact_with : entities_player_can_interact_with)
+      {
+         ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+            static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+
+         // TODO: do AABB2D collision against the player
+         //AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+      }
+
+      if (found_colliding_entity != entity_player_is_currently_colliding_with)
+      {
+         // Assign the found entity to be the colliding one
+         entity_player_is_currently_colliding_with = found_colliding_entity;
+
+         // TODO: Some feedback that a new collision occurred
+      }
+
       return;
         
 
@@ -355,7 +379,7 @@ functions:
          placement.rotation += velocity.rotation;
       }
 
-      update_entity_player_is_colliding_with();
+      update_entity_player_is_currently_colliding_with();
 
       // HACK: Extract out the camera and assign it's position
       // TODO: Create a separate entity, then assign the camera values to the live camera (or something)
@@ -928,5 +952,7 @@ dependencies:
     headers: [ AllegroFlare/Vec2D.hpp ]
   - symbol: AllegroFlare::Vec3D
     headers: [ AllegroFlare/Vec3D.hpp ]
+  - symbol: AllegroFlare::SceneGraph::Entities::Base
+    headers: [ AllegroFlare/SceneGraph/Entities/Base.hpp ]
 
 

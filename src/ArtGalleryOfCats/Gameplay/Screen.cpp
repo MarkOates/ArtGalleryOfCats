@@ -41,6 +41,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , player_left_pressed(false)
    , player_up_pressed(false)
    , player_down_pressed(false)
+   , entity_player_is_currently_colliding_with(nullptr)
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
    , cubemap_shader({})
@@ -55,6 +56,12 @@ Screen::~Screen()
 }
 
 
+void Screen::set_entity_player_is_currently_colliding_with(AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with)
+{
+   this->entity_player_is_currently_colliding_with = entity_player_is_currently_colliding_with;
+}
+
+
 void Screen::set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func)
 {
    this->on_finished_callback_func = on_finished_callback_func;
@@ -64,6 +71,12 @@ void Screen::set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::
 void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data)
 {
    this->on_finished_callback_func_user_data = on_finished_callback_func_user_data;
+}
+
+
+AllegroFlare::SceneGraph::Entities::Base* Screen::get_entity_player_is_currently_colliding_with() const
+{
+   return entity_player_is_currently_colliding_with;
 }
 
 
@@ -231,6 +244,13 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met");
    }
+   if (!(entity_player_is_currently_colliding_with))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::initialize]: error: guard \"entity_player_is_currently_colliding_with\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::initialize: error: guard \"entity_player_is_currently_colliding_with\" not met");
+   }
    // TODO: Fix this section
    AllegroFlare::CubemapBuilder builder;
    std::string cube_map_texture_filename = resources_path + "bitmaps/black_prism_1-01.png";
@@ -296,6 +316,37 @@ AllegroFlare::Vec3D Screen::calculate_forward_back_xy(float spin, float displace
    result.y = 0;
    result.z = move_vec.y * displacement;
    return result;
+}
+
+void Screen::update_entity_player_is_currently_colliding_with()
+{
+   // TODO: Implement this function
+   //entity_player_is_currently_colliding_with
+
+   // Select all the entities that the player can collide with
+   std::vector<AllegroFlare::SceneGraph::Entities::Base*> entities_player_can_interact_with =
+      entity_pool.select_A(ArtGalleryOfCats::EntityFlags::PLAYER_CAN_INTERACT);
+
+   // Find the entity that the player, in this frame, is colliding with (find the first one)
+   ArtGalleryOfCats::Gameplay::Entities::Base *found_colliding_entity = nullptr;
+   for (auto &entity_player_can_interact_with : entities_player_can_interact_with)
+   {
+      ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+
+      // TODO: do AABB2D collision against the player
+      //AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+   }
+
+   if (found_colliding_entity != entity_player_is_currently_colliding_with)
+   {
+      // Assign the found entity to be the colliding one
+      entity_player_is_currently_colliding_with = found_colliding_entity;
+
+      // TODO: Some feedback that a new collision occurred
+   }
+
+   return;
      
 }
 
@@ -358,6 +409,8 @@ void Screen::scene_physics_updater()
       velocity.position = { aabb2d.get_velocity_x(), 0.0f, aabb2d.get_velocity_y() };
       placement.rotation += velocity.rotation;
    }
+
+   update_entity_player_is_currently_colliding_with();
 
    // HACK: Extract out the camera and assign it's position
    // TODO: Create a separate entity, then assign the camera values to the live camera (or something)
