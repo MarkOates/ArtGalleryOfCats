@@ -99,6 +99,10 @@ properties:
     type: AllegroFlare::Elements::Backgrounds::ClearToColor
     init_with: ALLEGRO_COLOR{0, 0, 0, 1}
 
+  - name: npc_conversations_background
+    type: ArtGalleryOfCats::Elements::Backgrounds::NPCConversations
+    init_with: '{}'
+
   - name: release_info
     type: ReleaseInfo
     init_with: '{}'
@@ -253,10 +257,14 @@ functions:
           //),
       });
 
+
+      npc_conversations_background.initialize();
+
+
       // TODO: Figure out how to spawn the npc_conversations_screen
       npc_conversations_screen.set_event_emitter(event_emitter);
       npc_conversations_screen.set_font_bin(font_bin);
-      npc_conversations_screen.set_background(&solid_black_background);
+      npc_conversations_screen.set_background(&npc_conversations_background);
       npc_conversations_screen.initialize();
       npc_conversations_screen.get_storyboard_element_ref().set_pages({
           page_factory.create_advancing_text_page(
@@ -650,4 +658,7 @@ dependencies:
     headers: [ AllegroFlare/Elements/Backgrounds/ClearToColor.hpp ]
   - symbol: ReleaseInfo
     headers: [ ReleaseInfo.hpp ]
+  - symbol: ArtGalleryOfCats::Elements::Backgrounds::NPCConversations
+    headers: [ ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.hpp ]
+
 

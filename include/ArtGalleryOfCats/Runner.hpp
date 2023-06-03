@@ -17,6 +17,7 @@
 #include <AllegroFlare/Screens/Storyboard.hpp>
 #include <AllegroFlare/Screens/TitleScreen.hpp>
 #include <AllegroFlare/Screens/Version.hpp>
+#include <ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <ReleaseInfo.hpp>
 #include <string>
@@ -53,6 +54,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Screens::RollingCredits rolling_credits_screen;
       ArtGalleryOfCats::Gameplay::Screen primary_gameplay_screen;
       AllegroFlare::Elements::Backgrounds::ClearToColor solid_black_background;
+      ArtGalleryOfCats::Elements::Backgrounds::NPCConversations npc_conversations_background;
       ReleaseInfo release_info;
       bool initialized;
 
