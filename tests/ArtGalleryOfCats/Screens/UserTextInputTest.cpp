@@ -71,6 +71,9 @@ TEST_F(ArtGalleryOfCats_Screens_UserTextInputTestWithAllegroRenderingFixture,
    character_name_input_screen.set_event_emitter(&event_emitter);
    character_name_input_screen.initialize();
 
+   // Use "keyboard" mode (keyboard keys will type characters)
+   character_name_input_screen.set_mode_to_using_keyboard();
+
    // run the interactive test
    al_start_timer(primary_timer);
    while(!abort)
