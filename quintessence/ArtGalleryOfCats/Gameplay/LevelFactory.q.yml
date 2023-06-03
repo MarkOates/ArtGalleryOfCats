@@ -48,6 +48,7 @@ functions:
       - name: user_data
         type: void*
         default_argument: nullptr
+    guards: [ user_data ]
     body: |
       // TODO: this function
       return;
@@ -61,7 +62,7 @@ functions:
       entity_factory.set_bitmap_bin(bitmap_bin);
 
       // Define our source TMJ filename
-      std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-05.tmj";
+      std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-06.tmj";
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -106,7 +107,7 @@ functions:
 
       // Load objects from the TMJ file
       ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
-      tmj_object_loader.set_object_parsed_callback_user_data(this);
+      tmj_object_loader.set_object_parsed_callback_user_data(entity_pool);
       tmj_object_loader.load();
 
       return;

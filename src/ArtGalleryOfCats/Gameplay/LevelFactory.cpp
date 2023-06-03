@@ -67,6 +67,13 @@ AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
 
 void LevelFactory::object_parsed_callback(std::string class_property, float x_property, float y_property, float width_property, float height_property, void* user_data)
 {
+   if (!(user_data))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::object_parsed_callback]: error: guard \"user_data\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::object_parsed_callback: error: guard \"user_data\" not met");
+   }
    // TODO: this function
    return;
 }
@@ -99,7 +106,7 @@ void LevelFactory::load_primary_map()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-05.tmj";
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-06.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -144,7 +151,7 @@ void LevelFactory::load_primary_map()
 
    // Load objects from the TMJ file
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
-   tmj_object_loader.set_object_parsed_callback_user_data(this);
+   tmj_object_loader.set_object_parsed_callback_user_data(entity_pool);
    tmj_object_loader.load();
 
    return;
