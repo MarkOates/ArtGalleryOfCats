@@ -22,6 +22,13 @@ properties:
     getter: true
     setter: true
 
+  - name: DEFAULT_WALL_ART_SCALE
+    const: true
+    constexpr: true
+    static: true
+    type: float
+    init_with: 0.002f
+
 
 functions:
 
@@ -88,6 +95,9 @@ functions:
       - name: rotation_x
         type: float
         default_argument: 0.0f
+      - name: art_scale
+        type: float
+        default_argument: DEFAULT_WALL_ART_SCALE
       - name: additional_entity_flags
         type: std::vector<std::string>
         default_argument: '{}'
@@ -111,6 +121,9 @@ functions:
 
       result->get_placement_ref().position = position;
       result->get_placement_ref().rotation.x = rotation_x;
+
+      //float art_scale = 0.002; // An arbitrary number to set the dimensionality of the art
+      result->get_placement_ref().scale = { art_scale, art_scale, art_scale };
 
       return result;
     body_dependency_symbols:

@@ -96,13 +96,13 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    }
    else if (class_property == "wall_art")
    {
+      float wall_art_scale = ArtGalleryOfCats::Gameplay::EntityFactory::DEFAULT_WALL_ART_SCALE;
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_wall_art(
-         name_property, //"art-01",
-         //"art-01.obj",
+         name_property, //"art1",
          "storyboard-2-01-1165x500.png",
-         //art-01.png",
          { x_property, 0, y_property },
          0.0f,
+         wall_art_scale,
          {}
       );
       entity_pool.add(art);
