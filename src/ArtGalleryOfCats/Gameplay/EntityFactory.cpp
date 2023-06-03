@@ -233,6 +233,7 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
 {
    ArtGalleryOfCats::Gameplay::Entities::Camera3D* result = new ArtGalleryOfCats::Gameplay::Entities::Camera3D();
 
+   //result->position = { 0, 1.2, 0 };
    result->stepout = { 0, 1.2, 0 };
    //camera.stepout = {0, 1.0, 4};  // step back from the origin
    //result->tilt = 0.13;            // look up(-)/down(+)

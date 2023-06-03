@@ -292,6 +292,7 @@ functions:
          static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
 
       // Update our camera velocity to match the "player_velocity"
+      player_velocity = infer_player_velocity_from_keypress();
       AllegroFlare::Vec3D camera_strafe_speed = calculate_strafe_xy(as_camera->spin, player_velocity.x);
       AllegroFlare::Vec3D camera_forward_back_speed = calculate_forward_back_xy(as_camera->spin, player_velocity.y);
       as_camera->get_velocity_ref().position = camera_strafe_speed + camera_forward_back_speed;
@@ -582,6 +583,10 @@ functions:
 
   - name: player_stop_moving
     body: |
+      player_up_pressed = false;
+      player_down_pressed = false;
+      player_left_pressed = false;
+      player_right_pressed = false;
       player_velocity.x = 0;
       player_velocity.y = 0;
       return;
@@ -671,7 +676,7 @@ functions:
          } break;
       };
 
-      player_stop_moving(); // TODO: Improve this movement
+      //player_stop_moving(); // TODO: Improve this movement
       return;
 
 
@@ -699,22 +704,22 @@ functions:
       {
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
             player_left_pressed = true;
-            player_strafe_left();
+            //player_strafe_left();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
             player_right_pressed = true;
-            player_strafe_right();
+            //player_strafe_right();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
             player_up_pressed = true;
-            player_move_forward();
+            //player_move_forward();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
             player_down_pressed = true;
-            player_move_backward();
+            //player_move_backward();
          } break;
 
          default: {
@@ -756,6 +761,22 @@ functions:
       // This method is DEBUGGING
       switch(ev->keyboard.keycode)
       {
+         case ALLEGRO_KEY_W: {
+            player_up_pressed = true;
+         } break;
+
+         case ALLEGRO_KEY_A: {
+            player_left_pressed = true;
+         } break;
+
+         case ALLEGRO_KEY_S: {
+            player_down_pressed = true;
+         } break;
+
+         case ALLEGRO_KEY_D: {
+            player_right_pressed = true;
+         } break;
+
          case ALLEGRO_KEY_C: {
             // TODO: Sort out route event:
             event_emitter->emit_router_event(
@@ -769,6 +790,50 @@ functions:
                intptr_t(new std::string("talk_to_an_npc"))
             );
 
+         } break;
+
+         default: {
+            // Nothing here
+         } break;
+      }
+
+      return;
+    body_dependency_symbols:
+      - AllegroFlare::Routers::Standard
+      - AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier
+      - AllegroFlare::EventNames
+
+
+  - name: key_up_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized, event_emitter ]
+    body: |
+      // This method is DEBUGGING
+      switch(ev->keyboard.keycode)
+      {
+         case ALLEGRO_KEY_W: {
+            player_up_pressed = false;
+         } break;
+
+         case ALLEGRO_KEY_A: {
+            player_left_pressed = false;
+         } break;
+
+         case ALLEGRO_KEY_S: {
+            player_down_pressed = false;
+         } break;
+
+         case ALLEGRO_KEY_D: {
+            player_right_pressed = false;
+         } break;
+
+         default: {
+            // Nothing here
          } break;
       }
 

@@ -310,6 +310,7 @@ void Screen::scene_physics_updater()
       static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
 
    // Update our camera velocity to match the "player_velocity"
+   player_velocity = infer_player_velocity_from_keypress();
    AllegroFlare::Vec3D camera_strafe_speed = calculate_strafe_xy(as_camera->spin, player_velocity.x);
    AllegroFlare::Vec3D camera_forward_back_speed = calculate_forward_back_xy(as_camera->spin, player_velocity.y);
    as_camera->get_velocity_ref().position = camera_strafe_speed + camera_forward_back_speed;
@@ -571,6 +572,10 @@ void Screen::player_tilt_change(float delta)
 
 void Screen::player_stop_moving()
 {
+   player_up_pressed = false;
+   player_down_pressed = false;
+   player_left_pressed = false;
+   player_right_pressed = false;
    player_velocity.x = 0;
    player_velocity.y = 0;
    return;
@@ -650,7 +655,7 @@ void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, Allegr
       } break;
    };
 
-   player_stop_moving(); // TODO: Improve this movement
+   //player_stop_moving(); // TODO: Improve this movement
    return;
 }
 
@@ -669,22 +674,22 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    {
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
          player_left_pressed = true;
-         player_strafe_left();
+         //player_strafe_left();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
          player_right_pressed = true;
-         player_strafe_right();
+         //player_strafe_right();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
          player_up_pressed = true;
-         player_move_forward();
+         //player_move_forward();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
          player_down_pressed = true;
-         player_move_backward();
+         //player_move_backward();
       } break;
 
       default: {
@@ -731,6 +736,22 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
    // This method is DEBUGGING
    switch(ev->keyboard.keycode)
    {
+      case ALLEGRO_KEY_W: {
+         player_up_pressed = true;
+      } break;
+
+      case ALLEGRO_KEY_A: {
+         player_left_pressed = true;
+      } break;
+
+      case ALLEGRO_KEY_S: {
+         player_down_pressed = true;
+      } break;
+
+      case ALLEGRO_KEY_D: {
+         player_right_pressed = true;
+      } break;
+
       case ALLEGRO_KEY_C: {
          // TODO: Sort out route event:
          event_emitter->emit_router_event(
@@ -744,6 +765,53 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
             intptr_t(new std::string("talk_to_an_npc"))
          );
 
+      } break;
+
+      default: {
+         // Nothing here
+      } break;
+   }
+
+   return;
+}
+
+void Screen::key_up_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_up_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_up_func: error: guard \"initialized\" not met");
+   }
+   if (!(event_emitter))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_up_func]: error: guard \"event_emitter\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_up_func: error: guard \"event_emitter\" not met");
+   }
+   // This method is DEBUGGING
+   switch(ev->keyboard.keycode)
+   {
+      case ALLEGRO_KEY_W: {
+         player_up_pressed = false;
+      } break;
+
+      case ALLEGRO_KEY_A: {
+         player_left_pressed = false;
+      } break;
+
+      case ALLEGRO_KEY_S: {
+         player_down_pressed = false;
+      } break;
+
+      case ALLEGRO_KEY_D: {
+         player_right_pressed = false;
+      } break;
+
+      default: {
+         // Nothing here
       } break;
    }
 
