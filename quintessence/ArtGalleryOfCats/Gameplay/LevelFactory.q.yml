@@ -69,13 +69,15 @@ functions:
          "art-01.obj",
          "art-01.png",
          { 14, 0, 12 },
-         0.0f
+         0.0f,
+         {}
       );
       entity_pool->add(art);
 
       return;
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::EntityFactory
+      - ArtGalleryOfCats::Gameplay::EntityFlags
 
 
 dependencies:
@@ -89,5 +91,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/EntityFactory.hpp ]
   - symbol: AllegroFlare::SceneGraph::EntityPool
     headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::EntityFlags
+    headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
 
 

@@ -9,6 +9,7 @@
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
 #include <string>
+#include <vector>
 
 
 namespace ArtGalleryOfCats
@@ -35,7 +36,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::BitmapBin* get_bitmap_bin() const;
          AllegroFlare::FontBin* get_font_bin() const;
          AllegroFlare::ModelBin* get_model_bin() const;
-         ArtGalleryOfCats::Gameplay::Entities::Base* create_art(std::string art_identifier="[unset-art_identifier]", std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]", AllegroFlare::Vec3D position={}, float rotation_x=0.0f);
+         ArtGalleryOfCats::Gameplay::Entities::Base* create_art(std::string art_identifier="[unset-art_identifier]", std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]", AllegroFlare::Vec3D position={}, float rotation_x=0.0f, std::vector<std::string> additional_entity_flags={});
          ArtGalleryOfCats::Gameplay::Entities::Base* create_environment_mesh(std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]");
          ArtGalleryOfCats::Gameplay::Entities::Base* create_collectable_object(AllegroFlare::Vec3D position={}, std::string model_filename="[unset-model_filename]");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D* create_camera();

@@ -3,6 +3,7 @@
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
+#include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -126,7 +127,8 @@ void LevelFactory::load_primary_map()
       "art-01.obj",
       "art-01.png",
       { 14, 0, 12 },
-      0.0f
+      0.0f,
+      {}
    );
    entity_pool->add(art);
 

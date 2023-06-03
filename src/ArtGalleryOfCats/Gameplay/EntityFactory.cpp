@@ -64,7 +64,7 @@ AllegroFlare::ModelBin* EntityFactory::get_model_bin() const
 }
 
 
-ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_x)
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_x, std::vector<std::string> additional_entity_flags)
 {
    if (!(bitmap_bin))
    {
@@ -89,6 +89,11 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_art(std::strin
 
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER, art_identifier);
+
+   for (auto &additional_entity_flag : additional_entity_flags)
+   {
+      result->set(additional_entity_flag);
+   }
 
    result->get_placement_ref().position = position;
    result->get_placement_ref().rotation.x = rotation_x;

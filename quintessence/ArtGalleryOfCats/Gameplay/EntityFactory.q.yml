@@ -44,6 +44,9 @@ functions:
       - name: rotation_x
         type: float
         default_argument: 0.0f
+      - name: additional_entity_flags
+        type: std::vector<std::string>
+        default_argument: '{}'
     guards: [ bitmap_bin, model_bin ]
     body: |
       ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
@@ -55,6 +58,11 @@ functions:
 
       result->set(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
       result->set(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER, art_identifier);
+
+      for (auto &additional_entity_flag : additional_entity_flags)
+      {
+         result->set(additional_entity_flag);
+      }
 
       result->get_placement_ref().position = position;
       result->get_placement_ref().rotation.x = rotation_x;
