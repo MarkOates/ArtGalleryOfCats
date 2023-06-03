@@ -241,7 +241,7 @@ functions:
       collision_stepper.set_tile_width(1);
       collision_stepper.set_tile_height(1);
 
-      float box_size = 2.0;
+      float box_size = 1.4;
       float box_h_size = box_size * 0.5f;
       for (auto &entity : entity_pool.get_entity_pool_ref())
       {

@@ -238,6 +238,7 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
    result->tilt = 0.13;            // look up(-)/down(+)
    result->spin = 0.0;             // set a good start initial spin
    //result->spin = 0.2;             // set a good start initial spin
+   result->set_near_plane(0.1);
 
    return result;
 }
