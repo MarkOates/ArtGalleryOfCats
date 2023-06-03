@@ -219,7 +219,7 @@ void Runner::initialize()
 
 
    // Setup the npc_conversations_screen_background
-   npc_conversations_background.set_inv_scale(4);
+   npc_conversations_background.set_inv_scale(1);
    npc_conversations_background.set_bitmap_bin(bitmap_bin);
    npc_conversations_background.initialize();
 
