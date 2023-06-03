@@ -39,8 +39,8 @@ namespace ArtGalleryOfCats
          AllegroFlare::BitmapBin* get_bitmap_bin() const;
          AllegroFlare::FontBin* get_font_bin() const;
          AllegroFlare::ModelBin* get_model_bin() const;
-         ArtGalleryOfCats::Gameplay::Entities::Base* create_sculpture_art(std::string art_identifier="[unset-art_identifier]", std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]", AllegroFlare::Vec3D model_position={}, float rotation_y=0.0f, std::vector<std::string> additional_entity_flags={});
-         ArtGalleryOfCats::Gameplay::Entities::Base* create_wall_art(std::string art_identifier="[unset-art_identifier]", std::string texture_filename="[unset-texture_filename]", AllegroFlare::Vec3D model_position={}, float rotation_y=0.0f, float art_scale=DEFAULT_WALL_ART_SCALE, std::vector<std::string> additional_entity_flags={});
+         ArtGalleryOfCats::Gameplay::Entities::Base* create_sculpture_art(std::string art_identifier="[unset-art_identifier]", std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]", AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, std::vector<std::string> additional_entity_flags={});
+         ArtGalleryOfCats::Gameplay::Entities::Base* create_wall_art(std::string art_identifier="[unset-art_identifier]", std::string texture_filename="[unset-texture_filename]", AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, float art_scale=DEFAULT_WALL_ART_SCALE, std::vector<std::string> additional_entity_flags={});
          ArtGalleryOfCats::Gameplay::Entities::Base* create_environment_mesh(std::string model_filename="[unset-model_filename]", std::string texture_filename="[unset-texture_filename]");
          ArtGalleryOfCats::Gameplay::Entities::Base* create_collectable_object(AllegroFlare::Vec3D position={}, std::string model_filename="[unset-model_filename]");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D* create_camera();
