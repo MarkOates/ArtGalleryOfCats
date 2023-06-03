@@ -4,6 +4,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
+#include <ArtGalleryOfCats/Gameplay/TMJObjectLoader.hpp>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -64,6 +65,12 @@ AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
 }
 
 
+void LevelFactory::object_parsed_callback(std::string class_property, float x_property, float y_property, float width_property, float height_property, void* user_data)
+{
+   // TODO: this function
+   return;
+}
+
 void LevelFactory::load_primary_map()
 {
    if (!(bitmap_bin))
@@ -91,6 +98,9 @@ void LevelFactory::load_primary_map()
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
 
+   // Define our source TMJ filename
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-05.tmj";
+
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
       "gallery-map-05.obj",
@@ -100,7 +110,7 @@ void LevelFactory::load_primary_map()
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
-      entity_factory.create_collision_tile_map("tests/fixtures/maps/gallery-map-05.tmj");
+      entity_factory.create_collision_tile_map(tmj_source_filename);
    collision_tile_map->set("collision_tile_map");
    entity_pool->add(collision_tile_map);
 
@@ -131,6 +141,11 @@ void LevelFactory::load_primary_map()
       {}
    );
    entity_pool->add(art);
+
+   // Load objects from the TMJ file
+   ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
+   tmj_object_loader.set_object_parsed_callback_user_data(this);
+   tmj_object_loader.load();
 
    return;
 }

@@ -26,12 +26,42 @@ properties:
 functions:
 
 
+  - name: object_parsed_callback
+    static: true
+    type: void
+    parameters:
+      - name: class_property
+        type: std::string
+        default_argument: '"[unset-class_property]"'
+      - name: x_property
+        type: float
+        default_argument: 0.0f
+      - name: y_property
+        type: float
+        default_argument: 0.0f
+      - name: width_property
+        type: float
+        default_argument: 0.0f
+      - name: height_property
+        type: float
+        default_argument: 0.0f
+      - name: user_data
+        type: void*
+        default_argument: nullptr
+    body: |
+      // TODO: this function
+      return;
+
+
   - name: load_primary_map
     guards: [ bitmap_bin, model_bin, entity_pool ]
     body: |
       ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
       entity_factory.set_model_bin(model_bin);
       entity_factory.set_bitmap_bin(bitmap_bin);
+
+      // Define our source TMJ filename
+      std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-05.tmj";
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -42,7 +72,7 @@ functions:
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
-         entity_factory.create_collision_tile_map("tests/fixtures/maps/gallery-map-05.tmj");
+         entity_factory.create_collision_tile_map(tmj_source_filename);
       collision_tile_map->set("collision_tile_map");
       entity_pool->add(collision_tile_map);
 
@@ -74,10 +104,16 @@ functions:
       );
       entity_pool->add(art);
 
+      // Load objects from the TMJ file
+      ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
+      tmj_object_loader.set_object_parsed_callback_user_data(this);
+      tmj_object_loader.load();
+
       return;
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::EntityFactory
       - ArtGalleryOfCats::Gameplay::EntityFlags
+      - ArtGalleryOfCats::Gameplay::TMJObjectLoader
 
 
 dependencies:
@@ -93,5 +129,7 @@ dependencies:
     headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::EntityFlags
     headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::TMJObjectLoader
+    headers: [ ArtGalleryOfCats/Gameplay/TMJObjectLoader.hpp ]
 
 
