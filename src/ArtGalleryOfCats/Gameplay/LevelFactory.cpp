@@ -98,6 +98,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    {
       float rotation = 0.0f;
       float wall_art_scale = ArtGalleryOfCats::Gameplay::EntityFactory::DEFAULT_WALL_ART_SCALE;
+      std::string image_identifier = "storyboard-2-01-1165x500.png";
 
       // extract custom properties
       std::cout << "-- num_custom_properties: " << custom_properties.size() << std::endl;
@@ -117,13 +118,17 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
                throw std::runtime_error("Gameplay::LevelFactory: unrecognized \"facing\" value.");
             }
          }
+         if (custom_property.first == "image_identifier")
+         {
+            image_identifier = custom_property.second;
+         }
       }
 
       std::cout << "   rotation: " << rotation << std::endl;
 
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_wall_art(
          name_property, //"art1",
-         "storyboard-2-01-1165x500.png",
+         image_identifier,
          { x_property - width_property * 0.5f, 1.0, y_property - height_property * 0.5f },
          rotation,
          wall_art_scale,
@@ -170,7 +175,7 @@ void LevelFactory::load_primary_map()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-07.tmj";
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-08.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
