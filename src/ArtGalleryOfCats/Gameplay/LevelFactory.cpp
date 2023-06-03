@@ -4,6 +4,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
+#include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/TMJObjectLoader.hpp>
 #include <iostream>
 #include <sstream>
@@ -74,7 +75,9 @@ void LevelFactory::object_parsed_callback(std::string class_property, float x_pr
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::object_parsed_callback: error: guard \"user_data\" not met");
    }
-   // TODO: this function
+   ArtGalleryOfCats::Gameplay::LevelFactory *this_factory =
+      static_cast<ArtGalleryOfCats::Gameplay::LevelFactory*>(user_data);
+   // TODO: This function
    return;
 }
 
@@ -151,7 +154,7 @@ void LevelFactory::load_primary_map()
 
    // Load objects from the TMJ file
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
-   tmj_object_loader.set_object_parsed_callback_user_data(entity_pool);
+   tmj_object_loader.set_object_parsed_callback_user_data(this);
    tmj_object_loader.load();
 
    return;

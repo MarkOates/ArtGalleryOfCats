@@ -50,8 +50,12 @@ functions:
         default_argument: nullptr
     guards: [ user_data ]
     body: |
-      // TODO: this function
+      ArtGalleryOfCats::Gameplay::LevelFactory *this_factory =
+         static_cast<ArtGalleryOfCats::Gameplay::LevelFactory*>(user_data);
+      // TODO: This function
       return;
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::LevelFactory
 
 
   - name: load_primary_map
@@ -107,7 +111,7 @@ functions:
 
       // Load objects from the TMJ file
       ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
-      tmj_object_loader.set_object_parsed_callback_user_data(entity_pool);
+      tmj_object_loader.set_object_parsed_callback_user_data(this);
       tmj_object_loader.load();
 
       return;
@@ -132,5 +136,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::TMJObjectLoader
     headers: [ ArtGalleryOfCats/Gameplay/TMJObjectLoader.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::LevelFactory
+    headers: [ ArtGalleryOfCats/Gameplay/LevelFactory.hpp ]
 
 
