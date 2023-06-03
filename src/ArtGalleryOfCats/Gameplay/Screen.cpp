@@ -397,84 +397,48 @@ void Screen::render_hud()
    //al_draw_text(font, ALLEGRO_COLOR{1, 1, 1, 1}, 1920-10, 1080-10, ALLEGRO_ALIGN_RIGHT, "br.");
 
 
-   // Extract out the collision map
-   entity = entity_pool.find_with_attribute("collision_tile_map");
-   if (!entity) throw std::runtime_error("no collision_tile_map present");
-   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
-      static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
-   AllegroFlare::TileMaps::TileMap<int> &collision_tile_map= as_collision_tile_map->get_collision_tile_map_ref();
+   // Render the mini-map
+   bool render_mini_map = false;
 
-
-
-   render_tile_map(&collision_tile_map, 16.0f, 16.0f);
-
-
-   for (auto &entity : entity_pool.get_entity_pool_ref())
+   if (render_mini_map)
    {
-      ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
-      AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
-      //AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
+      // Extract out the collision map
+      entity = entity_pool.find_with_attribute("collision_tile_map");
+      if (!entity) throw std::runtime_error("no collision_tile_map present");
+      ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
+      AllegroFlare::TileMaps::TileMap<int> &collision_tile_map= as_collision_tile_map->get_collision_tile_map_ref();
 
-      AllegroFlare::Physics::AABB2D aabb2d(
-         placement.position.x * 16 - (16 * 0.5),
-         placement.position.z * 16 - (16 * 0.5),
-         16.0, // Our object will be a 1x1 square
-         16.0
-         //velocity.position.x,
-         //velocity.position.z
-      );
 
-      render_aabb2d(
-               &aabb2d
-            );
 
-      al_draw_filled_circle(placement.position.x * 16, placement.position.z * 16, 8, ALLEGRO_COLOR{0, 1, 0.8, 1.0});
+      render_tile_map(&collision_tile_map, 16.0f, 16.0f);
+
+
+      for (auto &entity : entity_pool.get_entity_pool_ref())
+      {
+         ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
+            static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+         AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+         //AllegroFlare::Placement3D &velocity = as_agc_entity->get_velocity_ref();
+
+         AllegroFlare::Physics::AABB2D aabb2d(
+            placement.position.x * 16 - (16 * 0.5),
+            placement.position.z * 16 - (16 * 0.5),
+            16.0, // Our object will be a 1x1 square
+            16.0
+            //velocity.position.x,
+            //velocity.position.z
+         );
+
+         render_aabb2d(
+                  &aabb2d
+               );
+
+         al_draw_filled_circle(placement.position.x * 16, placement.position.z * 16, 8, ALLEGRO_COLOR{0, 1, 0.8, 1.0});
+      }
    }
 
-
    hud_camera.restore_transform();
-
-   //render_tile_map(&collision_tile_map, 16.0f, 16.0f);
-   //render_aabb2d(
-               //aabb2d,
-               //aabb2d_adjacent_to_top_edge,
-               //aabb2d_adjacent_to_right_edge,
-               //aabb2d_adjacent_to_bottom_edge,
-               //aabb2d_adjacent_to_left_edge
-            //);
-
-
-   //hud_camera.restore_transform();
-
-   /*
-   AllegroFlare::Placement2D camera;
-   camera.scale.x = 4.8;
-   camera.scale.y = 4.5;
-
-
-   camera.start_transform();
-   render_tile_map(collision_tile_map, 16.0f, 16.0f);
-   camera.restore_transform();
-   */
-
-    /*
-         { // draw
-            //al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 0});
-            camera.start_transform();
-            render_tile_map(collision_tile_map, 16.0f, 16.0f);
-            render_aabb2d(
-               aabb2d,
-               aabb2d_adjacent_to_top_edge,
-               aabb2d_adjacent_to_right_edge,
-               aabb2d_adjacent_to_bottom_edge,
-               aabb2d_adjacent_to_left_edge
-            );
-            camera.restore_transform();
-            al_flip_display();
-   */
-
-
 
    return;
 }
