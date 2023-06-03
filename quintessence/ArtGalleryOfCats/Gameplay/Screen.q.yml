@@ -67,6 +67,12 @@ properties:
     type: bool
     init_with: false
 
+  - name: entity_player_is_currently_colliding_with
+    type: AllegroFlare::SceneGraph::Entities::Base*
+    init_with: nullptr
+    getter: true
+    setter: true
+
   - name: on_finished_callback_func
     type: std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)>
     init_with: ''
@@ -202,6 +208,7 @@ functions:
       - font_bin
       - model_bin
       - (resources_path != DEFAULT_RESOURCES_PATH)
+      - entity_player_is_currently_colliding_with
     body: |
       // TODO: Fix this section
       AllegroFlare::CubemapBuilder builder;
@@ -278,6 +285,13 @@ functions:
       result.y = 0;
       result.z = move_vec.y * displacement;
       return result;
+
+
+  - name: update_entity_player_is_currently_colliding_with
+    body: |
+      // TODO: Implement this function
+      //entity_player_is_currently_colliding_with
+      return;
         
 
   - name: scene_physics_updater
@@ -340,6 +354,8 @@ functions:
          velocity.position = { aabb2d.get_velocity_x(), 0.0f, aabb2d.get_velocity_y() };
          placement.rotation += velocity.rotation;
       }
+
+      update_entity_player_is_colliding_with();
 
       // HACK: Extract out the camera and assign it's position
       // TODO: Create a separate entity, then assign the camera values to the live camera (or something)
