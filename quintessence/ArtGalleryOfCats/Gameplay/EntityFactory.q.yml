@@ -51,6 +51,9 @@ functions:
       - name: model_rotation_y
         type: float
         default_argument: 0.0f
+      - name: hit_box_2d
+        type: AllegroFlare::Physics::AABB2D
+        default_argument: '{}'
       - name: additional_entity_flags
         type: std::vector<std::string>
         default_argument: '{}'
@@ -75,6 +78,8 @@ functions:
       result->get_placement_ref().position = model_position;
       result->get_placement_ref().rotation.y = model_rotation_y;
 
+      result->set_hit_box_2d(hit_box_2d);
+
       return result;
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::EntityFlags
@@ -98,6 +103,9 @@ functions:
       - name: art_scale
         type: float
         default_argument: DEFAULT_WALL_ART_SCALE
+      - name: hit_box_2d
+        type: AllegroFlare::Physics::AABB2D
+        default_argument: '{}'
       - name: additional_entity_flags
         type: std::vector<std::string>
         default_argument: '{}'
@@ -132,6 +140,8 @@ functions:
             //0.0
          //);
       //result->get_placement_ref().align = { 0.5, 0.5, 0.5 };
+
+      result->set_hit_box_2d(hit_box_2d);
 
       return result;
     body_dependency_symbols:
@@ -276,5 +286,7 @@ dependencies:
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::EntityFlags
     headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
+  - symbol: AllegroFlare::Physics::AABB2D
+    headers: [ AllegroFlare/Physics/AABB2D.hpp ]
 
 

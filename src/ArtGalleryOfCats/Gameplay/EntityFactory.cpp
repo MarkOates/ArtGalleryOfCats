@@ -64,7 +64,7 @@ AllegroFlare::ModelBin* EntityFactory::get_model_bin() const
 }
 
 
-ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D model_position, float model_rotation_y, std::vector<std::string> additional_entity_flags)
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D model_position, float model_rotation_y, AllegroFlare::Physics::AABB2D hit_box_2d, std::vector<std::string> additional_entity_flags)
 {
    if (!(bitmap_bin))
    {
@@ -99,10 +99,12 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(
    result->get_placement_ref().position = model_position;
    result->get_placement_ref().rotation.y = model_rotation_y;
 
+   result->set_hit_box_2d(hit_box_2d);
+
    return result;
 }
 
-ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::string art_identifier, std::string texture_filename, AllegroFlare::Vec3D model_position, float model_rotation_y, float art_scale, std::vector<std::string> additional_entity_flags)
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::string art_identifier, std::string texture_filename, AllegroFlare::Vec3D model_position, float model_rotation_y, float art_scale, AllegroFlare::Physics::AABB2D hit_box_2d, std::vector<std::string> additional_entity_flags)
 {
    if (!(bitmap_bin))
    {
@@ -147,6 +149,8 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::
          //0.0
       //);
    //result->get_placement_ref().align = { 0.5, 0.5, 0.5 };
+
+   result->set_hit_box_2d(hit_box_2d);
 
    return result;
 }

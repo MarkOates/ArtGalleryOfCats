@@ -84,12 +84,15 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
 
    if (class_property == "sculpture")
    {
+      AllegroFlare::Physics::AABB2D hit_box_2d(x_property, y_property, width_property, height_property);
+
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_sculpture_art(
          name_property, //"art-01",
          "art-01.obj",
          "art-01.png",
          { x_property, 0, y_property },
          0.0f,
+         hit_box_2d,
          {}
       );
       entity_pool.add(art);
@@ -99,6 +102,8 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
       float rotation = 0.0f;
       float wall_art_scale = ArtGalleryOfCats::Gameplay::EntityFactory::DEFAULT_WALL_ART_SCALE;
       std::string image_identifier = "storyboard-2-01-1165x500.png";
+
+      AllegroFlare::Physics::AABB2D hit_box_2d(x_property, y_property, width_property, height_property);
 
       // extract custom properties
       std::cout << "-- num_custom_properties: " << custom_properties.size() << std::endl;
@@ -132,6 +137,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
          { x_property - width_property * 0.5f, 1.0, y_property - height_property * 0.5f },
          rotation,
          wall_art_scale,
+         hit_box_2d,
          {}
       );
       entity_pool.add(art);
