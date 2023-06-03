@@ -553,6 +553,24 @@ void Screen::player_spin_change(float delta)
    return;
 }
 
+void Screen::player_tilt_change(float delta)
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+         //as_camera->tilt += delta;
+         float tilt = as_camera->tilt;
+
+         tilt += delta;
+         float max_tilt = 3.14 / 2;
+         if (tilt < -max_tilt) tilt = -max_tilt;
+         if (tilt > max_tilt) tilt = max_tilt;
+         as_camera->tilt = tilt;
+   return;
+}
+
 void Screen::player_stop_moving()
 {
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
@@ -725,8 +743,11 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    }
    // TODO: Validate spin change
    float spin_delta = ev->mouse.dx;
+   float tilt_delta = ev->mouse.dy;
    float spin_multiplier = 0.001;
+   float tilt_multiplier = 0.001;
    player_spin_change(spin_delta * spin_multiplier);
+   player_tilt_change(tilt_delta * tilt_multiplier);
    //float x_delta = ev->mouse->dx;
    //result->tilt = 0.13;            // look up(-)/down(+)
    //result->spin = 0.2;             // set a good start initial spin

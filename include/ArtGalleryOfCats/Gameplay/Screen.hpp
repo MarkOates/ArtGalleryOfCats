@@ -75,6 +75,7 @@ namespace ArtGalleryOfCats
          void call_on_finished_callback_func();
          virtual void primary_timer_func() override;
          void player_spin_change(float delta=0.0f);
+         void player_tilt_change(float delta=0.0f);
          void player_stop_moving();
          void player_strafe_right();
          void player_strafe_left();
