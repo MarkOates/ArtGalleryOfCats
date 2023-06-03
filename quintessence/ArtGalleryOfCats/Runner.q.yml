@@ -608,6 +608,19 @@ functions:
       - AllegroFlare::Frameworks::Full
 
 
+  - name: build_image_page
+    type: AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText*
+    body: |
+      AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText *result =
+         new AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText();
+      result->set_bitmap_bin(bitmap_bin);
+      result->set_font_bin(font_bin);
+      result->set_top_padding(800);
+      result->set_left_padding(400);
+      result->set_left_padding(400);
+      return result;
+
+
 dependencies:
 
 
@@ -663,5 +676,7 @@ dependencies:
     headers: [ ReleaseInfo.hpp ]
   - symbol: ArtGalleryOfCats::Elements::Backgrounds::NPCConversations
     headers: [ ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.hpp ]
+  - symbol: AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText
+    headers: [ AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp ]
 
 

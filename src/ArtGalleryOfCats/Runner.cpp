@@ -548,6 +548,18 @@ void Runner::run(std::string deployment_environment_mode)
    return;
 }
 
+AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* Runner::build_image_page()
+{
+   AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText *result =
+      new AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText();
+   result->set_bitmap_bin(bitmap_bin);
+   result->set_font_bin(font_bin);
+   result->set_top_padding(800);
+   result->set_left_padding(400);
+   result->set_left_padding(400);
+   return result;
+}
+
 
 } // namespace ArtGalleryOfCats
 

@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/Elements/Backgrounds/ClearToColor.hpp>
+#include <AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Frameworks/Full.hpp>
@@ -68,6 +69,7 @@ namespace ArtGalleryOfCats
       void initialize();
       void setup_router();
       static void run(std::string deployment_environment_mode="[unset-deployment_environment_mode]");
+      AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* build_image_page();
    };
 }
 
