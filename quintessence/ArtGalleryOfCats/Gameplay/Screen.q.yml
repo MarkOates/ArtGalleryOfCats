@@ -314,13 +314,12 @@ functions:
       AllegroFlare::Vec3D player_position = find_primary_camera()->get_placement_ref().position;
       AllegroFlare::Physics::AABB2D player_hit_box_2d(
          player_position.x - player_h_hit_box_size,
-         player_position.y - player_h_hit_box_size,
+         player_position.z - player_h_hit_box_size,
          player_hit_box_size,
          player_hit_box_size,
          0,
          0
       );
-
 
       // Find the entity that the player, in this frame, is colliding with (find the first one)
       ArtGalleryOfCats::Gameplay::Entities::Base *found_colliding_entity = nullptr;
