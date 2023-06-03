@@ -131,6 +131,8 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_ob
    result->get_velocity_ref().rotation.y = 0.00073;
 
    result->get_placement_ref().position = position;
+   result->get_placement_ref().position.y = 0.5; // so that the item is right at eye level
+   result->get_placement_ref().scale = { 0.3, 0.3, 0.3 };
 
    return result;
 }
