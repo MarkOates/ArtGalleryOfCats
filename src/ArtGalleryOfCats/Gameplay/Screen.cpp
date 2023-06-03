@@ -369,7 +369,7 @@ void Screen::update_entity_player_is_currently_colliding_with()
       entity_player_is_currently_colliding_with = found_colliding_entity;
 
       // TODO: Some feedback that a new collision occurred
-      interact_with_focused_object(); // DEVELOPMENT
+      if (entity_player_is_currently_colliding_with != nullptr) interact_with_focused_object(); // DEVELOPMENT
    }
 
    return;
@@ -753,6 +753,8 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
 
 void Screen::interact_with_focused_object()
 {
+   player_stop_moving();
+
    // TODO: Sort out route event:
    event_emitter->emit_router_event(
       AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,

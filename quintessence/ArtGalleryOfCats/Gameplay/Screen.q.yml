@@ -344,7 +344,7 @@ functions:
          entity_player_is_currently_colliding_with = found_colliding_entity;
 
          // TODO: Some feedback that a new collision occurred
-         interact_with_focused_object(); // DEVELOPMENT
+         if (entity_player_is_currently_colliding_with != nullptr) interact_with_focused_object(); // DEVELOPMENT
       }
 
       return;
@@ -781,6 +781,8 @@ functions:
 
   - name: interact_with_focused_object
     body: |
+      player_stop_moving();
+
       // TODO: Sort out route event:
       event_emitter->emit_router_event(
          AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
