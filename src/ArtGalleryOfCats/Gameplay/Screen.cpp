@@ -355,7 +355,13 @@ void Screen::update_entity_player_is_currently_colliding_with()
          static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity_player_can_interact_with);
 
       // TODO: do AABB2D collision against the player
+      bool player_collides_with_this_entity = player_hit_box_2d.collides(&as_agc_entity->get_hit_box_2d_ref());
       //AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
+      if (player_collides_with_this_entity)
+      {
+         found_colliding_entity = as_agc_entity;
+         break;
+      }
    }
 
    if (found_colliding_entity != entity_player_is_currently_colliding_with)
