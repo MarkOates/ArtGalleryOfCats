@@ -77,6 +77,22 @@ void LevelFactory::object_parsed_callback(std::string class_property, float x_pr
    }
    ArtGalleryOfCats::Gameplay::LevelFactory *this_factory =
       static_cast<ArtGalleryOfCats::Gameplay::LevelFactory*>(user_data);
+   AllegroFlare::SceneGraph::EntityPool &entity_pool = *(this_factory->entity_pool);
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   entity_factory.set_model_bin(this_factory->model_bin);
+   entity_factory.set_bitmap_bin(this_factory->bitmap_bin);
+
+   ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
+      "art-01",
+      "art-01.obj",
+      "art-01.png",
+      { x_property, 0, y_property },
+      0.0f,
+      {}
+   );
+   entity_pool.add(art);
+
+
    // TODO: This function
    return;
 }
