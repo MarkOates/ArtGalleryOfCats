@@ -64,6 +64,9 @@ void TMJObjectLoader::load()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("TMJObjectLoader::load: error: guard \"(!loaded)\" not met");
    }
+   int tile_width = 1;
+   int tile_height = 1;
+
    if (!file_exists(filename))
    {
       std::stringstream error_message;
@@ -112,6 +115,12 @@ void TMJObjectLoader::load()
       throw std::runtime_error("TMJObjectLoader: error: layer of type \"objectgroup\" not found.");
    }
 
+
+   // TODO: Validate presence of the keys "tilewidth" and "tileheight"
+   // TODO: Validate type of the keys "tilewidth" and "tileheight" as int
+
+   tile_width = source_json["tilewidth"].get<int>();
+   tile_height = source_json["tileheight"].get<int>();
 
    // load the objects one by one
 

@@ -29,6 +29,9 @@ functions:
   - name: load
     guards: [ (!loaded) ]
     body: |
+      int tile_width = 1;
+      int tile_height = 1;
+
       if (!file_exists(filename))
       {
          std::stringstream error_message;
@@ -77,6 +80,12 @@ functions:
          throw std::runtime_error("TMJObjectLoader: error: layer of type \"objectgroup\" not found.");
       }
 
+
+      // TODO: Validate presence of the keys "tilewidth" and "tileheight"
+      // TODO: Validate type of the keys "tilewidth" and "tileheight" as int
+
+      tile_width = source_json["tilewidth"].get<int>();
+      tile_height = source_json["tileheight"].get<int>();
 
       // load the objects one by one
 
