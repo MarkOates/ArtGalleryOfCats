@@ -100,10 +100,26 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
       float wall_art_scale = ArtGalleryOfCats::Gameplay::EntityFactory::DEFAULT_WALL_ART_SCALE;
 
       // extract custom properties
+      std::cout << "-- num_custom_properties: " << custom_properties.size() << std::endl;
       for (auto &custom_property : custom_properties)
       {
-         //if (custom_property.first == "facing");
+         std::cout << "  - first: " << custom_property.first << std::endl;
+         std::cout << "    second: " << custom_property.second << std::endl;
+         if (custom_property.first == "facing")
+         {
+            std::string facing_direction = custom_property.second;
+            if (facing_direction == "down") rotation = 0.0f;
+            else if (facing_direction == "right") rotation = 0.25f;
+            //else if (facing_direction == "down") rotation = 0.0f;
+            //else if (facing_direction == "down") rotation = 0.0f;
+            else
+            {
+               // TODO: Throw on unknonwn facing direction
+            }
+         }
       }
+
+      std::cout << "   rotation: " << rotation << std::endl;
 
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_wall_art(
          name_property, //"art1",

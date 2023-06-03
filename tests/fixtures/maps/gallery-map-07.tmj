@@ -148,7 +148,7 @@
                         {
                          "name":"facing",
                          "type":"string",
-                         "value":"left"
+                         "value":"right"
                         }],
                  "rotation":0,
                  "visible":true,

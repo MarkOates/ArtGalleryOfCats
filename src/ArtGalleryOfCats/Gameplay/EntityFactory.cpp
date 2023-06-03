@@ -102,7 +102,7 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(
    return result;
 }
 
-ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::string art_identifier, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_x, float art_scale, std::vector<std::string> additional_entity_flags)
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::string art_identifier, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_y, float art_scale, std::vector<std::string> additional_entity_flags)
 {
    if (!(bitmap_bin))
    {
@@ -135,7 +135,7 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::
    }
 
    result->get_placement_ref().position = position;
-   result->get_placement_ref().rotation.x = rotation_x;
+   result->get_placement_ref().rotation.y = rotation_y;
 
    //float art_scale = 0.002; // An arbitrary number to set the dimensionality of the art
    result->get_placement_ref().scale = { art_scale, art_scale, art_scale };
