@@ -74,6 +74,7 @@ functions:
       AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::calculate_boilerplate_keyboard_dimentions();
       software_keyboard.set_keyboard_dimentions(keyboard_dimentions.x, keyboard_dimentions.y);
       software_keyboard.set_keyboard_position(1920/2, 1080/12*7 + 20);
+      software_keyboard.set_prompt_text("What is the answer to the riddle?");
       initialized = true;
       return;
 
@@ -127,6 +128,18 @@ functions:
     body: |
       // TODO: guards, cannot be zero (or maybe this should be a guard in the bin if it is not)
       software_keyboard.set_font_size(font_size);
+      return;
+
+
+  - name: set_prompt_text
+    parameters:
+      - name: prompt_text
+        type: std::string
+        default_argument: '"[unset-prompt_text]"'
+    guards: [ initialized ]
+    body: |
+      // TODO: guards, cannot be zero (or maybe this should be a guard in the bin if it is not)
+      software_keyboard.set_prompt_text(prompt_text);
       return;
 
 

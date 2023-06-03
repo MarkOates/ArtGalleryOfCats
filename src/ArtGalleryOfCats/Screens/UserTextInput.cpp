@@ -86,6 +86,7 @@ void UserTextInput::initialize()
    AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::calculate_boilerplate_keyboard_dimentions();
    software_keyboard.set_keyboard_dimentions(keyboard_dimentions.x, keyboard_dimentions.y);
    software_keyboard.set_keyboard_position(1920/2, 1080/12*7 + 20);
+   software_keyboard.set_prompt_text("What is the answer to the riddle?");
    initialized = true;
    return;
 }
@@ -143,6 +144,20 @@ void UserTextInput::set_font_size(int font_size)
 {
    // TODO: guards, cannot be zero (or maybe this should be a guard in the bin if it is not)
    software_keyboard.set_font_size(font_size);
+   return;
+}
+
+void UserTextInput::set_prompt_text(std::string prompt_text)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[UserTextInput::set_prompt_text]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("UserTextInput::set_prompt_text: error: guard \"initialized\" not met");
+   }
+   // TODO: guards, cannot be zero (or maybe this should be a guard in the bin if it is not)
+   software_keyboard.set_prompt_text(prompt_text);
    return;
 }
 
