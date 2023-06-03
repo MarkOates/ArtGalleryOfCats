@@ -143,10 +143,10 @@ void TMJObjectLoader::load()
       {
          object_parsed_callback(
             class_property,
-            x_property,
-            y_property,
-            width_property,
-            height_property,
+            x_property / (float)tile_width,
+            y_property / (float)tile_height,
+            width_property / (float)tile_width,
+            height_property / (float)tile_height,
             object_parsed_callback_user_data
          );
       }
