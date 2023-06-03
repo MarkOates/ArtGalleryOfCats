@@ -99,8 +99,8 @@ void SceneRenderer::render()
       {
          // Collect render flags
          bool renders_with_iridescent =
-            true;
-            //as_agc_entity->exists(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
+            //true;
+            as_agc_entity->exists(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 
          // Setup the render for this object
          if (renders_with_iridescent)
