@@ -100,7 +100,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_wall_art(
          name_property, //"art1",
          "storyboard-2-01-1165x500.png",
-         { x_property, 0, y_property },
+         { x_property - width_property * 0.5f, 1.0, y_property - height_property * 0.5f },
          0.0f,
          wall_art_scale,
          {}
