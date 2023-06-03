@@ -110,11 +110,11 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
             std::string facing_direction = custom_property.second;
             if (facing_direction == "down") rotation = 0.0f;
             else if (facing_direction == "right") rotation = 0.25f;
-            //else if (facing_direction == "down") rotation = 0.0f;
-            //else if (facing_direction == "down") rotation = 0.0f;
+            else if (facing_direction == "left") rotation = -0.25f;
+            else if (facing_direction == "up") rotation = 0.5f;
             else
             {
-               // TODO: Throw on unknonwn facing direction
+               throw std::runtime_error("Gameplay::LevelFactory: unrecognized \"facing\" value.");
             }
          }
       }
