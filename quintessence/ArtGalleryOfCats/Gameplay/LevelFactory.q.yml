@@ -63,15 +63,35 @@ functions:
       entity_factory.set_model_bin(this_factory->model_bin);
       entity_factory.set_bitmap_bin(this_factory->bitmap_bin);
 
-      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
-         name_property, //"art-01",
-         "art-01.obj",
-         "art-01.png",
-         { x_property, 0, y_property },
-         0.0f,
-         {}
-      );
-      entity_pool.add(art);
+      if (class_property == "sculpture")
+      {
+         ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
+            name_property, //"art-01",
+            "art-01.obj",
+            "art-01.png",
+            { x_property, 0, y_property },
+            0.0f,
+            {}
+         );
+         entity_pool.add(art);
+      }
+      else if (class_property == "wall_art")
+      {
+         // TODO: Replace this with a wall-art specific class
+         ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
+            name_property, //"art-01",
+            "art-01.obj",
+            "art-01.png",
+            { x_property, 0, y_property },
+            0.0f,
+            {}
+         );
+         entity_pool.add(art);
+      }
+      else
+      {
+         // TODO: Thrown on unknonw type
+      }
 
       //if (custom_properties.size()
       
