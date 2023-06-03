@@ -775,6 +775,19 @@ void Screen::interact_with_focused_object()
    return;
 }
 
+void Screen::prompt_user_for_text_input()
+{
+   player_stop_moving();
+
+   // TODO: setup the prompt screen with context
+
+   event_emitter->emit_router_event(
+      AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
+      new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("user_text_input_screen") // TODO: use constant
+   );
+   return;
+}
+
 void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
 {
    if (!(initialized))
@@ -824,6 +837,10 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
 
       case ALLEGRO_KEY_D: {
          player_right_pressed = true;
+      } break;
+
+      case ALLEGRO_KEY_I: {
+         prompt_user_for_text_input(); // DEVELOPMENT
       } break;
 
       case ALLEGRO_KEY_SPACE:
