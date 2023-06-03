@@ -69,7 +69,7 @@ namespace ArtGalleryOfCats
       void initialize();
       void setup_router();
       static void run(std::string deployment_environment_mode="[unset-deployment_environment_mode]");
-      AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* build_image_page();
+      AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* create_image_page(std::string text="[unset-text]");
    };
 }
 

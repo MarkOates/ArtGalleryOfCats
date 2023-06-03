@@ -7,6 +7,7 @@
 #include <AllegroFlare/Logger.hpp>
 #include <AllegroFlare/RouteEventDatas/StartLevel.hpp>
 #include <AllegroFlare/StoryboardFactory.hpp>
+#include <allegro5/allegro.h>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
@@ -223,8 +224,10 @@ void Runner::initialize()
    npc_conversations_screen.set_background(&npc_conversations_background);
    npc_conversations_screen.initialize();
    npc_conversations_screen.get_storyboard_element_ref().set_pages({
-       page_factory.create_advancing_text_page(
-         "I really like all this art! It really nourishes the spirit. It ignites the soul!"
+       create_image_page(
+       //page_factory.create_advancing_text_page(
+         "I really like all this art! It nourishes the spirit. It ignites the soul!"
+       //),
        ),
    });
 
@@ -548,15 +551,22 @@ void Runner::run(std::string deployment_environment_mode)
    return;
 }
 
-AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* Runner::build_image_page()
+AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* Runner::create_image_page(std::string text)
 {
    AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText *result =
       new AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText();
    result->set_bitmap_bin(bitmap_bin);
    result->set_font_bin(font_bin);
-   result->set_top_padding(800);
-   result->set_left_padding(400);
-   result->set_left_padding(400);
+   result->set_text(text);
+   result->set_font_size(-50);
+   result->set_line_height_multiplier(1.25f);
+   result->set_image_fade_in_duration_sec(0.0f);
+   result->set_text_color(ALLEGRO_COLOR{0, 0, 0, 1});
+   result->set_image_identifier("character-avatar-01.png");
+   //"storyboard-1-01-1165x500.png");
+   result->set_top_padding(650);
+   result->set_left_padding(600);
+   result->set_right_padding(600);
    return result;
 }
 
