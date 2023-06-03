@@ -40,3 +40,24 @@ TEST_F(ArtGalleryOfCats_Gameplay_EntityFactoryTest, create_collision_tile_map__w
 }
 
 
+TEST_F(ArtGalleryOfCats_Gameplay_EntityFactoryTestWithAllegroRenderingFixture,
+   create_art__will_create_an_art_with_the_expected_properties)
+{
+   AllegroFlare::ModelBin model_bin;
+   model_bin.set_full_path(get_fixtures_path() + "models");
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   entity_factory.set_model_bin(&model_bin);
+   entity_factory.set_bitmap_bin(&get_bitmap_bin_ref());
+
+   ArtGalleryOfCats::Gameplay::Entities::Base *created_object = entity_factory.create_art(
+      "foobar_art",
+      "art-01.obj",
+      "art-01.png",
+      { 14, 0, 12 },
+      0.0f
+   );
+
+   ASSERT_NE(nullptr, created_object);
+}
+
+
