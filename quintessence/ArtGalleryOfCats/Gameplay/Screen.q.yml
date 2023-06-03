@@ -251,8 +251,15 @@ functions:
     body: |
       AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
+      entity = entity_pool.find_with_attribute("primary_camera");
+      if (!entity) throw std::runtime_error("no camera present");
+      ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
       // Update our camera velocity to match the "player_velocity"
-      
+      //AllegroFlare::Vec3D camera_strafe_speed = calculate_strafe_xy(as_camera->spin, player_velocity.x);
+      //as_camera->get_velocity_ref().position = camera_strafe_speed;
+
 
       // Extract out the collision map
       entity = entity_pool.find_with_attribute("collision_tile_map");
@@ -300,10 +307,6 @@ functions:
 
       // HACK: Extract out the camera and assign it's position
       // TODO: Create a separate entity, then assign the camera values to the live camera (or something)
-      entity = entity_pool.find_with_attribute("primary_camera");
-      if (!entity) throw std::runtime_error("no camera present");
-      ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
       as_camera->AllegroFlare::Camera3D::position = as_camera->get_placement_ref().position;
 
       return;
