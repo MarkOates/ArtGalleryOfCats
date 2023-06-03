@@ -36,6 +36,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , entity_pool(entity_pool)
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
+   , player_velocity({})
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
    , cubemap_shader({})
@@ -573,6 +574,9 @@ void Screen::player_tilt_change(float delta)
 
 void Screen::player_stop_moving()
 {
+   player_velocity.x = 0;
+   player_velocity.y = 0;
+
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
          if (!entity) throw std::runtime_error("virtual_controls: no camera present");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
@@ -585,6 +589,8 @@ void Screen::player_stop_moving()
 
 void Screen::player_strafe_right()
 {
+   player_velocity.x = 0.1;
+
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
          if (!entity) throw std::runtime_error("virtual_controls: no camera present");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
@@ -596,6 +602,8 @@ void Screen::player_strafe_right()
 
 void Screen::player_strafe_left()
 {
+   player_velocity.x = -0.1;
+
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
          if (!entity) throw std::runtime_error("virtual_controls: no camera present");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
@@ -607,6 +615,8 @@ void Screen::player_strafe_left()
 
 void Screen::player_move_forward()
 {
+   player_velocity.y = -0.1;
+
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
          if (!entity) throw std::runtime_error("virtual_controls: no camera present");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
@@ -618,6 +628,8 @@ void Screen::player_move_forward()
 
 void Screen::player_move_backward()
 {
+   player_velocity.y = 0.1;
+
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
          if (!entity) throw std::runtime_error("virtual_controls: no camera present");
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =

@@ -12,6 +12,7 @@
 #include <AllegroFlare/Screens/Base.hpp>
 #include <AllegroFlare/Shaders/Cubemap.hpp>
 #include <AllegroFlare/TileMaps/TileMap.hpp>
+#include <AllegroFlare/Vec2D.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <allegro5/allegro.h>
@@ -38,6 +39,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::SceneGraph::EntityPool entity_pool;
          std::string current_level_identifier;
          void* current_level;
+         AllegroFlare::Vec2D player_velocity;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
          AllegroFlare::Shaders::Cubemap cubemap_shader;
