@@ -38,3 +38,11 @@ TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__on_a_file_that_does_no
 }
 
 
+TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__will_not_blow_up)
+{
+   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-06.tmj";
+   ArtGalleryOfCats::Gameplay::TMJObjectLoader loader(filename);
+   loader.load();
+}
+
+
