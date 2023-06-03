@@ -29,6 +29,8 @@ TEST_F(ArtGalleryOfCats_Gameplay_LevelFactoryTestWithAllegroRenderingFixture, lo
    level_factory.set_entity_pool(&entity_pool);
 
    level_factory.load_primary_map();
+
+   EXPECT_EQ(12, entity_pool.num_elements());
 }
 
 

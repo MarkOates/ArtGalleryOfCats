@@ -92,7 +92,6 @@ void LevelFactory::object_parsed_callback(std::string class_property, float x_pr
    );
    entity_pool.add(art);
 
-
    // TODO: This function
    return;
 }
@@ -158,6 +157,7 @@ void LevelFactory::load_primary_map()
    entity_pool->add(collectable_object);
 
    // Create an art
+   /*
    ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
       "art-01",
       "art-01.obj",
@@ -167,9 +167,11 @@ void LevelFactory::load_primary_map()
       {}
    );
    entity_pool->add(art);
+   */
 
    // Load objects from the TMJ file
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
+   tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
    tmj_object_loader.set_object_parsed_callback_user_data(this);
    tmj_object_loader.load();
 
