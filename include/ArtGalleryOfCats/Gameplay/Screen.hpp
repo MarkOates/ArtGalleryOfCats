@@ -89,6 +89,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::Vec2D infer_player_velocity_from_keypress();
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
+         void interact_with_focused_object();
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;

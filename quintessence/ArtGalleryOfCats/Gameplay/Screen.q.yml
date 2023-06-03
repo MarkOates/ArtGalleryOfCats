@@ -394,7 +394,7 @@ functions:
 
 
       // Render the mini-map
-      bool render_mini_map = true;
+      bool render_mini_map = false;
 
       if (render_mini_map)
       {
@@ -705,6 +705,23 @@ functions:
       - AllegroFlare::VirtualControllers::GenericController
 
 
+  - name: interact_with_focused_object
+    body: |
+      // TODO: Sort out route event:
+      event_emitter->emit_router_event(
+         AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
+         new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
+      );
+
+      //event_emitter->talk_to_an_npc
+      event_emitter->emit_event(
+         ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
+         intptr_t(new std::string("talk_to_an_npc"))
+      );
+      return;
+
+
+
   - name: virtual_control_axis_change_func
     virtual: true
     override: true
@@ -749,19 +766,10 @@ functions:
             player_right_pressed = true;
          } break;
 
-         case ALLEGRO_KEY_C: {
-            // TODO: Sort out route event:
-            event_emitter->emit_router_event(
-               AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
-               new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
-            );
-
-            //event_emitter->talk_to_an_npc
-            event_emitter->emit_event(
-               ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
-               intptr_t(new std::string("talk_to_an_npc"))
-            );
-
+         case ALLEGRO_KEY_SPACE:
+         case ALLEGRO_KEY_ENTER:
+         case ALLEGRO_KEY_X: {
+            interact_with_focused_object();
          } break;
 
          default: {
