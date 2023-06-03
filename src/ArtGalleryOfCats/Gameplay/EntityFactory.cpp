@@ -235,7 +235,8 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
 
    result->stepout = { 0, 1.2, 0 };
    //camera.stepout = {0, 1.0, 4};  // step back from the origin
-   result->tilt = 0.13;            // look up(-)/down(+)
+   //result->tilt = 0.13;            // look up(-)/down(+)
+   result->tilt = 0.0;             // set a good start initial spin
    result->spin = 0.0;             // set a good start initial spin
    //result->spin = 0.2;             // set a good start initial spin
    result->set_near_plane(0.1);

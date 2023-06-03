@@ -41,6 +41,10 @@ namespace ArtGalleryOfCats
          std::string current_level_identifier;
          void* current_level;
          AllegroFlare::Vec2D player_velocity;
+         bool player_right_pressed;
+         bool player_left_pressed;
+         bool player_up_pressed;
+         bool player_down_pressed;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
          AllegroFlare::Shaders::Cubemap cubemap_shader;
@@ -86,6 +90,7 @@ namespace ArtGalleryOfCats
          void player_strafe_left();
          void player_move_forward();
          void player_move_backward();
+         AllegroFlare::Vec2D infer_player_velocity_from_keypress();
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;

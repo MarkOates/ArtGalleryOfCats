@@ -37,6 +37,10 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
    , player_velocity({})
+   , player_right_pressed(false)
+   , player_left_pressed(false)
+   , player_up_pressed(false)
+   , player_down_pressed(false)
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
    , cubemap_shader({})
@@ -596,6 +600,22 @@ void Screen::player_move_backward()
    return;
 }
 
+AllegroFlare::Vec2D Screen::infer_player_velocity_from_keypress()
+{
+   AllegroFlare::Vec2D result = { 0, 0 };
+   float speed = 0.1;
+
+   if (player_left_pressed && player_right_pressed) result.x = 0.0f;
+   else if (player_left_pressed) result.x = -speed;
+   else if (player_right_pressed) result.x = speed;
+
+   if (player_up_pressed && player_down_pressed) result.y = 0.0f;
+   else if (player_up_pressed) result.y = -speed;
+   else if (player_down_pressed) result.y = speed;
+
+   return result;
+}
+
 void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, AllegroFlare::VirtualControllers::Base* virtual_controller, int virtual_controller_button_num, bool is_repeat)
 {
    if (!(initialized))
@@ -605,6 +625,31 @@ void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, Allegr
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::virtual_control_button_up_func: error: guard \"initialized\" not met");
    }
+
+   switch(virtual_controller_button_num)
+   {
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
+         player_left_pressed = false;
+      } break;
+
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
+         player_right_pressed = false;
+      } break;
+
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
+         player_up_pressed = false;
+      } break;
+
+      case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
+         player_down_pressed = false;
+      } break;
+
+      default: {
+         // TODO: IMPORTANT: There is currently no escape from gameplay/screen
+         //call_on_finished_callback_func();
+      } break;
+   };
+
    player_stop_moving(); // TODO: Improve this movement
    return;
 }
@@ -623,18 +668,22 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    switch(virtual_controller_button_num)
    {
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
+         player_left_pressed = true;
          player_strafe_left();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
+         player_right_pressed = true;
          player_strafe_right();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
+         player_up_pressed = true;
          player_move_forward();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
+         player_down_pressed = true;
          player_move_backward();
       } break;
 

@@ -51,6 +51,22 @@ properties:
     type: AllegroFlare::Vec2D
     init_with: '{}'
 
+  - name: player_right_pressed
+    type: bool
+    init_with: false
+
+  - name: player_left_pressed
+    type: bool
+    init_with: false
+
+  - name: player_up_pressed
+    type: bool
+    init_with: false
+
+  - name: player_down_pressed
+    type: bool
+    init_with: false
+
   - name: on_finished_callback_func
     type: std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)>
     init_with: ''
@@ -595,6 +611,23 @@ functions:
       return;
 
 
+  - name: infer_player_velocity_from_keypress
+    type: AllegroFlare::Vec2D
+    body: |
+      AllegroFlare::Vec2D result = { 0, 0 };
+      float speed = 0.1;
+   
+      if (player_left_pressed && player_right_pressed) result.x = 0.0f;
+      else if (player_left_pressed) result.x = -speed;
+      else if (player_right_pressed) result.x = speed;
+
+      if (player_up_pressed && player_down_pressed) result.y = 0.0f;
+      else if (player_up_pressed) result.y = -speed;
+      else if (player_down_pressed) result.y = speed;
+
+      return result;
+
+
   - name: virtual_control_button_up_func
     virtual: true
     override: true
@@ -613,6 +646,31 @@ functions:
         default_argument: false
     guards: [ initialized ]
     body: |
+
+      switch(virtual_controller_button_num)
+      {
+         case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
+            player_left_pressed = false;
+         } break;
+
+         case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
+            player_right_pressed = false;
+         } break;
+
+         case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
+            player_up_pressed = false;
+         } break;
+
+         case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
+            player_down_pressed = false;
+         } break;
+
+         default: {
+            // TODO: IMPORTANT: There is currently no escape from gameplay/screen
+            //call_on_finished_callback_func();
+         } break;
+      };
+
       player_stop_moving(); // TODO: Improve this movement
       return;
 
@@ -640,18 +698,22 @@ functions:
       switch(virtual_controller_button_num)
       {
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
+            player_left_pressed = true;
             player_strafe_left();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
+            player_right_pressed = true;
             player_strafe_right();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
+            player_up_pressed = true;
             player_move_forward();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
+            player_down_pressed = true;
             player_move_backward();
          } break;
 
