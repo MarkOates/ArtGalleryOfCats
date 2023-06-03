@@ -181,7 +181,7 @@ void LevelFactory::load_primary_map()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-08.tmj";
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-09.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
