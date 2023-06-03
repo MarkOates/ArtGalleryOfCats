@@ -77,12 +77,20 @@ functions:
       }
       else if (class_property == "wall_art")
       {
+         float rotation = 0.0f;
          float wall_art_scale = ArtGalleryOfCats::Gameplay::EntityFactory::DEFAULT_WALL_ART_SCALE;
+
+         // extract custom properties
+         for (auto &custom_property : custom_properties)
+         {
+            //if (custom_property.first == "facing");
+         }
+
          ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_wall_art(
             name_property, //"art1",
             "storyboard-2-01-1165x500.png",
             { x_property - width_property * 0.5f, 1.0, y_property - height_property * 0.5f },
-            0.0f,
+            rotation,
             wall_art_scale,
             {}
          );

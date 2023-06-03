@@ -96,11 +96,7 @@ functions:
                as_agc_entity->get_placement_ref().start_transform();
 
                AllegroFlare::Placement3D inner_transform;
-               //inner_transform.scale = { 0.002, 0.002, 0.002 };
-               //inner_transform.start_transform();
-               al_draw_bitmap(texture, 0, 0, 0);
-               //inner_transform.restore_transform();
-
+               al_draw_bitmap(texture, 0, 0, ALLEGRO_FLIP_VERTICAL);
                as_agc_entity->get_placement_ref().restore_transform();
             }
          }
