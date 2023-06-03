@@ -27,6 +27,7 @@ namespace ArtGalleryOfCats
    class Runner : public AllegroFlare::Screens::Base
    {
    public:
+      static constexpr char* NPC_CONVERSATIONS_SCREEN = (char*)"npc_conversations_screen";
       static constexpr char* EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN = (char*)"activate_primary_gameplay_screen";
       static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Runner";
 
@@ -47,6 +48,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Screens::LevelSelectScreen level_select_screen;
       AllegroFlare::Screens::GameOverScreen game_over_screen;
       AllegroFlare::Screens::GameWonScreen game_won_screen;
+      AllegroFlare::Screens::Storyboard npc_conversations_screen;
       AllegroFlare::Screens::Storyboard game_won_outro_storyboard_screen;
       AllegroFlare::Screens::RollingCredits rolling_credits_screen;
       ArtGalleryOfCats::Gameplay::Screen primary_gameplay_screen;

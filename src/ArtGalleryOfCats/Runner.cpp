@@ -34,6 +34,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , level_select_screen()
    , game_over_screen()
    , game_won_screen()
+   , npc_conversations_screen()
    , game_won_outro_storyboard_screen()
    , rolling_credits_screen()
    , primary_gameplay_screen()
@@ -208,6 +209,18 @@ void Runner::initialize()
        //),
    });
 
+   // TODO: Figure out how to spawn the npc_conversations_screen
+   npc_conversations_screen.set_event_emitter(event_emitter);
+   npc_conversations_screen.set_font_bin(font_bin);
+   npc_conversations_screen.set_background(&solid_black_background);
+   npc_conversations_screen.initialize();
+   npc_conversations_screen.get_storyboard_element_ref().set_pages({
+       page_factory.create_advancing_text_page(
+         "I really like all this art! It really nourishes the spirit. It ignites the soul!"
+       ),
+   });
+
+
    // TODO: Setup level select screen
    level_select_screen.set_event_emitter(event_emitter);
    level_select_screen.set_bitmap_bin(bitmap_bin);
@@ -342,6 +355,10 @@ void Runner::setup_router()
    router.register_screen(
       AllegroFlare::Routers::Standard::PRIMARY_GAMEPLAY_SCREEN_IDENTIFIER,
       &primary_gameplay_screen
+   );
+   router.register_screen(
+      NPC_CONVERSATIONS_SCREEN,
+      &npc_conversations_screen
    );
 
    // Set the callbacks
@@ -481,6 +498,15 @@ void Runner::setup_router()
          // TODO: This should be a push/pop'd screen
          this->router.emit_route_event(
             AllegroFlare::Routers::Standard::EVENT_ACTIVATE_TITLE_SCREEN,
+            nullptr,
+            al_get_time()
+         );
+      }
+   );
+   npc_conversations_screen.set_on_finished_callback_func(
+      [this](AllegroFlare::Screens::Storyboard* screen, void* data) {
+         this->router.emit_route_event(
+            AllegroFlare::Routers::Standard::EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN,
             nullptr,
             al_get_time()
          );
