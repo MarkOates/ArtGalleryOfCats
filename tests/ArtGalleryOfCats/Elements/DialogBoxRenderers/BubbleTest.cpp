@@ -1,28 +1,136 @@
 
 #include <gtest/gtest.h>
 
+#define ASSERT_THROW_WITH_MESSAGE(code, raised_exception_type, raised_exception_message) \
+   try { code; FAIL() << "Expected " # raised_exception_type; } \
+   catch ( raised_exception_type const &err ) { EXPECT_EQ(err.what(), std::string( raised_exception_message )); } \
+   catch (...) { FAIL() << "Expected " # raised_exception_type; }
+
+#ifdef _WIN32
+#define TEST_FIXTURE_FONT_FOLDER "/msys64/home/Mark/Repos/allegro_flare/bin/data/fonts/"
+#define TEST_FIXTURE_BITMAP_FOLDER "/msys64/home/Mark/Repos/allegro_flare/bin/data/bitmaps/"
+#else
+#define TEST_FIXTURE_FONT_FOLDER "/Users/markoates/Repos/allegro_flare/bin/data/fonts/"
+#define TEST_FIXTURE_BITMAP_FOLDER "/Users/markoates/Repos/allegro_flare/bin/data/bitmaps/"
+#endif
+
 #include <ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.hpp>
 
+#include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
+#include <allegro5/allegro_primitives.h>
+#include <chrono>
+#include <thread>
 
-TEST(ArtGalleryOfCats_Elements_DialogBoxRenderers_BubbleTest, can_be_created_without_blowing_up)
+class FooTest : public ::testing::Test {};
+class FooWithFixtureTest
+   : public AllegroFlare::Testing::WithAllegroRenderingFixture {};
+
+
+TEST_F(FooTest, can_be_created_without_blowing_up)
 {
-   ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble bubble;
+   ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble you_got_an_item_renderer;
 }
 
 
-TEST(ArtGalleryOfCats_Elements_DialogBoxRenderers_BubbleTest, TYPE__has_the_expected_value)
+TEST_F(FooWithFixtureTest,
+   CAPTURE__render__when_the_dialog_box_is_finished__renders_special_empty_text)
 {
-   //EXPECT_STREQ(
-     //"ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
-     //ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble::TYPE
-   //);
+   AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+   ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble dialog_box_renderer(&font_bin);
+   dialog_box_renderer.set_current_page_text("This dialog is finished");
+   dialog_box_renderer.set_is_finished(true);
+   
+   AllegroFlare::Placement2D place{ 1920/2, 1080/2, dialog_box_renderer.get_width(), dialog_box_renderer.get_height() };
+   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+   place.start_transform();
+   dialog_box_renderer.render();
+   place.restore_transform();
+   al_flip_display();
 }
 
 
-TEST(ArtGalleryOfCats_Elements_DialogBoxRenderers_BubbleTest, type__has_the_expected_value_matching_TYPE)
+TEST_F(FooWithFixtureTest,
+   CAPTURE__render__draws_multiline_dialog)
 {
-   //ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble bubble;
-   //EXPECT_EQ(ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble::TYPE, bubble.get_type());
+   AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
+   std::string page_text =
+      "This is some dialog test text. In this case, there's a lot of text that will need to fit on multiple lines.";
+   ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble dialog_box_renderer(&font_bin);
+   dialog_box_renderer.set_current_page_text(page_text);
+
+   AllegroFlare::Placement2D place{ 1920/2, 1080/2, dialog_box_renderer.get_width(), dialog_box_renderer.get_height() };
+   al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+   place.start_transform();
+   dialog_box_renderer.render();
+   place.restore_transform();
+   al_flip_display();
+}
+
+
+TEST_F(FooWithFixtureTest,
+   render__will_show_a_reveal_animation_respecting_age)
+{
+   AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
+   std::string page_text =
+      "This is some dialog test text. In this case, there's a lot of text that will need to fit on multiple lines.";
+   ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble dialog_box_renderer(&font_bin);
+   dialog_box_renderer.set_current_page_text(page_text);
+
+   AllegroFlare::Placement2D place{ 1920/2, 1080/2, dialog_box_renderer.get_width(), dialog_box_renderer.get_height() };
+
+   float started_at = al_get_time();
+   for (int passes=0; passes<60; passes++)
+   {
+      float age = al_get_time() - started_at;
+      dialog_box_renderer.set_age(age);
+
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+
+      place.start_transform();
+      dialog_box_renderer.render();
+      place.restore_transform();
+      al_flip_display();
+
+      sleep_for_frame();
+   }
+}
+
+
+TEST_F(FooWithFixtureTest,
+   CAPTURE__render__will_propertly_render_num_revealed_characters)
+{
+   AllegroFlare::FontBin &font_bin = get_font_bin_ref();
+   font_bin.set_full_path(TEST_FIXTURE_FONT_FOLDER);
+
+   std::string page_text = "Some test dialog text that will reveal characters sequentially when rendering.";
+
+   int num_revealed_characters = 0;
+   for (unsigned i=0; i<page_text.size(); i++)
+   {
+      num_revealed_characters++;
+
+      ArtGalleryOfCats::Elements::DialogBoxRenderers::Bubble dialog_box_renderer(&font_bin);
+      dialog_box_renderer.set_current_page_text(page_text);
+      dialog_box_renderer.set_num_revealed_characters(num_revealed_characters);
+
+      AllegroFlare::Placement2D place{
+         1920/2, 1080/2, dialog_box_renderer.get_width(), dialog_box_renderer.get_height()
+      };
+
+      al_clear_to_color(ALLEGRO_COLOR{0, 0, 0, 1});
+      place.start_transform();
+      dialog_box_renderer.render();
+      place.restore_transform();
+
+      //al_flip_display();
+      //std::this_thread::sleep_for(std::chrono::microseconds(10000)); // add sleep for more obvious visual delay
+   }
+   al_flip_display();
 }
 
 
