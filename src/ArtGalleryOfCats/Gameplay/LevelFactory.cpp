@@ -66,7 +66,7 @@ AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
 }
 
 
-void LevelFactory::object_parsed_callback(std::string name_property, std::string class_property, float x_property, float y_property, float width_property, float height_property, void* user_data)
+void LevelFactory::object_parsed_callback(std::string name_property, std::string class_property, float x_property, float y_property, float width_property, float height_property, std::vector<std::pair<std::string, std::string>> custom_properties, void* user_data)
 {
    if (!(user_data))
    {
@@ -91,6 +91,8 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
       {}
    );
    entity_pool.add(art);
+
+   std::cout << "-------- " << custom_properties.size() << std::endl; // DEBUGGING
 
    // TODO: This function
    return;
