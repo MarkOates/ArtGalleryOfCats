@@ -753,6 +753,12 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
 
 void Screen::interact_with_focused_object()
 {
+   if (!entity_player_is_currently_colliding_with)
+   {
+      // TODO: play a sound that indicates there is nothing to interact with
+      return;
+   }
+
    player_stop_moving();
 
    // TODO: Sort out route event:
