@@ -45,7 +45,7 @@ functions:
       - name: texture_filename
         type: std::string
         default_argument: '"[unset-texture_filename]"'
-      - name: position
+      - name: model_position
         type: AllegroFlare::Vec3D
         default_argument: '{}'
       - name: rotation_y
@@ -72,7 +72,7 @@ functions:
          result->set(additional_entity_flag);
       }
 
-      result->get_placement_ref().position = position;
+      result->get_placement_ref().position = model_position;
       result->get_placement_ref().rotation.y = rotation_y;
 
       return result;
@@ -89,7 +89,7 @@ functions:
       - name: texture_filename
         type: std::string
         default_argument: '"[unset-texture_filename]"'
-      - name: position
+      - name: model_position
         type: AllegroFlare::Vec3D
         default_argument: '{}'
       - name: rotation_y
@@ -121,7 +121,7 @@ functions:
          result->set(additional_entity_flag);
       }
 
-      result->get_placement_ref().position = position;
+      result->get_placement_ref().position = model_position;
       result->get_placement_ref().rotation.y = rotation_y;
 
       //float art_scale = 0.002; // An arbitrary number to set the dimensionality of the art

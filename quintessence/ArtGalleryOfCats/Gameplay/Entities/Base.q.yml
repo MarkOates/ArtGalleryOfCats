@@ -46,6 +46,14 @@ properties:
     setter: true
     getter_ref: true
 
+  - name: hit_box_2d
+    type: AllegroFlare::Physics::AABB2D
+    init_with: '{}'
+    constructor_arg: true
+    getter: true
+    setter: true
+    getter_ref: true
+
   - name: TYPE
     type: char*
     init_with: '(char*)"ArtGalleryOfCats/Gameplay/Entities/Base"'
@@ -64,5 +72,7 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::Placement3D
     headers: [ AllegroFlare/Placement3D.hpp ]
+  - symbol: AllegroFlare::Physics::AABB2D
+    headers: [ AllegroFlare/Physics/AABB2D.hpp ]
 
 
