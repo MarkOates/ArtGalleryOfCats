@@ -334,7 +334,7 @@ void Screen::update_entity_player_is_currently_colliding_with()
       entity_pool.select_A(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
 
 
-   float player_hit_box_size = 1.4;
+   float player_hit_box_size = 1.6;
    float player_h_hit_box_size = player_hit_box_size * 0.5;
    AllegroFlare::Vec3D player_position = find_primary_camera()->get_placement_ref().position;
    AllegroFlare::Physics::AABB2D player_hit_box_2d(
