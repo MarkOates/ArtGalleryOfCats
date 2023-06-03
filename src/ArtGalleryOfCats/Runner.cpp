@@ -36,6 +36,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , game_over_screen()
    , game_won_screen()
    , npc_conversations_screen()
+   , user_text_input_screen()
    , game_won_outro_storyboard_screen()
    , rolling_credits_screen()
    , primary_gameplay_screen()
@@ -235,6 +236,15 @@ void Runner::initialize()
        //),
        ),
    });
+
+
+   // Setup the "user_text_input_screen"
+   user_text_input_screen.set_font_bin(&get_font_bin_ref());
+   user_text_input_screen.set_font_size(-40);
+   user_text_input_screen.set_event_emitter(&event_emitter);
+   user_text_input_screen.initialize();
+   // Use "keyboard" mode (keyboard keys will type characters)
+   user_text_input_screen.set_mode_to_using_keyboard();
 
 
    // TODO: Setup level select screen

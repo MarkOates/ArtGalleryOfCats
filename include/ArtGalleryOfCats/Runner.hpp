@@ -20,6 +20,7 @@
 #include <AllegroFlare/Screens/Version.hpp>
 #include <ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
+#include <ArtGalleryOfCats/Screens/UserTextInput.hpp>
 #include <ReleaseInfo.hpp>
 #include <string>
 
@@ -30,6 +31,7 @@ namespace ArtGalleryOfCats
    {
    public:
       static constexpr char* NPC_CONVERSATIONS_SCREEN = (char*)"npc_conversations_screen";
+      static constexpr char* USER_TEXT_INPUT_SCREEN = (char*)"user_text_input_screen";
       static constexpr char* EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN = (char*)"activate_primary_gameplay_screen";
       static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Runner";
 
@@ -51,6 +53,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Screens::GameOverScreen game_over_screen;
       AllegroFlare::Screens::GameWonScreen game_won_screen;
       AllegroFlare::Screens::Storyboard npc_conversations_screen;
+      ArtGalleryOfCats::Screens::UserTextInput user_text_input_screen;
       AllegroFlare::Screens::Storyboard game_won_outro_storyboard_screen;
       AllegroFlare::Screens::RollingCredits rolling_credits_screen;
       ArtGalleryOfCats::Gameplay::Screen primary_gameplay_screen;

@@ -83,6 +83,10 @@ properties:
     type: AllegroFlare::Screens::Storyboard
     init_with: ''
 
+  - name: user_text_input_screen
+    type: ArtGalleryOfCats::Screens::UserTextInput
+    init_with: ''
+
   - name: game_won_outro_storyboard_screen
     type: AllegroFlare::Screens::Storyboard
     init_with: ''
@@ -114,6 +118,12 @@ properties:
   - name: NPC_CONVERSATIONS_SCREEN
     type: char*
     init_with: '(char*)"npc_conversations_screen"'
+    static: true
+    constexpr: true
+
+  - name: USER_TEXT_INPUT_SCREEN
+    type: char*
+    init_with: '(char*)"user_text_input_screen"'
     static: true
     constexpr: true
 
@@ -281,6 +291,15 @@ functions:
           //),
           ),
       });
+
+
+      // Setup the "user_text_input_screen"
+      user_text_input_screen.set_font_bin(&get_font_bin_ref());
+      user_text_input_screen.set_font_size(-40);
+      user_text_input_screen.set_event_emitter(&event_emitter);
+      user_text_input_screen.initialize();
+      // Use "keyboard" mode (keyboard keys will type characters)
+      user_text_input_screen.set_mode_to_using_keyboard();
 
 
       // TODO: Setup level select screen
@@ -700,5 +719,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.hpp ]
   - symbol: AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText
     headers: [ AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp ]
+  - symbol: ArtGalleryOfCats::Screens::UserTextInput
+    headers: [ ArtGalleryOfCats/Screens/UserTextInput.hpp ]
 
 
