@@ -34,6 +34,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: resources_path
+    type: std::string
+    init_with: '"[unset-resources_path]"'
+    constructor_arg: true
+
   - name: router
     type: AllegroFlare::Routers::Standard
     init_with: ''
@@ -280,6 +285,7 @@ functions:
       primary_gameplay_screen.set_bitmap_bin(bitmap_bin);
       primary_gameplay_screen.set_font_bin(font_bin);
       primary_gameplay_screen.set_model_bin(model_bin);
+      primary_gameplay_screen.set_resources_path(resources_path);
       primary_gameplay_screen.initialize();
 
       // TODO: Load up our sound effects
@@ -544,7 +550,8 @@ functions:
          &framework.get_event_emitter_ref(),
          &framework.get_bitmap_bin_ref(),
          &framework.get_font_bin_ref(),
-         &framework.get_model_bin_ref()
+         &framework.get_model_bin_ref(),
+         framework.get_data_folder_path()
       );
       runner.initialize();
       framework.register_screen("runner", &runner);

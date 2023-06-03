@@ -5,6 +5,8 @@
 ### Genre: Fable: all characters are animals
 
 ### Art: Iridescence
+Objects are scattered throughout the gallery that have an iridescent refraction
+on them.
 
 ### Art: All Dialog must be implemented comic-book bubble style
 

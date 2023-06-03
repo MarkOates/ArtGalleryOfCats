@@ -36,6 +36,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::BitmapBin* bitmap_bin;
       AllegroFlare::FontBin* font_bin;
       AllegroFlare::ModelBin* model_bin;
+      std::string resources_path;
       AllegroFlare::Routers::Standard router;
       AllegroFlare::Screens::Storyboard intro_logos_screen;
       AllegroFlare::Screens::Storyboard intro_storyboard_screen;
@@ -57,7 +58,7 @@ namespace ArtGalleryOfCats
 
 
    public:
-      Runner(AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr);
+      Runner(AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path="[unset-resources_path]");
       ~Runner();
 
       void initialize();

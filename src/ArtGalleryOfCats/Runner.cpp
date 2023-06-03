@@ -16,13 +16,14 @@ namespace ArtGalleryOfCats
 {
 
 
-Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin)
+Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Runner::TYPE)
    , framework(framework)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , resources_path(resources_path)
    , router()
    , intro_logos_screen()
    , intro_storyboard_screen()
@@ -249,6 +250,7 @@ void Runner::initialize()
    primary_gameplay_screen.set_bitmap_bin(bitmap_bin);
    primary_gameplay_screen.set_font_bin(font_bin);
    primary_gameplay_screen.set_model_bin(model_bin);
+   primary_gameplay_screen.set_resources_path(resources_path);
    primary_gameplay_screen.initialize();
 
    // TODO: Load up our sound effects
@@ -502,7 +504,8 @@ void Runner::run(std::string deployment_environment_mode)
       &framework.get_event_emitter_ref(),
       &framework.get_bitmap_bin_ref(),
       &framework.get_font_bin_ref(),
-      &framework.get_model_bin_ref()
+      &framework.get_model_bin_ref(),
+      framework.get_data_folder_path()
    );
    runner.initialize();
    framework.register_screen("runner", &runner);
