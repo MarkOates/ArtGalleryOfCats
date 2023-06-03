@@ -86,10 +86,6 @@ namespace ArtGalleryOfCats
          void player_spin_change(float delta=0.0f);
          void player_tilt_change(float delta=0.0f);
          void player_stop_moving();
-         void player_strafe_right();
-         void player_strafe_left();
-         void player_move_forward();
-         void player_move_backward();
          AllegroFlare::Vec2D infer_player_velocity_from_keypress();
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;

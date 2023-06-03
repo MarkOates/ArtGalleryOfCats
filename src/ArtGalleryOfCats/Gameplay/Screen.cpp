@@ -581,30 +581,6 @@ void Screen::player_stop_moving()
    return;
 }
 
-void Screen::player_strafe_right()
-{
-   player_velocity.x = 0.1;
-   return;
-}
-
-void Screen::player_strafe_left()
-{
-   player_velocity.x = -0.1;
-   return;
-}
-
-void Screen::player_move_forward()
-{
-   player_velocity.y = -0.1;
-   return;
-}
-
-void Screen::player_move_backward()
-{
-   player_velocity.y = 0.1;
-   return;
-}
-
 AllegroFlare::Vec2D Screen::infer_player_velocity_from_keypress()
 {
    AllegroFlare::Vec2D result = { 0, 0 };
@@ -674,22 +650,18 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    {
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
          player_left_pressed = true;
-         //player_strafe_left();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
          player_right_pressed = true;
-         //player_strafe_right();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
          player_up_pressed = true;
-         //player_move_forward();
       } break;
 
       case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
          player_down_pressed = true;
-         //player_move_backward();
       } break;
 
       default: {

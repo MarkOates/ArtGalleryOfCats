@@ -592,30 +592,6 @@ functions:
       return;
 
 
-  - name: player_strafe_right
-    body: |
-      player_velocity.x = 0.1;
-      return;
-
-
-  - name: player_strafe_left
-    body: |
-      player_velocity.x = -0.1;
-      return;
-
-
-  - name: player_move_forward
-    body: |
-      player_velocity.y = -0.1;
-      return;
-
-
-  - name: player_move_backward
-    body: |
-      player_velocity.y = 0.1;
-      return;
-
-
   - name: infer_player_velocity_from_keypress
     type: AllegroFlare::Vec2D
     body: |
@@ -704,22 +680,18 @@ functions:
       {
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_LEFT: {
             player_left_pressed = true;
-            //player_strafe_left();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_RIGHT: {
             player_right_pressed = true;
-            //player_strafe_right();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_UP: {
             player_up_pressed = true;
-            //player_move_forward();
          } break;
 
          case AllegroFlare::VirtualControllers::GenericController::BUTTON_DOWN: {
             player_down_pressed = true;
-            //player_move_backward();
          } break;
 
          default: {
