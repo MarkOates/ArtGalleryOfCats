@@ -264,7 +264,11 @@ functions:
          std::vector<AllegroFlare::Physics::TileMapCollisionStepperCollisionInfo> stepper_step_result =
             collision_stepper.step();
 
-         placement.position = AllegroFlare::Vec3D(aabb2d.get_x() + box_h_size, 0.0f, aabb2d.get_y() + box_h_size);
+         placement.position = AllegroFlare::Vec3D(
+            aabb2d.get_x() + box_h_size,
+            placement.position.y,
+            aabb2d.get_y() + box_h_size
+         );
          velocity.position = { aabb2d.get_velocity_x(), 0.0f, aabb2d.get_velocity_y() };
          placement.rotation += velocity.rotation;
       }

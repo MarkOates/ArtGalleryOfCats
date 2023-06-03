@@ -115,7 +115,7 @@ void LevelFactory::load_primary_map()
 
    // Create a collectable
    ArtGalleryOfCats::Gameplay::Entities::Base* collectable_object = entity_factory.create_collectable_object(
-      AllegroFlare::Vec3D(14.0, 1.0, 12.0),
+      AllegroFlare::Vec3D(14.0, 0.5, 12.0),
       "rounded_unit_cube-01.obj"
    );
    entity_pool->add(collectable_object);
