@@ -208,7 +208,6 @@ functions:
       - font_bin
       - model_bin
       - (resources_path != DEFAULT_RESOURCES_PATH)
-      - entity_player_is_currently_colliding_with
     body: |
       // TODO: Fix this section
       AllegroFlare::CubemapBuilder builder;
@@ -294,14 +293,14 @@ functions:
 
       // Select all the entities that the player can collide with
       std::vector<AllegroFlare::SceneGraph::Entities::Base*> entities_player_can_interact_with =
-         entity_pool.select_A(ArtGalleryOfCats::EntityFlags::PLAYER_CAN_INTERACT);
+         entity_pool.select_A(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
 
       // Find the entity that the player, in this frame, is colliding with (find the first one)
       ArtGalleryOfCats::Gameplay::Entities::Base *found_colliding_entity = nullptr;
       for (auto &entity_player_can_interact_with : entities_player_can_interact_with)
       {
          ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
-            static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+            static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity_player_can_interact_with);
 
          // TODO: do AABB2D collision against the player
          //AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
@@ -316,6 +315,8 @@ functions:
       }
 
       return;
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::EntityFlags
         
 
   - name: scene_physics_updater
@@ -954,5 +955,7 @@ dependencies:
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: AllegroFlare::SceneGraph::Entities::Base
     headers: [ AllegroFlare/SceneGraph/Entities/Base.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::EntityFlags
+    headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
 
 

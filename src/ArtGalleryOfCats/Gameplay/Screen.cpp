@@ -12,6 +12,7 @@
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
+#include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/SceneRenderer.hpp>
 #include <allegro5/allegro_primitives.h>
@@ -244,13 +245,6 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met");
    }
-   if (!(entity_player_is_currently_colliding_with))
-   {
-      std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"entity_player_is_currently_colliding_with\" not met.";
-      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"entity_player_is_currently_colliding_with\" not met");
-   }
    // TODO: Fix this section
    AllegroFlare::CubemapBuilder builder;
    std::string cube_map_texture_filename = resources_path + "bitmaps/black_prism_1-01.png";
@@ -325,14 +319,14 @@ void Screen::update_entity_player_is_currently_colliding_with()
 
    // Select all the entities that the player can collide with
    std::vector<AllegroFlare::SceneGraph::Entities::Base*> entities_player_can_interact_with =
-      entity_pool.select_A(ArtGalleryOfCats::EntityFlags::PLAYER_CAN_INTERACT);
+      entity_pool.select_A(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
 
    // Find the entity that the player, in this frame, is colliding with (find the first one)
    ArtGalleryOfCats::Gameplay::Entities::Base *found_colliding_entity = nullptr;
    for (auto &entity_player_can_interact_with : entities_player_can_interact_with)
    {
       ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
+         static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity_player_can_interact_with);
 
       // TODO: do AABB2D collision against the player
       //AllegroFlare::Placement3D &placement = as_agc_entity->get_placement_ref();
@@ -347,7 +341,6 @@ void Screen::update_entity_player_is_currently_colliding_with()
    }
 
    return;
-     
 }
 
 void Screen::scene_physics_updater()
