@@ -228,10 +228,31 @@ functions:
       return;
 
 
+  - name: calculate_strafe_xy
+    type: AllegroFlare::Vec3D
+    parameters:
+      - name: spin
+        type: float
+        default_argument: 0.0f
+      - name: displacement
+        type: float
+        default_argument: 0.0f
+    body: |
+      type: AllegroFlare::Vec3D result;
+      AllegroFlare::Vec2D move_vec(cos(spin), sin(spin));
+      result.x = move_vec.x * displacement;
+      result.y = 0;
+      result.z = move_vec.y * displacement;
+      return result;
+        
+
   - name: scene_physics_updater
     private: true
     body: |
       AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
+
+      // Update our camera velocity to match the "player_velocity"
+      
 
       // Extract out the collision map
       entity = entity_pool.find_with_attribute("collision_tile_map");
@@ -620,7 +641,7 @@ functions:
             ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
             static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
 
-            as_camera->get_velocity_ref().position.z = 0.1;
+      as_camera->get_velocity_ref().position.z = 0.1;
       return;
 
 
@@ -832,5 +853,7 @@ dependencies:
     headers: [ AllegroFlare/EventNames.hpp ]
   - symbol: AllegroFlare::Vec2D
     headers: [ AllegroFlare/Vec2D.hpp ]
+  - symbol: AllegroFlare::Vec3D
+    headers: [ AllegroFlare/Vec3D.hpp ]
 
 

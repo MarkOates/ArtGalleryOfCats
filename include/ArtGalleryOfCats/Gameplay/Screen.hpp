@@ -13,6 +13,7 @@
 #include <AllegroFlare/Shaders/Cubemap.hpp>
 #include <AllegroFlare/TileMaps/TileMap.hpp>
 #include <AllegroFlare/Vec2D.hpp>
+#include <AllegroFlare/Vec3D.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <allegro5/allegro.h>
@@ -71,6 +72,7 @@ namespace ArtGalleryOfCats
          virtual void on_activate() override;
          virtual void on_deactivate() override;
          void update();
+         AllegroFlare::Vec3D calculate_strafe_xy(float spin=0.0f, float displacement=0.0f);
          void render();
          void render_tile_map(AllegroFlare::TileMaps::TileMap<int>* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f);
          void render_aabb2d(AllegroFlare::Physics::AABB2D* aabb2d=nullptr, bool adjacent_to_top_edge=false, bool adjacent_to_right_edge=false, bool adjacent_to_bottom_edge=false, bool adjacent_to_left_edge=false);

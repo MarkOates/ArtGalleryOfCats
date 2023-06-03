@@ -273,9 +273,23 @@ void Screen::update()
    return;
 }
 
+AllegroFlare::Vec3D Screen::calculate_strafe_xy(float spin, float displacement)
+{
+   type: AllegroFlare::Vec3D result;
+   AllegroFlare::Vec2D move_vec(cos(spin), sin(spin));
+   result.x = move_vec.x * displacement;
+   result.y = 0;
+   result.z = move_vec.y * displacement;
+   return result;
+     
+}
+
 void Screen::scene_physics_updater()
 {
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
+
+   // Update our camera velocity to match the "player_velocity"
+
 
    // Extract out the collision map
    entity = entity_pool.find_with_attribute("collision_tile_map");
@@ -635,7 +649,7 @@ void Screen::player_move_backward()
          ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
          static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
 
-         as_camera->get_velocity_ref().position.z = 0.1;
+   as_camera->get_velocity_ref().position.z = 0.1;
    return;
 }
 
