@@ -16,6 +16,7 @@
 #include <AllegroFlare/Vec2D.hpp>
 #include <AllegroFlare/Vec3D.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
+#include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <allegro5/allegro.h>
 #include <functional>
@@ -82,6 +83,7 @@ namespace ArtGalleryOfCats
          void update();
          AllegroFlare::Vec3D calculate_strafe_xy(float spin=0.0f, float displacement=0.0f);
          AllegroFlare::Vec3D calculate_forward_back_xy(float spin=0.0f, float displacement=0.0f);
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D* find_primary_camera();
          void update_entity_player_is_currently_colliding_with();
          void render();
          void render_tile_map(AllegroFlare::TileMaps::TileMap<int>* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f);

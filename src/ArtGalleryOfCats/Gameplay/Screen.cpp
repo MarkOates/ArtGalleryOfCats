@@ -312,6 +312,18 @@ AllegroFlare::Vec3D Screen::calculate_forward_back_xy(float spin, float displace
    return result;
 }
 
+ArtGalleryOfCats::Gameplay::Entities::Camera3D* Screen::find_primary_camera()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
+   // Extract our out camera
+   entity = entity_pool.find_with_attribute("primary_camera");
+   if (!entity) throw std::runtime_error("find_primary_camera: no camera present");
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+      static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+
+   return as_camera;
+}
+
 void Screen::update_entity_player_is_currently_colliding_with()
 {
    // TODO: Implement this function
@@ -320,6 +332,20 @@ void Screen::update_entity_player_is_currently_colliding_with()
    // Select all the entities that the player can collide with
    std::vector<AllegroFlare::SceneGraph::Entities::Base*> entities_player_can_interact_with =
       entity_pool.select_A(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
+
+
+   float player_hit_box_size = 1.4;
+   float player_h_hit_box_size = player_hit_box_size * 0.5;
+   AllegroFlare::Vec3D player_position = find_primary_camera()->get_placement_ref().position;
+   AllegroFlare::Physics::AABB2D player_hit_box_2d(
+      player_position.x - player_h_hit_box_size,
+      player_position.y - player_h_hit_box_size,
+      player_hit_box_size,
+      player_hit_box_size,
+      0,
+      0
+   );
+
 
    // Find the entity that the player, in this frame, is colliding with (find the first one)
    ArtGalleryOfCats::Gameplay::Entities::Base *found_colliding_entity = nullptr;
@@ -338,6 +364,7 @@ void Screen::update_entity_player_is_currently_colliding_with()
       entity_player_is_currently_colliding_with = found_colliding_entity;
 
       // TODO: Some feedback that a new collision occurred
+      interact_with_focused_object(); // DEVELOPMENT
    }
 
    return;
