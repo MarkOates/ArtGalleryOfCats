@@ -7,6 +7,18 @@ properties:
     static: true
     constexpr: true
 
+  - name: IS_WALL_ART
+    type: char*
+    init_with: '(char*)"is_wall_art"'
+    static: true
+    constexpr: true
+
+  - name: IS_SCULPTURE_ART
+    type: char*
+    init_with: '(char*)"is_sculpture_art"'
+    static: true
+    constexpr: true
+
   - name: RENDERS_WITH_IRIDESCENT
     type: char*
     init_with: '(char*)"renders_with_iridescent"'

@@ -96,11 +96,11 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    }
    else if (class_property == "wall_art")
    {
-      // TODO: Replace this with a wall-art specific class
-      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_sculpture_art(
+      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_wall_art(
          name_property, //"art-01",
-         "art-01.obj",
-         "art-01.png",
+         //"art-01.obj",
+         "storyboard-2-01-1165x500.png",
+         //art-01.png",
          { x_property, 0, y_property },
          0.0f,
          {}
