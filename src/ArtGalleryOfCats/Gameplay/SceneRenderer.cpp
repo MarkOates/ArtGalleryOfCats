@@ -140,7 +140,13 @@ void SceneRenderer::render()
          if (texture)
          {
             as_agc_entity->get_placement_ref().start_transform();
+
+            AllegroFlare::Placement3D inner_transform;
+            inner_transform.scale = { 0.001, 0.001, 0.001 };
+            inner_transform.start_transform();
             al_draw_bitmap(texture, 0, 0, 0);
+            inner_transform.restore_transform();
+
             as_agc_entity->get_placement_ref().restore_transform();
          }
       }
