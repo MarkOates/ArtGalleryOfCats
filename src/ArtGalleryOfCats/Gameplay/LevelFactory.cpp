@@ -89,7 +89,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_sculpture_art(
          name_property, //"art-01",
          "art-02.obj",
-         "art-02.png",
+         "art-01.png",
          { x_property + width_property * 0.5f, 0, y_property + height_property * 0.5f },
          0.0f,
          hit_box_2d,
