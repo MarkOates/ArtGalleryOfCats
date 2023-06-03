@@ -688,12 +688,17 @@ functions:
       {
          case ALLEGRO_KEY_C: {
             // TODO: Sort out route event:
-            //event_emitter->emit_route_event(EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN);
+            event_emitter->emit_router_event(
+               AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
+               new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
+            );
          } break;
       }
 
       return;
-
+    body_dependency_symbols:
+      - AllegroFlare::Routers::Standard
+      - AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier
 
 
   - name: mouse_axes_func
@@ -771,5 +776,9 @@ dependencies:
     headers: [ AllegroFlare/Cubemap.hpp ]
   - symbol: AllegroFlare::CubemapBuilder
     headers: [ AllegroFlare/CubemapBuilder.hpp ]
+  - symbol: AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier
+    headers: [ AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier.hpp ]
+  - symbol: AllegroFlare::Routers::Standard
+    headers: [ AllegroFlare/Routers/Standard.hpp ]
 
 

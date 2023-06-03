@@ -6,6 +6,8 @@
 #include <AllegroFlare/Camera3D.hpp>
 #include <AllegroFlare/CubemapBuilder.hpp>
 #include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
+#include <AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier.hpp>
+#include <AllegroFlare/Routers/Standard.hpp>
 #include <AllegroFlare/VirtualControllers/GenericController.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
@@ -694,7 +696,10 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
    {
       case ALLEGRO_KEY_C: {
          // TODO: Sort out route event:
-         //event_emitter->emit_route_event(EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN);
+         event_emitter->emit_router_event(
+            AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
+            new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
+         );
       } break;
    }
 
