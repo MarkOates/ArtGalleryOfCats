@@ -211,10 +211,12 @@ void Runner::initialize()
    });
 
 
+
+   // Setup the npc_conversations_screen_background
+   npc_conversations_background.set_inv_scale(4);
    npc_conversations_background.initialize();
 
-
-   // TODO: Figure out how to spawn the npc_conversations_screen
+   // Setup the npc_conversations_screen
    npc_conversations_screen.set_event_emitter(event_emitter);
    npc_conversations_screen.set_font_bin(font_bin);
    npc_conversations_screen.set_background(&npc_conversations_background);
