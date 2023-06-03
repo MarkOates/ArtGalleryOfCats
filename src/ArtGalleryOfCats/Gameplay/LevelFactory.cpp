@@ -66,7 +66,7 @@ AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
 }
 
 
-void LevelFactory::object_parsed_callback(std::string class_property, float x_property, float y_property, float width_property, float height_property, void* user_data)
+void LevelFactory::object_parsed_callback(std::string name_property, std::string class_property, float x_property, float y_property, float width_property, float height_property, void* user_data)
 {
    if (!(user_data))
    {
@@ -83,7 +83,7 @@ void LevelFactory::object_parsed_callback(std::string class_property, float x_pr
    entity_factory.set_bitmap_bin(this_factory->bitmap_bin);
 
    ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
-      "art-01",
+      name_property, //"art-01",
       "art-01.obj",
       "art-01.png",
       { x_property, 0, y_property },

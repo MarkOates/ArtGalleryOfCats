@@ -30,6 +30,9 @@ functions:
     static: true
     type: void
     parameters:
+      - name: name_property
+        type: std::string
+        default_argument: '"[unset-name_property]"'
       - name: class_property
         type: std::string
         default_argument: '"[unset-class_property]"'
@@ -58,7 +61,7 @@ functions:
       entity_factory.set_bitmap_bin(this_factory->bitmap_bin);
 
       ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
-         "art-01",
+         name_property, //"art-01",
          "art-01.obj",
          "art-01.png",
          { x_property, 0, y_property },

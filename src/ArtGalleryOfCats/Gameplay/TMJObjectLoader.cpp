@@ -31,7 +31,7 @@ TMJObjectLoader::~TMJObjectLoader()
 }
 
 
-void TMJObjectLoader::set_object_parsed_callback(std::function<void(std::string, float, float, float, float, void*)> object_parsed_callback)
+void TMJObjectLoader::set_object_parsed_callback(std::function<void(std::string, std::string, float, float, float, float, void*)> object_parsed_callback)
 {
    this->object_parsed_callback = object_parsed_callback;
 }
@@ -43,7 +43,7 @@ void TMJObjectLoader::set_object_parsed_callback_user_data(void* object_parsed_c
 }
 
 
-std::function<void(std::string, float, float, float, float, void*)> TMJObjectLoader::get_object_parsed_callback() const
+std::function<void(std::string, std::string, float, float, float, float, void*)> TMJObjectLoader::get_object_parsed_callback() const
 {
    return object_parsed_callback;
 }
@@ -132,6 +132,7 @@ void TMJObjectLoader::load()
    }
    for (auto &object_json : object_layer_json["objects"].items())
    {
+      std::string name_property = object_json.value()["nema"].get<std::string>();
       std::string class_property = object_json.value()["class"].get<std::string>();
       float x_property = object_json.value()["x"].get<float>();
       float y_property = object_json.value()["y"].get<float>();
@@ -142,6 +143,7 @@ void TMJObjectLoader::load()
       if (object_parsed_callback)
       {
          object_parsed_callback(
+            name_property,
             class_property,
             x_property / (float)tile_width,
             y_property / (float)tile_height,

@@ -31,7 +31,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::BitmapBin* get_bitmap_bin() const;
          AllegroFlare::ModelBin* get_model_bin() const;
          AllegroFlare::SceneGraph::EntityPool* get_entity_pool() const;
-         static void object_parsed_callback(std::string class_property="[unset-class_property]", float x_property=0.0f, float y_property=0.0f, float width_property=0.0f, float height_property=0.0f, void* user_data=nullptr);
+         static void object_parsed_callback(std::string name_property="[unset-name_property]", std::string class_property="[unset-class_property]", float x_property=0.0f, float y_property=0.0f, float width_property=0.0f, float height_property=0.0f, void* user_data=nullptr);
          void load_primary_map();
       };
    }
