@@ -9,6 +9,20 @@ parent_classes:
 properties:
 
 
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: dialog_bubble_bitmap_identifier
+    type: std::string
+    init_with: '"dialog_bubble-01.png"'
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: inv_scale
     type: int
     init_with: DEFAULT_INV_SCALE
@@ -52,9 +66,10 @@ functions:
 
 
   - name: initialize
-    guards: [ (!initialized) ]
+    guards: [ (!initialized), bitmap_bin ]
     body: |
       refresh_capture();
+      bitmap_bin->preload(dialog_bubble_bitmap_identifier); // TODO: this may need to be after init
       initialized = true;
       return;
 
@@ -105,6 +120,12 @@ functions:
          );
       }
 
+      ALLEGRO_BITMAP *dialog_bubble_bitmap = bitmap_bin->auto_get(dialog_bubble_bitmap_identifier);
+      if (dialog_bubble_bitmap)
+      {
+         al_draw_bitmap(dialog_bubble_bitmap, 0, 0, 0);
+      }
+
 
 dependencies:
 
@@ -115,5 +136,7 @@ dependencies:
     headers: [ AllegroFlare/Elements/Backgrounds/Base.hpp ]
   - symbol: AllegroFlare::ScreenCapture
     headers: [ AllegroFlare/ScreenCapture.hpp ]
+  - symbol: AllegroFlare::BitmapBin
+    headers: [ AllegroFlare/BitmapBin.hpp ]
 
 

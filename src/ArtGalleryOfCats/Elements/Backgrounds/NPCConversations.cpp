@@ -16,8 +16,10 @@ namespace Backgrounds
 {
 
 
-NPCConversations::NPCConversations()
+NPCConversations::NPCConversations(AllegroFlare::BitmapBin* bitmap_bin, std::string dialog_bubble_bitmap_identifier)
    : AllegroFlare::Elements::Backgrounds::Base(ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::TYPE)
+   , bitmap_bin(bitmap_bin)
+   , dialog_bubble_bitmap_identifier(dialog_bubble_bitmap_identifier)
    , inv_scale(DEFAULT_INV_SCALE)
    , capture(nullptr)
    , initialized(false)
@@ -27,6 +29,30 @@ NPCConversations::NPCConversations()
 
 NPCConversations::~NPCConversations()
 {
+}
+
+
+void NPCConversations::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   this->bitmap_bin = bitmap_bin;
+}
+
+
+void NPCConversations::set_dialog_bubble_bitmap_identifier(std::string dialog_bubble_bitmap_identifier)
+{
+   this->dialog_bubble_bitmap_identifier = dialog_bubble_bitmap_identifier;
+}
+
+
+AllegroFlare::BitmapBin* NPCConversations::get_bitmap_bin() const
+{
+   return bitmap_bin;
+}
+
+
+std::string NPCConversations::get_dialog_bubble_bitmap_identifier() const
+{
+   return dialog_bubble_bitmap_identifier;
 }
 
 
@@ -66,7 +92,15 @@ void NPCConversations::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("NPCConversations::initialize: error: guard \"(!initialized)\" not met");
    }
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[NPCConversations::initialize]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("NPCConversations::initialize: error: guard \"bitmap_bin\" not met");
+   }
    refresh_capture();
+   bitmap_bin->preload(dialog_bubble_bitmap_identifier); // TODO: this may need to be after init
    initialized = true;
    return;
 }
@@ -109,6 +143,12 @@ void NPCConversations::render()
          1080,
          0
       );
+   }
+
+   ALLEGRO_BITMAP *dialog_bubble_bitmap = bitmap_bin->auto_get(dialog_bubble_bitmap_identifier);
+   if (dialog_bubble_bitmap)
+   {
+      al_draw_bitmap(dialog_bubble_bitmap, 0, 0, 0);
    }
 }
 

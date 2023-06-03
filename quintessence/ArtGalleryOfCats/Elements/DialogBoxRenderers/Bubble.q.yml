@@ -127,6 +127,10 @@ functions:
       frame_place.position.y += 10 * inv_curved_time;
       frame_place.start_transform();
       AllegroFlare::Elements::DialogBoxFrame dialog_box_frame(width, height);
+      dialog_box_frame.set_roundness(height * 0.5);
+      dialog_box_frame.set_border_thickness(6.0);
+      dialog_box_frame.set_backfill_color(al_color_html("fae4cd"));
+
       dialog_box_frame.set_opacity(curved_time);
       dialog_box_frame.render();
       frame_place.restore_transform();
