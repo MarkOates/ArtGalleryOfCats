@@ -692,6 +692,13 @@ functions:
                AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
                new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
             );
+
+            //event_emitter->talk_to_an_npc
+            event_emitter->emit_event(
+               ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
+               intptr_t(new std::string("talk_to_an_npc"))
+            );
+
          } break;
       }
 
@@ -699,6 +706,7 @@ functions:
     body_dependency_symbols:
       - AllegroFlare::Routers::Standard
       - AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier
+      - AllegroFlare::EventNames
 
 
   - name: mouse_axes_func
@@ -780,5 +788,7 @@ dependencies:
     headers: [ AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier.hpp ]
   - symbol: AllegroFlare::Routers::Standard
     headers: [ AllegroFlare/Routers/Standard.hpp ]
+  - symbol: AllegroFlare::EventNames
+    headers: [ AllegroFlare/EventNames.hpp ]
 
 

@@ -168,6 +168,11 @@ functions:
             false,
             false,
          },
+         { "talk_to_an_npc",
+            new AllegroFlare::Achievement("Talk to strangers", "Initiate a conversation with an NPC"),
+            false,
+            false,
+         },
       });
 
       // TODO: Setup intro logos screen

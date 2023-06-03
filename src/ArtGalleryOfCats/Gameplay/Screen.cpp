@@ -5,6 +5,7 @@
 #include <AllegroFlare/Camera2D.hpp>
 #include <AllegroFlare/Camera3D.hpp>
 #include <AllegroFlare/CubemapBuilder.hpp>
+#include <AllegroFlare/EventNames.hpp>
 #include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
 #include <AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier.hpp>
 #include <AllegroFlare/Routers/Standard.hpp>
@@ -700,6 +701,13 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
             AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
             new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
          );
+
+         //event_emitter->talk_to_an_npc
+         event_emitter->emit_event(
+            ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
+            intptr_t(new std::string("talk_to_an_npc"))
+         );
+
       } break;
    }
 
