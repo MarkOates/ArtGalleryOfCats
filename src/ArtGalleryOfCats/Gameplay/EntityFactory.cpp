@@ -64,21 +64,21 @@ AllegroFlare::ModelBin* EntityFactory::get_model_bin() const
 }
 
 
-ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_x, std::vector<std::string> additional_entity_flags)
+ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(std::string art_identifier, std::string model_filename, std::string texture_filename, AllegroFlare::Vec3D position, float rotation_x, std::vector<std::string> additional_entity_flags)
 {
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_art]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[EntityFactory::create_sculpture_art]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_art: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("EntityFactory::create_sculpture_art: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_art]: error: guard \"model_bin\" not met.";
+      error_message << "[EntityFactory::create_sculpture_art]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_art: error: guard \"model_bin\" not met");
+      throw std::runtime_error("EntityFactory::create_sculpture_art: error: guard \"model_bin\" not met");
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
    AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);

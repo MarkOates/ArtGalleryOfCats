@@ -84,7 +84,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
 
    if (class_property == "sculpture")
    {
-      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
+      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_sculpture_art(
          name_property, //"art-01",
          "art-01.obj",
          "art-01.png",
@@ -97,7 +97,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    else if (class_property == "wall_art")
    {
       // TODO: Replace this with a wall-art specific class
-      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
+      ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_sculpture_art(
          name_property, //"art-01",
          "art-01.obj",
          "art-01.png",
@@ -177,19 +177,6 @@ void LevelFactory::load_primary_map()
       "rounded_unit_cube-01.obj"
    );
    entity_pool->add(collectable_object);
-
-   // Create an art
-   /*
-   ArtGalleryOfCats::Gameplay::Entities::Base* art = entity_factory.create_art(
-      "art-01",
-      "art-01.obj",
-      "art-01.png",
-      { 14, 0, 12 },
-      0.0f,
-      {}
-   );
-   entity_pool->add(art);
-   */
 
    // Load objects from the TMJ file
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
