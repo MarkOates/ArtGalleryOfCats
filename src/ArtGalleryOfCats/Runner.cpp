@@ -239,9 +239,9 @@ void Runner::initialize()
 
 
    // Setup the "user_text_input_screen"
-   user_text_input_screen.set_font_bin(&get_font_bin_ref());
+   user_text_input_screen.set_font_bin(font_bin);
    user_text_input_screen.set_font_size(-40);
-   user_text_input_screen.set_event_emitter(&event_emitter);
+   user_text_input_screen.set_event_emitter(event_emitter);
    user_text_input_screen.initialize();
    // Use "keyboard" mode (keyboard keys will type characters)
    user_text_input_screen.set_mode_to_using_keyboard();
