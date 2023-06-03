@@ -570,6 +570,27 @@ void Runner::run(std::string deployment_environment_mode)
    return;
 }
 
+void Runner::game_event_func(AllegroFlare::GameEvent* ev)
+{
+   if (!(ev))
+   {
+      std::stringstream error_message;
+      error_message << "[Runner::game_event_func]: error: guard \"ev\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Runner::game_event_func: error: guard \"ev\" not met");
+   }
+   if (!(event_emitter))
+   {
+      std::stringstream error_message;
+      error_message << "[Runner::game_event_func]: error: guard \"event_emitter\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Runner::game_event_func: error: guard \"event_emitter\" not met");
+   }
+   // NOTE: This is an older way to handle this signal flow, specifically for submitting the user input text. For
+   // now, for this hackathon, it should work fine.
+   return;
+}
+
 AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* Runner::create_image_page(std::string text)
 {
    AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText *result =

@@ -638,6 +638,20 @@ functions:
       - AllegroFlare::Frameworks::Full
 
 
+  - name: game_event_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: AllegroFlare::GameEvent*
+        default_argument: nullptr
+    guards: [ ev, event_emitter ]
+    body: |
+      // NOTE: This is an older way to handle this signal flow, specifically for submitting the user input text. For
+      // now, for this hackathon, it should work fine.
+      return;
+
+
   - name: create_image_page
     parameters:
       - name: text

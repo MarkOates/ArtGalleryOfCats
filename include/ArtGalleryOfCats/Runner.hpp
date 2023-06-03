@@ -7,6 +7,7 @@
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/Frameworks/Full.hpp>
+#include <AllegroFlare/GameEvent.hpp>
 #include <AllegroFlare/ModelBin.hpp>
 #include <AllegroFlare/Routers/Standard.hpp>
 #include <AllegroFlare/Screens/Achievements.hpp>
@@ -67,11 +68,12 @@ namespace ArtGalleryOfCats
 
    public:
       Runner(AllegroFlare::Frameworks::Full* framework=nullptr, AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path="[unset-resources_path]");
-      ~Runner();
+      virtual ~Runner();
 
       void initialize();
       void setup_router();
       static void run(std::string deployment_environment_mode="[unset-deployment_environment_mode]");
+      virtual void game_event_func(AllegroFlare::GameEvent* ev=nullptr) override;
       AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* create_image_page(std::string text="[unset-text]");
    };
 }
