@@ -29,6 +29,14 @@ properties:
     getter: true
     setter: true
 
+  - name: level
+    type: ArtGalleryOfCats::Gameplay::Level*
+    init_with: nullptr
+    constructor_arg: true
+    getter: true
+    setter: true
+
+
 
 functions:
 
@@ -186,6 +194,12 @@ functions:
             this_factory->riddle->set_riddle_answer(property_value);
             found_riddle_answer = true;
          }
+         else if (property_name == "music_identifier")
+         {
+            // TODO: Validate not blank
+            // TODO: Pass in this value to the level
+            this_factory->level->set_music_identifier(property_value);
+         }
       }
 
       if (!found_riddle_text || !found_riddle_prompt_text || !found_riddle_answer)
@@ -205,7 +219,7 @@ functions:
 
 
   - name: load_gallery_01
-    guards: [ bitmap_bin, model_bin, entity_pool, riddle ]
+    guards: [ bitmap_bin, model_bin, entity_pool, riddle, level ]
     body: |
       ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
       entity_factory.set_model_bin(model_bin);
@@ -260,7 +274,7 @@ functions:
 
 
   - name: load_gallery_02
-    guards: [ bitmap_bin, model_bin, entity_pool, riddle ]
+    guards: [ bitmap_bin, model_bin, entity_pool, riddle, level ]
     body: |
       ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
       entity_factory.set_model_bin(model_bin);
@@ -385,5 +399,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Riddle.hpp ]
   - symbol: AllegroFlare::Errors
     headers: [ AllegroFlare/Errors.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Level
+    headers: [ ArtGalleryOfCats/Gameplay/Level.hpp ]
 
 

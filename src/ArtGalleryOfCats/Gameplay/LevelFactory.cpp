@@ -18,11 +18,12 @@ namespace Gameplay
 {
 
 
-LevelFactory::LevelFactory(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool* entity_pool, ArtGalleryOfCats::Gameplay::Riddle* riddle)
+LevelFactory::LevelFactory(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool* entity_pool, ArtGalleryOfCats::Gameplay::Riddle* riddle, ArtGalleryOfCats::Gameplay::Level* level)
    : bitmap_bin(bitmap_bin)
    , model_bin(model_bin)
    , entity_pool(entity_pool)
    , riddle(riddle)
+   , level(level)
 {
 }
 
@@ -56,6 +57,12 @@ void LevelFactory::set_riddle(ArtGalleryOfCats::Gameplay::Riddle* riddle)
 }
 
 
+void LevelFactory::set_level(ArtGalleryOfCats::Gameplay::Level* level)
+{
+   this->level = level;
+}
+
+
 AllegroFlare::BitmapBin* LevelFactory::get_bitmap_bin() const
 {
    return bitmap_bin;
@@ -77,6 +84,12 @@ AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
 ArtGalleryOfCats::Gameplay::Riddle* LevelFactory::get_riddle() const
 {
    return riddle;
+}
+
+
+ArtGalleryOfCats::Gameplay::Level* LevelFactory::get_level() const
+{
+   return level;
 }
 
 
@@ -207,6 +220,12 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
          this_factory->riddle->set_riddle_answer(property_value);
          found_riddle_answer = true;
       }
+      else if (property_name == "music_identifier")
+      {
+         // TODO: Validate not blank
+         // TODO: Pass in this value to the level
+         this_factory->level->set_music_identifier(property_value);
+      }
    }
 
    if (!found_riddle_text || !found_riddle_prompt_text || !found_riddle_answer)
@@ -251,6 +270,13 @@ void LevelFactory::load_gallery_01()
       error_message << "[LevelFactory::load_gallery_01]: error: guard \"riddle\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"riddle\" not met");
+   }
+   if (!(level))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_01]: error: guard \"level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"level\" not met");
    }
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
@@ -329,6 +355,13 @@ void LevelFactory::load_gallery_02()
       error_message << "[LevelFactory::load_gallery_02]: error: guard \"riddle\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"riddle\" not met");
+   }
+   if (!(level))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_02]: error: guard \"level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"level\" not met");
    }
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
