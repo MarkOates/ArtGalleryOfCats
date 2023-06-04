@@ -479,9 +479,13 @@ void Screen::initialize()
 
 void Screen::load_dialog_node_bank()
 {
-   dialog_node_bank.add_node("art1", new AllegroFlare::DialogTree::Node("Mittens",
-     { "Hey!", "Thanks for coming!" }
-   ));
+   dialog_node_bank.set_nodes({
+      { "art1", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "Hey!", "Thanks for coming!" }
+        )
+      },
+   });
    return;
 }
 
