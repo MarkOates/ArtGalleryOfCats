@@ -204,7 +204,7 @@ void Runner::initialize()
          "Hi! Welcome!"
        ),
        create_image_page(
-          "My name is Mittens, and I want to welcome you to..."
+          "My name is Mittens, and I want to welcome you to... drumroll please..."
        ),
        create_image_page(
           "The Art Gallery of Cats!"
@@ -219,16 +219,22 @@ void Runner::initialize()
           "Feel free to look around."
        ),
        create_image_page(
-          "You can use the mouse to look around, and keyboard WASD to move"
+          "You can use the keyboard and mouse to move around."
        ),
        create_image_page(
-          "Please look at the art by moving next to it, and I'll help out"
+          "Move with the ARROW keys, and look around using the mouse."
+       ),
+       create_image_page(
+          "(You can also move with the WASD keys, too!)"
+       ),
+       create_image_page(
+          "Please look at the art by moving next to it. I'm sure I'll have something to say."
        ),
        create_image_page(
           "Oh, and there's riddles to solved to!"
        ),
        create_image_page(
-          "Each gallery has a riddle."
+          "So, each gallery has a riddle."
        ),
        create_image_page(
           "You can choose to answer the riddle at any time by pressing the \"I\" key."
@@ -237,7 +243,10 @@ void Runner::initialize()
           "What a wonderful place!"
        ),
        create_image_page(
-          "Let's take a look in our first gallery! Let's go!"
+          "How about we take a look in our first gallery, huh?"
+       ),
+       create_image_page(
+          "Let's go!"
        ),
    });
        //page_factory.create_advancing_text_page(
