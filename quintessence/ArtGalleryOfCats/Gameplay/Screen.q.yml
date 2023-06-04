@@ -230,8 +230,6 @@ functions:
       level_factory.set_entity_pool(&entity_pool);
       level_factory.set_riddle(&current_riddle);
 
-      level_factory.load_primary_map();
-
 
       std::map<std::string, std::function<void()>> items_map = {
          { "gallery_01", [this, &level_factory](){
@@ -242,6 +240,7 @@ functions:
             level_factory.load_primary_map();
          }},
       };
+
 
       // locate and call the function to handle the item
       if (items_map.count(level_identifier) == 0)
@@ -258,6 +257,8 @@ functions:
          items_map[level_identifier]();
       }
 
+
+      // TODO: Show gallery name
 
 
       return;
