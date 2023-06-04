@@ -39,6 +39,11 @@ properties:
     init_with: '{}'
     constructor_arg: true
 
+  - name: user_text_input_screen
+    type: ArtGalleryOfCats::Screens::UserTextInput*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: current_level_identifier
     type: std::string
     init_with: '"[unset-current_level]"'
@@ -1028,5 +1033,7 @@ dependencies:
     headers: [ AllegroFlare/SceneGraph/Entities/Base.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::EntityFlags
     headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
+  - symbol: ArtGalleryOfCats::Screens::UserTextInput
+    headers: [ ArtGalleryOfCats/Screens/UserTextInput.hpp ]
 
 

@@ -27,7 +27,7 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, AllegroFlare::SceneGraph::EntityPool entity_pool)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, AllegroFlare::SceneGraph::EntityPool entity_pool, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
@@ -35,6 +35,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , model_bin(model_bin)
    , resources_path(resources_path)
    , entity_pool(entity_pool)
+   , user_text_input_screen(user_text_input_screen)
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
    , player_velocity({})

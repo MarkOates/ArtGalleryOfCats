@@ -18,6 +18,7 @@
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
+#include <ArtGalleryOfCats/Screens/UserTextInput.hpp>
 #include <allegro5/allegro.h>
 #include <functional>
 #include <string>
@@ -40,6 +41,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::ModelBin* model_bin;
          std::string resources_path;
          AllegroFlare::SceneGraph::EntityPool entity_pool;
+         ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
          std::string current_level_identifier;
          void* current_level;
          AllegroFlare::Vec2D player_velocity;
@@ -63,7 +65,7 @@ namespace ArtGalleryOfCats
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, AllegroFlare::SceneGraph::EntityPool entity_pool={});
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, AllegroFlare::SceneGraph::EntityPool entity_pool={}, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          virtual ~Screen();
 
          void set_last_user_text_input_value(std::string last_user_text_input_value);
