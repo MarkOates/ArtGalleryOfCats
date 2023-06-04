@@ -22,6 +22,8 @@ TMJObjectLoader::TMJObjectLoader(std::string filename)
    , loaded(false)
    , object_parsed_callback({})
    , object_parsed_callback_user_data(nullptr)
+   , map_property_parsed_callback({})
+   , map_property_parsed_callback_user_data(nullptr)
 {
 }
 
@@ -43,6 +45,18 @@ void TMJObjectLoader::set_object_parsed_callback_user_data(void* object_parsed_c
 }
 
 
+void TMJObjectLoader::set_map_property_parsed_callback(std::function<void(std::string, std::string, std::string, void*)> map_property_parsed_callback)
+{
+   this->map_property_parsed_callback = map_property_parsed_callback;
+}
+
+
+void TMJObjectLoader::set_map_property_parsed_callback_user_data(void* map_property_parsed_callback_user_data)
+{
+   this->map_property_parsed_callback_user_data = map_property_parsed_callback_user_data;
+}
+
+
 std::function<void(std::string, std::string, float, float, float, float, std::vector<std::pair<std::string, std::string>>, void*)> TMJObjectLoader::get_object_parsed_callback() const
 {
    return object_parsed_callback;
@@ -52,6 +66,18 @@ std::function<void(std::string, std::string, float, float, float, float, std::ve
 void* TMJObjectLoader::get_object_parsed_callback_user_data() const
 {
    return object_parsed_callback_user_data;
+}
+
+
+std::function<void(std::string, std::string, std::string, void*)> TMJObjectLoader::get_map_property_parsed_callback() const
+{
+   return map_property_parsed_callback;
+}
+
+
+void* TMJObjectLoader::get_map_property_parsed_callback_user_data() const
+{
+   return map_property_parsed_callback_user_data;
 }
 
 
@@ -172,7 +198,6 @@ void TMJObjectLoader::load()
          );
       }
    }
-
 
    return;
 }

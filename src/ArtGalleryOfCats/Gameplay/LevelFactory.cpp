@@ -17,10 +17,11 @@ namespace Gameplay
 {
 
 
-LevelFactory::LevelFactory(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool* entity_pool)
+LevelFactory::LevelFactory(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool* entity_pool, ArtGalleryOfCats::Gameplay::Riddle* riddle)
    : bitmap_bin(bitmap_bin)
    , model_bin(model_bin)
    , entity_pool(entity_pool)
+   , riddle(riddle)
 {
 }
 
@@ -48,6 +49,12 @@ void LevelFactory::set_entity_pool(AllegroFlare::SceneGraph::EntityPool* entity_
 }
 
 
+void LevelFactory::set_riddle(ArtGalleryOfCats::Gameplay::Riddle* riddle)
+{
+   this->riddle = riddle;
+}
+
+
 AllegroFlare::BitmapBin* LevelFactory::get_bitmap_bin() const
 {
    return bitmap_bin;
@@ -63,6 +70,12 @@ AllegroFlare::ModelBin* LevelFactory::get_model_bin() const
 AllegroFlare::SceneGraph::EntityPool* LevelFactory::get_entity_pool() const
 {
    return entity_pool;
+}
+
+
+ArtGalleryOfCats::Gameplay::Riddle* LevelFactory::get_riddle() const
+{
+   return riddle;
 }
 
 
@@ -176,6 +189,13 @@ void LevelFactory::load_primary_map()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"entity_pool\" not met");
    }
+   if (!(riddle))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_primary_map]: error: guard \"riddle\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"riddle\" not met");
+   }
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
@@ -218,6 +238,9 @@ void LevelFactory::load_primary_map()
    tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
    tmj_object_loader.set_object_parsed_callback_user_data(this);
    tmj_object_loader.load();
+
+   // Load the level riddle
+   // TODO: Load the riddle
 
    return;
 }

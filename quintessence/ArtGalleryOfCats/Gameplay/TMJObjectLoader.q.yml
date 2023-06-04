@@ -22,6 +22,18 @@ properties:
     getter: true
     setter: true
 
+  - name: map_property_parsed_callback
+    type: std::function<void(std::string, std::string, std::string, void*)>
+    init_with: '{}'
+    getter: true
+    setter: true
+
+  - name: map_property_parsed_callback_user_data
+    type: void*
+    init_with: nullptr
+    getter: true
+    setter: true
+
 
 functions:
 
@@ -137,7 +149,6 @@ functions:
             );
          }
       }
-
 
       return;
     body_dependency_symbols:

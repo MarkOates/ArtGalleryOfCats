@@ -22,6 +22,13 @@ properties:
     getter: true
     setter: true
 
+  - name: riddle
+    type: ArtGalleryOfCats::Gameplay::Riddle*
+    init_with: nullptr
+    constructor_arg: true
+    getter: true
+    setter: true
+
 
 functions:
 
@@ -137,7 +144,7 @@ functions:
 
 
   - name: load_primary_map
-    guards: [ bitmap_bin, model_bin, entity_pool ]
+    guards: [ bitmap_bin, model_bin, entity_pool, riddle ]
     body: |
       ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
       entity_factory.set_model_bin(model_bin);
@@ -182,6 +189,9 @@ functions:
       tmj_object_loader.set_object_parsed_callback_user_data(this);
       tmj_object_loader.load();
 
+      // Load the level riddle
+      // TODO: Load the riddle
+
       return;
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::EntityFactory
@@ -206,5 +216,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/TMJObjectLoader.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::LevelFactory
     headers: [ ArtGalleryOfCats/Gameplay/LevelFactory.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Riddle
+    headers: [ ArtGalleryOfCats/Gameplay/Riddle.hpp ]
 
 
