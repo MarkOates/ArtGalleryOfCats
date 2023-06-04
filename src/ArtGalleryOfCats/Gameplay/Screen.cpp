@@ -297,11 +297,24 @@ void Screen::on_activate()
    bool need_to_handle_user_text_input = !last_user_text_input_value.empty();
    if (need_to_handle_user_text_input)
    {
+      bool answer_is_correct = false;
       std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
 
-      interact_with_focused_object(); // DEVELOPMENT
+      // TODO: Develop method to evaluate if answer is correct, and which question is being asked.
+      // HERE
 
       last_user_text_input_value.clear();
+
+      if (!answer_is_correct)
+      {
+         // TODO: Sort out what reaction should be when answer is incorrect
+         trigger_npc_dialog(); // DEVELOPMENT
+      }
+      else
+      {
+         // TODO: Sort out what reaction should be when answer is correct
+         trigger_npc_dialog(); // DEVELOPMENT
+      }
    }
 
    //emit_event_to_update_input_hints_bar();
@@ -788,6 +801,18 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    return;
 }
 
+void Screen::trigger_npc_dialog()
+{
+   // TODO: Set the npc avatar for this dialog
+   // TODO: Setup an npc name, and add it to this dialog
+   // TODO: Set the text pages for this dialog
+   event_emitter->emit_router_event(
+      AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
+      new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
+   );
+   return;
+}
+
 void Screen::interact_with_focused_object()
 {
    if (!entity_player_is_currently_colliding_with)
@@ -798,11 +823,7 @@ void Screen::interact_with_focused_object()
 
    player_stop_moving();
 
-   // TODO: Sort out route event:
-   event_emitter->emit_router_event(
-      AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
-      new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
-   );
+   trigger_npc_dialog(); // DEVELOPMENT
 
    //event_emitter->talk_to_an_npc
    event_emitter->emit_event(
