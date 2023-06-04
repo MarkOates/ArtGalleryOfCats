@@ -209,8 +209,8 @@ functions:
         default_argument: '"[unset-level_identifier]"'
     body: |
       current_level_identifier = level_identifier;
-      if (current_level) delete (int*)(current_level);
-      current_level = (void*)(new int(3));
+      //if (current_level) delete (int*)(current_level);
+      //current_level = (void*)(new int(3));
 
       load_level(level_identifier); // TODO: replace this with name of level
 

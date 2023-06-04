@@ -214,8 +214,8 @@ void Screen::set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput
 void Screen::load_level_by_identifier(std::string level_identifier)
 {
    current_level_identifier = level_identifier;
-   if (current_level) delete (int*)(current_level);
-   current_level = (void*)(new int(3));
+   //if (current_level) delete (int*)(current_level);
+   //current_level = (void*)(new int(3));
 
    load_level(level_identifier); // TODO: replace this with name of level
 

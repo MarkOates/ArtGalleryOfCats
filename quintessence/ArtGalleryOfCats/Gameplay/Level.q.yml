@@ -1,0 +1,30 @@
+properties:
+
+
+  - name: entity_pool
+    type: AllegroFlare::SceneGraph::EntityPool
+    init_with: '{}'
+    constructor_arg: true
+
+  - name: current_riddle
+    type: ArtGalleryOfCats::Gameplay::Riddle
+    init_with: ''
+    getter: true
+    setter: true
+
+  - name: riddle_is_solved
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
+
+
+dependencies:
+
+
+  - symbol: AllegroFlare::SceneGraph::EntityPool
+    headers: [ AllegroFlare/SceneGraph/EntityPool.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Riddle
+    headers: [ ArtGalleryOfCats/Gameplay/Riddle.hpp ]
+
+
