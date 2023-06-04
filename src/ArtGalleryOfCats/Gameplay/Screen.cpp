@@ -217,11 +217,12 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    if (current_level) delete (int*)(current_level);
    current_level = (void*)(new int(3));
 
-   load_level(); // TODO: replace this with name of level
+   load_level(level_identifier); // TODO: replace this with name of level
+
    return;
 }
 
-void Screen::load_level()
+void Screen::load_level(std::string level_identifier)
 {
    ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
    level_factory.set_model_bin(model_bin);
@@ -230,6 +231,34 @@ void Screen::load_level()
    level_factory.set_riddle(&current_riddle);
 
    level_factory.load_primary_map();
+
+
+   std::map<std::string, std::function<void()>> items_map = {
+      { "gallery_01", [this, &level_factory](){
+         level_factory.load_primary_map();
+      }},
+      { "gallery_02", [this, &level_factory](){
+         // TODO: Replace this with new map
+         level_factory.load_primary_map();
+      }},
+   };
+
+   // locate and call the function to handle the item
+   if (items_map.count(level_identifier) == 0)
+   {
+      // item not found
+      std::stringstream error_message;
+      error_message << "[CubeShooter::LevelFactory::load_level]: error: Cannot find item with the level_identifier\""
+                    << level_identifier << "\", it does not exist.";
+      throw std::runtime_error(error_message.str());
+   }
+   else
+   {
+      // call the item
+      items_map[level_identifier]();
+   }
+
+
 
    return;
 }

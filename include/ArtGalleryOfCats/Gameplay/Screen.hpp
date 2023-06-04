@@ -59,7 +59,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::Shaders::Cubemap cubemap_shader;
          AllegroFlare::Cubemap* cubemap;
          bool initialized;
-         void load_level();
+         void load_level(std::string level_identifier="[unset-level_identifier]");
          void scene_physics_updater();
          void scene_renderer_render();
          void render_hud();
