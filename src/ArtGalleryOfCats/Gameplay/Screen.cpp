@@ -237,7 +237,7 @@ void Screen::load_level(std::string level_identifier)
       }},
       { "gallery_02", [this, &level_factory](){
          // TODO: Replace this with new map
-         level_factory.load_primary_map();
+         level_factory.load_gallery_02();
       }},
    };
 
