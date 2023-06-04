@@ -15,6 +15,7 @@
 #include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/SceneRenderer.hpp>
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_primitives.h>
@@ -499,7 +500,7 @@ void Screen::on_activate()
       {
          // TODO: Sort out what reaction should be when answer is incorrect
          // TODO: Set npc dialog to say "hmm, that's not correct"
-         trigger_npc_dialog(); // DEVELOPMENT
+         activate_npc_conversations_screen(); // DEVELOPMENT
       }
       else
       {
@@ -513,7 +514,7 @@ void Screen::on_activate()
 
          riddle_is_solved = true;
 
-         trigger_npc_dialog(); // DEVELOPMENT
+         activate_npc_conversations_screen(); // DEVELOPMENT
       }
    }
 
@@ -1132,7 +1133,7 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    return;
 }
 
-void Screen::trigger_npc_dialog()
+void Screen::activate_npc_conversations_screen()
 {
    // TODO: Set the npc avatar for this dialog
    // TODO: Setup an npc name, and add it to this dialog
@@ -1146,6 +1147,13 @@ void Screen::trigger_npc_dialog()
 
 void Screen::interact_with_focused_object()
 {
+   if (!(npc_conversations_screen))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::interact_with_focused_object]: error: guard \"npc_conversations_screen\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::interact_with_focused_object: error: guard \"npc_conversations_screen\" not met");
+   }
    if (!entity_player_is_currently_colliding_with)
    {
       // TODO: play a sound that indicates there is nothing to interact with
@@ -1154,7 +1162,28 @@ void Screen::interact_with_focused_object()
 
    player_stop_moving();
 
-   trigger_npc_dialog(); // DEVELOPMENT
+
+   //std::string defaut_dialog = "That is some beautiful art!";
+
+
+   // TODO: Clear pages on the storyboard element
+   npc_conversations_screen->get_storyboard_element_ref().set_pages({
+       create_image_page(
+       //page_factory.create_advancing_text_page(
+         "Impressive!"
+          //I guess I would be.",
+         //"I really like all this art! It nourishes the spirit. It ignites the soul!"
+       //),
+       ),
+       create_image_page(
+       //page_factory.create_advancing_text_page(
+          "The artist has such an amazing sense of form and balance!"
+       ),
+   });
+
+
+
+   activate_npc_conversations_screen(); // DEVELOPMENT
 
    //event_emitter->talk_to_an_npc
    event_emitter->emit_event(
@@ -1382,6 +1411,25 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    //result->spin = 0.2;             // set a good start initial spin
    // TODO: this function
    return;
+}
+
+AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* Screen::create_image_page(std::string text)
+{
+   AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText *result =
+      new AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText();
+   result->set_bitmap_bin(bitmap_bin);
+   result->set_font_bin(font_bin);
+   result->set_text(text);
+   result->set_font_size(-50);
+   result->set_line_height_multiplier(1.25f);
+   result->set_image_fade_in_duration_sec(0.0f);
+   result->set_text_color(ALLEGRO_COLOR{0, 0, 0, 1});
+   result->set_image_identifier("character-avatar-01.png");
+   //"storyboard-1-01-1165x500.png");
+   result->set_top_padding(650);
+   result->set_left_padding(600);
+   result->set_right_padding(600);
+   return result;
 }
 
 ALLEGRO_FONT* Screen::obtain_riddle_font()

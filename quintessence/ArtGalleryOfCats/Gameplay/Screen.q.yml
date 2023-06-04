@@ -411,7 +411,7 @@ functions:
          {
             // TODO: Sort out what reaction should be when answer is incorrect
             // TODO: Set npc dialog to say "hmm, that's not correct"
-            trigger_npc_dialog(); // DEVELOPMENT
+            activate_npc_conversations_screen(); // DEVELOPMENT
          }
          else
          {
@@ -425,7 +425,7 @@ functions:
 
             riddle_is_solved = true;
 
-            trigger_npc_dialog(); // DEVELOPMENT
+            activate_npc_conversations_screen(); // DEVELOPMENT
          }
       }
 
@@ -1076,7 +1076,7 @@ functions:
       - AllegroFlare::VirtualControllers::GenericController
 
 
-  - name: trigger_npc_dialog
+  - name: activate_npc_conversations_screen
     body: |
       // TODO: Set the npc avatar for this dialog
       // TODO: Setup an npc name, and add it to this dialog
@@ -1089,6 +1089,7 @@ functions:
 
 
   - name: interact_with_focused_object
+    guards: [ npc_conversations_screen ]
     body: |
       if (!entity_player_is_currently_colliding_with)
       {
@@ -1098,7 +1099,28 @@ functions:
 
       player_stop_moving();
 
-      trigger_npc_dialog(); // DEVELOPMENT
+
+      //std::string defaut_dialog = "That is some beautiful art!";
+
+
+      // TODO: Clear pages on the storyboard element
+      npc_conversations_screen->get_storyboard_element_ref().set_pages({
+          create_image_page(
+          //page_factory.create_advancing_text_page(
+            "Impressive!"
+             //I guess I would be.",
+            //"I really like all this art! It nourishes the spirit. It ignites the soul!"
+          //),
+          ),
+          create_image_page(
+          //page_factory.create_advancing_text_page(
+             "The artist has such an amazing sense of form and balance!"
+          ),
+      });
+
+
+
+      activate_npc_conversations_screen(); // DEVELOPMENT
 
       //event_emitter->talk_to_an_npc
       event_emitter->emit_event(
@@ -1316,6 +1338,32 @@ functions:
       return;
 
 
+  - name: create_image_page
+    parameters:
+      - name: text
+        type: std::string
+        default_argument: '"[unset-text]"'
+    type: AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText*
+    body: |
+      AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText *result =
+         new AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText();
+      result->set_bitmap_bin(bitmap_bin);
+      result->set_font_bin(font_bin);
+      result->set_text(text);
+      result->set_font_size(-50);
+      result->set_line_height_multiplier(1.25f);
+      result->set_image_fade_in_duration_sec(0.0f);
+      result->set_text_color(ALLEGRO_COLOR{0, 0, 0, 1});
+      result->set_image_identifier("character-avatar-01.png");
+      //"storyboard-1-01-1165x500.png");
+      result->set_top_padding(650);
+      result->set_left_padding(600);
+      result->set_right_padding(600);
+      return result;
+    body_dependency_symbols:
+      - ALLEGRO_COLOR
+
+
   - name: obtain_riddle_font
     type: ALLEGRO_FONT*
     body: |
@@ -1337,6 +1385,10 @@ functions:
 dependencies:
 
 
+  - symbol: AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText
+    headers: [ AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_EVENT
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::Screens::Base

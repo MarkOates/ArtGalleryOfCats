@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/Cubemap.hpp>
+#include <AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/ModelBin.hpp>
@@ -124,7 +125,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::Vec2D infer_player_velocity_from_keypress();
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
-         void trigger_npc_dialog();
+         void activate_npc_conversations_screen();
          void interact_with_focused_object();
          void attempt_to_solve_riddle();
          void toggle_riddle_visibility();
@@ -137,6 +138,7 @@ namespace ArtGalleryOfCats
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_axes_func(ALLEGRO_EVENT* ev=nullptr) override;
+         AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText* create_image_page(std::string text="[unset-text]");
          ALLEGRO_FONT* obtain_riddle_font();
          ALLEGRO_FONT* obtain_inspect_hint_icon_font();
          ALLEGRO_FONT* obtain_inspect_hint_text_font();
