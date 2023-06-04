@@ -207,28 +207,24 @@ void TMJObjectLoader::load()
       error_message << "Expecting [\"properties\"] to exist in the root object, but it does not.";
       AllegroFlare::Errors::throw_error("ArtGalleryOfCats::Gameplay::TMJObjectLoader", error_message.str());
    }
-   for (auto &object_json : source_json["properties"].items())
+   for (auto &custom_map_property : source_json["properties"].items())
    {
-      for (auto &custom_map_property : object_json.value()["properties"].items())
-      {
-         std::string custom_map_property_name = custom_map_property.value()["name"].get<std::string>();
-         std::string custom_map_property_type = custom_map_property.value()["type"].get<std::string>();
-         if (custom_map_property_type != "string") throw std::runtime_error("TMJObjectLoader,(with properties) expecting type string");
-         std::string custom_map_property_value = custom_map_property.value()["value"].get<std::string>();
-         //map_property_parsed_callback()
+      std::string custom_map_property_name = custom_map_property.value()["name"].get<std::string>();
+      std::string custom_map_property_type = custom_map_property.value()["type"].get<std::string>();
+      if (custom_map_property_type != "string") throw std::runtime_error("TMJObjectLoader,(with properties) expecting type string");
+      std::string custom_map_property_value = custom_map_property.value()["value"].get<std::string>();
 
-         //type: std::function<void(std::vector<std::tuple<std::string, std::string, std::string>>, void*)>
+      //type: std::function<void(std::vector<std::tuple<std::string, std::string, std::string>>, void*)>
 
-         collected_map_custom_properties.push_back(
-            std::tuple<std::string, std::string, std::string>(
-               custom_map_property_name, custom_map_property_type, custom_map_property_value
-            )
-         );
-      }
+      collected_map_custom_properties.push_back(
+         std::tuple<std::string, std::string, std::string>(
+            custom_map_property_name, custom_map_property_type, custom_map_property_value
+         )
+      );
    }
 
    // TODO: Test this
-   if (object_parsed_callback && !collected_map_custom_properties.empty())
+   if (map_properties_parsed_callback && !collected_map_custom_properties.empty())
    {
       // TODO: Test this
       map_properties_parsed_callback(

@@ -26,6 +26,17 @@ static void object_parsed_callback(
 }
 
 
+static void map_properties_parsed_callback(
+      std::vector<std::tuple<std::string, std::string>> custom_properties,
+      void* user_data
+   )
+{
+   std::cout << "- custom_properties(size): " << custom_properties.size() << std::endl;
+   std::cout << std::endl;
+   return;
+}
+
+
 TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, can_be_created_without_blowing_up)
 {
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmjobject_loader;
