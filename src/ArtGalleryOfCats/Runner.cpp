@@ -152,23 +152,8 @@ void Runner::initialize()
    intro_storyboard_screen.set_event_emitter(event_emitter);
    intro_storyboard_screen.set_font_bin(font_bin);
    intro_storyboard_screen.set_auto_advance(true);
-   intro_storyboard_screen.set_background(&light_blue_background);
+   intro_storyboard_screen.set_background(&solid_black_background);
    intro_storyboard_screen.initialize();
-   intro_storyboard_screen.get_storyboard_element_ref().set_pages({
-      //page_factory.create_image_with_advancing_text_page(
-         //"storyboard-1-01-1165x500.png",
-         //"Once upon a time, in a magical kingdom ruled by a wise and just queen, a young hero sets out on a "
-            //"journey to prove himself and save his people from a terrible curse."
-      //),
-      //page_factory.create_image_with_advancing_text_page(
-         //"storyboard-2-01-1165x500.png",
-         //"With the help of his trusty sidekick and a band of unlikely allies, he must navigate treacherous "
-            //"terrain and battle fierce foes."
-      //),
-      //page_factory.create_advancing_text_page(
-        //"And achieve his goal to save the kingdom."
-      //),
-   });
 
    // TODO: Setup title screen
    title_screen.set_event_emitter(event_emitter);
@@ -211,18 +196,54 @@ void Runner::initialize()
    // TODO: Setup new game intro storyboard screen
    new_game_intro_storyboard_screen.set_event_emitter(event_emitter);
    new_game_intro_storyboard_screen.set_font_bin(font_bin);
-   new_game_intro_storyboard_screen.set_background(&solid_black_background);
+   new_game_intro_storyboard_screen.set_background(&light_blue_background);
    new_game_intro_storyboard_screen.initialize();
+   //new_game_intro_storyboard_screen.get_storyboard_element_ref().set_pages({
    new_game_intro_storyboard_screen.get_storyboard_element_ref().set_pages({
-       //page_factory.create_advancing_text_page(
-         //"In a land beset by darkness, a young hero embarks on a perilous journey to retrieve a powerful "
-            //"artifact that can restore light to the kingdom."
-       //),
+       create_image_page(
+         "Hi! Welcome!"
+       ),
+       create_image_page(
+          "My name is Mittens, and I want to welcome you to..."
+       ),
+       create_image_page(
+          "The Art Gallery of Cats!"
+       ),
+       create_image_page(
+          "(It has a nice ring to it doesn't it?)"
+       ),
+       create_image_page(
+          "I, Mittens, will be your guide."
+       ),
+       create_image_page(
+          "Feel free to look around."
+       ),
+       create_image_page(
+          "You can use the mouse to look around, and keyboard WASD to move"
+       ),
+       create_image_page(
+          "Please look at the art by moving next to it, and I'll help out"
+       ),
+       create_image_page(
+          "Oh, and there's riddles to solved to!"
+       ),
+       create_image_page(
+          "Each gallery has a riddle."
+       ),
+       create_image_page(
+          "You can choose to answer the riddle at any time by pressing the \"I\" key."
+       ),
+       create_image_page(
+          "What a wonderful place!"
+       ),
+       create_image_page(
+          "Let's take a look in our first gallery! Let's go!"
+       ),
+   });
        //page_factory.create_advancing_text_page(
          //"With nothing but a trusty sword and his wits to guide him, he sets out to face whatever dangers "
             //"lie ahead."
        //),
-   });
 
 
 
