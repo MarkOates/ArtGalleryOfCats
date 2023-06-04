@@ -109,6 +109,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::SceneGraph::EntityPool* get_entity_pool();
          ArtGalleryOfCats::Gameplay::Riddle* get_current_riddle();
          void initialize();
+         void activate_npc_dialog_by_identifier(std::string dialog_node_identifier="[unset-dialog_node_identifier]");
          virtual void on_activate() override;
          virtual void on_deactivate() override;
          void hide_input_hints();

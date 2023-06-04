@@ -480,12 +480,34 @@ void Screen::initialize()
 void Screen::load_dialog_node_bank()
 {
    dialog_node_bank.set_nodes({
-      { "art1", new AllegroFlare::DialogTree::Node(
+      { "correct_riddle_answer", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "Hey!", "Thanks for coming!" }
+           { "CORRECT!", "" }
+        )
+      },
+      { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "Hmm, that's not the correct answer to the riddle.", "That's ok! You can try as many times as you like." }
         )
       },
    });
+   return;
+}
+
+void Screen::activate_npc_dialog_by_identifier(std::string dialog_node_identifier)
+{
+   if (!dialog_node_bank.node_exists_by_name(dialog_node_identifier))
+   {
+      std::cout << "!!!!!!!! missing dialog for node \"" << dialog_node_identifier << "\"." << std::endl;
+      return;
+   }
+
+   // TODO: Get dialog pages from node
+   // TODO: Create pages for each node
+   // TODO: Erase the current npc dialog pages
+
+   activate_npc_conversations_screen(); // DEVELOPMENT
+
    return;
 }
 
@@ -527,21 +549,26 @@ void Screen::on_activate()
       {
          // TODO: Sort out what reaction should be when answer is incorrect
          // TODO: Set npc dialog to say "hmm, that's not correct"
-         activate_npc_conversations_screen(); // DEVELOPMENT
+
+         activate_npc_dialog_by_identifier("incorrect_riddle_answer");
       }
       else
       {
          // TODO: Sort out what reaction should be when answer is correct
          // TODO: Set npc dialog to say "That's correct! Nice job!"
 
+         //activate_npc_dialog_by_identifier("correct_riddle_answer");
+
          event_emitter->emit_event(
             ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
             intptr_t(new std::string("solve_a_riddle"))
          );
 
-         riddle_is_solved = true;
+         riddle_is_solved = true; // TODO: modify this on a master list
 
-         activate_npc_conversations_screen(); // DEVELOPMENT
+         activate_npc_dialog_by_identifier("correct_riddle_answer");
+
+         //activate_npc_conversations_screen(); // DEVELOPMENT
       }
    }
 
@@ -1202,6 +1229,7 @@ void Screen::interact_with_focused_object()
 
 
    //std::vector<AllegroFlare::Elements::StoryboardPages::Base *> storyboard_pages = {};
+   //dialog_node_bank.
 
 
 
