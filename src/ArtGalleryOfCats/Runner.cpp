@@ -628,7 +628,7 @@ void Runner::run(std::string deployment_environment_mode)
    // setup the framework
    AllegroFlare::Frameworks::Full framework;
    framework.set_deployment_environment(deployment_environment_mode);
-   //if (disable_escape_key_will_shutdown) framework.disable_escape_key_will_shutdown();
+   framework.disable_escape_key_will_shutdown();
    framework.initialize();
 
    // instantiate our actual game runner

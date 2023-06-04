@@ -113,6 +113,7 @@ namespace ArtGalleryOfCats
          void interact_with_focused_object();
          void prompt_user_for_text_input();
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
+         void emit_event_to_return_to_the_level_select_screen();
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_axes_func(ALLEGRO_EVENT* ev=nullptr) override;

@@ -961,6 +961,16 @@ functions:
       return;
 
 
+  - name: emit_event_to_return_to_the_level_select_screen
+    body: |
+       event_emitter->emit_router_event(
+          AllegroFlare::Routers::Standard::EVENT_ACTIVATE_LEVEL_SELECT_SCREEN,
+          nullptr,
+          al_get_time()
+       );
+       return;
+
+
   - name: key_down_func
     virtual: true
     override: true
@@ -991,6 +1001,11 @@ functions:
 
          case ALLEGRO_KEY_I: {
             prompt_user_for_text_input(); // DEVELOPMENT
+         } break;
+
+         case ALLEGRO_KEY_ESCAPE: {
+            emit_event_to_return_to_the_level_select_screen();
+            //prompt_user_for_text_input(); // DEVELOPMENT
          } break;
 
          case ALLEGRO_KEY_SPACE:

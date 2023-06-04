@@ -954,6 +954,16 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
    return;
 }
 
+void Screen::emit_event_to_return_to_the_level_select_screen()
+{
+   event_emitter->emit_router_event(
+      AllegroFlare::Routers::Standard::EVENT_ACTIVATE_LEVEL_SELECT_SCREEN,
+      nullptr,
+      al_get_time()
+   );
+   return;
+}
+
 void Screen::key_down_func(ALLEGRO_EVENT* ev)
 {
    if (!(initialized))
@@ -991,6 +1001,11 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
 
       case ALLEGRO_KEY_I: {
          prompt_user_for_text_input(); // DEVELOPMENT
+      } break;
+
+      case ALLEGRO_KEY_ESCAPE: {
+         emit_event_to_return_to_the_level_select_screen();
+         //prompt_user_for_text_input(); // DEVELOPMENT
       } break;
 
       case ALLEGRO_KEY_SPACE:
