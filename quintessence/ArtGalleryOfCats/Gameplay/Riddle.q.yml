@@ -1,0 +1,25 @@
+properties:
+
+
+  - name: riddle_text
+    type: std::string
+    init_with: '"[unset-riddle_text]"'
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: user_input_prompt_text
+    type: std::string
+    init_with: '"[unset-user_input_prompt_text]"'
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: correct_answer_text
+    type: std::string
+    init_with: '"[unset-user_input_prompt_text]"'
+    constructor_arg: true
+    getter: true
+    setter: true
+
+
