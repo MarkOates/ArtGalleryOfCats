@@ -201,10 +201,13 @@ void Runner::initialize()
    //new_game_intro_storyboard_screen.get_storyboard_element_ref().set_pages({
    new_game_intro_storyboard_screen.get_storyboard_element_ref().set_pages({
        create_image_page(
-         "Hi! Welcome!"
+         "Hey there!"
        ),
        create_image_page(
-          "My name is Mittens, and I want to welcome you to... drumroll please..."
+          "My name is Mittens, and I want to welcome you to..."
+       ),
+       create_image_page(
+          "drumroll please..."
        ),
        create_image_page(
           "The Art Gallery of Cats!"
@@ -216,7 +219,7 @@ void Runner::initialize()
           "I, Mittens, will be your guide."
        ),
        create_image_page(
-          "Feel free to look around."
+          "Thank you for being our guest! Feel free to look around."
        ),
        create_image_page(
           "You can use the keyboard and mouse to move around."
@@ -225,22 +228,28 @@ void Runner::initialize()
           "Move with the ARROW keys, and look around using the mouse."
        ),
        create_image_page(
-          "(You can also move with the WASD keys, too!)"
+          "Please take all the time you need and a look at all the wonderful art."
        ),
        create_image_page(
-          "Please look at the art by moving next to it. I'm sure I'll have something to say."
+          "Inspect the art by pressing the \"I\" key to get more information."
        ),
        create_image_page(
-          "Oh, and there's riddles to solved to!"
+          "I'm sure I'll have something to say."
+       ),
+       create_image_page(
+          "Oh, and there's riddles to solve, too!"
        ),
        create_image_page(
           "So, each gallery has a riddle."
        ),
        create_image_page(
-          "You can choose to answer the riddle at any time by pressing the \"I\" key."
+          "At any time, you can try to answer the riddle by pressiing the \"S\" key."
        ),
        create_image_page(
-          "What a wonderful place!"
+          "\"S\" for solve!"
+       ),
+       create_image_page(
+          "I'll be around to help you every step of the way, so don't worry."
        ),
        create_image_page(
           "How about we take a look in our first gallery, huh?"

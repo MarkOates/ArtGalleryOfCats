@@ -1391,7 +1391,7 @@ functions:
         default_argument: nullptr
     guards: [ initialized ]
     body: |
-      interact_with_focused_object();
+      //interact_with_focused_object();
       return;
 
 

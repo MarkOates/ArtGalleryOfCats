@@ -1468,7 +1468,7 @@ void Screen::mouse_down_func(ALLEGRO_EVENT* ev)
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::mouse_down_func: error: guard \"initialized\" not met");
    }
-   interact_with_focused_object();
+   //interact_with_focused_object();
    return;
 }
 
