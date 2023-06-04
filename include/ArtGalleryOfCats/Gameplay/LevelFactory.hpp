@@ -40,6 +40,8 @@ namespace ArtGalleryOfCats
          ArtGalleryOfCats::Gameplay::Riddle* get_riddle() const;
          static void object_parsed_callback(std::string name_property="[unset-name_property]", std::string class_property="[unset-class_property]", float x_property=0.0f, float y_property=0.0f, float width_property=0.0f, float height_property=0.0f, std::vector<std::pair<std::string, std::string>> custom_properties={}, void* user_data=nullptr);
          static void map_properties_parsed_callback(std::vector<std::tuple<std::string, std::string, std::string>> map_custom_properties={}, void* user_data=nullptr);
+         void load_gallery_01();
+         void load_gallery_02();
          void load_primary_map();
       };
    }

@@ -233,7 +233,7 @@ void Screen::load_level(std::string level_identifier)
 
    std::map<std::string, std::function<void()>> items_map = {
       { "gallery_01", [this, &level_factory](){
-         level_factory.load_primary_map();
+         level_factory.load_gallery_01();
       }},
       { "gallery_02", [this, &level_factory](){
          // TODO: Replace this with new map

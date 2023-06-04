@@ -222,6 +222,155 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
    return;
 }
 
+void LevelFactory::load_gallery_01()
+{
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_01]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"bitmap_bin\" not met");
+   }
+   if (!(model_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_01]: error: guard \"model_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"model_bin\" not met");
+   }
+   if (!(entity_pool))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_01]: error: guard \"entity_pool\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"entity_pool\" not met");
+   }
+   if (!(riddle))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_01]: error: guard \"riddle\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"riddle\" not met");
+   }
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   entity_factory.set_model_bin(model_bin);
+   entity_factory.set_bitmap_bin(bitmap_bin);
+
+   // Define our source TMJ filename
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery_01-12.tmj";
+
+   // Create the environment visual mesh
+   ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
+      "gallery_01-12.obj",
+      "gallery_01-12.png"
+   );
+   entity_pool->add(environment_mesh);
+
+   // Create the environment visual mesh
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
+      entity_factory.create_collision_tile_map(tmj_source_filename);
+   collision_tile_map->set("collision_tile_map");
+   entity_pool->add(collision_tile_map);
+
+   // Create the camera, define it as the primary camera
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
+   camera->set("primary_camera");
+   entity_pool->add(camera);
+
+   // Move our camera to the "spawn point"
+   AllegroFlare::Vec2D spawn_point = { 14.5, 25 }; // TODO: Update this spawn point to pull from map
+   camera->get_placement_ref().position.x = spawn_point.x;
+   camera->get_placement_ref().position.z = spawn_point.y;
+
+   // Create a collectable
+   ArtGalleryOfCats::Gameplay::Entities::Base* collectable_object = entity_factory.create_collectable_object(
+      AllegroFlare::Vec3D(24.0, 0.5, 17.0),
+      "rounded_unit_cube-01.obj"
+   );
+   entity_pool->add(collectable_object);
+
+   // Load objects from the TMJ file, as well as the riddle
+   ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
+   tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
+   tmj_object_loader.set_object_parsed_callback_user_data(this);
+   tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
+   tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
+   tmj_object_loader.load();
+
+   return;
+}
+
+void LevelFactory::load_gallery_02()
+{
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_02]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"bitmap_bin\" not met");
+   }
+   if (!(model_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_02]: error: guard \"model_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"model_bin\" not met");
+   }
+   if (!(entity_pool))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_02]: error: guard \"entity_pool\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"entity_pool\" not met");
+   }
+   if (!(riddle))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_02]: error: guard \"riddle\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"riddle\" not met");
+   }
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   entity_factory.set_model_bin(model_bin);
+   entity_factory.set_bitmap_bin(bitmap_bin);
+
+   // Define our source TMJ filename
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-01.tmj";
+
+   // Create the environment visual mesh
+   ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
+      "gallery_02-01.obj",
+      "gallery_02-01.png"
+   );
+   entity_pool->add(environment_mesh);
+
+   // Create the environment visual mesh
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
+      entity_factory.create_collision_tile_map(tmj_source_filename);
+   collision_tile_map->set("collision_tile_map");
+   entity_pool->add(collision_tile_map);
+
+   // Create the camera, define it as the primary camera
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
+   camera->set("primary_camera");
+   entity_pool->add(camera);
+
+   // Move our camera to the "spawn point"
+   AllegroFlare::Vec2D spawn_point = { 14.5, 25 }; // TODO: Update this spawn point to pull from map
+   camera->get_placement_ref().position.x = spawn_point.x;
+   camera->get_placement_ref().position.z = spawn_point.y;
+
+   // Load objects from the TMJ file, as well as the riddle
+   ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
+   tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
+   tmj_object_loader.set_object_parsed_callback_user_data(this);
+   tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
+   tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
+   tmj_object_loader.load();
+
+   return;
+}
+
 void LevelFactory::load_primary_map()
 {
    if (!(bitmap_bin))
@@ -252,6 +401,8 @@ void LevelFactory::load_primary_map()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"riddle\" not met");
    }
+   throw std::runtime_error("LevelFactory::load_primary_map - this gallery is obsolete");
+
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
