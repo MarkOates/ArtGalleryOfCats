@@ -17,6 +17,7 @@
 #include <AllegroFlare/Vec3D.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
+#include <ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp>
 #include <ArtGalleryOfCats/Gameplay/Level.hpp>
 #include <ArtGalleryOfCats/Gameplay/Riddle.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
@@ -99,6 +100,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::Vec3D calculate_strafe_xy(float spin=0.0f, float displacement=0.0f);
          AllegroFlare::Vec3D calculate_forward_back_xy(float spin=0.0f, float displacement=0.0f);
          ArtGalleryOfCats::Gameplay::Entities::Camera3D* find_primary_camera();
+         ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* find_collision_tile_map();
          void update_entity_player_is_currently_colliding_with();
          void render();
          void render_tile_map(AllegroFlare::TileMaps::TileMap<int>* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f);

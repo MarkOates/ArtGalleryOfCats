@@ -468,6 +468,18 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* Screen::find_primary_camera()
    return as_camera;
 }
 
+ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* Screen::find_collision_tile_map()
+{
+   AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
+   // Extract our out collision_tile_map
+   entity = entity_pool.find_with_attribute("collision_tile_map");
+   if (!entity) throw std::runtime_error("no collision_tile_map present");
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map =
+      static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
+
+   return as_collision_tile_map;
+}
+
 void Screen::update_entity_player_is_currently_colliding_with()
 {
    // TODO: Implement this function
