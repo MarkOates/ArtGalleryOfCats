@@ -45,6 +45,7 @@ namespace ArtGalleryOfCats
          std::string resources_path;
          ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
          bool riddle_is_solved;
+         bool riddle_is_showing;
          std::string last_user_text_input_value;
          std::string current_level_identifier;
          ArtGalleryOfCats::Gameplay::Level* current_level;
@@ -71,11 +72,13 @@ namespace ArtGalleryOfCats
          virtual ~Screen();
 
          void set_riddle_is_solved(bool riddle_is_solved);
+         void set_riddle_is_showing(bool riddle_is_showing);
          void set_last_user_text_input_value(std::string last_user_text_input_value);
          void set_entity_player_is_currently_colliding_with(AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with);
          void set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func);
          void set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data);
          bool get_riddle_is_solved() const;
+         bool get_riddle_is_showing() const;
          std::string get_last_user_text_input_value() const;
          AllegroFlare::SceneGraph::Entities::Base* get_entity_player_is_currently_colliding_with() const;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> get_on_finished_callback_func() const;
@@ -112,6 +115,8 @@ namespace ArtGalleryOfCats
          void trigger_npc_dialog();
          void interact_with_focused_object();
          void attempt_to_solve_riddle();
+         void toggle_riddle_visibility();
+         void hide_riddle();
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
          void emit_event_to_return_to_the_level_select_screen();
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;

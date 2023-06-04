@@ -45,6 +45,12 @@ properties:
     getter: true
     setter: true
 
+  - name: riddle_is_showing
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
+
   - name: last_user_text_input_value
     type: std::string
     init_with: '""'
@@ -306,6 +312,8 @@ functions:
     override: true
     guards: [ initialized ]
     body: |
+      hide_riddle();
+
       if (riddle_is_solved)
       {
          // Note: NPC dialog, after solving the riddle, will return back to this screen.
@@ -637,6 +645,13 @@ functions:
             al_draw_filled_circle(placement.position.x * 16, placement.position.z * 16, 8, ALLEGRO_COLOR{0, 1, 0.8, 1.0});
          }
       }
+
+      if (riddle_is_showing)
+      {
+         // TODO: Draw the riddle text;
+         std::string riddle_text = get_current_riddle()->get_riddle_text();
+         //al_draw_multiline_text()
+      }
       
       hud_camera.restore_transform();
 
@@ -957,6 +972,18 @@ functions:
       return;
 
 
+  - name: toggle_riddle_visibility
+    body: |
+      riddle_is_showing = !riddle_is_showing;
+      return;
+
+
+  - name: hide_riddle
+    body: |
+      riddle_is_showing = false;
+      return;
+
+
   - name: virtual_control_axis_change_func
     virtual: true
     override: true
@@ -1013,6 +1040,10 @@ functions:
 
          case ALLEGRO_KEY_I: {
             attempt_to_solve_riddle();
+         } break;
+
+         case ALLEGRO_KEY_R: {
+            toggle_riddle_visibility();
          } break;
 
          case ALLEGRO_KEY_ESCAPE: {

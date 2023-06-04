@@ -36,6 +36,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , resources_path(resources_path)
    , user_text_input_screen(user_text_input_screen)
    , riddle_is_solved(false)
+   , riddle_is_showing(false)
    , last_user_text_input_value("")
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -62,6 +63,12 @@ Screen::~Screen()
 void Screen::set_riddle_is_solved(bool riddle_is_solved)
 {
    this->riddle_is_solved = riddle_is_solved;
+}
+
+
+void Screen::set_riddle_is_showing(bool riddle_is_showing)
+{
+   this->riddle_is_showing = riddle_is_showing;
 }
 
 
@@ -92,6 +99,12 @@ void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_
 bool Screen::get_riddle_is_solved() const
 {
    return riddle_is_solved;
+}
+
+
+bool Screen::get_riddle_is_showing() const
+{
+   return riddle_is_showing;
 }
 
 
@@ -370,6 +383,8 @@ void Screen::on_activate()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
    }
+   hide_riddle();
+
    if (riddle_is_solved)
    {
       // Note: NPC dialog, after solving the riddle, will return back to this screen.
@@ -713,6 +728,13 @@ void Screen::render_hud()
       }
    }
 
+   if (riddle_is_showing)
+   {
+      // TODO: Draw the riddle text;
+      std::string riddle_text = get_current_riddle()->get_riddle_text();
+      //al_draw_multiline_text()
+   }
+
    hud_camera.restore_transform();
 
    return;
@@ -997,6 +1019,18 @@ void Screen::attempt_to_solve_riddle()
    return;
 }
 
+void Screen::toggle_riddle_visibility()
+{
+   riddle_is_showing = !riddle_is_showing;
+   return;
+}
+
+void Screen::hide_riddle()
+{
+   riddle_is_showing = false;
+   return;
+}
+
 void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
 {
    if (!(initialized))
@@ -1060,6 +1094,10 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
 
       case ALLEGRO_KEY_I: {
          attempt_to_solve_riddle();
+      } break;
+
+      case ALLEGRO_KEY_R: {
+         toggle_riddle_visibility();
       } break;
 
       case ALLEGRO_KEY_ESCAPE: {
