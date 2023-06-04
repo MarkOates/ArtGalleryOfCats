@@ -312,21 +312,26 @@ void Screen::on_activate()
    if (need_to_handle_user_text_input)
    {
       bool answer_is_correct = false;
-      std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
+      //std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
 
-      // TODO: Develop method to evaluate if answer is correct, and which question is being asked.
-      // HERE
+      // Evaluate if answer is correct, depending on the current riddle, and the player's last input
+      answer_is_correct = current_riddle.matches_answer(last_user_text_input_value);
 
+      // Clear our copy of the user input
       last_user_text_input_value.clear();
 
       if (!answer_is_correct)
       {
          // TODO: Sort out what reaction should be when answer is incorrect
+         // TODO: Set npc dialog to say "hmm, that's not correct"
+         std::cout << "------- RIDDLE: incorrect :(" << std::endl;
          trigger_npc_dialog(); // DEVELOPMENT
       }
       else
       {
          // TODO: Sort out what reaction should be when answer is correct
+         // TODO: Set npc dialog to say "That's correct! Nice job!"
+         std::cout << "------- RIDDLE: CORRECT!" << std::endl;
          trigger_npc_dialog(); // DEVELOPMENT
       }
    }
@@ -860,7 +865,8 @@ void Screen::prompt_user_for_text_input()
 
    // Set the prompt on the user text input screen
    // TODO: Make this value dynamic
-   user_text_input_screen->set_prompt_text("How old is Mittens?");
+   std::string riddle_prompt_text = current_riddle.get_riddle_prompt_text();
+   user_text_input_screen->set_prompt_text(riddle_prompt_text);
 
    // Clear our value
    last_user_text_input_value.clear();
