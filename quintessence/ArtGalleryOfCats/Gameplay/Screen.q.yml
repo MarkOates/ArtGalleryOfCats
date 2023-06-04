@@ -419,6 +419,22 @@ functions:
       // TODO: Create pages for each node
       // TODO: Erase the current npc dialog pages
 
+
+      //std::vector<std::string> dialog_pages = {
+         //"Impressive",
+         //"The artist has such an amazing sense of form and balance!",
+      //};
+
+
+      std::vector<AllegroFlare::Elements::StoryboardPages::Base *> storyboard_pages = {
+          create_image_page("Impressive!"),
+          create_image_page("The artist has such an amazing sense of form and balance!"),
+      };
+
+      // Assign our new dialog pages to the npc_coversations storyboard
+      npc_conversations_screen->get_storyboard_element_ref().set_pages(storyboard_pages);
+
+      // Activate the npc_conversations_screen
       activate_npc_conversations_screen(); // DEVELOPMENT
 
       return;
