@@ -213,10 +213,21 @@ void Screen::set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput
 
 void Screen::load_level_by_identifier(std::string level_identifier)
 {
-   current_level_identifier = level_identifier;
-   //if (current_level) delete (int*)(current_level);
-   //current_level = (void*)(new int(3));
+   // Destroy the current level (if one exists)
+   if (current_level)
+   {
+      std::cout << "INFO: Destroying current level" << std::endl;
+      current_level->destroy(); // TODO: Make sure this is implemented
+      delete (int*)(current_level);
+      current_level = nullptr;
+      current_level_identifier = "[no-current_level_identifier]";
+   }
 
+   // Create a new Level object, and make it the "current_level"
+   current_level = new ArtGalleryOfCats::Gameplay::Level;
+   current_level_identifier = level_identifier;
+
+   // Load the level
    load_level(level_identifier); // TODO: replace this with name of level
 
    return;
