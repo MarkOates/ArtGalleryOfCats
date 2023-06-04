@@ -267,7 +267,7 @@ functions:
       entity_factory.set_bitmap_bin(bitmap_bin);
 
       // Define our source TMJ filename
-      std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-01.tmj";
+      std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-02.tmj";
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(

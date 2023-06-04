@@ -255,6 +255,7 @@ functions:
 
 
       // TODO: Show gallery name (as "gallery_title")
+      // TODO: Set the "riddle text"
 
 
       return;
@@ -658,7 +659,7 @@ functions:
             -500,
             -200,
             1000,
-            al_get_font_line_height(riddle_font) * 2.0,
+            al_get_font_line_height(riddle_font) * 1.65,
             0,
             riddle_text.c_str()
          );

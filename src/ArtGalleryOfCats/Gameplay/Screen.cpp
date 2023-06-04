@@ -265,6 +265,7 @@ void Screen::load_level_by_identifier(std::string level_identifier)
 
 
    // TODO: Show gallery name (as "gallery_title")
+   // TODO: Set the "riddle text"
 
 
    return;
@@ -741,7 +742,7 @@ void Screen::render_hud()
          -500,
          -200,
          1000,
-         al_get_font_line_height(riddle_font) * 2.0,
+         al_get_font_line_height(riddle_font) * 1.65,
          0,
          riddle_text.c_str()
       );
