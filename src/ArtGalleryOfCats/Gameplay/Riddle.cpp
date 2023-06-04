@@ -62,8 +62,14 @@ std::string Riddle::get_riddle_answer() const
 
 bool Riddle::matches_answer(std::string answer_guess)
 {
+   std::string filtered_answer_guess = answer_guess;
+   std::string filtered_riddle_answer = riddle_answer;
+
+   for (char &c : filtered_answer_guess) { c = std::tolower(c); }
+   for (char &c : filtered_riddle_answer) { c = std::tolower(c); }
+
    // TODO: Account for additional rules (case insensitive, etc)
-   if (answer_guess == riddle_answer) return true;
+   if (filtered_answer_guess == filtered_riddle_answer) return true;
    return false;
 }
 

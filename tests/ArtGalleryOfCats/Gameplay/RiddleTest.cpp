@@ -26,3 +26,11 @@ TEST(ArtGalleryOfCats_Gameplay_RiddleTest, matches_answer__when_the_answer_is_no
 }
 
 
+TEST(ArtGalleryOfCats_Gameplay_RiddleTest, matches_answer__will_match_case_insensitive)
+{
+   ArtGalleryOfCats::Gameplay::Riddle riddle("5 and 4, surely no more.", "What 5 and 4?", "Happy");
+   std::string guess = "hApPy";
+   EXPECT_EQ(true, riddle.matches_answer(guess));
+}
+
+
