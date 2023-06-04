@@ -325,6 +325,10 @@ void Screen::on_activate()
    {
       // Note: NPC dialog, after solving the riddle, will return back to this screen.
       // TODO: Progress to the next level
+      event_emitter->emit_game_event(AllegroFlare::GameEvent("riddle_is_solved"));
+         //AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
+         //new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("user_text_input_screen")
+      //);
    }
 
    bool need_to_handle_user_text_input = !last_user_text_input_value.empty();

@@ -610,6 +610,11 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
          al_get_time()
       );
    }
+   else if (ev->is_type("riddle_is_solved"))
+   {
+      // TODO: Figure out what to do here, probably load the next level, or, if there are no more levels show
+      // game won screen
+   }
 
    return;
 }
