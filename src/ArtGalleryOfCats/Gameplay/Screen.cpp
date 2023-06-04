@@ -531,15 +531,17 @@ void Screen::hide_input_hints()
 void Screen::show_input_hints()
 {
    event_emitter->emit_set_input_hints_bar_event({
-      "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
+      "W", "%SPACE", "A", "%SPACE", "S", "%SPACE", "D", "%SPACER", "LABEL>>", "Move",
       "%SEPARATOR",
-      "ENTER", "%SPACER", "LABEL>>", "Inspect object",
+      "MOUSE", "%SPACER", "LABEL>>", "Look",
       "%SEPARATOR",
-      "I", "%SPACER", "LABEL>>", "Toggle Chronicle",
+      "R", "%SPACER", "LABEL>>", "Toggle the Riddle",
       "%SEPARATOR",
-      "P", "%SPACER", "LABEL>>", "Toggle pause",
+      "I", "%SPACER", "LABEL>>", "Solve the Riddle",
       "%SEPARATOR",
-      "E", "%SPACER", "LABEL>>", "Exit",
+      "N", "%SPACER", "LABEL>>", "Inspect",
+      "%SEPARATOR",
+      "ESC", "%SPACER", "LABEL>>", "Return to Gallery Select",
    });
    //if (fixed_room_2d.inventory_is_open()) emit_event_to_set_input_hints_bar_to_inventory_controls();
    //else emit_event_to_set_input_hints_bar_to_room_controls();
@@ -1263,11 +1265,11 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
 
       case ALLEGRO_KEY_SPACE:
       case ALLEGRO_KEY_ENTER:
-      case ALLEGRO_KEY_I: {
+      case ALLEGRO_KEY_N: {
          interact_with_focused_object();
       } break;
 
-      case ALLEGRO_KEY_O: {
+      case ALLEGRO_KEY_T: {
          //interact_with_focused_object();
          attempt_to_solve_riddle();
       } break;
