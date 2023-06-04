@@ -22,11 +22,13 @@ TEST_F(ArtGalleryOfCats_Gameplay_LevelFactoryTestWithAllegroRenderingFixture, lo
 {
    AllegroFlare::ModelBin model_bin;
    AllegroFlare::SceneGraph::EntityPool entity_pool;
+   ArtGalleryOfCats::Gameplay::Riddle riddle;
    model_bin.set_full_path(get_fixtures_path() + "models");
    ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
    level_factory.set_bitmap_bin(&get_bitmap_bin_ref());
    level_factory.set_model_bin(&model_bin);
    level_factory.set_entity_pool(&entity_pool);
+   level_factory.set_riddle(&riddle);
 
    level_factory.load_primary_map();
 

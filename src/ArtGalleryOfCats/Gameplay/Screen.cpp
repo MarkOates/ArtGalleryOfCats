@@ -214,6 +214,7 @@ void Screen::load_level()
    level_factory.set_model_bin(model_bin);
    level_factory.set_bitmap_bin(bitmap_bin);
    level_factory.set_entity_pool(&entity_pool);
+   level_factory.set_riddle(&current_riddle);
 
    level_factory.load_primary_map();
 
