@@ -67,6 +67,12 @@ properties:
     type: bool
     init_with: false
 
+  - name: last_user_text_input_value
+    type: std::string
+    init_with: '""'
+    getter: true
+    setter: true
+
   - name: entity_player_is_currently_colliding_with
     type: AllegroFlare::SceneGraph::Entities::Base*
     init_with: nullptr
@@ -230,6 +236,14 @@ functions:
     override: true
     guards: [ initialized ]
     body: |
+      bool need_to_handle_user_text_input = !last_user_text_input_value.empty();
+      if (need_to_handle_user_text_input)
+      {
+         std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
+
+         last_user_text_input_value.clear();
+      }
+
       //emit_event_to_update_input_hints_bar();
       //emit_show_and_size_input_hints_bar_event();
       return;

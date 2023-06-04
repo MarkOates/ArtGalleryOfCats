@@ -47,6 +47,7 @@ namespace ArtGalleryOfCats
          bool player_left_pressed;
          bool player_up_pressed;
          bool player_down_pressed;
+         std::string last_user_text_input_value;
          AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
@@ -65,9 +66,11 @@ namespace ArtGalleryOfCats
          Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, AllegroFlare::SceneGraph::EntityPool entity_pool={});
          virtual ~Screen();
 
+         void set_last_user_text_input_value(std::string last_user_text_input_value);
          void set_entity_player_is_currently_colliding_with(AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with);
          void set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func);
          void set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data);
+         std::string get_last_user_text_input_value() const;
          AllegroFlare::SceneGraph::Entities::Base* get_entity_player_is_currently_colliding_with() const;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> get_on_finished_callback_func() const;
          void* get_on_finished_callback_func_user_data() const;

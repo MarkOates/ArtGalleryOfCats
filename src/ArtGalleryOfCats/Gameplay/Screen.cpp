@@ -42,6 +42,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , player_left_pressed(false)
    , player_up_pressed(false)
    , player_down_pressed(false)
+   , last_user_text_input_value("")
    , entity_player_is_currently_colliding_with(nullptr)
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
@@ -54,6 +55,12 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
 
 Screen::~Screen()
 {
+}
+
+
+void Screen::set_last_user_text_input_value(std::string last_user_text_input_value)
+{
+   this->last_user_text_input_value = last_user_text_input_value;
 }
 
 
@@ -72,6 +79,12 @@ void Screen::set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::
 void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data)
 {
    this->on_finished_callback_func_user_data = on_finished_callback_func_user_data;
+}
+
+
+std::string Screen::get_last_user_text_input_value() const
+{
+   return last_user_text_input_value;
 }
 
 
@@ -267,6 +280,14 @@ void Screen::on_activate()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
    }
+   bool need_to_handle_user_text_input = !last_user_text_input_value.empty();
+   if (need_to_handle_user_text_input)
+   {
+      std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
+
+      last_user_text_input_value.clear();
+   }
+
    //emit_event_to_update_input_hints_bar();
    //emit_show_and_size_input_hints_bar_event();
    return;

@@ -651,7 +651,14 @@ functions:
       // now, for this hackathon, it should work fine.
       if (ev->is_type(AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_OK_KEY))
       {
-         //std::string text_input_value = user_text_input_screen
+         std::string text_input_value = user_text_input_screen.get_result_string_value();
+         primary_gameplay_screen.set_last_user_text_input_value(text_input_value);
+         // TODO: test this
+         this->router.emit_route_event(
+            AllegroFlare::Routers::Standard::EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN,
+            nullptr,
+            al_get_time()
+         );
       }
 
       return;
