@@ -851,7 +851,7 @@ void Screen::interact_with_focused_object()
    //event_emitter->talk_to_an_npc
    event_emitter->emit_event(
       ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
-      intptr_t(new std::string("talk_to_an_npc"))
+      intptr_t(new std::string("look_at_some_art"))
    );
    return;
 }
