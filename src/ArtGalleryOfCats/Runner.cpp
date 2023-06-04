@@ -41,6 +41,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , rolling_credits_screen()
    , primary_gameplay_screen()
    , solid_black_background(ALLEGRO_COLOR{0, 0, 0, 1})
+   , light_blue_background(ALLEGRO_COLOR{148.0f/255, 191.0f/255, 226.0f/255, 1})
    , npc_conversations_background({})
    , release_info({})
    , initialized(false)
@@ -150,7 +151,7 @@ void Runner::initialize()
    intro_storyboard_screen.set_event_emitter(event_emitter);
    intro_storyboard_screen.set_font_bin(font_bin);
    intro_storyboard_screen.set_auto_advance(true);
-   intro_storyboard_screen.set_background(&solid_black_background);
+   intro_storyboard_screen.set_background(&light_blue_background);
    intro_storyboard_screen.initialize();
    intro_storyboard_screen.get_storyboard_element_ref().set_pages({
       //page_factory.create_image_with_advancing_text_page(
@@ -281,7 +282,8 @@ void Runner::initialize()
 
    // TODO: Setup game won outro storyboard screen
    game_won_outro_storyboard_screen.set_event_emitter(event_emitter);
-   game_won_outro_storyboard_screen.set_background(&solid_black_background);
+   game_won_outro_storyboard_screen.set_background(&light_blue_background);
+   game_won_outro_storyboard_screen.set_font_bin(font_bin);
    game_won_outro_storyboard_screen.get_storyboard_element_ref().set_pages({
        create_image_page(
          "Well that was a wonderful adventure."
@@ -296,6 +298,7 @@ void Runner::initialize()
    game_won_outro_storyboard_screen.initialize();
 
    // TODO: Setup rolling credits screen
+   rolling_credits_screen.set_event_emitter(event_emitter); // NEEDED in startup template
    rolling_credits_screen.set_font_bin(font_bin);
    rolling_credits_screen.set_background(&solid_black_background);
    rolling_credits_screen.initialize();

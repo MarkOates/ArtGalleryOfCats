@@ -208,17 +208,17 @@
         {
          "name":"riddle_answer",
          "type":"string",
-         "value":"foo"
+         "value":"5"
         }, 
         {
          "name":"riddle_prompt_text",
          "type":"string",
-         "value":"bar"
+         "value":"How many years old is Mittens?"
         }, 
         {
          "name":"riddle_text",
          "type":"string",
-         "value":"baz"
+         "value":"no-riddle_text"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

@@ -59,6 +59,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Screens::RollingCredits rolling_credits_screen;
       ArtGalleryOfCats::Gameplay::Screen primary_gameplay_screen;
       AllegroFlare::Elements::Backgrounds::ClearToColor solid_black_background;
+      AllegroFlare::Elements::Backgrounds::ClearToColor light_blue_background;
       ArtGalleryOfCats::Elements::Backgrounds::NPCConversations npc_conversations_background;
       ReleaseInfo release_info;
       bool initialized;
