@@ -18,4 +18,13 @@ on them.
 - https://fonts.google.com/specimen/Archivo+Narrow?preview.text=ART%20GALLERY%20OF%20CATS&preview.text_type=custom&query=narrow
 - Bodoni Moda Regular - Google Fonts
 
+### Music
+
+"Soaring" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+"Carpe Diem" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
 
