@@ -62,6 +62,8 @@ namespace ArtGalleryOfCats
          AllegroFlare::Shaders::Cubemap cubemap_shader;
          AllegroFlare::Cubemap* cubemap;
          bool initialized;
+         void emit_event_to_set_input_hints_bar_to_room_controls();
+         void emit_event_to_set_input_hints();
          void scene_physics_updater();
          void scene_renderer_render();
          void render_hud();
@@ -100,6 +102,8 @@ namespace ArtGalleryOfCats
          void initialize();
          virtual void on_activate() override;
          virtual void on_deactivate() override;
+         void hide_input_hints();
+         void show_input_hints();
          void update();
          AllegroFlare::Vec3D calculate_strafe_xy(float spin=0.0f, float displacement=0.0f);
          AllegroFlare::Vec3D calculate_forward_back_xy(float spin=0.0f, float displacement=0.0f);

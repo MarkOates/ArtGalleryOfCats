@@ -288,6 +288,34 @@ functions:
       return;
 
 
+  - name: emit_event_to_set_input_hints_bar_to_room_controls
+    private: true
+    guards: [ initialized ]
+    body: |
+      event_emitter->emit_set_input_hints_bar_event({
+         "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
+         "%SEPARATOR",
+         "ENTER", "%SPACER", "LABEL>>", "Inspect object",
+         "%SEPARATOR",
+         "I", "%SPACER", "LABEL>>", "Toggle Chronicle",
+         "%SEPARATOR",
+         "P", "%SPACER", "LABEL>>", "Toggle pause",
+         "%SEPARATOR",
+         "E", "%SPACER", "LABEL>>", "Exit",
+      });
+      return;
+
+
+  - name: emit_event_to_set_input_hints
+    private: true
+    guards: [ initialized ]
+    body: |
+      //if (fixed_room_2d.inventory_is_open()) emit_event_to_set_input_hints_bar_to_inventory_controls();
+      else emit_event_to_set_input_hints_bar_to_room_controls();
+      event_emitter->emit_set_input_hints_bar_text_opacity_event(0.265);
+      return;
+
+
   - name: get_entity_pool
     type: AllegroFlare::SceneGraph::EntityPool*
     guards: [ current_level ]
@@ -385,8 +413,9 @@ functions:
          }
       }
 
-      //emit_event_to_update_input_hints_bar();
-      //emit_show_and_size_input_hints_bar_event();
+
+      // Show our input hints
+      show_input_hints();
       return;
 
 
@@ -395,8 +424,36 @@ functions:
     override: true
     guards: [ initialized ]
     body: |
-      //emit_hide_and_restore_size_input_hints_bar_event();
+      hide_input_hints();
       return;
+
+
+  - name: hide_input_hints
+    body: |
+      event_emitter->emit_hide_input_hints_bar_event();
+      return;
+
+
+  - name: show_input_hints
+    body: |
+      event_emitter->emit_set_input_hints_bar_event({
+         "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
+         "%SEPARATOR",
+         "ENTER", "%SPACER", "LABEL>>", "Inspect object",
+         "%SEPARATOR",
+         "I", "%SPACER", "LABEL>>", "Toggle Chronicle",
+         "%SEPARATOR",
+         "P", "%SPACER", "LABEL>>", "Toggle pause",
+         "%SEPARATOR",
+         "E", "%SPACER", "LABEL>>", "Exit",
+      });
+      //if (fixed_room_2d.inventory_is_open()) emit_event_to_set_input_hints_bar_to_inventory_controls();
+      //else emit_event_to_set_input_hints_bar_to_room_controls();
+      event_emitter->emit_set_input_hints_bar_text_opacity_event(0.265);
+      //emit_event_to_set_input_hints();
+      //event_emitter->emit_set_input_hints_bar_backfill_opacity_event(0.3);
+      event_emitter->emit_set_input_hints_bar_text_opacity_event(1.0);
+      event_emitter->emit_show_input_hints_bar_event();
 
 
   - name: update

@@ -304,6 +304,44 @@ void Screen::start_level_music()
    return;
 }
 
+void Screen::emit_event_to_set_input_hints_bar_to_room_controls()
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::emit_event_to_set_input_hints_bar_to_room_controls]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::emit_event_to_set_input_hints_bar_to_room_controls: error: guard \"initialized\" not met");
+   }
+   event_emitter->emit_set_input_hints_bar_event({
+      "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
+      "%SEPARATOR",
+      "ENTER", "%SPACER", "LABEL>>", "Inspect object",
+      "%SEPARATOR",
+      "I", "%SPACER", "LABEL>>", "Toggle Chronicle",
+      "%SEPARATOR",
+      "P", "%SPACER", "LABEL>>", "Toggle pause",
+      "%SEPARATOR",
+      "E", "%SPACER", "LABEL>>", "Exit",
+   });
+   return;
+}
+
+void Screen::emit_event_to_set_input_hints()
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::emit_event_to_set_input_hints]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::emit_event_to_set_input_hints: error: guard \"initialized\" not met");
+   }
+   //if (fixed_room_2d.inventory_is_open()) emit_event_to_set_input_hints_bar_to_inventory_controls();
+   else emit_event_to_set_input_hints_bar_to_room_controls();
+   event_emitter->emit_set_input_hints_bar_text_opacity_event(0.265);
+   return;
+}
+
 AllegroFlare::SceneGraph::EntityPool* Screen::get_entity_pool()
 {
    if (!(current_level))
@@ -465,8 +503,9 @@ void Screen::on_activate()
       }
    }
 
-   //emit_event_to_update_input_hints_bar();
-   //emit_show_and_size_input_hints_bar_event();
+
+   // Show our input hints
+   show_input_hints();
    return;
 }
 
@@ -479,8 +518,36 @@ void Screen::on_deactivate()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::on_deactivate: error: guard \"initialized\" not met");
    }
-   //emit_hide_and_restore_size_input_hints_bar_event();
+   hide_input_hints();
    return;
+}
+
+void Screen::hide_input_hints()
+{
+   event_emitter->emit_hide_input_hints_bar_event();
+   return;
+}
+
+void Screen::show_input_hints()
+{
+   event_emitter->emit_set_input_hints_bar_event({
+      "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
+      "%SEPARATOR",
+      "ENTER", "%SPACER", "LABEL>>", "Inspect object",
+      "%SEPARATOR",
+      "I", "%SPACER", "LABEL>>", "Toggle Chronicle",
+      "%SEPARATOR",
+      "P", "%SPACER", "LABEL>>", "Toggle pause",
+      "%SEPARATOR",
+      "E", "%SPACER", "LABEL>>", "Exit",
+   });
+   //if (fixed_room_2d.inventory_is_open()) emit_event_to_set_input_hints_bar_to_inventory_controls();
+   //else emit_event_to_set_input_hints_bar_to_room_controls();
+   event_emitter->emit_set_input_hints_bar_text_opacity_event(0.265);
+   //emit_event_to_set_input_hints();
+   //event_emitter->emit_set_input_hints_bar_backfill_opacity_event(0.3);
+   event_emitter->emit_set_input_hints_bar_text_opacity_event(1.0);
+   event_emitter->emit_show_input_hints_bar_event();
 }
 
 void Screen::update()
