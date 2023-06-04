@@ -1,14 +1,22 @@
 properties:
 
 
+  - name: title
+    type: std::string
+    init_with: '"[unset-title"'
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: entity_pool
     type: AllegroFlare::SceneGraph::EntityPool
     init_with: '{}'
-    constructor_arg: true
+    getter_ref: true
 
   - name: current_riddle
     type: ArtGalleryOfCats::Gameplay::Riddle
     init_with: ''
+    getter_ref: true
     getter: true
     setter: true
 
