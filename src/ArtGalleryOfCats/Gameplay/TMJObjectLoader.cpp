@@ -23,7 +23,7 @@ TMJObjectLoader::TMJObjectLoader(std::string filename)
    , object_parsed_callback({})
    , object_parsed_callback_user_data(nullptr)
    , map_properties_parsed_callback({})
-   , map_property_parsed_callback_user_data(nullptr)
+   , map_properties_parsed_callback_user_data(nullptr)
 {
 }
 
@@ -51,9 +51,9 @@ void TMJObjectLoader::set_map_properties_parsed_callback(std::function<void(std:
 }
 
 
-void TMJObjectLoader::set_map_property_parsed_callback_user_data(void* map_property_parsed_callback_user_data)
+void TMJObjectLoader::set_map_properties_parsed_callback_user_data(void* map_properties_parsed_callback_user_data)
 {
-   this->map_property_parsed_callback_user_data = map_property_parsed_callback_user_data;
+   this->map_properties_parsed_callback_user_data = map_properties_parsed_callback_user_data;
 }
 
 
@@ -75,9 +75,9 @@ std::function<void(std::vector<std::tuple<std::string, std::string, std::string>
 }
 
 
-void* TMJObjectLoader::get_map_property_parsed_callback_user_data() const
+void* TMJObjectLoader::get_map_properties_parsed_callback_user_data() const
 {
-   return map_property_parsed_callback_user_data;
+   return map_properties_parsed_callback_user_data;
 }
 
 
@@ -233,7 +233,7 @@ void TMJObjectLoader::load()
       // TODO: Test this
       map_properties_parsed_callback(
           collected_map_custom_properties,
-          map_property_parsed_callback_user_data
+          map_properties_parsed_callback_user_data
        );
     }
 

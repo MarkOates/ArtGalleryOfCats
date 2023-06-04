@@ -143,6 +143,24 @@ functions:
       - ArtGalleryOfCats::Gameplay::LevelFactory
 
 
+  - name: map_properties_parsed_callback
+    static: true
+    type: void
+    parameters:
+      - name: map_custom_properties
+        type: std::vector<std::tuple<std::string, std::string, std::string>>
+        default_argument: '{}'
+      - name: user_data
+        type: void*
+        default_argument: nullptr
+    guards: [ user_data ]
+    body: |
+      std::cout << " --------- custom properties loaded size: " << map_custom_properties.size() << std::endl;
+      return;
+    body_dependency_symbols:
+      - ArtGalleryOfCats::Gameplay::LevelFactory
+
+
   - name: load_primary_map
     guards: [ bitmap_bin, model_bin, entity_pool, riddle ]
     body: |
@@ -183,14 +201,13 @@ functions:
       );
       entity_pool->add(collectable_object);
 
-      // Load objects from the TMJ file
+      // Load objects from the TMJ file, as well as the riddle
       ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
       tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
       tmj_object_loader.set_object_parsed_callback_user_data(this);
+      tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
+      tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
       tmj_object_loader.load();
-
-      // Load the level riddle
-      // TODO: Load the riddle
 
       return;
     body_dependency_symbols:

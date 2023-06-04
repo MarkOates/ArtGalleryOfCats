@@ -28,7 +28,7 @@ properties:
     getter: true
     setter: true
 
-  - name: map_property_parsed_callback_user_data
+  - name: map_properties_parsed_callback_user_data
     type: void*
     init_with: nullptr
     getter: true
@@ -184,7 +184,7 @@ functions:
          // TODO: Test this
          map_properties_parsed_callback(
              collected_map_custom_properties,
-             map_property_parsed_callback_user_data
+             map_properties_parsed_callback_user_data
           );
        }
 

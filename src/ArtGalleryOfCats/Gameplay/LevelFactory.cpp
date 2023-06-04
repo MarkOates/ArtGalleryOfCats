@@ -166,6 +166,19 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    return;
 }
 
+void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::string, std::string, std::string>> map_custom_properties, void* user_data)
+{
+   if (!(user_data))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::map_properties_parsed_callback]: error: guard \"user_data\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::map_properties_parsed_callback: error: guard \"user_data\" not met");
+   }
+   std::cout << " --------- custom properties loaded size: " << map_custom_properties.size() << std::endl;
+   return;
+}
+
 void LevelFactory::load_primary_map()
 {
    if (!(bitmap_bin))
@@ -233,14 +246,13 @@ void LevelFactory::load_primary_map()
    );
    entity_pool->add(collectable_object);
 
-   // Load objects from the TMJ file
+   // Load objects from the TMJ file, as well as the riddle
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
    tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
    tmj_object_loader.set_object_parsed_callback_user_data(this);
+   tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
+   tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
    tmj_object_loader.load();
-
-   // Load the level riddle
-   // TODO: Load the riddle
 
    return;
 }
