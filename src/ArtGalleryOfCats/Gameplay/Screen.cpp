@@ -1251,6 +1251,11 @@ void Screen::interact_with_focused_object()
 
    std::string this_dialog_node_to_say = default_inspect_dialog_node_identifiers[last_default_inspect_index];
 
+   last_default_inspect_index++;
+   if (last_default_inspect_index >= default_inspect_dialog_node_identifiers.size()) last_default_inspect_index = 0;
+
+
+
 
    //std::string defaut_dialog = "That is some beautiful art!";
 
