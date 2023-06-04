@@ -377,6 +377,8 @@ void Runner::initialize()
 
    // TODO: Load up our sound effects
    audio_controller.set_and_load_sound_effect_elements({
+      { "wrong_answer", { "wrong_answer-02.ogg", false, "restart" } },
+
       // { "menu_move", { "menu_move_tink-02.ogg", false, "restart" } }, // TODO: Throw on an unknown replay type
    });
 

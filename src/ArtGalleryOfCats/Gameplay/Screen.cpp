@@ -482,7 +482,7 @@ void Screen::load_dialog_node_bank()
    dialog_node_bank.set_nodes({
       { "correct_riddle_answer", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "CORRECT!", "" }
+           { "CORRECT!", "You got it right! You are very attentive!", "Let's move on to another gallery, shall we?" }
         )
       },
       { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Node(
@@ -564,6 +564,7 @@ void Screen::on_activate()
          // TODO: Sort out what reaction should be when answer is incorrect
          // TODO: Set npc dialog to say "hmm, that's not correct"
 
+         event_emitter->emit_play_sound_effect_event("wrong_answer");
          activate_npc_dialog_by_identifier("incorrect_riddle_answer");
       }
       else
@@ -577,6 +578,9 @@ void Screen::on_activate()
             ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
             intptr_t(new std::string("solve_a_riddle"))
          );
+
+
+         event_emitter->emit_play_sound_effect_event("right_answer");
 
          riddle_is_solved = true; // TODO: modify this on a master list
 
