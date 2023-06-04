@@ -51,6 +51,12 @@ properties:
     getter: true
     setter: true
 
+  - name: inspect_hint_is_showing
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
+
   - name: last_user_text_input_value
     type: std::string
     init_with: '""'
@@ -664,6 +670,18 @@ functions:
             riddle_text.c_str()
          );
       }
+
+      if (inspect_hint_is_showing)
+      {
+         float inspect_hint_x = 1920*0.5 - 200; // TODO: make this not-hard-coded dimension
+         float inspect_hint_y = 1080*0.5 - 100; // TODO: make this not-hard-coded dimension
+         float inspect_hint_radius = 30.0f;
+         ALLEGRO_COLOR inspect_hint_backfill_color = al_color_html("024d83");
+         al_draw_filled_circle(inspect_hint_x, inspect_hint_y, inspect_hint_radius, inspect_hint_backfill_color);
+
+         // TODO: Draw "i" letter
+      }
+
       
       hud_camera.restore_transform();
 
@@ -671,6 +689,7 @@ functions:
     body_dependency_symbols:
       - AllegroFlare::Camera2D
       - ALLEGRO_FONT
+      - al_color_html
 
 
   - name: render_tile_map
@@ -1228,5 +1247,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Level.hpp ]
   - symbol: ALLEGRO_FONT
     headers: [ allegro5/allegro_font.h ]
+  - symbol: al_color_html
+    headers: [ allegro5/allegro_color.h ]
 
 

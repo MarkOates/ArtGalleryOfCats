@@ -15,6 +15,7 @@
 #include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/SceneRenderer.hpp>
+#include <allegro5/allegro_color.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
@@ -38,6 +39,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , user_text_input_screen(user_text_input_screen)
    , riddle_is_solved(false)
    , riddle_is_showing(false)
+   , inspect_hint_is_showing(false)
    , last_user_text_input_value("")
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -70,6 +72,12 @@ void Screen::set_riddle_is_solved(bool riddle_is_solved)
 void Screen::set_riddle_is_showing(bool riddle_is_showing)
 {
    this->riddle_is_showing = riddle_is_showing;
+}
+
+
+void Screen::set_inspect_hint_is_showing(bool inspect_hint_is_showing)
+{
+   this->inspect_hint_is_showing = inspect_hint_is_showing;
 }
 
 
@@ -106,6 +114,12 @@ bool Screen::get_riddle_is_solved() const
 bool Screen::get_riddle_is_showing() const
 {
    return riddle_is_showing;
+}
+
+
+bool Screen::get_inspect_hint_is_showing() const
+{
+   return inspect_hint_is_showing;
 }
 
 
@@ -747,6 +761,18 @@ void Screen::render_hud()
          riddle_text.c_str()
       );
    }
+
+   if (inspect_hint_is_showing)
+   {
+      float inspect_hint_x = 1920*0.5 - 200; // TODO: make this not-hard-coded dimension
+      float inspect_hint_y = 1080*0.5 - 100; // TODO: make this not-hard-coded dimension
+      float inspect_hint_radius = 30.0f;
+      ALLEGRO_COLOR inspect_hint_backfill_color = al_color_html("024d83");
+      al_draw_filled_circle(inspect_hint_x, inspect_hint_y, inspect_hint_radius, inspect_hint_backfill_color);
+
+      // TODO: Draw "i" letter
+   }
+
 
    hud_camera.restore_transform();
 
