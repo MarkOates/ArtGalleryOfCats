@@ -137,8 +137,8 @@ functions:
       result->get_placement_ref().scale = { art_scale, art_scale, art_scale };
       result->get_placement_ref().size = AllegroFlare::Vec3D(
             al_get_bitmap_width(texture),
-            0.0,
-            0.0//al_get_bitmap_height(texture),
+            al_get_bitmap_height(texture),
+            0.0
          );
       //result->get_placement_ref().align = { 0.5, 0.5, 0.5 };
 
