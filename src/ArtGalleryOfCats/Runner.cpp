@@ -307,6 +307,7 @@ void Runner::initialize()
       //{ "5", "wonderland_woods" },
    });
    level_select_screen.set_background(&solid_black_background);
+   level_select_screen.get_level_select_element_ref().set_ignore_on_invalid_selection(true);
    level_select_screen.initialize();
 
    // TODO: Setup game over screen
