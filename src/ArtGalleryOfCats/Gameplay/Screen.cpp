@@ -27,16 +27,14 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, AllegroFlare::SceneGraph::EntityPool entity_pool, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
    , resources_path(resources_path)
-   , entity_pool(entity_pool)
    , user_text_input_screen(user_text_input_screen)
-   , current_riddle()
    , riddle_is_solved(false)
    , last_user_text_input_value("")
    , current_level_identifier("[unset-current_level]")
@@ -58,12 +56,6 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
 
 Screen::~Screen()
 {
-}
-
-
-void Screen::set_current_riddle(ArtGalleryOfCats::Gameplay::Riddle current_riddle)
-{
-   this->current_riddle = current_riddle;
 }
 
 
@@ -94,12 +86,6 @@ void Screen::set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::
 void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data)
 {
    this->on_finished_callback_func_user_data = on_finished_callback_func_user_data;
-}
-
-
-ArtGalleryOfCats::Gameplay::Riddle Screen::get_current_riddle() const
-{
-   return current_riddle;
 }
 
 
@@ -1081,11 +1067,11 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
          //prompt_user_for_text_input(); // DEVELOPMENT
       } break;
 
-      case ALLEGRO_KEY_SPACE:
-      case ALLEGRO_KEY_ENTER:
-      case ALLEGRO_KEY_X: {
-         interact_with_focused_object();
-      } break;
+      //case ALLEGRO_KEY_SPACE:
+      //case ALLEGRO_KEY_ENTER:
+      //case ALLEGRO_KEY_X: {
+         //interact_with_focused_object();
+      //} break;
 
       default: {
          // Nothing here

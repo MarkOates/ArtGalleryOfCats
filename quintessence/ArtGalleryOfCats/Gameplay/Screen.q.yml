@@ -34,21 +34,10 @@ properties:
     init_with: DEFAULT_RESOURCES_PATH
     constructor_arg: true
 
-  - name: entity_pool
-    type: AllegroFlare::SceneGraph::EntityPool
-    init_with: '{}'
-    constructor_arg: true
-
   - name: user_text_input_screen
     type: ArtGalleryOfCats::Screens::UserTextInput*
     init_with: nullptr
     constructor_arg: true
-
-  - name: current_riddle
-    type: ArtGalleryOfCats::Gameplay::Riddle
-    init_with: ''
-    getter: true
-    setter: true
 
   - name: riddle_is_solved
     type: bool
@@ -1031,11 +1020,11 @@ functions:
             //prompt_user_for_text_input(); // DEVELOPMENT
          } break;
 
-         case ALLEGRO_KEY_SPACE:
-         case ALLEGRO_KEY_ENTER:
-         case ALLEGRO_KEY_X: {
-            interact_with_focused_object();
-         } break;
+         //case ALLEGRO_KEY_SPACE:
+         //case ALLEGRO_KEY_ENTER:
+         //case ALLEGRO_KEY_X: {
+            //interact_with_focused_object();
+         //} break;
 
          default: {
             // Nothing here
