@@ -60,6 +60,12 @@ std::string Riddle::get_correct_answer_text() const
 }
 
 
+bool Riddle::matches_answer(std::string answer_guess)
+{
+   // TODO: Account for additional rules (case insensitive, etc)
+   if (answer_guess == correct_answer_text) return true;
+   return false;
+}
 
 
 } // namespace Gameplay

@@ -23,3 +23,19 @@ properties:
     setter: true
 
 
+functions:
+
+
+  - name: matches_answer
+    type: bool
+    parameters:
+      - name: answer_guess
+        type: std::string
+        default_argument: '"[unset-answer_guess]"'
+    body: |
+      // TODO: Account for additional rules (case insensitive, etc)
+      if (answer_guess == correct_answer_text) return true;
+      return false;
+    
+
+

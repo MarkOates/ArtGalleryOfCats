@@ -28,6 +28,7 @@ namespace ArtGalleryOfCats
          std::string get_riddle_text() const;
          std::string get_user_input_prompt_text() const;
          std::string get_correct_answer_text() const;
+         bool matches_answer(std::string answer_guess="[unset-answer_guess]");
       };
    }
 }
