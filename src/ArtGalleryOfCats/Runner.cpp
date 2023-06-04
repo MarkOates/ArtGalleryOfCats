@@ -234,7 +234,7 @@ void Runner::initialize()
           "Inspect the art by pressing the \"I\" key to get more information."
        ),
        create_image_page(
-          "I'm sure I'll have something to say. Art is one of my most favorite things!"
+          "I always have something to say. Art is one of my most favorite things!"
        ),
        create_image_page(
           "Oh, and there are riddles to solve, too!"
@@ -243,7 +243,13 @@ void Runner::initialize()
           "So, each gallery has a riddle."
        ),
        create_image_page(
-          "At any time, you can try to answer the riddle by pressiing the \"S\" key."
+          "At any time, you can show and hide the riddle by pressing the \"R\" key."
+       ),
+       create_image_page(
+          "\"R\" for riddle!"
+       ),
+       create_image_page(
+          "Whenever you're ready, you can try to answer the riddle by pressing the \"S\" key."
        ),
        create_image_page(
           "\"S\" for solve!"
@@ -255,7 +261,7 @@ void Runner::initialize()
           "Hmm... was there anything else?"
        ),
        create_image_page(
-          "Nope, that's about it."
+          "Nope! That's pretty much it!"
        ),
        create_image_page(
           "How about we take a look in our first gallery, huh?"
