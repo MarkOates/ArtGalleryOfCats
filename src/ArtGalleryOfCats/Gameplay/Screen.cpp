@@ -545,10 +545,6 @@ void Screen::scene_physics_updater()
    as_camera->get_velocity_ref().position = camera_strafe_speed + camera_forward_back_speed;
 
    // Extract out the collision map
-   //entity = entity_pool.find_with_attribute("collision_tile_map");
-   //if (!entity) throw std::runtime_error("no collision_tile_map present");
-   //ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map =
-      //static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
    ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* as_collision_tile_map = find_collision_tile_map();
 
    // Create our collision stepper
@@ -640,12 +636,6 @@ void Screen::render_hud()
    if (render_mini_map)
    {
       // Extract out the collision map
-      //entity = entity_pool.find_with_attribute("collision_tile_map");
-      //if (!entity) throw std::runtime_error("no collision_tile_map present");
-      //ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map=
-         //static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
-      //AllegroFlare::TileMaps::TileMap<int> &collision_tile_map= as_collision_tile_map->get_collision_tile_map_ref();
-
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* as_collision_tile_map = find_collision_tile_map();
       AllegroFlare::TileMaps::TileMap<int> &collision_tile_map= as_collision_tile_map->get_collision_tile_map_ref();
 
