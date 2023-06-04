@@ -44,6 +44,12 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: last_user_text_input_value
+    type: std::string
+    init_with: '""'
+    getter: true
+    setter: true
+
   - name: current_level_identifier
     type: std::string
     init_with: '"[unset-current_level]"'
@@ -71,12 +77,6 @@ properties:
   - name: player_down_pressed
     type: bool
     init_with: false
-
-  - name: last_user_text_input_value
-    type: std::string
-    init_with: '""'
-    getter: true
-    setter: true
 
   - name: entity_player_is_currently_colliding_with
     type: AllegroFlare::SceneGraph::Entities::Base*
@@ -179,6 +179,17 @@ functions:
       return;
 
 
+  - name: set_user_text_input_screen
+    guards: [ (!initialized) ]
+    parameters:
+      - name: user_text_input_screen
+        type: ArtGalleryOfCats::Screens::UserTextInput*
+        default_argument: nullptr
+    body: |
+      this->user_text_input_screen = user_text_input_screen;
+      return;
+
+
   - name: load_level_by_identifier
     parameters:
       - name: level_identifier
@@ -245,6 +256,8 @@ functions:
       if (need_to_handle_user_text_input)
       {
          std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
+
+         interact_with_focused_object(); // DEVELOPMENT
 
          last_user_text_input_value.clear();
       }
@@ -823,8 +836,16 @@ functions:
 
 
   - name: prompt_user_for_text_input
+    guards: [ user_text_input_screen ]
     body: |
       player_stop_moving();
+
+      // Set the prompt on the user text input screen
+      // TODO: Make this value dynamic
+      user_text_input_screen->set_prompt_text("How old is Mittens?");
+
+      // Clear our value
+      last_user_text_input_value.clear();
 
       // TODO: setup the prompt screen with context
 

@@ -42,6 +42,7 @@ namespace ArtGalleryOfCats
          std::string resources_path;
          AllegroFlare::SceneGraph::EntityPool entity_pool;
          ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
+         std::string last_user_text_input_value;
          std::string current_level_identifier;
          void* current_level;
          AllegroFlare::Vec2D player_velocity;
@@ -49,7 +50,6 @@ namespace ArtGalleryOfCats
          bool player_left_pressed;
          bool player_up_pressed;
          bool player_down_pressed;
-         std::string last_user_text_input_value;
          AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func;
          void* on_finished_callback_func_user_data;
@@ -81,6 +81,7 @@ namespace ArtGalleryOfCats
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          void set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH);
+         void set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
          void initialize();
          virtual void on_activate() override;

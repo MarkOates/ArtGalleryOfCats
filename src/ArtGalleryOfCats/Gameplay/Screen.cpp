@@ -36,6 +36,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , resources_path(resources_path)
    , entity_pool(entity_pool)
    , user_text_input_screen(user_text_input_screen)
+   , last_user_text_input_value("")
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
    , player_velocity({})
@@ -43,7 +44,6 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , player_left_pressed(false)
    , player_up_pressed(false)
    , player_down_pressed(false)
-   , last_user_text_input_value("")
    , entity_player_is_currently_colliding_with(nullptr)
    , on_finished_callback_func()
    , on_finished_callback_func_user_data(nullptr)
@@ -172,6 +172,19 @@ void Screen::set_resources_path(std::string resources_path)
    return;
 }
 
+void Screen::set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_user_text_input_screen]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_user_text_input_screen: error: guard \"(!initialized)\" not met");
+   }
+   this->user_text_input_screen = user_text_input_screen;
+   return;
+}
+
 void Screen::load_level_by_identifier(std::string level_identifier)
 {
    current_level_identifier = level_identifier;
@@ -285,6 +298,8 @@ void Screen::on_activate()
    if (need_to_handle_user_text_input)
    {
       std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
+
+      interact_with_focused_object(); // DEVELOPMENT
 
       last_user_text_input_value.clear();
    }
@@ -799,7 +814,21 @@ void Screen::interact_with_focused_object()
 
 void Screen::prompt_user_for_text_input()
 {
+   if (!(user_text_input_screen))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::prompt_user_for_text_input]: error: guard \"user_text_input_screen\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::prompt_user_for_text_input: error: guard \"user_text_input_screen\" not met");
+   }
    player_stop_moving();
+
+   // Set the prompt on the user text input screen
+   // TODO: Make this value dynamic
+   user_text_input_screen->set_prompt_text("How old is Mittens?");
+
+   // Clear our value
+   last_user_text_input_value.clear();
 
    // TODO: setup the prompt screen with context
 

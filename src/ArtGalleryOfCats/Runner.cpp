@@ -290,6 +290,7 @@ void Runner::initialize()
    primary_gameplay_screen.set_font_bin(font_bin);
    primary_gameplay_screen.set_model_bin(model_bin);
    primary_gameplay_screen.set_resources_path(resources_path);
+   primary_gameplay_screen.set_user_text_input_screen(&user_text_input_screen);
    primary_gameplay_screen.initialize();
 
    // TODO: Load up our sound effects
@@ -590,8 +591,13 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    // now, for this hackathon, it should work fine.
    if (ev->is_type(AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_OK_KEY))
    {
+      // Extract the user's input string
       std::string text_input_value = user_text_input_screen.get_result_string_value();
+
+      // Assign the user input string into the "primary_gameplay_screen" for usage
       primary_gameplay_screen.set_last_user_text_input_value(text_input_value);
+
+      // Activate the primary gameplay screen
       // TODO: test this
       this->router.emit_route_event(
          AllegroFlare::Routers::Standard::EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN,
