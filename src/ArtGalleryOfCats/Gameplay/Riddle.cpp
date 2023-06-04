@@ -65,8 +65,12 @@ bool Riddle::matches_answer(std::string answer_guess)
    std::string filtered_answer_guess = answer_guess;
    std::string filtered_riddle_answer = riddle_answer;
 
-   for (char &c : filtered_answer_guess) { c = std::tolower(c); }
-   for (char &c : filtered_riddle_answer) { c = std::tolower(c); }
+   bool case_sensitive = false; // TODO: Consider making this a flag
+   if (!case_sensitive)
+   {
+      for (char &c : filtered_answer_guess) { c = std::tolower(c); }
+      for (char &c : filtered_riddle_answer) { c = std::tolower(c); }
+   }
 
    // TODO: Account for additional rules (case insensitive, etc)
    if (filtered_answer_guess == filtered_riddle_answer) return true;
