@@ -161,6 +161,18 @@ void UserTextInput::set_prompt_text(std::string prompt_text)
    return;
 }
 
+std::string UserTextInput::get_result_string_value()
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[UserTextInput::get_result_string_value]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("UserTextInput::get_result_string_value: error: guard \"initialized\" not met");
+   }
+   return software_keyboard.get_result_string();
+}
+
 void UserTextInput::set_event_to_emit_on_pressing_ok_key(std::string event_to_emit_on_pressing_ok_key)
 {
    software_keyboard.set_event_to_emit_on_pressing_ok_key(event_to_emit_on_pressing_ok_key);

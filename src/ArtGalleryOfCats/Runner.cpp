@@ -588,6 +588,11 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    }
    // NOTE: This is an older way to handle this signal flow, specifically for submitting the user input text. For
    // now, for this hackathon, it should work fine.
+   if (ev->is_type(AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_OK_KEY))
+   {
+      //std::string text_input_value = user_text_input_screen
+   }
+
    return;
 }
 

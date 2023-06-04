@@ -49,6 +49,7 @@ namespace ArtGalleryOfCats
          void set_font_name(std::string font_name=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_FONT_NAME);
          void set_font_size(int font_size=1);
          void set_prompt_text(std::string prompt_text="[unset-prompt_text]");
+         std::string get_result_string_value();
          void set_event_to_emit_on_pressing_ok_key(std::string event_to_emit_on_pressing_ok_key=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_OK_KEY);
          bool mode_is_using_keyboard();
          bool mode_is_using_virtual_controls();

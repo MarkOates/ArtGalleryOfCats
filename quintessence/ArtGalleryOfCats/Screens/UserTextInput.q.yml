@@ -143,6 +143,13 @@ functions:
       return;
 
 
+  - name: get_result_string_value
+    type: std::string
+    guards: [ initialized ]
+    body: |
+       return software_keyboard.get_result_string();
+
+
   - name: set_event_to_emit_on_pressing_ok_key
     parameters:
       - name: event_to_emit_on_pressing_ok_key
