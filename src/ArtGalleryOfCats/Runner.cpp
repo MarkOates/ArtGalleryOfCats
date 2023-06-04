@@ -238,8 +238,14 @@ void Runner::initialize()
    npc_conversations_screen.get_storyboard_element_ref().set_pages({
        create_image_page(
        //page_factory.create_advancing_text_page(
-         "I really like all this art! It nourishes the spirit. It ignites the soul!"
+         "Hmm. There's a chart over there."
+          //I guess I would be.",
+         //"I really like all this art! It nourishes the spirit. It ignites the soul!"
        //),
+       ),
+       create_image_page(
+       //page_factory.create_advancing_text_page(
+          "I guess if I were a human, I'd be 25 years old."
        ),
    });
 
@@ -278,6 +284,7 @@ void Runner::initialize()
 
    // TODO: Setup game won screen
    game_won_screen.set_background(&solid_black_background);
+   game_won_screen.set_font_bin(font_bin);
    //game_won_screen.initialize(); // NOTE: Initialization is not necessary for this screen
 
    // TODO: Setup game won outro storyboard screen
@@ -302,6 +309,7 @@ void Runner::initialize()
    rolling_credits_screen.set_font_bin(font_bin);
    rolling_credits_screen.set_background(&solid_black_background);
    rolling_credits_screen.initialize();
+
 
    // Setup our main gameplay screen
    primary_gameplay_screen.set_event_emitter(event_emitter);
