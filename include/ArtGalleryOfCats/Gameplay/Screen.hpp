@@ -132,6 +132,7 @@ namespace ArtGalleryOfCats
          virtual void virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          void activate_npc_conversations_screen();
+         std::string find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on=nullptr);
          void interact_with_focused_object();
          void attempt_to_solve_riddle();
          void toggle_riddle_visibility();

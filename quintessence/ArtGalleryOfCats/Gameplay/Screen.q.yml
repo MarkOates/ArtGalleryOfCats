@@ -399,6 +399,11 @@ functions:
               { "Hmm, that's not the correct answer to the riddle.", "That's ok! You can try as many times as you like." }
            )
          },
+         { "fallback_dialog", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "That's interesting." }
+            )
+         },
          { "default_inspect_1", new AllegroFlare::DialogTree::Node(
               "Mittens",
               { "The artist has such a good sense of form and balance!" }
@@ -1185,6 +1190,20 @@ functions:
       return;
 
 
+  - name: find_custom_dialog_for_this_inspect
+    type: std::string
+    parameters:
+      - name: entity_inspecting_on
+        type: AllegroFlare::SceneGraph::Entities::Base*
+        default_argument: nullptr
+    body: |
+      if (entity_inspecting_on) return "";
+
+      // TODO: Add special case dialog here
+
+      return "";
+
+
   - name: interact_with_focused_object
     guards: [ npc_conversations_screen ]
     body: |
@@ -1197,22 +1216,29 @@ functions:
       player_stop_moving();
 
 
+      std::string dialog_identifier_to_use = "fallback_dialog";
 
-      // TODO: make more default dialogs
-      static int last_default_inspect_index = 0;
-      std::vector<std::string> default_inspect_dialog_node_identifiers = {
-         "default_inspect_1",
-         "default_inspect_2",
-         "default_inspect_3",
-         "default_inspect_4",
-         "default_inspect_5",
-         "default_inspect_6",
-      };
+      std::string custom_dialog_identifier = find_custom_dialog_for_this_inspect();
 
-      std::string this_dialog_node_to_say = default_inspect_dialog_node_identifiers[last_default_inspect_index];
+      if (custom_dialog_identifier.empty())
+      {
+         // There is no custom dialog, so select a fallback dialog here
 
-      last_default_inspect_index++;
-      if (last_default_inspect_index >= default_inspect_dialog_node_identifiers.size()) last_default_inspect_index = 0;
+         static int last_default_inspect_index = 0;
+         std::vector<std::string> default_inspect_dialog_node_identifiers = {
+            "default_inspect_1",
+            "default_inspect_2",
+            "default_inspect_3",
+            "default_inspect_4",
+            "default_inspect_5",
+            "default_inspect_6",
+         };
+
+         dialog_identifier_to_use = default_inspect_dialog_node_identifiers[last_default_inspect_index];
+
+         last_default_inspect_index++;
+         if (last_default_inspect_index >= default_inspect_dialog_node_identifiers.size()) last_default_inspect_index = 0;
+      }
 
 
 
@@ -1257,7 +1283,7 @@ functions:
       */
 
 
-      activate_npc_dialog_by_identifier(this_dialog_node_to_say);
+      activate_npc_dialog_by_identifier(dialog_identifier_to_use);
 
 
 

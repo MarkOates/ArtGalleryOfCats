@@ -490,6 +490,11 @@ void Screen::load_dialog_node_bank()
            { "Hmm, that's not the correct answer to the riddle.", "That's ok! You can try as many times as you like." }
         )
       },
+      { "fallback_dialog", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "That's interesting." }
+         )
+      },
       { "default_inspect_1", new AllegroFlare::DialogTree::Node(
            "Mittens",
            { "The artist has such a good sense of form and balance!" }
@@ -1244,6 +1249,15 @@ void Screen::activate_npc_conversations_screen()
    return;
 }
 
+std::string Screen::find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on)
+{
+   if (entity_inspecting_on) return "";
+
+   // TODO: Add special case dialog here
+
+   return "";
+}
+
 void Screen::interact_with_focused_object()
 {
    if (!(npc_conversations_screen))
@@ -1262,22 +1276,29 @@ void Screen::interact_with_focused_object()
    player_stop_moving();
 
 
+   std::string dialog_identifier_to_use = "fallback_dialog";
 
-   // TODO: make more default dialogs
-   static int last_default_inspect_index = 0;
-   std::vector<std::string> default_inspect_dialog_node_identifiers = {
-      "default_inspect_1",
-      "default_inspect_2",
-      "default_inspect_3",
-      "default_inspect_4",
-      "default_inspect_5",
-      "default_inspect_6",
-   };
+   std::string custom_dialog_identifier = find_custom_dialog_for_this_inspect();
 
-   std::string this_dialog_node_to_say = default_inspect_dialog_node_identifiers[last_default_inspect_index];
+   if (custom_dialog_identifier.empty())
+   {
+      // There is no custom dialog, so select a fallback dialog here
 
-   last_default_inspect_index++;
-   if (last_default_inspect_index >= default_inspect_dialog_node_identifiers.size()) last_default_inspect_index = 0;
+      static int last_default_inspect_index = 0;
+      std::vector<std::string> default_inspect_dialog_node_identifiers = {
+         "default_inspect_1",
+         "default_inspect_2",
+         "default_inspect_3",
+         "default_inspect_4",
+         "default_inspect_5",
+         "default_inspect_6",
+      };
+
+      dialog_identifier_to_use = default_inspect_dialog_node_identifiers[last_default_inspect_index];
+
+      last_default_inspect_index++;
+      if (last_default_inspect_index >= default_inspect_dialog_node_identifiers.size()) last_default_inspect_index = 0;
+   }
 
 
 
@@ -1322,7 +1343,7 @@ void Screen::interact_with_focused_object()
    */
 
 
-   activate_npc_dialog_by_identifier(this_dialog_node_to_say);
+   activate_npc_dialog_by_identifier(dialog_identifier_to_use);
 
 
 
