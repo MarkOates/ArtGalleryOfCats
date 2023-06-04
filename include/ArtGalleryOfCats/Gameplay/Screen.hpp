@@ -132,6 +132,7 @@ namespace ArtGalleryOfCats
          void emit_event_to_return_to_the_level_select_screen();
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;
+         virtual void mouse_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_axes_func(ALLEGRO_EVENT* ev=nullptr) override;
          ALLEGRO_FONT* obtain_riddle_font();
          ALLEGRO_FONT* obtain_inspect_hint_icon_font();

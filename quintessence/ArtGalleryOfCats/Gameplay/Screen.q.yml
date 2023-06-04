@@ -437,15 +437,15 @@ functions:
   - name: show_input_hints
     body: |
       event_emitter->emit_set_input_hints_bar_event({
-         "W", "%SPACE", "A", "%SPACE", "S", "%SPACE", "D", "%SPACER", "LABEL>>", "Move",
+         "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move",
          "%SEPARATOR",
          "MOUSE", "%SPACER", "LABEL>>", "Look",
          "%SEPARATOR",
          "R", "%SPACER", "LABEL>>", "Toggle the Riddle",
          "%SEPARATOR",
-         "I", "%SPACER", "LABEL>>", "Solve the Riddle",
+         "S", "%SPACER", "LABEL>>", "Solve the Riddle",
          "%SEPARATOR",
-         "N", "%SPACER", "LABEL>>", "Inspect",
+         "I", "%SPACER", "LABEL>>", "Inspect",
          "%SEPARATOR",
          "ESC", "%SPACER", "LABEL>>", "Return to Gallery Select",
       });
@@ -1176,29 +1176,29 @@ functions:
       // This method is DEBUGGING
       switch(ev->keyboard.keycode)
       {
-         case ALLEGRO_KEY_W: {
+         case ALLEGRO_KEY_UP: {
             player_up_pressed = true;
          } break;
 
-         case ALLEGRO_KEY_A: {
+         case ALLEGRO_KEY_LEFT: {
             player_left_pressed = true;
          } break;
 
-         case ALLEGRO_KEY_S: {
+         case ALLEGRO_KEY_DOWN: {
             player_down_pressed = true;
          } break;
 
-         case ALLEGRO_KEY_D: {
+         case ALLEGRO_KEY_RIGHT: {
             player_right_pressed = true;
          } break;
 
          case ALLEGRO_KEY_SPACE:
          case ALLEGRO_KEY_ENTER:
-         case ALLEGRO_KEY_N: {
+         case ALLEGRO_KEY_I: {
             interact_with_focused_object();
          } break;
 
-         case ALLEGRO_KEY_T: {
+         case ALLEGRO_KEY_S: {
             //interact_with_focused_object();
             attempt_to_solve_riddle();
          } break;
@@ -1262,6 +1262,19 @@ functions:
       - AllegroFlare::Routers::Standard
       - AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier
       - AllegroFlare::EventNames
+
+
+  - name: mouse_down_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized ]
+    body: |
+      interact_with_focused_object();
+      return;
 
 
   - name: mouse_axes_func

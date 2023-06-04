@@ -531,15 +531,15 @@ void Screen::hide_input_hints()
 void Screen::show_input_hints()
 {
    event_emitter->emit_set_input_hints_bar_event({
-      "W", "%SPACE", "A", "%SPACE", "S", "%SPACE", "D", "%SPACER", "LABEL>>", "Move",
+      "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move",
       "%SEPARATOR",
       "MOUSE", "%SPACER", "LABEL>>", "Look",
       "%SEPARATOR",
       "R", "%SPACER", "LABEL>>", "Toggle the Riddle",
       "%SEPARATOR",
-      "I", "%SPACER", "LABEL>>", "Solve the Riddle",
+      "S", "%SPACER", "LABEL>>", "Solve the Riddle",
       "%SEPARATOR",
-      "N", "%SPACER", "LABEL>>", "Inspect",
+      "I", "%SPACER", "LABEL>>", "Inspect",
       "%SEPARATOR",
       "ESC", "%SPACER", "LABEL>>", "Return to Gallery Select",
    });
@@ -1247,29 +1247,29 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
    // This method is DEBUGGING
    switch(ev->keyboard.keycode)
    {
-      case ALLEGRO_KEY_W: {
+      case ALLEGRO_KEY_UP: {
          player_up_pressed = true;
       } break;
 
-      case ALLEGRO_KEY_A: {
+      case ALLEGRO_KEY_LEFT: {
          player_left_pressed = true;
       } break;
 
-      case ALLEGRO_KEY_S: {
+      case ALLEGRO_KEY_DOWN: {
          player_down_pressed = true;
       } break;
 
-      case ALLEGRO_KEY_D: {
+      case ALLEGRO_KEY_RIGHT: {
          player_right_pressed = true;
       } break;
 
       case ALLEGRO_KEY_SPACE:
       case ALLEGRO_KEY_ENTER:
-      case ALLEGRO_KEY_N: {
+      case ALLEGRO_KEY_I: {
          interact_with_focused_object();
       } break;
 
-      case ALLEGRO_KEY_T: {
+      case ALLEGRO_KEY_S: {
          //interact_with_focused_object();
          attempt_to_solve_riddle();
       } break;
@@ -1331,6 +1331,19 @@ void Screen::key_up_func(ALLEGRO_EVENT* ev)
       } break;
    }
 
+   return;
+}
+
+void Screen::mouse_down_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::mouse_down_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::mouse_down_func: error: guard \"initialized\" not met");
+   }
+   interact_with_focused_object();
    return;
 }
 
