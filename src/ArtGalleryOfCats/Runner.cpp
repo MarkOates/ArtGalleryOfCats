@@ -3,6 +3,7 @@
 #include <ArtGalleryOfCats/Runner.hpp>
 
 #include <AllegroFlare/Color.hpp>
+#include <AllegroFlare/Elements/RollingCredits/SectionFactory.hpp>
 #include <AllegroFlare/Frameworks/Full.hpp>
 #include <AllegroFlare/Logger.hpp>
 #include <AllegroFlare/RouteEventDatas/StartLevel.hpp>
@@ -304,10 +305,17 @@ void Runner::initialize()
    });
    game_won_outro_storyboard_screen.initialize();
 
+
    // TODO: Setup rolling credits screen
+   AllegroFlare::Elements::RollingCredits::SectionFactory section_factory;
    rolling_credits_screen.set_event_emitter(event_emitter); // NEEDED in startup template
    rolling_credits_screen.set_font_bin(font_bin);
    rolling_credits_screen.set_background(&solid_black_background);
+   rolling_credits_screen.set_sections({
+      section_factory.create_text(
+         "And thank you for playing."
+      ),
+   });
    rolling_credits_screen.initialize();
 
 

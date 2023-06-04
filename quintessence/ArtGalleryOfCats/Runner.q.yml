@@ -362,10 +362,17 @@ functions:
       });
       game_won_outro_storyboard_screen.initialize();
 
+
       // TODO: Setup rolling credits screen
+      AllegroFlare::Elements::RollingCredits::SectionFactory section_factory;
       rolling_credits_screen.set_event_emitter(event_emitter); // NEEDED in startup template
       rolling_credits_screen.set_font_bin(font_bin);
       rolling_credits_screen.set_background(&solid_black_background);
+      rolling_credits_screen.set_sections({
+         section_factory.create_text(
+            "And thank you for playing."
+         ),
+      });
       rolling_credits_screen.initialize();
 
 
@@ -396,6 +403,7 @@ functions:
     body_dependency_symbols:
       - AllegroFlare::StoryboardFactory
       - AllegroFlare::Color
+      - AllegroFlare::Elements::RollingCredits::SectionFactory
 
 
   - name: setup_router
@@ -801,5 +809,7 @@ dependencies:
     headers: [ AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp ]
   - symbol: ArtGalleryOfCats::Screens::UserTextInput
     headers: [ ArtGalleryOfCats/Screens/UserTextInput.hpp ]
+  - symbol: AllegroFlare::Elements::RollingCredits::SectionFactory
+    headers: [ AllegroFlare/Elements/RollingCredits/SectionFactory.hpp ]
 
 
