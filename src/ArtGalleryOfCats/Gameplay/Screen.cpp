@@ -492,7 +492,32 @@ void Screen::load_dialog_node_bank()
       },
       { "default_inspect_1", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "Impressive!", "The artist has such an amazing sense of form and balance!" }
+           { "The artist has such a good sense of form and balance!" }
+         )
+      },
+      { "default_inspect_2", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "I really like this art!" }
+         )
+      },
+      { "default_inspect_3", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "This art is fantastic! It nourishes the spirit!" }
+         )
+      },
+      { "default_inspect_4", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "Works like this one are always a favorite of mine!" }
+         )
+      },
+      { "default_inspect_5", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "Such striking composition!" }
+         )
+      },
+      { "default_inspect_6", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "Hmm, an interesting work!" }
          )
       },
    });
@@ -1242,11 +1267,11 @@ void Screen::interact_with_focused_object()
    static int last_default_inspect_index = 0;
    std::vector<std::string> default_inspect_dialog_node_identifiers = {
       "default_inspect_1",
-      //"default_inspect_2",
-      //"default_inspect_3",
-      //"default_inspect_4",
-      //"default_inspect_5",
-      //"default_inspect_6",
+      "default_inspect_2",
+      "default_inspect_3",
+      "default_inspect_4",
+      "default_inspect_5",
+      "default_inspect_6",
    };
 
    std::string this_dialog_node_to_say = default_inspect_dialog_node_identifiers[last_default_inspect_index];
