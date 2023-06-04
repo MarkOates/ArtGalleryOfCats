@@ -30,7 +30,7 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen, AllegroFlare::Screens::Storyboard* npc_conversations_screen)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen, AllegroFlare::Screens::Storyboard* npc_conversations_screen, std::vector<std::string>* solved_level_names)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
@@ -39,6 +39,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , resources_path(resources_path)
    , user_text_input_screen(user_text_input_screen)
    , npc_conversations_screen(npc_conversations_screen)
+   , solved_level_names(solved_level_names)
    , dialog_node_bank({})
    , riddle_is_solved(false)
    , riddle_is_showing(false)
@@ -250,6 +251,19 @@ void Screen::set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc
       throw std::runtime_error("Screen::set_npc_conversations_screen: error: guard \"(!initialized)\" not met");
    }
    this->npc_conversations_screen = npc_conversations_screen;
+   return;
+}
+
+void Screen::set_solved_level_names(std::vector<std::string>* solved_level_names)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_solved_level_names]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_solved_level_names: error: guard \"(!initialized)\" not met");
+   }
+   this->solved_level_names = solved_level_names;
    return;
 }
 

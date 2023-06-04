@@ -44,6 +44,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: solved_level_names
+    type: std::vector<std::string>*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: dialog_node_bank
     type: AllegroFlare::DialogTree::NodeBank
     init_with: '{}'
@@ -222,6 +227,17 @@ functions:
         default_argument: nullptr
     body: |
       this->npc_conversations_screen = npc_conversations_screen;
+      return;
+
+
+  - name: set_solved_level_names
+    guards: [ (!initialized) ]
+    parameters:
+      - name: solved_level_names
+        type: std::vector<std::string>*
+        default_argument: nullptr
+    body: |
+      this->solved_level_names = solved_level_names;
       return;
 
 

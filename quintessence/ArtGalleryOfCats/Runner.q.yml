@@ -111,6 +111,10 @@ properties:
     type: ArtGalleryOfCats::Elements::Backgrounds::NPCConversations
     init_with: '{}'
 
+  - name: solved_level_names
+    type: std::vector<std::string>
+    init_with: '{}'
+
   - name: release_info
     type: ReleaseInfo
     init_with: '{}'

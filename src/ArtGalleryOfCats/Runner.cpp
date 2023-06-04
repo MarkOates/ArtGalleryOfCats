@@ -44,6 +44,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , solid_black_background(ALLEGRO_COLOR{0, 0, 0, 1})
    , light_blue_background(ALLEGRO_COLOR{148.0f/255, 191.0f/255, 226.0f/255, 1})
    , npc_conversations_background({})
+   , solved_level_names({})
    , release_info({})
    , initialized(false)
 {
