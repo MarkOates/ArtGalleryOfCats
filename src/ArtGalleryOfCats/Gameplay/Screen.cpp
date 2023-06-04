@@ -37,6 +37,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , entity_pool(entity_pool)
    , user_text_input_screen(user_text_input_screen)
    , current_riddle()
+   , riddle_is_solved(false)
    , last_user_text_input_value("")
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -63,6 +64,12 @@ Screen::~Screen()
 void Screen::set_current_riddle(ArtGalleryOfCats::Gameplay::Riddle current_riddle)
 {
    this->current_riddle = current_riddle;
+}
+
+
+void Screen::set_riddle_is_solved(bool riddle_is_solved)
+{
+   this->riddle_is_solved = riddle_is_solved;
 }
 
 
@@ -93,6 +100,12 @@ void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_
 ArtGalleryOfCats::Gameplay::Riddle Screen::get_current_riddle() const
 {
    return current_riddle;
+}
+
+
+bool Screen::get_riddle_is_solved() const
+{
+   return riddle_is_solved;
 }
 
 
@@ -308,6 +321,12 @@ void Screen::on_activate()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
    }
+   if (riddle_is_solved)
+   {
+      // Note: NPC dialog, after solving the riddle, will return back to this screen.
+      // TODO: Progress to the next level
+   }
+
    bool need_to_handle_user_text_input = !last_user_text_input_value.empty();
    if (need_to_handle_user_text_input)
    {
@@ -335,6 +354,8 @@ void Screen::on_activate()
             ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
             intptr_t(new std::string("solve_a_riddle"))
          );
+
+         riddle_is_solved = true;
 
          trigger_npc_dialog(); // DEVELOPMENT
       }

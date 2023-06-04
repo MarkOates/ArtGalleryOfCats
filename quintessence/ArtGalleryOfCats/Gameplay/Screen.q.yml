@@ -50,6 +50,12 @@ properties:
     getter: true
     setter: true
 
+  - name: riddle_is_solved
+    type: bool
+    init_with: false
+    getter: true
+    setter: true
+
   - name: last_user_text_input_value
     type: std::string
     init_with: '""'
@@ -259,6 +265,12 @@ functions:
     override: true
     guards: [ initialized ]
     body: |
+      if (riddle_is_solved)
+      {
+         // Note: NPC dialog, after solving the riddle, will return back to this screen.
+         // TODO: Progress to the next level
+      }
+
       bool need_to_handle_user_text_input = !last_user_text_input_value.empty();
       if (need_to_handle_user_text_input)
       {
@@ -286,6 +298,8 @@ functions:
                ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
                intptr_t(new std::string("solve_a_riddle"))
             );
+
+            riddle_is_solved = true;
 
             trigger_npc_dialog(); // DEVELOPMENT
          }
