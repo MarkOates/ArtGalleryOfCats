@@ -46,7 +46,7 @@ TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__on_a_file_that_does_no
 
 TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__will_not_blow_up)
 {
-   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-07.tmj";
+   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-10.tmj";
    ArtGalleryOfCats::Gameplay::TMJObjectLoader loader(filename);
    loader.load();
 }
@@ -54,7 +54,7 @@ TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__will_not_blow_up)
 
 TEST(ArtGalleryOfCats_Gameplay_TMJObjectLoaderTest, load__will_pass_the_values_into_the_callback)
 {
-   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-07.tmj";
+   std::string filename = "/Users/markoates/Repos/ArtGalleryOfCats/tests/fixtures/maps/gallery-map-10.tmj";
    ArtGalleryOfCats::Gameplay::TMJObjectLoader loader(filename);
    loader.set_object_parsed_callback(object_parsed_callback);
    loader.load();

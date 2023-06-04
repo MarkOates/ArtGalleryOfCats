@@ -22,7 +22,7 @@ TMJObjectLoader::TMJObjectLoader(std::string filename)
    , loaded(false)
    , object_parsed_callback({})
    , object_parsed_callback_user_data(nullptr)
-   , map_property_parsed_callback({})
+   , map_properties_parsed_callback({})
    , map_property_parsed_callback_user_data(nullptr)
 {
 }
@@ -45,9 +45,9 @@ void TMJObjectLoader::set_object_parsed_callback_user_data(void* object_parsed_c
 }
 
 
-void TMJObjectLoader::set_map_property_parsed_callback(std::function<void(std::string, std::string, std::string, void*)> map_property_parsed_callback)
+void TMJObjectLoader::set_map_properties_parsed_callback(std::function<void(std::vector<std::tuple<std::string, std::string, std::string>>, void*)> map_properties_parsed_callback)
 {
-   this->map_property_parsed_callback = map_property_parsed_callback;
+   this->map_properties_parsed_callback = map_properties_parsed_callback;
 }
 
 
@@ -69,9 +69,9 @@ void* TMJObjectLoader::get_object_parsed_callback_user_data() const
 }
 
 
-std::function<void(std::string, std::string, std::string, void*)> TMJObjectLoader::get_map_property_parsed_callback() const
+std::function<void(std::vector<std::tuple<std::string, std::string, std::string>>, void*)> TMJObjectLoader::get_map_properties_parsed_callback() const
 {
-   return map_property_parsed_callback;
+   return map_properties_parsed_callback;
 }
 
 
@@ -198,6 +198,44 @@ void TMJObjectLoader::load()
          );
       }
    }
+
+   // Parse out the custom map properties ("properties" at the root level of the JSON)
+   std::vector<std::tuple<std::string, std::string, std::string>> collected_map_custom_properties = {};
+   if (!source_json.contains("properties"))
+   {
+      std::stringstream error_message;
+      error_message << "Expecting [\"properties\"] to exist in the root object, but it does not.";
+      AllegroFlare::Errors::throw_error("ArtGalleryOfCats::Gameplay::TMJObjectLoader", error_message.str());
+   }
+   for (auto &object_json : source_json["properties"].items())
+   {
+      for (auto &custom_map_property : object_json.value()["properties"].items())
+      {
+         std::string custom_map_property_name = custom_map_property.value()["name"].get<std::string>();
+         std::string custom_map_property_type = custom_map_property.value()["type"].get<std::string>();
+         if (custom_map_property_type != "string") throw std::runtime_error("TMJObjectLoader,(with properties) expecting type string");
+         std::string custom_map_property_value = custom_map_property.value()["value"].get<std::string>();
+         //map_property_parsed_callback()
+
+         //type: std::function<void(std::vector<std::tuple<std::string, std::string, std::string>>, void*)>
+
+         collected_map_custom_properties.push_back(
+            std::tuple<std::string, std::string, std::string>(
+               custom_map_property_name, custom_map_property_type, custom_map_property_value
+            )
+         );
+      }
+   }
+
+   // TODO: Test this
+   if (object_parsed_callback && !collected_map_custom_properties.empty())
+   {
+      // TODO: Test this
+      map_properties_parsed_callback(
+          collected_map_custom_properties,
+          map_property_parsed_callback_user_data
+       );
+    }
 
    return;
 }
