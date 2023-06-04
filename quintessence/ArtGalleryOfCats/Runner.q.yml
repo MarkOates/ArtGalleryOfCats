@@ -357,11 +357,11 @@ functions:
          //{ "Bubble Pop Bay", "bubble_pop_bay" },
          //{ "Neon City Nights", "neon_city_nights" },
          //{ "Wonderland Woods", "wonderland_woods" },
-         { "1", "candy_kingdom" },
-         { "2", "cherry_blossom_grove" },
-         { "3", "bubble_pop_bay" },
-         { "4", "neon_city_nights" },
-         { "5", "wonderland_woods" },
+         { "Gallery 1", "gallery_01" },
+         { "Gallery 2", "gallery_02" },
+         //{ "3", "bubble_pop_bay" },
+         //{ "4", "neon_city_nights" },
+         //{ "5", "wonderland_woods" },
       });
       level_select_screen.set_background(&solid_black_background);
       level_select_screen.initialize();
@@ -748,6 +748,8 @@ functions:
       {
          // TODO: Figure out what to do here, probably load the next level, or, if there are no more levels show
          // game won screen
+
+
          bool this_was_the_last_level = true;
          if (this_was_the_last_level)
          {
