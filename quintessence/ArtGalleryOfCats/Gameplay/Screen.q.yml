@@ -415,21 +415,19 @@ functions:
          return;
       }
 
-      // TODO: Get dialog pages from node
-      // TODO: Create pages for each node
-      // TODO: Erase the current npc dialog pages
+      // TODO: Erase the current npc dialog pages (delete them)
 
+      // Get dialog pages from node
+      AllegroFlare::DialogTree::Node* dialog_node = dialog_node_bank.find_node_by_name(dialog_node_identifier);
+      std::vector<std::string> dialog_pages = dialog_node->get_pages();
 
-      //std::vector<std::string> dialog_pages = {
-         //"Impressive",
-         //"The artist has such an amazing sense of form and balance!",
-      //};
-
-
-      std::vector<AllegroFlare::Elements::StoryboardPages::Base *> storyboard_pages = {
-          create_image_page("Impressive!"),
-          create_image_page("The artist has such an amazing sense of form and balance!"),
-      };
+      // Create storyboard pages from the dialog pages
+      std::vector<AllegroFlare::Elements::StoryboardPages::Base *> storyboard_pages = {};
+      storyboard_pages.reserve(dialog_pages.size());
+      for (auto &dialog_page : dialog_pages)
+      {
+         storyboard_pages.push_back(create_image_page(dialog_page));
+      }
 
       // Assign our new dialog pages to the npc_coversations storyboard
       npc_conversations_screen->get_storyboard_element_ref().set_pages(storyboard_pages);
