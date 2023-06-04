@@ -549,6 +549,13 @@ void Screen::update_entity_player_is_currently_colliding_with()
 
 void Screen::scene_physics_updater()
 {
+   if (!(get_entity_pool()))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::scene_physics_updater]: error: guard \"get_entity_pool()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::scene_physics_updater: error: guard \"get_entity_pool()\" not met");
+   }
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
    // Extract our out camera
@@ -571,7 +578,7 @@ void Screen::scene_physics_updater()
 
    float box_size = 1.4;
    float box_h_size = box_size * 0.5f;
-   for (auto &entity : entity_pool.get_entity_pool_ref())
+   for (auto &entity : get_entity_pool()->get_entity_pool_ref())
    {
       ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
          static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
@@ -619,8 +626,15 @@ void Screen::render()
 
 void Screen::scene_renderer_render()
 {
+   if (!(get_entity_pool()))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::scene_renderer_render]: error: guard \"get_entity_pool()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::scene_renderer_render: error: guard \"get_entity_pool()\" not met");
+   }
    ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
-   scene_renderer.set_entity_pool(&entity_pool);
+   scene_renderer.set_entity_pool(get_entity_pool());
    scene_renderer.set_cubemap_shader(&cubemap_shader);
    scene_renderer.render();
    return;
@@ -628,6 +642,13 @@ void Screen::scene_renderer_render()
 
 void Screen::render_hud()
 {
+   if (!(get_entity_pool()))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::render_hud]: error: guard \"get_entity_pool()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::render_hud: error: guard \"get_entity_pool()\" not met");
+   }
    // Local vars;
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
@@ -660,7 +681,7 @@ void Screen::render_hud()
       render_tile_map(&collision_tile_map, 16.0f, 16.0f);
 
 
-      for (auto &entity : entity_pool.get_entity_pool_ref())
+      for (auto &entity : get_entity_pool()->get_entity_pool_ref())
       {
          ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
             static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);

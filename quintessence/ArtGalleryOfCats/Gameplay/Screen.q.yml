@@ -495,6 +495,7 @@ functions:
 
   - name: scene_physics_updater
     private: true
+    guards: [ get_entity_pool() ]
     body: |
       AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
@@ -518,7 +519,7 @@ functions:
 
       float box_size = 1.4;
       float box_h_size = box_size * 0.5f;
-      for (auto &entity : entity_pool.get_entity_pool_ref())
+      for (auto &entity : get_entity_pool()->get_entity_pool_ref())
       {
          ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
             static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
@@ -571,9 +572,10 @@ functions:
 
   - name: scene_renderer_render
     private: true
+    guards: [ get_entity_pool() ]
     body: |
       ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
-      scene_renderer.set_entity_pool(&entity_pool);
+      scene_renderer.set_entity_pool(get_entity_pool());
       scene_renderer.set_cubemap_shader(&cubemap_shader);
       scene_renderer.render();
       return;
@@ -583,6 +585,7 @@ functions:
 
   - name: render_hud
     private: true
+    guards: [ get_entity_pool() ]
     body: |
       // Local vars;
       AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
@@ -616,7 +619,7 @@ functions:
          render_tile_map(&collision_tile_map, 16.0f, 16.0f);
 
 
-         for (auto &entity : entity_pool.get_entity_pool_ref())
+         for (auto &entity : get_entity_pool()->get_entity_pool_ref())
          {
             ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
                static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
