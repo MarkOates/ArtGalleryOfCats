@@ -228,8 +228,8 @@ functions:
       ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
       level_factory.set_model_bin(model_bin);
       level_factory.set_bitmap_bin(bitmap_bin);
-      level_factory.set_entity_pool(&entity_pool);
-      level_factory.set_riddle(&current_riddle);
+      level_factory.set_entity_pool(get_entity_pool());
+      level_factory.set_riddle(get_current_riddle());
 
 
       std::map<std::string, std::function<void()>> items_map = {
@@ -269,18 +269,19 @@ functions:
 
   - name: get_entity_pool
     type: AllegroFlare::SceneGraph::EntityPool*
+    guards: [ current_level ]
     body: |
       // TODO: Add "guards: [ current_level ]"
-      return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
-      //return &current_level->get_entity_pool_ref();
+      //return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
+      return &current_level->get_entity_pool_ref();
 
 
   - name: get_current_riddle
     type: ArtGalleryOfCats::Gameplay::Riddle*
+    guards: [ current_level ]
     body: |
-      // TODO: Add "guards: [ current_level ]"
-      return &current_riddle; // TODO: Swap this out with the current level entity_pool (comment below)
-      //return &current_level->get_entity_pool_ref();
+      //return &current_riddle; // TODO: Swap this out with the current level entity_pool (comment below)
+      return &current_level->get_current_riddle_ref();
 
 
   - name: initialize

@@ -233,8 +233,8 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
    level_factory.set_model_bin(model_bin);
    level_factory.set_bitmap_bin(bitmap_bin);
-   level_factory.set_entity_pool(&entity_pool);
-   level_factory.set_riddle(&current_riddle);
+   level_factory.set_entity_pool(get_entity_pool());
+   level_factory.set_riddle(get_current_riddle());
 
 
    std::map<std::string, std::function<void()>> items_map = {
@@ -272,16 +272,29 @@ void Screen::load_level_by_identifier(std::string level_identifier)
 
 AllegroFlare::SceneGraph::EntityPool* Screen::get_entity_pool()
 {
+   if (!(current_level))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::get_entity_pool]: error: guard \"current_level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::get_entity_pool: error: guard \"current_level\" not met");
+   }
    // TODO: Add "guards: [ current_level ]"
-   return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
-   //return &current_level->get_entity_pool_ref();
+   //return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
+   return &current_level->get_entity_pool_ref();
 }
 
 ArtGalleryOfCats::Gameplay::Riddle* Screen::get_current_riddle()
 {
-   // TODO: Add "guards: [ current_level ]"
-   return &current_riddle; // TODO: Swap this out with the current level entity_pool (comment below)
-   //return &current_level->get_entity_pool_ref();
+   if (!(current_level))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::get_current_riddle]: error: guard \"current_level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::get_current_riddle: error: guard \"current_level\" not met");
+   }
+   //return &current_riddle; // TODO: Swap this out with the current level entity_pool (comment below)
+   return &current_level->get_current_riddle_ref();
 }
 
 void Screen::initialize()
