@@ -480,6 +480,9 @@ void Screen::initialize()
 void Screen::load_dialog_node_bank()
 {
    dialog_node_bank.set_nodes({
+
+      // Riddle responses
+
       { "correct_riddle_answer", new AllegroFlare::DialogTree::Node(
            "Mittens",
            { "CORRECT!", "You got it right! You are very attentive!", "Let's move on to another gallery, shall we?" }
@@ -490,6 +493,9 @@ void Screen::load_dialog_node_bank()
            { "Hmm, that's not the correct answer to the riddle.", "That's ok! You can try as many times as you like." }
         )
       },
+
+      // Default and fallback dialog
+
       { "fallback_dialog", new AllegroFlare::DialogTree::Node(
            "Mittens",
            { "That's interesting." }
@@ -525,6 +531,15 @@ void Screen::load_dialog_node_bank()
            { "Hmm, an interesting work!" }
          )
       },
+
+      // Special inspections
+
+      { "inspect_on_black_and_white_cats_art", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           { "This one is quite striking!", "The black and white creates such a strong contrast." }
+         )
+      },
+
    });
    return;
 }
@@ -1252,6 +1267,12 @@ void Screen::activate_npc_conversations_screen()
 std::string Screen::find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on)
 {
    if (entity_inspecting_on) return "";
+
+   std::string art_identifier = entity_inspecting_on->get(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER);
+   if (!art_identifier.empty())
+   {
+      if (art_identifier == "black_and_white_cats") return "inspect_on_black_and_white_cats_art";
+   }
 
    // TODO: Add special case dialog here
 
