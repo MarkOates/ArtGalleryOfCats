@@ -1270,10 +1270,9 @@ std::string Screen::find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph
 
    std::string art_identifier = entity_inspecting_on->get(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER);
 
-   if (!art_identifier.empty())
-   {
-      if (art_identifier == "black_and_white_cats") return "inspect_on_black_and_white_cats_art";
-   }
+   std::cout << "Inspecting on \"" << art_identifier << "\"" << std::endl;
+   if (art_identifier == "black_and_white_cats") return "inspect_on_black_and_white_cats_art";
+
 
    // TODO: Add special case dialog here
 
@@ -1300,7 +1299,9 @@ void Screen::interact_with_focused_object()
 
    std::string dialog_identifier_to_use = "fallback_dialog";
 
-   std::string custom_dialog_identifier = find_custom_dialog_for_this_inspect();
+   std::string custom_dialog_identifier = find_custom_dialog_for_this_inspect(
+      entity_player_is_currently_colliding_with
+   );
 
    if (custom_dialog_identifier.empty())
    {
@@ -1320,6 +1321,10 @@ void Screen::interact_with_focused_object()
 
       last_default_inspect_index++;
       if (last_default_inspect_index >= default_inspect_dialog_node_identifiers.size()) last_default_inspect_index = 0;
+   }
+   else
+   {
+      dialog_identifier_to_use = custom_dialog_identifier;
    }
 
 
