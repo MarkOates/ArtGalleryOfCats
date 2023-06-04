@@ -333,7 +333,7 @@ functions:
          //std::cout << "*** Handle user input text \"" << last_user_text_input_value << "\"" << std::endl;
 
          // Evaluate if answer is correct, depending on the current riddle, and the player's last input
-         answer_is_correct = current_riddle.matches_answer(last_user_text_input_value);
+         answer_is_correct = get_current_riddle()->matches_answer(last_user_text_input_value);
 
          // Clear our copy of the user input
          last_user_text_input_value.clear();
@@ -952,7 +952,7 @@ functions:
 
       // Set the prompt on the user text input screen
       // TODO: Make this value dynamic
-      std::string riddle_prompt_text = current_riddle.get_riddle_prompt_text();
+      std::string riddle_prompt_text = get_current_riddle()->get_riddle_prompt_text();
       user_text_input_screen->set_prompt_text(riddle_prompt_text);
 
       // Clear our value
