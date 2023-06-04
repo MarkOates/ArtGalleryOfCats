@@ -121,13 +121,16 @@ namespace ArtGalleryOfCats
          void attempt_to_solve_riddle();
          void toggle_riddle_visibility();
          void hide_riddle();
+         void show_inspect_hint();
+         void hide_inspect_hint();
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
          void emit_event_to_return_to_the_level_select_screen();
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_axes_func(ALLEGRO_EVENT* ev=nullptr) override;
          ALLEGRO_FONT* obtain_riddle_font();
-         ALLEGRO_FONT* obtain_inspect_hint_font();
+         ALLEGRO_FONT* obtain_inspect_hint_icon_font();
+         ALLEGRO_FONT* obtain_inspect_hint_text_font();
       };
    }
 }

@@ -400,6 +400,7 @@ void Screen::on_activate()
       throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
    }
    hide_riddle();
+   hide_inspect_hint();
 
    if (riddle_is_solved)
    {
@@ -579,8 +580,16 @@ void Screen::update_entity_player_is_currently_colliding_with()
       // Assign the found entity to be the colliding one
       entity_player_is_currently_colliding_with = found_colliding_entity;
 
-      // TODO: Some feedback that a new collision occurred
-      if (entity_player_is_currently_colliding_with != nullptr) interact_with_focused_object(); // DEVELOPMENT
+      // TODO: Some feedback that a new collision occurred (a sound effect for example)
+      if (entity_player_is_currently_colliding_with == nullptr)
+      {
+         hide_inspect_hint();
+      }
+      else
+      {
+         show_inspect_hint();
+         //interact_with_focused_object(); // DEVELOPMENT
+      }
    }
 
    return;
@@ -764,24 +773,35 @@ void Screen::render_hud()
 
    if (inspect_hint_is_showing)
    {
-      float inspect_hint_x = 1920*0.5 - 140; // TODO: make this not-hard-coded dimension
+      float inspect_hint_x = 1920*0.5 - 170; // TODO: make this not-hard-coded dimension
       float inspect_hint_y = 1080*0.5 - 50; // TODO: make this not-hard-coded dimension
       float inspect_hint_radius = 30.0f;
       ALLEGRO_COLOR inspect_hint_backfill_color = al_color_html("024d83");
       ALLEGRO_COLOR inspect_hint_text_color = al_color_html("ffffff");
+      ALLEGRO_FONT* inspect_hint_icon_font = obtain_inspect_hint_icon_font();
+      ALLEGRO_FONT* inspect_hint_text_font = obtain_inspect_hint_text_font();
 
       // Draw the circle
       al_draw_filled_circle(inspect_hint_x, inspect_hint_y, inspect_hint_radius, inspect_hint_backfill_color);
 
       // Draw the "i" character
-      ALLEGRO_FONT* inspect_hint_font = obtain_inspect_hint_font();
       al_draw_text(
-         inspect_hint_font,
+         inspect_hint_icon_font,
          inspect_hint_text_color,
          inspect_hint_x,
-         inspect_hint_y - al_get_font_line_height(inspect_hint_font) * 0.5,
+         inspect_hint_y - al_get_font_line_height(inspect_hint_icon_font) * 0.5,
          ALLEGRO_ALIGN_CENTER,
          "i"
+      );
+
+      // Draw the "[I] Inspect key help text" character
+      al_draw_text(
+         inspect_hint_text_font,
+         inspect_hint_text_color,
+         inspect_hint_x + inspect_hint_radius * 1.3,
+         inspect_hint_y - al_get_font_line_height(inspect_hint_text_font) * 0.5,
+         ALLEGRO_ALIGN_LEFT,
+         "[I] Inspect"
       );
    }
 
@@ -1082,6 +1102,18 @@ void Screen::hide_riddle()
    return;
 }
 
+void Screen::show_inspect_hint()
+{
+   inspect_hint_is_showing = true;
+   return;
+}
+
+void Screen::hide_inspect_hint()
+{
+   inspect_hint_is_showing = false;
+   return;
+}
+
 void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
 {
    if (!(initialized))
@@ -1144,6 +1176,12 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
       } break;
 
       case ALLEGRO_KEY_I: {
+         interact_with_focused_object();
+         //attempt_to_solve_riddle();
+      } break;
+
+      case ALLEGRO_KEY_O: {
+         //interact_with_focused_object();
          attempt_to_solve_riddle();
       } break;
 
@@ -1241,9 +1279,14 @@ ALLEGRO_FONT* Screen::obtain_riddle_font()
    return font_bin->auto_get("BodoniModa_9pt-SemiBold.ttf -72");
 }
 
-ALLEGRO_FONT* Screen::obtain_inspect_hint_font()
+ALLEGRO_FONT* Screen::obtain_inspect_hint_icon_font()
 {
    return font_bin->auto_get("BodoniModa_9pt-SemiBold.ttf -72");
+}
+
+ALLEGRO_FONT* Screen::obtain_inspect_hint_text_font()
+{
+   return font_bin->auto_get("BodoniModa_9pt-SemiBold.ttf -48");
 }
 
 
