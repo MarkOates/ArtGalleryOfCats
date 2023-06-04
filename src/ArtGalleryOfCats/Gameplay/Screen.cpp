@@ -270,14 +270,9 @@ void Screen::load_level(std::string level_identifier)
 
 AllegroFlare::SceneGraph::EntityPool* Screen::get_entity_pool()
 {
-   if (!(current_level))
-   {
-      std::stringstream error_message;
-      error_message << "[Screen::get_entity_pool]: error: guard \"current_level\" not met.";
-      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::get_entity_pool: error: guard \"current_level\" not met");
-   }
-   return &current_level->get_entity_pool_ref();
+   // TODO: Add "guards: [ current_level ]"
+   return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
+   //return &current_level->get_entity_pool_ref();
 }
 
 void Screen::initialize()
@@ -458,9 +453,16 @@ AllegroFlare::Vec3D Screen::calculate_forward_back_xy(float spin, float displace
 
 ArtGalleryOfCats::Gameplay::Entities::Camera3D* Screen::find_primary_camera()
 {
+   if (!(get_entity_pool()))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::find_primary_camera]: error: guard \"get_entity_pool()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::find_primary_camera: error: guard \"get_entity_pool()\" not met");
+   }
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
    // Extract our out camera
-   entity = entity_pool.find_with_attribute("primary_camera");
+   entity = get_entity_pool()->find_with_attribute("primary_camera");
    if (!entity) throw std::runtime_error("find_primary_camera: no camera present");
    ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
       static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
@@ -470,9 +472,16 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* Screen::find_primary_camera()
 
 ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* Screen::find_collision_tile_map()
 {
+   if (!(get_entity_pool()))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::find_collision_tile_map]: error: guard \"get_entity_pool()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::find_collision_tile_map: error: guard \"get_entity_pool()\" not met");
+   }
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
    // Extract our out collision_tile_map
-   entity = entity_pool.find_with_attribute("collision_tile_map");
+   entity = get_entity_pool()->find_with_attribute("collision_tile_map");
    if (!entity) throw std::runtime_error("no collision_tile_map present");
    ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap *as_collision_tile_map =
       static_cast<ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*>(entity);
@@ -482,12 +491,19 @@ ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* Screen::find_collision_t
 
 void Screen::update_entity_player_is_currently_colliding_with()
 {
+   if (!(get_entity_pool()))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::update_entity_player_is_currently_colliding_with]: error: guard \"get_entity_pool()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::update_entity_player_is_currently_colliding_with: error: guard \"get_entity_pool()\" not met");
+   }
    // TODO: Implement this function
    //entity_player_is_currently_colliding_with
 
    // Select all the entities that the player can collide with
    std::vector<AllegroFlare::SceneGraph::Entities::Base*> entities_player_can_interact_with =
-      entity_pool.select_A(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
+      get_entity_pool()->select_A(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
 
 
    float player_hit_box_size = 1.6;
