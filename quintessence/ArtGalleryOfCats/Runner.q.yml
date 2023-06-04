@@ -580,6 +580,16 @@ functions:
             );
          }
       );
+      // TODO: Add this
+      //game_won_screen.set_on_submit_callback_func( // NEEDED in base template
+         //[this](AllegroFlare::Screens::GameWonScreen* screen, void* data) {
+            //this->router.emit_route_event(
+               //AllegroFlare::Routers::Standard::EVENT_ACTIVATE_TITLE_SCREEN,
+               //nullptr,
+               //al_get_time()
+            //);
+         //}
+      //);
       rolling_credits_screen.set_on_finished_callback_func(
          [this](AllegroFlare::Screens::RollingCredits* screen, void* data) {
             this->router.emit_route_event(
