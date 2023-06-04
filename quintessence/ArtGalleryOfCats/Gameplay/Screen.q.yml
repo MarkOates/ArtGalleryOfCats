@@ -44,6 +44,12 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: current_riddle
+    type: ArtGalleryOfCats::Gameplay::Riddle
+    init_with: ''
+    getter: true
+    setter: true
+
   - name: last_user_text_input_value
     type: std::string
     init_with: '""'
@@ -1077,5 +1083,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/EntityFlags.hpp ]
   - symbol: ArtGalleryOfCats::Screens::UserTextInput
     headers: [ ArtGalleryOfCats/Screens/UserTextInput.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Riddle
+    headers: [ ArtGalleryOfCats/Gameplay/Riddle.hpp ]
 
 

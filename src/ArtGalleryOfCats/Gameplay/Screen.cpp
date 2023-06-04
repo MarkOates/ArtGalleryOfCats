@@ -36,6 +36,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , resources_path(resources_path)
    , entity_pool(entity_pool)
    , user_text_input_screen(user_text_input_screen)
+   , current_riddle()
    , last_user_text_input_value("")
    , current_level_identifier("[unset-current_level]")
    , current_level(nullptr)
@@ -56,6 +57,12 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
 
 Screen::~Screen()
 {
+}
+
+
+void Screen::set_current_riddle(ArtGalleryOfCats::Gameplay::Riddle current_riddle)
+{
+   this->current_riddle = current_riddle;
 }
 
 
@@ -80,6 +87,12 @@ void Screen::set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::
 void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data)
 {
    this->on_finished_callback_func_user_data = on_finished_callback_func_user_data;
+}
+
+
+ArtGalleryOfCats::Gameplay::Riddle Screen::get_current_riddle() const
+{
+   return current_riddle;
 }
 
 

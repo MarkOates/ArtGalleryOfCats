@@ -17,6 +17,7 @@
 #include <AllegroFlare/Vec3D.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
+#include <ArtGalleryOfCats/Gameplay/Riddle.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <ArtGalleryOfCats/Screens/UserTextInput.hpp>
 #include <allegro5/allegro.h>
@@ -42,6 +43,7 @@ namespace ArtGalleryOfCats
          std::string resources_path;
          AllegroFlare::SceneGraph::EntityPool entity_pool;
          ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
+         ArtGalleryOfCats::Gameplay::Riddle current_riddle;
          std::string last_user_text_input_value;
          std::string current_level_identifier;
          void* current_level;
@@ -68,10 +70,12 @@ namespace ArtGalleryOfCats
          Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, AllegroFlare::SceneGraph::EntityPool entity_pool={}, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          virtual ~Screen();
 
+         void set_current_riddle(ArtGalleryOfCats::Gameplay::Riddle current_riddle);
          void set_last_user_text_input_value(std::string last_user_text_input_value);
          void set_entity_player_is_currently_colliding_with(AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with);
          void set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func);
          void set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data);
+         ArtGalleryOfCats::Gameplay::Riddle get_current_riddle() const;
          std::string get_last_user_text_input_value() const;
          AllegroFlare::SceneGraph::Entities::Base* get_entity_player_is_currently_colliding_with() const;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> get_on_finished_callback_func() const;
