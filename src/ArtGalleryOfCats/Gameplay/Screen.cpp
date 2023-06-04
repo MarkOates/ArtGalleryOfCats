@@ -1266,9 +1266,10 @@ void Screen::activate_npc_conversations_screen()
 
 std::string Screen::find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on)
 {
-   if (entity_inspecting_on) return "";
+   if (!entity_inspecting_on) return "";
 
    std::string art_identifier = entity_inspecting_on->get(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER);
+
    if (!art_identifier.empty())
    {
       if (art_identifier == "black_and_white_cats") return "inspect_on_black_and_white_cats_art";

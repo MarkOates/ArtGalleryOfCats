@@ -213,7 +213,7 @@ void Runner::initialize()
           "The Art Gallery of Cats!"
        ),
        create_image_page(
-          "(It has a nice ring to it doesn't it?)"
+          "(It has a nice ring to it, doesn't it?)"
        ),
        create_image_page(
           "I, Mittens, will be your guide."
