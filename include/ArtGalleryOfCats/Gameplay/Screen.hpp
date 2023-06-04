@@ -111,7 +111,7 @@ namespace ArtGalleryOfCats
          virtual void virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false) override;
          void trigger_npc_dialog();
          void interact_with_focused_object();
-         void prompt_user_for_text_input();
+         void attempt_to_solve_riddle();
          virtual void virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr) override;
          void emit_event_to_return_to_the_level_select_screen();
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;

@@ -969,14 +969,14 @@ void Screen::interact_with_focused_object()
    return;
 }
 
-void Screen::prompt_user_for_text_input()
+void Screen::attempt_to_solve_riddle()
 {
    if (!(user_text_input_screen))
    {
       std::stringstream error_message;
-      error_message << "[Screen::prompt_user_for_text_input]: error: guard \"user_text_input_screen\" not met.";
+      error_message << "[Screen::attempt_to_solve_riddle]: error: guard \"user_text_input_screen\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::prompt_user_for_text_input: error: guard \"user_text_input_screen\" not met");
+      throw std::runtime_error("Screen::attempt_to_solve_riddle: error: guard \"user_text_input_screen\" not met");
    }
    player_stop_moving();
 
@@ -1059,7 +1059,7 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
       } break;
 
       case ALLEGRO_KEY_I: {
-         prompt_user_for_text_input(); // DEVELOPMENT
+         attempt_to_solve_riddle();
       } break;
 
       case ALLEGRO_KEY_ESCAPE: {

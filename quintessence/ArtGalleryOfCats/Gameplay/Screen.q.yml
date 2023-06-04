@@ -935,7 +935,7 @@ functions:
       return;
 
 
-  - name: prompt_user_for_text_input
+  - name: attempt_to_solve_riddle
     guards: [ user_text_input_screen ]
     body: |
       player_stop_moving();
@@ -1012,7 +1012,7 @@ functions:
          } break;
 
          case ALLEGRO_KEY_I: {
-            prompt_user_for_text_input(); // DEVELOPMENT
+            attempt_to_solve_riddle();
          } break;
 
          case ALLEGRO_KEY_ESCAPE: {
