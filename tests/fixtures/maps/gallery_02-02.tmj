@@ -99,6 +99,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"down"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-04.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -116,6 +121,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"right"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-05.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -133,6 +143,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"left"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-02.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -150,6 +165,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"left"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-06.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -167,6 +187,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"right"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-07.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -184,6 +209,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"left"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-08.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -201,6 +231,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"down"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-03.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -218,6 +253,11 @@
                          "name":"facing",
                          "type":"string",
                          "value":"up"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"color\/color-01.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -243,17 +283,17 @@
         {
          "name":"riddle_answer",
          "type":"string",
-         "value":"2"
+         "value":"white"
         }, 
         {
          "name":"riddle_prompt_text",
          "type":"string",
-         "value":"What is the answer to the riddle?"
+         "value":"What color is the cat who hears \"half as much\""
         }, 
         {
          "name":"riddle_text",
          "type":"string",
-         "value":"So many colors, so much to see.\nBut one cat hears less, half-as-much at best!\nThe riddles is this: what color is he?"
+         "value":"So many colors,\nso much to see.\nBut one cat hears less,\nhalf-as-much at best!\nThe riddles is this:\nWhat color is he?"
         }],
  "renderorder":"right-down",
  "tiledversion":"1.9.2",

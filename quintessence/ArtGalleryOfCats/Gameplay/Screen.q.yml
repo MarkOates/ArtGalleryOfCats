@@ -1148,7 +1148,7 @@ functions:
   - name: obtain_riddle_font
     type: ALLEGRO_FONT*
     body: |
-      return font_bin->auto_get("BodoniModa_18pt-Regular.ttf -72");
+      return font_bin->auto_get("BodoniModa_9pt-SemiBold.ttf -72");
 
 
 dependencies:
