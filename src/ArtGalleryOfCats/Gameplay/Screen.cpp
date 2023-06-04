@@ -228,8 +228,6 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    current_level_identifier = level_identifier;
 
    // Load the level
-   // TODO: Destroy current level
-   // TODO: Create new level class
    // TODO: Pass new level class properties into factory
 
    ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
@@ -266,7 +264,7 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    }
 
 
-   // TODO: Show gallery name
+   // TODO: Show gallery name (as "gallery_title")
 
 
    return;
@@ -276,6 +274,13 @@ AllegroFlare::SceneGraph::EntityPool* Screen::get_entity_pool()
 {
    // TODO: Add "guards: [ current_level ]"
    return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
+   //return &current_level->get_entity_pool_ref();
+}
+
+ArtGalleryOfCats::Gameplay::Riddle* Screen::get_current_riddle()
+{
+   // TODO: Add "guards: [ current_level ]"
+   return &current_riddle; // TODO: Swap this out with the current level entity_pool (comment below)
    //return &current_level->get_entity_pool_ref();
 }
 

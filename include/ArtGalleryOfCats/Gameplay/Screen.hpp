@@ -92,6 +92,7 @@ namespace ArtGalleryOfCats
          void set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
          AllegroFlare::SceneGraph::EntityPool* get_entity_pool();
+         ArtGalleryOfCats::Gameplay::Riddle* get_current_riddle();
          void initialize();
          virtual void on_activate() override;
          virtual void on_deactivate() override;
