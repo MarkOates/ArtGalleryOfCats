@@ -324,14 +324,18 @@ void Screen::on_activate()
       {
          // TODO: Sort out what reaction should be when answer is incorrect
          // TODO: Set npc dialog to say "hmm, that's not correct"
-         std::cout << "------- RIDDLE: incorrect :(" << std::endl;
          trigger_npc_dialog(); // DEVELOPMENT
       }
       else
       {
          // TODO: Sort out what reaction should be when answer is correct
          // TODO: Set npc dialog to say "That's correct! Nice job!"
-         std::cout << "------- RIDDLE: CORRECT!" << std::endl;
+
+         event_emitter->emit_event(
+            ALLEGRO_FLARE_EVENT_UNLOCK_ACHIEVEMENT,
+            intptr_t(new std::string("solve_a_riddle"))
+         );
+
          trigger_npc_dialog(); // DEVELOPMENT
       }
    }

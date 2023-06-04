@@ -128,6 +128,11 @@ void Runner::initialize()
          false,
          false,
       },
+      { "solve_a_riddle",
+         new AllegroFlare::Achievement("Solve a Riddle", "Find an answer to one of the puzzles"),
+         false,
+         false,
+      },
    });
 
    // TODO: Setup intro logos screen
