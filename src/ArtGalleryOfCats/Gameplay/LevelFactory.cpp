@@ -2,6 +2,7 @@
 
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 
+#include <AllegroFlare/Errors.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
@@ -175,7 +176,43 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::map_properties_parsed_callback: error: guard \"user_data\" not met");
    }
-   std::cout << " --------- custom properties loaded size: " << map_custom_properties.size() << std::endl;
+   bool found_riddle_text = false;
+   bool found_riddle_prompt_text = false;
+   bool found_riddle_answer = false;
+
+   for (auto &map_custom_property : map_custom_properties)
+   {
+      std::string property_name = std::get<0>(map_custom_property);
+      std::string property_type = std::get<1>(map_custom_property);
+      std::string property_value = std::get<2>(map_custom_property);
+
+      if (property_name == "riddle_text")
+      {
+         // TODO: fill in riddle with this data
+         found_riddle_text = true;
+      }
+      else if (property_name == "riddle_prompt_text")
+      {
+         // TODO: fill in riddle with this data
+         found_riddle_prompt_text = true;
+      }
+      else if (property_name == "riddle_answer")
+      {
+         // TODO: fill in riddle with this data
+         found_riddle_answer = true;
+      }
+   }
+
+   if (!found_riddle_text || !found_riddle_prompt_text || !found_riddle_answer)
+   {
+      // There was an error finding the riddle text properties
+      AllegroFlare::Errors::throw_error(
+         "ArtGalleryOfCats::Gameplay::LevelFactory::map_properties_parsed_callback",
+         "when loading the map, one of \"riddle_text\", \"riddle_prompt_text\", and/or \"riddle_answer\" was "
+            "not present."
+      );
+   }
+
    return;
 }
 
