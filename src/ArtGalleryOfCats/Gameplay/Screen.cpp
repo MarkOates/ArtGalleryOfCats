@@ -224,6 +224,10 @@ void Screen::load_level_by_identifier(std::string level_identifier)
 
 void Screen::load_level(std::string level_identifier)
 {
+   // TODO: Destroy current level
+   // TODO: Create new level class
+   // TODO: Pass new level class properties into factory
+
    ArtGalleryOfCats::Gameplay::LevelFactory level_factory;
    level_factory.set_model_bin(model_bin);
    level_factory.set_bitmap_bin(bitmap_bin);
