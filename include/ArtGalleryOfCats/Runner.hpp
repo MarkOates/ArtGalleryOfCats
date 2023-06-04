@@ -23,8 +23,8 @@
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <ArtGalleryOfCats/Screens/UserTextInput.hpp>
 #include <ReleaseInfo.hpp>
+#include <set>
 #include <string>
-#include <vector>
 
 
 namespace ArtGalleryOfCats
@@ -62,7 +62,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Elements::Backgrounds::ClearToColor solid_black_background;
       AllegroFlare::Elements::Backgrounds::ClearToColor light_blue_background;
       ArtGalleryOfCats::Elements::Backgrounds::NPCConversations npc_conversations_background;
-      std::vector<std::string> solved_level_names;
+      std::set<std::string> solved_level_names;
       ReleaseInfo release_info;
       bool initialized;
 

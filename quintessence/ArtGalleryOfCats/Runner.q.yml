@@ -112,7 +112,7 @@ properties:
     init_with: '{}'
 
   - name: solved_level_names
-    type: std::vector<std::string>
+    type: std::set<std::string>
     init_with: '{}'
 
   - name: release_info

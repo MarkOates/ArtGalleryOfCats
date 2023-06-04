@@ -11,8 +11,9 @@ namespace Gameplay
 {
 
 
-Level::Level(std::string title, std::string music_identifier)
-   : title(title)
+Level::Level(std::string name, std::string title, std::string music_identifier)
+   : name(name)
+   , title(title)
    , entity_pool({})
    , current_riddle()
    , music_identifier(music_identifier)
@@ -23,6 +24,12 @@ Level::Level(std::string title, std::string music_identifier)
 
 Level::~Level()
 {
+}
+
+
+void Level::set_name(std::string name)
+{
+   this->name = name;
 }
 
 
@@ -47,6 +54,12 @@ void Level::set_music_identifier(std::string music_identifier)
 void Level::set_riddle_is_solved(bool riddle_is_solved)
 {
    this->riddle_is_solved = riddle_is_solved;
+}
+
+
+std::string Level::get_name() const
+{
+   return name;
 }
 
 

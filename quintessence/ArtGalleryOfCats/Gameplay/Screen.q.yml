@@ -45,7 +45,7 @@ properties:
     constructor_arg: true
 
   - name: solved_level_names
-    type: std::vector<std::string>*
+    type: std::set<std::string>*
     init_with: nullptr
     constructor_arg: true
 
@@ -234,7 +234,7 @@ functions:
     guards: [ (!initialized) ]
     parameters:
       - name: solved_level_names
-        type: std::vector<std::string>*
+        type: std::set<std::string>*
         default_argument: nullptr
     body: |
       this->solved_level_names = solved_level_names;

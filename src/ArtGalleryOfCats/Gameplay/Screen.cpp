@@ -30,7 +30,7 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen, AllegroFlare::Screens::Storyboard* npc_conversations_screen, std::vector<std::string>* solved_level_names)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen, AllegroFlare::Screens::Storyboard* npc_conversations_screen, std::set<std::string>* solved_level_names)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
@@ -254,7 +254,7 @@ void Screen::set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc
    return;
 }
 
-void Screen::set_solved_level_names(std::vector<std::string>* solved_level_names)
+void Screen::set_solved_level_names(std::set<std::string>* solved_level_names)
 {
    if (!((!initialized)))
    {

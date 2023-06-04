@@ -28,8 +28,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <functional>
+#include <set>
 #include <string>
-#include <vector>
 
 
 namespace ArtGalleryOfCats
@@ -50,7 +50,7 @@ namespace ArtGalleryOfCats
          std::string resources_path;
          ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
          AllegroFlare::Screens::Storyboard* npc_conversations_screen;
-         std::vector<std::string>* solved_level_names;
+         std::set<std::string>* solved_level_names;
          AllegroFlare::DialogTree::NodeBank dialog_node_bank;
          bool riddle_is_solved;
          bool riddle_is_showing;
@@ -80,7 +80,7 @@ namespace ArtGalleryOfCats
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr, AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr, std::vector<std::string>* solved_level_names=nullptr);
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr, AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr, std::set<std::string>* solved_level_names=nullptr);
          virtual ~Screen();
 
          void set_dialog_node_bank(AllegroFlare::DialogTree::NodeBank dialog_node_bank);
@@ -106,7 +106,7 @@ namespace ArtGalleryOfCats
          void set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH);
          void set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          void set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr);
-         void set_solved_level_names(std::vector<std::string>* solved_level_names=nullptr);
+         void set_solved_level_names(std::set<std::string>* solved_level_names=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
          void start_level_music();
          AllegroFlare::SceneGraph::EntityPool* get_entity_pool();
