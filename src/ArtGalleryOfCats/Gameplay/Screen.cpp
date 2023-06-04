@@ -39,6 +39,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , resources_path(resources_path)
    , user_text_input_screen(user_text_input_screen)
    , npc_conversations_screen(npc_conversations_screen)
+   , dialog_node_bank({})
    , riddle_is_solved(false)
    , riddle_is_showing(false)
    , inspect_hint_is_showing(false)
@@ -62,6 +63,12 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
 
 Screen::~Screen()
 {
+}
+
+
+void Screen::set_dialog_node_bank(AllegroFlare::DialogTree::NodeBank dialog_node_bank)
+{
+   this->dialog_node_bank = dialog_node_bank;
 }
 
 
@@ -104,6 +111,12 @@ void Screen::set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::
 void Screen::set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data)
 {
    this->on_finished_callback_func_user_data = on_finished_callback_func_user_data;
+}
+
+
+AllegroFlare::DialogTree::NodeBank Screen::get_dialog_node_bank() const
+{
+   return dialog_node_bank;
 }
 
 
@@ -458,7 +471,17 @@ void Screen::initialize()
    cubemap_shader.initialize();
    cubemap_shader.set_cube_map(cubemap);
 
+   load_dialog_node_bank();
+
    initialized = true;
+   return;
+}
+
+void Screen::load_dialog_node_bank()
+{
+   dialog_node_bank.add_node("art1", new AllegroFlare::DialogTree::Node("Mittens",
+     { "Hey!", "Thanks for coming!" }
+   ));
    return;
 }
 
@@ -1135,9 +1158,6 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
 
 void Screen::activate_npc_conversations_screen()
 {
-   // TODO: Set the npc avatar for this dialog
-   // TODO: Setup an npc name, and add it to this dialog
-   // TODO: Set the text pages for this dialog
    event_emitter->emit_router_event(
       AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
       new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
@@ -1164,6 +1184,22 @@ void Screen::interact_with_focused_object()
 
 
    //std::string defaut_dialog = "That is some beautiful art!";
+
+
+   // TODO: Set the npc avatar for this dialog
+   // TODO: Setup an npc name, and add it to this dialog
+   // TODO: Set the text pages for this character dialog
+
+   //std::vector<std::string> dialog_pages = {
+      //"Impressive",
+      //"The artist has such an amazing sense of form and balance!",
+   //};
+
+
+
+   //std::vector<AllegroFlare::Elements::StoryboardPages::Base *> storyboard_pages = {};
+
+
 
 
    // TODO: Clear pages on the storyboard element

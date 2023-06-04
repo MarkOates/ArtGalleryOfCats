@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/Cubemap.hpp>
+#include <AllegroFlare/DialogTree/NodeBank.hpp>
 #include <AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
@@ -48,6 +49,7 @@ namespace ArtGalleryOfCats
          std::string resources_path;
          ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
          AllegroFlare::Screens::Storyboard* npc_conversations_screen;
+         AllegroFlare::DialogTree::NodeBank dialog_node_bank;
          bool riddle_is_solved;
          bool riddle_is_showing;
          bool inspect_hint_is_showing;
@@ -67,6 +69,7 @@ namespace ArtGalleryOfCats
          bool initialized;
          void emit_event_to_set_input_hints_bar_to_room_controls();
          void emit_event_to_set_input_hints();
+         void load_dialog_node_bank();
          void scene_physics_updater();
          void scene_renderer_render();
          void render_hud();
@@ -78,6 +81,7 @@ namespace ArtGalleryOfCats
          Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr, AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr);
          virtual ~Screen();
 
+         void set_dialog_node_bank(AllegroFlare::DialogTree::NodeBank dialog_node_bank);
          void set_riddle_is_solved(bool riddle_is_solved);
          void set_riddle_is_showing(bool riddle_is_showing);
          void set_inspect_hint_is_showing(bool inspect_hint_is_showing);
@@ -85,6 +89,7 @@ namespace ArtGalleryOfCats
          void set_entity_player_is_currently_colliding_with(AllegroFlare::SceneGraph::Entities::Base* entity_player_is_currently_colliding_with);
          void set_on_finished_callback_func(std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> on_finished_callback_func);
          void set_on_finished_callback_func_user_data(void* on_finished_callback_func_user_data);
+         AllegroFlare::DialogTree::NodeBank get_dialog_node_bank() const;
          bool get_riddle_is_solved() const;
          bool get_riddle_is_showing() const;
          bool get_inspect_hint_is_showing() const;

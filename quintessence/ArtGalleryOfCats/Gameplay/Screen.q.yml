@@ -44,6 +44,12 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: dialog_node_bank
+    type: AllegroFlare::DialogTree::NodeBank
+    init_with: '{}'
+    getter: true
+    setter: true
+
   - name: riddle_is_solved
     type: bool
     init_with: false
@@ -370,11 +376,22 @@ functions:
       cubemap_shader.initialize();
       cubemap_shader.set_cube_map(cubemap);
 
+      load_dialog_node_bank();
+
       initialized = true;
       return;
     body_dependency_symbols:
       - al_is_primitives_addon_initialized
       - AllegroFlare::CubemapBuilder
+
+
+  - name: load_dialog_node_bank
+    private: true
+    body: |
+      dialog_node_bank.add_node("art1", new AllegroFlare::DialogTree::Node("Mittens",
+        { "Hey!", "Thanks for coming!" }
+      ));
+      return;
 
 
   - name: on_activate
@@ -1078,9 +1095,6 @@ functions:
 
   - name: activate_npc_conversations_screen
     body: |
-      // TODO: Set the npc avatar for this dialog
-      // TODO: Setup an npc name, and add it to this dialog
-      // TODO: Set the text pages for this dialog
       event_emitter->emit_router_event(
          AllegroFlare::Routers::Standard::EVENT_ACTIVATE_SCREEN_BY_IDENTIFIER,
          new AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier("npc_conversations_screen")
@@ -1101,6 +1115,22 @@ functions:
 
 
       //std::string defaut_dialog = "That is some beautiful art!";
+
+
+      // TODO: Set the npc avatar for this dialog
+      // TODO: Setup an npc name, and add it to this dialog
+      // TODO: Set the text pages for this character dialog
+
+      //std::vector<std::string> dialog_pages = {
+         //"Impressive",
+         //"The artist has such an amazing sense of form and balance!",
+      //};
+
+
+      
+      //std::vector<AllegroFlare::Elements::StoryboardPages::Base *> storyboard_pages = {};
+   
+
 
 
       // TODO: Clear pages on the storyboard element
@@ -1467,5 +1497,7 @@ dependencies:
     headers: [ allegro5/allegro_color.h ]
   - symbol: AllegroFlare::Screens::Storyboard
     headers: [ AllegroFlare/Screens/Storyboard.hpp ]
+  - symbol: AllegroFlare::DialogTree::NodeBank
+    headers: [ AllegroFlare/DialogTree/NodeBank.hpp ]
 
 
