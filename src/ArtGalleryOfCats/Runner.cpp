@@ -219,7 +219,7 @@ void Runner::initialize()
           "I, Mittens, will be your guide."
        ),
        create_image_page(
-          "Thank you for being our guest! Feel free to look around."
+          "Thank you for being our guest! Feel free to look through all of our galleries."
        ),
        create_image_page(
           "You can use the keyboard and mouse to move around."
@@ -234,10 +234,10 @@ void Runner::initialize()
           "Inspect the art by pressing the \"I\" key to get more information."
        ),
        create_image_page(
-          "I'm sure I'll have something to say."
+          "I'm sure I'll have something to say. Art is one of my most favorite things!"
        ),
        create_image_page(
-          "Oh, and there's riddles to solve, too!"
+          "Oh, and there are riddles to solve, too!"
        ),
        create_image_page(
           "So, each gallery has a riddle."
@@ -250,6 +250,12 @@ void Runner::initialize()
        ),
        create_image_page(
           "I'll be around to help you every step of the way, so don't worry."
+       ),
+       create_image_page(
+          "Hmm... was there anything else?"
+       ),
+       create_image_page(
+          "Nope, that's about it."
        ),
        create_image_page(
           "How about we take a look in our first gallery, huh?"
