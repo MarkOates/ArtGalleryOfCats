@@ -282,6 +282,17 @@ void Runner::initialize()
    // TODO: Setup game won outro storyboard screen
    game_won_outro_storyboard_screen.set_event_emitter(event_emitter);
    game_won_outro_storyboard_screen.set_background(&solid_black_background);
+   game_won_outro_storyboard_screen.get_storyboard_element_ref().set_pages({
+       create_image_page(
+         "Well that was a wonderful adventure."
+       ),
+       create_image_page(
+         "I hope you enjoyed your time here at the Art Gallery of Cats!"
+       ),
+       //page_factory.create_advancing_text_page(
+         //"Well that was a wonderful adventure. I hope you enjoyed your time here at the Art Gallery of Cats.",
+       //),
+   });
    game_won_outro_storyboard_screen.initialize();
 
    // TODO: Setup rolling credits screen
@@ -614,6 +625,15 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    {
       // TODO: Figure out what to do here, probably load the next level, or, if there are no more levels show
       // game won screen
+      bool this_was_the_last_level = true;
+      if (this_was_the_last_level)
+      {
+         this->router.emit_route_event(
+            AllegroFlare::Routers::Standard::EVENT_ACTIVATE_GAME_WON_OUTRO_STORYBOARD_SCREEN,
+            nullptr,
+            al_get_time()
+         );
+      }
    }
 
    return;
