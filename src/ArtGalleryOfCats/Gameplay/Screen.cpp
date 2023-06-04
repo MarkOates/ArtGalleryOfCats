@@ -524,10 +524,7 @@ void Screen::scene_physics_updater()
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
    // Extract our out camera
-   entity = entity_pool.find_with_attribute("primary_camera");
-   if (!entity) throw std::runtime_error("no camera present");
-   ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-      static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D* as_camera = find_primary_camera();
 
    // Update our camera velocity to match the "player_velocity"
    player_velocity = infer_player_velocity_from_keypress();
