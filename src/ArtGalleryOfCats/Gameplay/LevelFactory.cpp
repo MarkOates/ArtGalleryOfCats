@@ -176,6 +176,9 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::map_properties_parsed_callback: error: guard \"user_data\" not met");
    }
+   ArtGalleryOfCats::Gameplay::LevelFactory *this_factory =
+      static_cast<ArtGalleryOfCats::Gameplay::LevelFactory*>(user_data);
+
    bool found_riddle_text = false;
    bool found_riddle_prompt_text = false;
    bool found_riddle_answer = false;
@@ -188,17 +191,20 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
 
       if (property_name == "riddle_text")
       {
-         // TODO: fill in riddle with this data
+         // TODO: Validate not blank
+         this_factory->riddle->set_riddle_text(property_value);
          found_riddle_text = true;
       }
       else if (property_name == "riddle_prompt_text")
       {
-         // TODO: fill in riddle with this data
+         // TODO: Validate not blank
+         this_factory->riddle->set_riddle_prompt_text(property_value);
          found_riddle_prompt_text = true;
       }
       else if (property_name == "riddle_answer")
       {
-         // TODO: fill in riddle with this data
+         // TODO: Validate not blank
+         this_factory->riddle->set_riddle_answer(property_value);
          found_riddle_answer = true;
       }
    }

@@ -8,16 +8,16 @@ properties:
     getter: true
     setter: true
 
-  - name: user_input_prompt_text
+  - name: riddle_prompt_text
     type: std::string
-    init_with: '"[unset-user_input_prompt_text]"'
+    init_with: '"[unset-prompt_text]"'
     constructor_arg: true
     getter: true
     setter: true
 
-  - name: correct_answer_text
+  - name: riddle_answer
     type: std::string
-    init_with: '"[unset-user_input_prompt_text]"'
+    init_with: '"[unset-riddle_answer]"'
     constructor_arg: true
     getter: true
     setter: true
@@ -34,7 +34,7 @@ functions:
         default_argument: '"[unset-answer_guess]"'
     body: |
       // TODO: Account for additional rules (case insensitive, etc)
-      if (answer_guess == correct_answer_text) return true;
+      if (answer_guess == riddle_answer) return true;
       return false;
     
 

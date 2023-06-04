@@ -11,10 +11,10 @@ namespace Gameplay
 {
 
 
-Riddle::Riddle(std::string riddle_text, std::string user_input_prompt_text, std::string correct_answer_text)
+Riddle::Riddle(std::string riddle_text, std::string riddle_prompt_text, std::string riddle_answer)
    : riddle_text(riddle_text)
-   , user_input_prompt_text(user_input_prompt_text)
-   , correct_answer_text(correct_answer_text)
+   , riddle_prompt_text(riddle_prompt_text)
+   , riddle_answer(riddle_answer)
 {
 }
 
@@ -30,15 +30,15 @@ void Riddle::set_riddle_text(std::string riddle_text)
 }
 
 
-void Riddle::set_user_input_prompt_text(std::string user_input_prompt_text)
+void Riddle::set_riddle_prompt_text(std::string riddle_prompt_text)
 {
-   this->user_input_prompt_text = user_input_prompt_text;
+   this->riddle_prompt_text = riddle_prompt_text;
 }
 
 
-void Riddle::set_correct_answer_text(std::string correct_answer_text)
+void Riddle::set_riddle_answer(std::string riddle_answer)
 {
-   this->correct_answer_text = correct_answer_text;
+   this->riddle_answer = riddle_answer;
 }
 
 
@@ -48,22 +48,22 @@ std::string Riddle::get_riddle_text() const
 }
 
 
-std::string Riddle::get_user_input_prompt_text() const
+std::string Riddle::get_riddle_prompt_text() const
 {
-   return user_input_prompt_text;
+   return riddle_prompt_text;
 }
 
 
-std::string Riddle::get_correct_answer_text() const
+std::string Riddle::get_riddle_answer() const
 {
-   return correct_answer_text;
+   return riddle_answer;
 }
 
 
 bool Riddle::matches_answer(std::string answer_guess)
 {
    // TODO: Account for additional rules (case insensitive, etc)
-   if (answer_guess == correct_answer_text) return true;
+   if (answer_guess == riddle_answer) return true;
    return false;
 }
 
