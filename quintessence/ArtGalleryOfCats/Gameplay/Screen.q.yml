@@ -264,10 +264,28 @@ functions:
       // TODO: Show gallery name (as "gallery_title")
       // TODO: Set the "riddle text"
 
+      start_level_music();
+
 
       return;
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::LevelFactory
+
+
+  - name: start_level_music
+    body: |
+
+      if (current_level->has_custom_music())
+      {
+         std::string custom_music_identifier = current_level->get_music_identifier();
+         event_emitter->emit_play_music_track_event(custom_music_identifier);
+      }
+      else
+      {
+         std::string default_music_identifier = "main_music";
+         event_emitter->emit_play_music_track_event(default_music_identifier);
+      }
+      return;
 
 
   - name: get_entity_pool

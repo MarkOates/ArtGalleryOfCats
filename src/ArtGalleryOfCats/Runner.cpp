@@ -369,6 +369,7 @@ void Runner::initialize()
       // An example of how to load a music track:
       //{ "intro_music", { "wanderer-01.ogg", true, "ignore" } },
       { "main_music", { "carpe_diem.ogg", true, "ignore" } },
+      { "soaring",    { "soaring.ogg", true, "ignore" } },
    });
 
    // An example of how to play a music track:

@@ -86,7 +86,7 @@ ArtGalleryOfCats::Gameplay::Riddle &Level::get_current_riddle_ref()
 }
 
 
-bool Level::music_identifier_is_custom()
+bool Level::has_custom_music()
 {
    return (music_identifier != DEFAULT_MUSIC_IDENTIFIER);
 }

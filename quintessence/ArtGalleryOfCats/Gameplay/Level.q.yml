@@ -43,7 +43,7 @@ properties:
 functions:
 
 
-  - name: music_identifier_is_custom
+  - name: has_custom_music
     type: bool
     body: |
       return (music_identifier != DEFAULT_MUSIC_IDENTIFIER);

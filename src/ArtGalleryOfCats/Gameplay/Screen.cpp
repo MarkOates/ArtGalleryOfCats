@@ -282,7 +282,25 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    // TODO: Show gallery name (as "gallery_title")
    // TODO: Set the "riddle text"
 
+   start_level_music();
 
+
+   return;
+}
+
+void Screen::start_level_music()
+{
+
+   if (current_level->has_custom_music())
+   {
+      std::string custom_music_identifier = current_level->get_music_identifier();
+      event_emitter->emit_play_music_track_event(custom_music_identifier);
+   }
+   else
+   {
+      std::string default_music_identifier = "main_music";
+      event_emitter->emit_play_music_track_event(default_music_identifier);
+   }
    return;
 }
 

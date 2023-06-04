@@ -39,7 +39,7 @@ namespace ArtGalleryOfCats
          bool get_riddle_is_solved() const;
          AllegroFlare::SceneGraph::EntityPool &get_entity_pool_ref();
          ArtGalleryOfCats::Gameplay::Riddle &get_current_riddle_ref();
-         bool music_identifier_is_custom();
+         bool has_custom_music();
          void destroy();
       };
    }
