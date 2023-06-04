@@ -73,6 +73,11 @@ ArtGalleryOfCats::Gameplay::Riddle &Level::get_current_riddle_ref()
 }
 
 
+void Level::destroy()
+{
+   // TODO: Clear entity pool
+   return;
+}
 
 
 } // namespace Gameplay

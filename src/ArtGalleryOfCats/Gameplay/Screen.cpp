@@ -264,6 +264,18 @@ void Screen::load_level(std::string level_identifier)
    return;
 }
 
+AllegroFlare::SceneGraph::EntityPool* Screen::get_entity_pool()
+{
+   if (!(current_level))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::get_entity_pool]: error: guard \"current_level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::get_entity_pool: error: guard \"current_level\" not met");
+   }
+   return &current_level->get_entity_pool_ref();
+}
+
 void Screen::initialize()
 {
    if (!((!initialized)))

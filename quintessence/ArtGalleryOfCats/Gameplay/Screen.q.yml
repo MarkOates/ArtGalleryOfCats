@@ -67,7 +67,7 @@ properties:
     init_with: '"[unset-current_level]"'
 
   - name: current_level
-    type: void*
+    type: ArtGalleryOfCats::Gameplay::Level*
     init_with: nullptr
 
   - name: player_velocity
@@ -264,6 +264,13 @@ functions:
       return;
     body_dependency_symbols:
       - ArtGalleryOfCats::Gameplay::LevelFactory
+
+
+  - name: get_entity_pool
+    type: AllegroFlare::SceneGraph::EntityPool*
+    guards: [ current_level ]
+    body: |
+      return &current_level->get_entity_pool_ref();
 
 
   - name: initialize
@@ -1163,5 +1170,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Screens/UserTextInput.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::Riddle
     headers: [ ArtGalleryOfCats/Gameplay/Riddle.hpp ]
+  - symbol: ArtGalleryOfCats::Gameplay::Level
+    headers: [ ArtGalleryOfCats/Gameplay/Level.hpp ]
 
 

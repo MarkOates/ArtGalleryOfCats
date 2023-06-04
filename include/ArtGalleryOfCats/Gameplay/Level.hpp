@@ -33,6 +33,7 @@ namespace ArtGalleryOfCats
          bool get_riddle_is_solved() const;
          AllegroFlare::SceneGraph::EntityPool &get_entity_pool_ref();
          ArtGalleryOfCats::Gameplay::Riddle &get_current_riddle_ref();
+         void destroy();
       };
    }
 }

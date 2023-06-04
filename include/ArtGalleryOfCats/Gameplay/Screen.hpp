@@ -17,6 +17,7 @@
 #include <AllegroFlare/Vec3D.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp>
+#include <ArtGalleryOfCats/Gameplay/Level.hpp>
 #include <ArtGalleryOfCats/Gameplay/Riddle.hpp>
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <ArtGalleryOfCats/Screens/UserTextInput.hpp>
@@ -47,7 +48,7 @@ namespace ArtGalleryOfCats
          bool riddle_is_solved;
          std::string last_user_text_input_value;
          std::string current_level_identifier;
-         void* current_level;
+         ArtGalleryOfCats::Gameplay::Level* current_level;
          AllegroFlare::Vec2D player_velocity;
          bool player_right_pressed;
          bool player_left_pressed;
@@ -90,6 +91,7 @@ namespace ArtGalleryOfCats
          void set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH);
          void set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
+         AllegroFlare::SceneGraph::EntityPool* get_entity_pool();
          void initialize();
          virtual void on_activate() override;
          virtual void on_deactivate() override;

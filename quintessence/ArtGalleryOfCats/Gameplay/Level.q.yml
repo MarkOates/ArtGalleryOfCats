@@ -27,6 +27,15 @@ properties:
     setter: true
 
 
+functions:
+
+
+  - name: destroy
+    body: |
+      // TODO: Clear entity pool
+      return;
+
+
 dependencies:
 
 
