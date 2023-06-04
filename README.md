@@ -16,5 +16,6 @@ on them.
 ## Acknowledgements
 
 - https://fonts.google.com/specimen/Archivo+Narrow?preview.text=ART%20GALLERY%20OF%20CATS&preview.text_type=custom&query=narrow
+- Bodoni Moda Regular - Google Fonts
 
 

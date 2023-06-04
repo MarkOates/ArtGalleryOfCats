@@ -649,8 +649,19 @@ functions:
       if (riddle_is_showing)
       {
          // TODO: Draw the riddle text;
+         ALLEGRO_FONT* riddle_font = obtain_riddle_font();
          std::string riddle_text = get_current_riddle()->get_riddle_text();
-         //al_draw_multiline_text()
+         ALLEGRO_COLOR riddle_color = ALLEGRO_COLOR{1, 1, 1, 1};
+         al_draw_multiline_text(
+            riddle_font,
+            riddle_color,
+            -500,
+            -200,
+            1000,
+            al_get_font_line_height(riddle_font) * 2.0,
+            0,
+            riddle_text.c_str()
+         );
       }
       
       hud_camera.restore_transform();
@@ -658,6 +669,7 @@ functions:
       return;
     body_dependency_symbols:
       - AllegroFlare::Camera2D
+      - ALLEGRO_FONT
 
 
   - name: render_tile_map
@@ -1132,6 +1144,12 @@ functions:
       return;
 
 
+  - name: obtain_riddle_font
+    type: ALLEGRO_FONT*
+    body: |
+      return font_bin->auto_get("BodoniModa_18pt-Regular.ttf -68");
+
+
 dependencies:
 
 
@@ -1207,5 +1225,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Gameplay/Riddle.hpp ]
   - symbol: ArtGalleryOfCats::Gameplay::Level
     headers: [ ArtGalleryOfCats/Gameplay/Level.hpp ]
+  - symbol: ALLEGRO_FONT
+    headers: [ allegro5/allegro_font.h ]
 
 

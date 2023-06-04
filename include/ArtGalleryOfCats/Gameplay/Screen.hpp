@@ -23,6 +23,7 @@
 #include <ArtGalleryOfCats/Gameplay/Screen.hpp>
 #include <ArtGalleryOfCats/Screens/UserTextInput.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 #include <functional>
 #include <string>
 
@@ -122,6 +123,7 @@ namespace ArtGalleryOfCats
          virtual void key_down_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_axes_func(ALLEGRO_EVENT* ev=nullptr) override;
+         ALLEGRO_FONT* obtain_riddle_font();
       };
    }
 }

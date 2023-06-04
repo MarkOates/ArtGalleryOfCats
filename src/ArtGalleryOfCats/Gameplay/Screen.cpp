@@ -15,6 +15,7 @@
 #include <ArtGalleryOfCats/Gameplay/EntityFlags.hpp>
 #include <ArtGalleryOfCats/Gameplay/LevelFactory.hpp>
 #include <ArtGalleryOfCats/Gameplay/SceneRenderer.hpp>
+#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
 #include <sstream>
@@ -731,8 +732,19 @@ void Screen::render_hud()
    if (riddle_is_showing)
    {
       // TODO: Draw the riddle text;
+      ALLEGRO_FONT* riddle_font = obtain_riddle_font();
       std::string riddle_text = get_current_riddle()->get_riddle_text();
-      //al_draw_multiline_text()
+      ALLEGRO_COLOR riddle_color = ALLEGRO_COLOR{1, 1, 1, 1};
+      al_draw_multiline_text(
+         riddle_font,
+         riddle_color,
+         -500,
+         -200,
+         1000,
+         al_get_font_line_height(riddle_font) * 2.0,
+         0,
+         riddle_text.c_str()
+      );
    }
 
    hud_camera.restore_transform();
@@ -1183,6 +1195,11 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    //result->spin = 0.2;             // set a good start initial spin
    // TODO: this function
    return;
+}
+
+ALLEGRO_FONT* Screen::obtain_riddle_font()
+{
+   return font_bin->auto_get("BodoniModa_18pt-Regular.ttf -68");
 }
 
 
