@@ -12,27 +12,34 @@ namespace ArtGalleryOfCats
    {
       class Level
       {
+      public:
+         static constexpr char* DEFAULT_MUSIC_IDENTIFIER = (char*)"[unset-music_identifier]";
+
       private:
          std::string title;
          AllegroFlare::SceneGraph::EntityPool entity_pool;
          ArtGalleryOfCats::Gameplay::Riddle current_riddle;
+         std::string music_identifier;
          bool riddle_is_solved;
 
       protected:
 
 
       public:
-         Level(std::string title="[unset-title");
+         Level(std::string title="[unset-title]", std::string music_identifier=DEFAULT_MUSIC_IDENTIFIER);
          ~Level();
 
          void set_title(std::string title);
          void set_current_riddle(ArtGalleryOfCats::Gameplay::Riddle current_riddle);
+         void set_music_identifier(std::string music_identifier);
          void set_riddle_is_solved(bool riddle_is_solved);
          std::string get_title() const;
          ArtGalleryOfCats::Gameplay::Riddle get_current_riddle() const;
+         std::string get_music_identifier() const;
          bool get_riddle_is_solved() const;
          AllegroFlare::SceneGraph::EntityPool &get_entity_pool_ref();
          ArtGalleryOfCats::Gameplay::Riddle &get_current_riddle_ref();
+         bool music_identifier_is_custom();
          void destroy();
       };
    }

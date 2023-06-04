@@ -11,10 +11,11 @@ namespace Gameplay
 {
 
 
-Level::Level(std::string title)
+Level::Level(std::string title, std::string music_identifier)
    : title(title)
    , entity_pool({})
    , current_riddle()
+   , music_identifier(music_identifier)
    , riddle_is_solved(false)
 {
 }
@@ -37,6 +38,12 @@ void Level::set_current_riddle(ArtGalleryOfCats::Gameplay::Riddle current_riddle
 }
 
 
+void Level::set_music_identifier(std::string music_identifier)
+{
+   this->music_identifier = music_identifier;
+}
+
+
 void Level::set_riddle_is_solved(bool riddle_is_solved)
 {
    this->riddle_is_solved = riddle_is_solved;
@@ -52,6 +59,12 @@ std::string Level::get_title() const
 ArtGalleryOfCats::Gameplay::Riddle Level::get_current_riddle() const
 {
    return current_riddle;
+}
+
+
+std::string Level::get_music_identifier() const
+{
+   return music_identifier;
 }
 
 
@@ -72,6 +85,11 @@ ArtGalleryOfCats::Gameplay::Riddle &Level::get_current_riddle_ref()
    return current_riddle;
 }
 
+
+bool Level::music_identifier_is_custom()
+{
+   return (music_identifier != DEFAULT_MUSIC_IDENTIFIER);
+}
 
 void Level::destroy()
 {

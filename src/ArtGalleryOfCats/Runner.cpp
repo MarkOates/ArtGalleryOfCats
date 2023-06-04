@@ -368,11 +368,11 @@ void Runner::initialize()
    audio_controller.set_and_load_music_track_elements({
       // An example of how to load a music track:
       //{ "intro_music", { "wanderer-01.ogg", true, "ignore" } },
-      { "title_music", { "carpe_diem.ogg", true, "ignore" } },
+      { "main_music", { "carpe_diem.ogg", true, "ignore" } },
    });
 
    // An example of how to play a music track:
-   event_emitter->emit_play_music_track_event("title_music");
+   event_emitter->emit_play_music_track_event("main_music");
 
    return;
 }

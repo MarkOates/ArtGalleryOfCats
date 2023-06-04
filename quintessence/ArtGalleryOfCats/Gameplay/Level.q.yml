@@ -3,7 +3,7 @@ properties:
 
   - name: title
     type: std::string
-    init_with: '"[unset-title"'
+    init_with: '"[unset-title]"'
     constructor_arg: true
     getter: true
     setter: true
@@ -20,14 +20,33 @@ properties:
     getter: true
     setter: true
 
+  - name: music_identifier
+    type: std::string
+    init_with: DEFAULT_MUSIC_IDENTIFIER
+    constructor_arg: true
+    getter: true
+    setter: true
+
   - name: riddle_is_solved
     type: bool
     init_with: false
     getter: true
     setter: true
 
+  - name: DEFAULT_MUSIC_IDENTIFIER
+    type: char*
+    init_with: '(char*)"[unset-music_identifier]"'
+    static: true
+    constexpr: true
+
 
 functions:
+
+
+  - name: music_identifier_is_custom
+    type: bool
+    body: |
+      return (music_identifier != DEFAULT_MUSIC_IDENTIFIER);
 
 
   - name: destroy
