@@ -249,6 +249,7 @@ void Screen::load_level_by_identifier(std::string level_identifier)
    level_factory.set_bitmap_bin(bitmap_bin);
    level_factory.set_entity_pool(get_entity_pool());
    level_factory.set_riddle(get_current_riddle());
+   level_factory.set_level(current_level);
 
 
    std::map<std::string, std::function<void()>> items_map = {
