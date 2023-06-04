@@ -1199,7 +1199,7 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
 
 ALLEGRO_FONT* Screen::obtain_riddle_font()
 {
-   return font_bin->auto_get("BodoniModa_18pt-Regular.ttf -68");
+   return font_bin->auto_get("BodoniModa_18pt-Regular.ttf -72");
 }
 
 

@@ -64,7 +64,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    screen.set_resources_path(get_framework_data_folder_path());
    screen.initialize();
 
-   screen.load_level_by_identifier("gallery_01");
+   screen.load_level_by_identifier("gallery_02");
 
    framework_register_and_activate_screen("screen", &screen);
 
