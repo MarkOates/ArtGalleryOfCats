@@ -11,6 +11,7 @@
 #include <AllegroFlare/SceneGraph/Entities/Base.hpp>
 #include <AllegroFlare/SceneGraph/EntityPool.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
+#include <AllegroFlare/Screens/Storyboard.hpp>
 #include <AllegroFlare/Shaders/Cubemap.hpp>
 #include <AllegroFlare/TileMaps/TileMap.hpp>
 #include <AllegroFlare/Vec2D.hpp>
@@ -45,6 +46,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::ModelBin* model_bin;
          std::string resources_path;
          ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen;
+         AllegroFlare::Screens::Storyboard* npc_conversations_screen;
          bool riddle_is_solved;
          bool riddle_is_showing;
          bool inspect_hint_is_showing;
@@ -72,7 +74,7 @@ namespace ArtGalleryOfCats
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, std::string resources_path=DEFAULT_RESOURCES_PATH, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr, AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr);
          virtual ~Screen();
 
          void set_riddle_is_solved(bool riddle_is_solved);
@@ -95,6 +97,7 @@ namespace ArtGalleryOfCats
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
          void set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH);
          void set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
+         void set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
          void start_level_music();
          AllegroFlare::SceneGraph::EntityPool* get_entity_pool();

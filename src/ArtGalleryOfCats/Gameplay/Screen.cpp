@@ -29,7 +29,7 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, std::string resources_path, ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen, AllegroFlare::Screens::Storyboard* npc_conversations_screen)
    : AllegroFlare::Screens::Base(ArtGalleryOfCats::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
@@ -37,6 +37,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , model_bin(model_bin)
    , resources_path(resources_path)
    , user_text_input_screen(user_text_input_screen)
+   , npc_conversations_screen(npc_conversations_screen)
    , riddle_is_solved(false)
    , riddle_is_showing(false)
    , inspect_hint_is_showing(false)
@@ -222,6 +223,19 @@ void Screen::set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput
       throw std::runtime_error("Screen::set_user_text_input_screen: error: guard \"(!initialized)\" not met");
    }
    this->user_text_input_screen = user_text_input_screen;
+   return;
+}
+
+void Screen::set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc_conversations_screen)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_npc_conversations_screen]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_npc_conversations_screen: error: guard \"(!initialized)\" not met");
+   }
+   this->npc_conversations_screen = npc_conversations_screen;
    return;
 }
 

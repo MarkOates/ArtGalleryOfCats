@@ -39,6 +39,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: npc_conversations_screen
+    type: AllegroFlare::Screens::Storyboard*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: riddle_is_solved
     type: bool
     init_with: false
@@ -200,6 +205,17 @@ functions:
         default_argument: nullptr
     body: |
       this->user_text_input_screen = user_text_input_screen;
+      return;
+
+
+  - name: set_npc_conversations_screen
+    guards: [ (!initialized) ]
+    parameters:
+      - name: npc_conversations_screen
+        type: AllegroFlare::Screens::Storyboard*
+        default_argument: nullptr
+    body: |
+      this->npc_conversations_screen = npc_conversations_screen;
       return;
 
 
@@ -1397,5 +1413,7 @@ dependencies:
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_html
     headers: [ allegro5/allegro_color.h ]
+  - symbol: AllegroFlare::Screens::Storyboard
+    headers: [ AllegroFlare/Screens/Storyboard.hpp ]
 
 
