@@ -765,10 +765,10 @@ void Screen::primary_timer_func()
 
 void Screen::player_spin_change(float delta)
 {
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+   //AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         //if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         //ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D* as_camera = find_primary_camera();
 
          as_camera->spin += delta;
    return;
@@ -776,10 +776,11 @@ void Screen::player_spin_change(float delta)
 
 void Screen::player_tilt_change(float delta)
 {
-   AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
-         if (!entity) throw std::runtime_error("virtual_controls: no camera present");
-         ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
-         static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+   //AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool.find_with_attribute("primary_camera");
+         //if (!entity) throw std::runtime_error("virtual_controls: no camera present");
+         //ArtGalleryOfCats::Gameplay::Entities::Camera3D *as_camera =
+         //static_cast<ArtGalleryOfCats::Gameplay::Entities::Camera3D*>(entity);
+         ArtGalleryOfCats::Gameplay::Entities::Camera3D* as_camera = find_primary_camera();
 
          //as_camera->tilt += delta;
          float tilt = as_camera->tilt;
