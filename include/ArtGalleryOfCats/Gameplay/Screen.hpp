@@ -127,6 +127,7 @@ namespace ArtGalleryOfCats
          virtual void key_up_func(ALLEGRO_EVENT* ev=nullptr) override;
          virtual void mouse_axes_func(ALLEGRO_EVENT* ev=nullptr) override;
          ALLEGRO_FONT* obtain_riddle_font();
+         ALLEGRO_FONT* obtain_inspect_hint_font();
       };
    }
 }

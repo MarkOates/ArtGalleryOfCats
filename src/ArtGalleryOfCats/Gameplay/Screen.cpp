@@ -764,13 +764,25 @@ void Screen::render_hud()
 
    if (inspect_hint_is_showing)
    {
-      float inspect_hint_x = 1920*0.5 - 200; // TODO: make this not-hard-coded dimension
-      float inspect_hint_y = 1080*0.5 - 100; // TODO: make this not-hard-coded dimension
+      float inspect_hint_x = 1920*0.5 - 140; // TODO: make this not-hard-coded dimension
+      float inspect_hint_y = 1080*0.5 - 50; // TODO: make this not-hard-coded dimension
       float inspect_hint_radius = 30.0f;
       ALLEGRO_COLOR inspect_hint_backfill_color = al_color_html("024d83");
+      ALLEGRO_COLOR inspect_hint_text_color = al_color_html("ffffff");
+
+      // Draw the circle
       al_draw_filled_circle(inspect_hint_x, inspect_hint_y, inspect_hint_radius, inspect_hint_backfill_color);
 
-      // TODO: Draw "i" letter
+      // Draw the "i" character
+      ALLEGRO_FONT* inspect_hint_font = obtain_inspect_hint_font();
+      al_draw_text(
+         inspect_hint_font,
+         inspect_hint_text_color,
+         inspect_hint_x,
+         inspect_hint_y - al_get_font_line_height(inspect_hint_font) * 0.5,
+         ALLEGRO_ALIGN_CENTER,
+         "i"
+      );
    }
 
 
@@ -1225,6 +1237,11 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
 }
 
 ALLEGRO_FONT* Screen::obtain_riddle_font()
+{
+   return font_bin->auto_get("BodoniModa_9pt-SemiBold.ttf -72");
+}
+
+ALLEGRO_FONT* Screen::obtain_inspect_hint_font()
 {
    return font_bin->auto_get("BodoniModa_9pt-SemiBold.ttf -72");
 }
