@@ -801,7 +801,7 @@ void Screen::render_hud()
          inspect_hint_x + inspect_hint_radius * 1.3,
          inspect_hint_y - al_get_font_line_height(inspect_hint_text_font) * 0.5,
          ALLEGRO_ALIGN_LEFT,
-         "[I] Inspect"
+         "Inspect"
       );
    }
 
@@ -1175,9 +1175,10 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
          player_right_pressed = true;
       } break;
 
+      case ALLEGRO_KEY_SPACE:
+      case ALLEGRO_KEY_ENTER:
       case ALLEGRO_KEY_I: {
          interact_with_focused_object();
-         //attempt_to_solve_riddle();
       } break;
 
       case ALLEGRO_KEY_O: {
@@ -1193,12 +1194,6 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
          emit_event_to_return_to_the_level_select_screen();
          //prompt_user_for_text_input(); // DEVELOPMENT
       } break;
-
-      //case ALLEGRO_KEY_SPACE:
-      //case ALLEGRO_KEY_ENTER:
-      //case ALLEGRO_KEY_X: {
-         //interact_with_focused_object();
-      //} break;
 
       default: {
          // Nothing here
