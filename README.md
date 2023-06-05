@@ -34,5 +34,5 @@ http://creativecommons.org/licenses/by/4.0/
 
 You should be able to compile the "SourceRelease" version out-of-the box with only Allegro 5 as a dependency.  To compile, unzip the folder to a directory and `make`.  There's a lot of source being built, most of AllegroFlare is included in this "SourceRelease", so it will probably take a while to build (think 5 minutes or so).
 
-Build has been tested on MSYS64 on Win, and `clang` on MacOS intel and arm.
+Build has been tested on MSYS64 on Win, and `clang` on MacOS (intel and arm).
 

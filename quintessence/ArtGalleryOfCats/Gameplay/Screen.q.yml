@@ -496,11 +496,49 @@ functions:
             )
          },
 
-         // Special inspections
+         // Special inspections (colorful cats)
 
          { "inspect_on_black_and_white_cats_art", new AllegroFlare::DialogTree::Node(
               "Mittens",
               { "This one is quite striking!", "The black and white creates such a strong contrast." }
+            )
+         },
+
+         // Special inspections (humans exhibit)
+
+         { "inspect_medium_statue", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "medium statue" }
+            )
+         },
+         { "inspect_feature_statue", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "feature statue" }
+            )
+         },
+         { "inspect_small_statues", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "small statues" }
+            )
+         },
+         { "inspect_human_01", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "human 01" }
+            )
+         },
+         { "inspect_human_02", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "human 02" }
+            )
+         },
+         { "inspect_human_03", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "human 03" }
+            )
+         },
+         { "inspect_human_04", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              { "human 04" }
             )
          },
 
@@ -1289,8 +1327,27 @@ functions:
 
       std::string art_identifier = entity_inspecting_on->get(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER);
 
+      std::string const INSPECT_PREFIX = "inspect_";
+
       std::cout << "Inspecting on \"" << art_identifier << "\"" << std::endl;
       if (art_identifier == "black_and_white_cats") return "inspect_on_black_and_white_cats_art";
+
+
+      // These listed here will automatically return "inspect_[art_identifier]";
+      std::set<std::string> special_inspect_to_return_with_inspect_prefix = {
+         "medium_statue",
+         "feature_statue",
+         "small_statues",
+         "human_01",
+         "human_02",
+         "human_03",
+         "human_04",
+      };
+
+      if (special_inspect_to_return_with_inspect_prefix.count(art_identifier) != 0)
+      {
+         return INSPECT_PREFIX + art_identifier;
+      }
 
 
       // TODO: Add special case dialog here
