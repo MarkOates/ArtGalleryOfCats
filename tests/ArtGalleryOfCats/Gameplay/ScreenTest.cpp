@@ -41,9 +41,11 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    DISABLED__will_run_as_expected)
 {
    ArtGalleryOfCats::Gameplay::Screen screen;
+   std::set<std::string> solved_level_names;
    screen.set_event_emitter(get_framework_event_emitter());
    screen.set_bitmap_bin(get_framework_bitmap_bin());
    screen.set_font_bin(get_framework_font_bin());
+   screen.set_solved_level_names(&solved_level_names);
    screen.set_model_bin(get_framework_model_bin());
    screen.initialize();
 
@@ -57,9 +59,11 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    with_level_loaded__will_run_as_expected)
 {
    ArtGalleryOfCats::Gameplay::Screen screen;
+   std::set<std::string> solved_level_names;
    screen.set_event_emitter(get_framework_event_emitter());
    screen.set_bitmap_bin(get_framework_bitmap_bin());
    screen.set_font_bin(get_framework_font_bin());
+   screen.set_solved_level_names(&solved_level_names);
    screen.set_model_bin(get_framework_model_bin());
    screen.set_resources_path(get_framework_data_folder_path());
    screen.initialize();

@@ -380,6 +380,7 @@ void Runner::initialize()
    primary_gameplay_screen.set_resources_path(resources_path);
    primary_gameplay_screen.set_user_text_input_screen(&user_text_input_screen);
    primary_gameplay_screen.set_npc_conversations_screen(&npc_conversations_screen);
+   primary_gameplay_screen.set_solved_level_names(&solved_level_names);
    primary_gameplay_screen.initialize();
 
    // TODO: Load up our sound effects

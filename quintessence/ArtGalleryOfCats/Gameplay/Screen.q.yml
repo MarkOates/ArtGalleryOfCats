@@ -381,6 +381,7 @@ functions:
       - bitmap_bin
       - font_bin
       - model_bin
+      - solved_level_names
       - (resources_path != DEFAULT_RESOURCES_PATH)
     body: |
       // TODO: Fix this section
@@ -507,7 +508,7 @@ functions:
   - name: on_activate
     virtual: true
     override: true
-    guards: [ initialized ]
+    guards: [ initialized, current_level ]
     body: |
       hide_riddle();
       hide_inspect_hint();
@@ -558,6 +559,14 @@ functions:
             event_emitter->emit_play_sound_effect_event("right_answer");
 
             riddle_is_solved = true; // TODO: modify this on a master list
+
+            solved_level_names->insert(current_level->get_name()); // HERE
+            std::cout << "- Solved level names are now:" << std::endl;
+            for (auto &solved_level_name : (*solved_level_names))
+            {
+               std::cout << "   - " << solved_level_name << std::endl;
+            }
+
 
             activate_npc_dialog_by_identifier("correct_riddle_answer");
 

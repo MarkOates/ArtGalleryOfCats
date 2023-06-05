@@ -469,6 +469,13 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
+   if (!(solved_level_names))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::initialize]: error: guard \"solved_level_names\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::initialize: error: guard \"solved_level_names\" not met");
+   }
    if (!((resources_path != DEFAULT_RESOURCES_PATH)))
    {
       std::stringstream error_message;
@@ -598,6 +605,13 @@ void Screen::on_activate()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
    }
+   if (!(current_level))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::on_activate]: error: guard \"current_level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::on_activate: error: guard \"current_level\" not met");
+   }
    hide_riddle();
    hide_inspect_hint();
 
@@ -647,6 +661,14 @@ void Screen::on_activate()
          event_emitter->emit_play_sound_effect_event("right_answer");
 
          riddle_is_solved = true; // TODO: modify this on a master list
+
+         solved_level_names->insert(current_level->get_name()); // HERE
+         std::cout << "- Solved level names are now:" << std::endl;
+         for (auto &solved_level_name : (*solved_level_names))
+         {
+            std::cout << "   - " << solved_level_name << std::endl;
+         }
+
 
          activate_npc_dialog_by_identifier("correct_riddle_answer");
 
