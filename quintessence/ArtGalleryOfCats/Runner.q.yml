@@ -111,6 +111,10 @@ properties:
     type: ArtGalleryOfCats::Elements::Backgrounds::NPCConversations
     init_with: '{}'
 
+  - name: levels_list
+    type: std::vector<std::pair<std::string, std::string>>
+    init_with: '{}'
+
   - name: solved_level_names
     type: std::set<std::string>
     init_with: '{}'
@@ -372,11 +376,7 @@ functions:
       user_text_input_screen.set_mode_to_using_keyboard();
 
 
-      // TODO: Setup level select screen
-      level_select_screen.set_event_emitter(event_emitter);
-      level_select_screen.set_bitmap_bin(bitmap_bin);
-      level_select_screen.set_font_bin(font_bin);
-      level_select_screen.set_levels_list({
+      levels_list = {
          //{ "Candy Kingdom", "candy_kingdom" },
          //{ "Cherry Blossom Grove", "cherry_blossom_grove" },
          //{ "Bubble Pop Bay", "bubble_pop_bay" },
@@ -387,7 +387,26 @@ functions:
          //{ "3", "bubble_pop_bay" },
          //{ "4", "neon_city_nights" },
          //{ "5", "wonderland_woods" },
-      });
+      };
+
+
+
+      // TODO: Setup level select screen
+      level_select_screen.set_event_emitter(event_emitter);
+      level_select_screen.set_bitmap_bin(bitmap_bin);
+      level_select_screen.set_font_bin(font_bin);
+      level_select_screen.set_levels_list(levels_list); //{
+         //{ "Candy Kingdom", "candy_kingdom" },
+         //{ "Cherry Blossom Grove", "cherry_blossom_grove" },
+         //{ "Bubble Pop Bay", "bubble_pop_bay" },
+         //{ "Neon City Nights", "neon_city_nights" },
+         //{ "Wonderland Woods", "wonderland_woods" },
+         //{ "Gallery 1", "gallery_01" },
+         //{ "Gallery 2", "gallery_02" },
+         //{ "3", "bubble_pop_bay" },
+         //{ "4", "neon_city_nights" },
+         //{ "5", "wonderland_woods" },
+      //});
       level_select_screen.set_background(&solid_black_background);
       level_select_screen.get_level_select_element_ref().set_ignore_on_invalid_selection(true);
       level_select_screen.initialize();
@@ -781,12 +800,23 @@ functions:
          // TODO: Figure out what to do here, probably load the next level, or, if there are no more levels show
          // game won screen
 
+         bool this_was_the_last_level = false;
 
-         bool this_was_the_last_level = true;
+         if (solved_level_names.size() == levels_list.size()) this_was_the_last_level = true;
+
+         //bool this_was_the_last_level = true;
          if (this_was_the_last_level)
          {
             this->router.emit_route_event(
                AllegroFlare::Routers::Standard::EVENT_ACTIVATE_GAME_WON_OUTRO_STORYBOARD_SCREEN,
+               nullptr,
+               al_get_time()
+            );
+         }
+         else
+         {
+            this->router.emit_route_event(
+               AllegroFlare::Routers::Standard::EVENT_ACTIVATE_LEVEL_SELECT_SCREEN,
                nullptr,
                al_get_time()
             );

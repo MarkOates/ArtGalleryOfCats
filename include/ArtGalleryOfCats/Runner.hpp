@@ -25,6 +25,8 @@
 #include <ReleaseInfo.hpp>
 #include <set>
 #include <string>
+#include <utility>
+#include <vector>
 
 
 namespace ArtGalleryOfCats
@@ -62,6 +64,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Elements::Backgrounds::ClearToColor solid_black_background;
       AllegroFlare::Elements::Backgrounds::ClearToColor light_blue_background;
       ArtGalleryOfCats::Elements::Backgrounds::NPCConversations npc_conversations_background;
+      std::vector<std::pair<std::string, std::string>> levels_list;
       std::set<std::string> solved_level_names;
       ReleaseInfo release_info;
       bool initialized;
