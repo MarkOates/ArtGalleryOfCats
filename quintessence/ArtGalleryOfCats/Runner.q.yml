@@ -164,6 +164,15 @@ functions:
       - font_bin
       - model_bin
     body: |
+
+      AllegroFlare::SystemInfo HACK_system_info;
+      std::string HACK_sysname = HACK_system_info.get_sysname();
+      //if (system_is_a_mac)
+      //{
+         // TODO: WOrk out htis
+      //}
+
+
       // Create the resources
       AllegroFlare::Achievements &achievements = framework->get_achievements_ref();
       AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
@@ -212,6 +221,8 @@ functions:
          page_factory.create_clubcatt_logo_page(),
          page_factory.create_image_page(bitmap_bin->operator[]("clubcatt-website-01.jpg")),
       });
+
+      
 
       // TODO: Setup intro storyboard screen
       intro_storyboard_screen.set_event_emitter(event_emitter);
@@ -460,6 +471,8 @@ functions:
       primary_gameplay_screen.set_user_text_input_screen(&user_text_input_screen);
       primary_gameplay_screen.set_npc_conversations_screen(&npc_conversations_screen);
       primary_gameplay_screen.set_solved_level_names(&solved_level_names);
+      primary_gameplay_screen.set_HACK_sysname(HACK_sysname);
+
       primary_gameplay_screen.initialize();
 
       // TODO: Load up our sound effects
@@ -482,6 +495,7 @@ functions:
 
       return;
     body_dependency_symbols:
+      - AllegroFlare::SystemInfo
       - AllegroFlare::StoryboardFactory
       - AllegroFlare::Color
       - AllegroFlare::Elements::RollingCredits::SectionFactory
@@ -916,5 +930,7 @@ dependencies:
     headers: [ ArtGalleryOfCats/Screens/UserTextInput.hpp ]
   - symbol: AllegroFlare::Elements::RollingCredits::SectionFactory
     headers: [ AllegroFlare/Elements/RollingCredits/SectionFactory.hpp ]
+  - symbol: AllegroFlare::SystemInfo
+    headers: [ AllegroFlare/SystemInfo.hpp ]
 
 

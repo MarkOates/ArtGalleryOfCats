@@ -41,6 +41,7 @@ namespace ArtGalleryOfCats
       public:
          static constexpr char* TYPE = (char*)"ArtGalleryOfCats/Gameplay/Screen";
          static constexpr char* DEFAULT_RESOURCES_PATH = (char*)"[unset-resources_path]";
+         static constexpr char* DEFAULT_HACK_SYSNAME = (char*)"[unset-HACK_sysname]";
 
       private:
          AllegroFlare::EventEmitter* event_emitter;
@@ -68,6 +69,7 @@ namespace ArtGalleryOfCats
          void* on_finished_callback_func_user_data;
          AllegroFlare::Shaders::Cubemap cubemap_shader;
          AllegroFlare::Cubemap* cubemap;
+         std::string HACK_sysname;
          bool initialized;
          void emit_event_to_set_input_hints_bar_to_room_controls();
          void emit_event_to_set_input_hints();
@@ -99,6 +101,7 @@ namespace ArtGalleryOfCats
          AllegroFlare::SceneGraph::Entities::Base* get_entity_player_is_currently_colliding_with() const;
          std::function<void(ArtGalleryOfCats::Gameplay::Screen*, void*)> get_on_finished_callback_func() const;
          void* get_on_finished_callback_func_user_data() const;
+         std::string get_HACK_sysname() const;
          void set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr);
          void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
@@ -107,6 +110,7 @@ namespace ArtGalleryOfCats
          void set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr);
          void set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr);
          void set_solved_level_names(std::set<std::string>* solved_level_names=nullptr);
+         void set_HACK_sysname(std::string HACK_sysname=DEFAULT_HACK_SYSNAME);
          void load_level_by_identifier(std::string level_identifier="[unset-level_identifier]");
          void start_level_music();
          AllegroFlare::SceneGraph::EntityPool* get_entity_pool();

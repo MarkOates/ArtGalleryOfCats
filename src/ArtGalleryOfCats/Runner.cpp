@@ -8,6 +8,7 @@
 #include <AllegroFlare/Logger.hpp>
 #include <AllegroFlare/RouteEventDatas/StartLevel.hpp>
 #include <AllegroFlare/StoryboardFactory.hpp>
+#include <AllegroFlare/SystemInfo.hpp>
 #include <allegro5/allegro.h>
 #include <iostream>
 #include <sstream>
@@ -101,6 +102,15 @@ void Runner::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Runner::initialize: error: guard \"model_bin\" not met");
    }
+
+   AllegroFlare::SystemInfo HACK_system_info;
+   std::string HACK_sysname = HACK_system_info.get_sysname();
+   //if (system_is_a_mac)
+   //{
+      // TODO: WOrk out htis
+   //}
+
+
    // Create the resources
    AllegroFlare::Achievements &achievements = framework->get_achievements_ref();
    AllegroFlare::AudioController &audio_controller = framework->get_audio_controller_ref();
@@ -149,6 +159,8 @@ void Runner::initialize()
       page_factory.create_clubcatt_logo_page(),
       page_factory.create_image_page(bitmap_bin->operator[]("clubcatt-website-01.jpg")),
    });
+
+
 
    // TODO: Setup intro storyboard screen
    intro_storyboard_screen.set_event_emitter(event_emitter);
@@ -397,6 +409,8 @@ void Runner::initialize()
    primary_gameplay_screen.set_user_text_input_screen(&user_text_input_screen);
    primary_gameplay_screen.set_npc_conversations_screen(&npc_conversations_screen);
    primary_gameplay_screen.set_solved_level_names(&solved_level_names);
+   primary_gameplay_screen.set_HACK_sysname(HACK_sysname);
+
    primary_gameplay_screen.initialize();
 
    // TODO: Load up our sound effects

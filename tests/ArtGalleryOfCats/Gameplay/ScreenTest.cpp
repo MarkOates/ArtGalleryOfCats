@@ -6,6 +6,8 @@
 #include <AllegroFlare/Testing/WithAllegroRenderingFixture.hpp>
 #include <AllegroFlare/Testing/WithAllegroFlareFrameworksFullFixture.hpp>
 //#include <AllegroFlare/Frameworks/Full.hpp>
+#include <AllegroFlare/SystemInfo.hpp>
+
 
 class ArtGalleryOfCats_Gameplay_ScreenTest : public ::testing::Test {};
 class ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroRenderingFixture
@@ -40,6 +42,9 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTest, type__has_the_expected_value_matchi
 TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    DISABLED__will_run_as_expected)
 {
+   AllegroFlare::SystemInfo HACK_system_info;
+   std::string HACK_sysname = HACK_system_info.get_sysname();
+
    ArtGalleryOfCats::Gameplay::Screen screen;
    std::set<std::string> solved_level_names;
    screen.set_event_emitter(get_framework_event_emitter());
@@ -47,6 +52,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    screen.set_font_bin(get_framework_font_bin());
    screen.set_solved_level_names(&solved_level_names);
    screen.set_model_bin(get_framework_model_bin());
+   screen.set_HACK_sysname(HACK_sysname);
    screen.initialize();
 
    framework_register_and_activate_screen("screen", &screen);
@@ -58,6 +64,9 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
 TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    with_level_loaded__will_run_as_expected)
 {
+   AllegroFlare::SystemInfo HACK_system_info;
+   std::string HACK_sysname = HACK_system_info.get_sysname();
+
    ArtGalleryOfCats::Gameplay::Screen screen;
    std::set<std::string> solved_level_names;
    screen.set_event_emitter(get_framework_event_emitter());
@@ -66,6 +75,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    screen.set_solved_level_names(&solved_level_names);
    screen.set_model_bin(get_framework_model_bin());
    screen.set_resources_path(get_framework_data_folder_path());
+   screen.set_HACK_sysname(HACK_sysname);
    screen.initialize();
 
    screen.load_level_by_identifier("gallery_02");

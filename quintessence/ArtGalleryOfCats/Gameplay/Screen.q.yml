@@ -133,6 +133,11 @@ properties:
     type: AllegroFlare::Cubemap*
     init_with: nullptr
 
+  - name: HACK_sysname
+    type: std::string
+    init_with: DEFAULT_HACK_SYSNAME
+    getter: true
+
   - name: initialized
     type: bool
     init_with: false
@@ -146,6 +151,12 @@ properties:
   - name: DEFAULT_RESOURCES_PATH
     type: char*
     init_with: '(char*)"[unset-resources_path]"'
+    static: true
+    constexpr: true
+
+  - name: DEFAULT_HACK_SYSNAME
+    type: char*
+    init_with: '(char*)"[unset-HACK_sysname]"'
     static: true
     constexpr: true
 
@@ -238,6 +249,17 @@ functions:
         default_argument: nullptr
     body: |
       this->solved_level_names = solved_level_names;
+      return;
+
+
+  - name: set_HACK_sysname
+    guards: [ (!initialized) ]
+    parameters:
+      - name: HACK_sysname
+        type: std::string
+        default_argument: DEFAULT_HACK_SYSNAME
+    body: |
+      this->HACK_sysname = HACK_sysname;
       return;
 
 
@@ -384,6 +406,7 @@ functions:
       - model_bin
       - solved_level_names
       - (resources_path != DEFAULT_RESOURCES_PATH)
+      - (HACK_sysname != DEFAULT_HACK_SYSNAME)
     body: |
       // TODO: Fix this section
       AllegroFlare::CubemapBuilder builder;
@@ -1591,9 +1614,23 @@ functions:
 
       //ALLEGRO_FULLSCREEN_WINDOW
 
+      bool this_system_is_a_mac = (HACK_sysname == "Darwin");
 
-      if (this_display_is_windowed)
+      if (this_display_is_windowed && this_system_is_a_mac)
       {
+         if (current_display)
+         {
+            al_set_mouse_xy(
+               current_display,
+               al_get_display_width(current_display)*0.5,
+               al_get_display_height(current_display)*0.5
+            );
+         }
+      }
+
+      if (!this_display_is_windowed && !this_system_is_a_mac)
+      {
+         // Warp on windows in fullscreen
          if (current_display)
          {
             al_set_mouse_xy(

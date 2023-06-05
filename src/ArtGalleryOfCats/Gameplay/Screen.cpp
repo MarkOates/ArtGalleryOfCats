@@ -57,6 +57,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , on_finished_callback_func_user_data(nullptr)
    , cubemap_shader({})
    , cubemap(nullptr)
+   , HACK_sysname(DEFAULT_HACK_SYSNAME)
    , initialized(false)
 {
 }
@@ -163,6 +164,12 @@ void* Screen::get_on_finished_callback_func_user_data() const
 }
 
 
+std::string Screen::get_HACK_sysname() const
+{
+   return HACK_sysname;
+}
+
+
 void Screen::set_event_emitter(AllegroFlare::EventEmitter* event_emitter)
 {
    if (!((!initialized)))
@@ -264,6 +271,19 @@ void Screen::set_solved_level_names(std::set<std::string>* solved_level_names)
       throw std::runtime_error("Screen::set_solved_level_names: error: guard \"(!initialized)\" not met");
    }
    this->solved_level_names = solved_level_names;
+   return;
+}
+
+void Screen::set_HACK_sysname(std::string HACK_sysname)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_HACK_sysname]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_HACK_sysname: error: guard \"(!initialized)\" not met");
+   }
+   this->HACK_sysname = HACK_sysname;
    return;
 }
 
@@ -483,6 +503,13 @@ void Screen::initialize()
       error_message << "[Screen::initialize]: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met");
+   }
+   if (!((HACK_sysname != DEFAULT_HACK_SYSNAME)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::initialize]: error: guard \"(HACK_sysname != DEFAULT_HACK_SYSNAME)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::initialize: error: guard \"(HACK_sysname != DEFAULT_HACK_SYSNAME)\" not met");
    }
    // TODO: Fix this section
    AllegroFlare::CubemapBuilder builder;
@@ -1674,9 +1701,23 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
 
    //ALLEGRO_FULLSCREEN_WINDOW
 
+   bool this_system_is_a_mac = (HACK_sysname == "Darwin");
 
-   if (this_display_is_windowed)
+   if (this_display_is_windowed && this_system_is_a_mac)
    {
+      if (current_display)
+      {
+         al_set_mouse_xy(
+            current_display,
+            al_get_display_width(current_display)*0.5,
+            al_get_display_height(current_display)*0.5
+         );
+      }
+   }
+
+   if (!this_display_is_windowed && !this_system_is_a_mac)
+   {
+      // Warp on windows in fullscreen
       if (current_display)
       {
          al_set_mouse_xy(
