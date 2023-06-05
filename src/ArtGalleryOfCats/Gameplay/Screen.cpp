@@ -738,6 +738,16 @@ void Screen::show_input_hints()
 
 void Screen::update()
 {
+   // HACK
+   static int grabber_caller_HACK = 0;
+   grabber_caller_HACK--;
+   if (grabber_caller_HACK < 0)
+   {
+      ALLEGRO_DISPLAY *current_display = al_get_current_display();
+      al_grab_mouse(current_display);
+      grabber_caller_HACK = 99;
+   }
+
    scene_physics_updater();
    return;
 }
@@ -1644,6 +1654,17 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    float tilt_multiplier = 0.001;
    player_spin_change(spin_delta * spin_multiplier);
    player_tilt_change(tilt_delta * tilt_multiplier);
+
+
+   // HACK
+   ALLEGRO_DISPLAY *current_display = al_get_current_display();
+   al_set_mouse_xy(
+      current_display,
+      al_get_display_width(current_display)*0.5,
+      al_get_display_height(current_display)*0.5
+   );
+
+
    //float x_delta = ev->mouse->dx;
    //result->tilt = 0.13;            // look up(-)/down(+)
    //result->spin = 0.2;             // set a good start initial spin
