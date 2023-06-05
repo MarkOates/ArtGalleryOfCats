@@ -1452,6 +1452,7 @@ std::string Screen::find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph
       "human_02",
       "human_03",
       "human_04",
+      "human_05",
       "cat_years_to_human_years",
    };
 

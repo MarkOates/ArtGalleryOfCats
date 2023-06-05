@@ -1383,6 +1383,7 @@ functions:
          "human_02",
          "human_03",
          "human_04",
+         "human_05",
          "cat_years_to_human_years",
       };
 
