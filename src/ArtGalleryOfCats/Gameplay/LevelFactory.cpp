@@ -401,8 +401,8 @@ void LevelFactory::load_gallery_02()
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
-      "gallery_02-01.obj",
-      "gallery_02-01.png"
+      "gallery_02-03.obj",
+      "gallery_02-03.png"
    );
    entity_pool->add(environment_mesh);
 
