@@ -224,7 +224,7 @@
                  "id":19,
                  "name":"small_statues",
                  "rotation":0,
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":224,
                  "y":416
@@ -235,7 +235,7 @@
                  "id":20,
                  "name":"small_statues",
                  "rotation":0,
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":224,
                  "y":352
@@ -246,7 +246,7 @@
                  "id":21,
                  "name":"small_statues",
                  "rotation":0,
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":224,
                  "y":288
@@ -257,7 +257,7 @@
                  "id":22,
                  "name":"feature_statue",
                  "rotation":0,
-                 "visible":true,
+                 "visible":false,
                  "width":128,
                  "x":432,
                  "y":464
@@ -268,7 +268,7 @@
                  "id":23,
                  "name":"medium_statue",
                  "rotation":0,
-                 "visible":true,
+                 "visible":false,
                  "width":64,
                  "x":640,
                  "y":320

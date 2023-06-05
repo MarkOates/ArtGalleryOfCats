@@ -112,6 +112,21 @@ functions:
             hit_box_2d,
             {}
          );
+
+         // HACK: Instead of using "visible_property", we should be using a custom property "hidden: true". Visible
+         // refers to the visibility of the object as seen in the Tiled editor, not necessarily referring to its
+         // visibility in the world.
+         bool object_is_hidden = visible_property == false;
+         if (object_is_hidden)
+         {
+            art->set(ArtGalleryOfCats::Gameplay::EntityFlags::DO_NOT_RENDER);
+         }
+         //for (auto &custom_property : custom_properties)
+         //{
+            //if (custom_property.first == "hidden" && custom_property.second == "true")
+            //{
+            //}
+         //}
         
          entity_pool.add(art);
       }
