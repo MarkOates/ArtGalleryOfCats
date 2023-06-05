@@ -81,6 +81,9 @@ functions:
       - name: height_property
         type: float
         default_argument: 0.0f
+      - name: visible_property
+        type: bool
+        default_argument: true
       - name: custom_properties
         type: std::vector<std::pair<std::string, std::string>>
         default_argument: '{}'
@@ -109,6 +112,7 @@ functions:
             hit_box_2d,
             {}
          );
+        
          entity_pool.add(art);
       }
       else if (class_property == "wall_art")

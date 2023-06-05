@@ -111,7 +111,7 @@ bool LevelFactory::has_non_default_resources_path()
    return (resources_path != DEFAULT_RESOURCES_PATH);
 }
 
-void LevelFactory::object_parsed_callback(std::string name_property, std::string class_property, float x_property, float y_property, float width_property, float height_property, std::vector<std::pair<std::string, std::string>> custom_properties, void* user_data)
+void LevelFactory::object_parsed_callback(std::string name_property, std::string class_property, float x_property, float y_property, float width_property, float height_property, bool visible_property, std::vector<std::pair<std::string, std::string>> custom_properties, void* user_data)
 {
    if (!(user_data))
    {
@@ -140,6 +140,7 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
          hit_box_2d,
          {}
       );
+     
       entity_pool.add(art);
    }
    else if (class_property == "wall_art")

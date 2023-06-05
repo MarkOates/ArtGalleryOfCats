@@ -33,7 +33,7 @@ TMJObjectLoader::~TMJObjectLoader()
 }
 
 
-void TMJObjectLoader::set_object_parsed_callback(std::function<void(std::string, std::string, float, float, float, float, std::vector<std::pair<std::string, std::string>>, void*)> object_parsed_callback)
+void TMJObjectLoader::set_object_parsed_callback(std::function<void(std::string, std::string, float, float, float, float, bool, std::vector<std::pair<std::string, std::string>>, void*)> object_parsed_callback)
 {
    this->object_parsed_callback = object_parsed_callback;
 }
@@ -57,7 +57,7 @@ void TMJObjectLoader::set_map_properties_parsed_callback_user_data(void* map_pro
 }
 
 
-std::function<void(std::string, std::string, float, float, float, float, std::vector<std::pair<std::string, std::string>>, void*)> TMJObjectLoader::get_object_parsed_callback() const
+std::function<void(std::string, std::string, float, float, float, float, bool, std::vector<std::pair<std::string, std::string>>, void*)> TMJObjectLoader::get_object_parsed_callback() const
 {
    return object_parsed_callback;
 }
@@ -165,6 +165,7 @@ void TMJObjectLoader::load()
       float y_property = object_json.value()["y"].get<float>();
       float width_property = object_json.value()["width"].get<float>();
       float height_property = object_json.value()["height"].get<float>();
+      bool visible_property = object_json.value()["visible"].get<bool>();
       std::vector<std::pair<std::string, std::string>> custom_properties;
 
       // Collect custom properties
@@ -193,6 +194,7 @@ void TMJObjectLoader::load()
             y_property / (float)tile_height,
             width_property / (float)tile_width,
             height_property / (float)tile_height,
+            visible_property,
             custom_properties,
             object_parsed_callback_user_data
          );

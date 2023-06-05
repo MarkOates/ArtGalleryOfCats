@@ -11,7 +11,7 @@ properties:
     init_with: false
 
   - name: object_parsed_callback
-    type: std::function<void(std::string, std::string, float, float, float, float, std::vector<std::pair<std::string, std::string>>, void*)>
+    type: std::function<void(std::string, std::string, float, float, float, float, bool, std::vector<std::pair<std::string, std::string>>, void*)>
     init_with: '{}'
     getter: true
     setter: true
@@ -116,6 +116,7 @@ functions:
          float y_property = object_json.value()["y"].get<float>();
          float width_property = object_json.value()["width"].get<float>();
          float height_property = object_json.value()["height"].get<float>();
+         bool visible_property = object_json.value()["visible"].get<bool>();
          std::vector<std::pair<std::string, std::string>> custom_properties;
 
          // Collect custom properties
@@ -144,6 +145,7 @@ functions:
                y_property / (float)tile_height,
                width_property / (float)tile_width,
                height_property / (float)tile_height,
+               visible_property,
                custom_properties,
                object_parsed_callback_user_data
             );

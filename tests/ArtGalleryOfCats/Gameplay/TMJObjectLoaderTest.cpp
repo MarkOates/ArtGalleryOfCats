@@ -15,12 +15,14 @@ static void object_parsed_callback(
       float y_property,
       float width_property,
       float height_property,
+      bool visible_property,
       std::vector<std::pair<std::string, std::string>> custom_properties,
       void* user_data
    )
 {
    std::cout << "- name: \"" << name_property << "\"" << std::endl;
    std::cout << "  class: \"" << class_property << "\"" << std::endl;
+   std::cout << "  visible: \"" << visible_property << "\"" << std::endl;
    std::cout << std::endl;
    return;
 }
