@@ -1658,11 +1658,34 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
 
    // HACK
    ALLEGRO_DISPLAY *current_display = al_get_current_display();
-   al_set_mouse_xy(
-      current_display,
-      al_get_display_width(current_display)*0.5,
-      al_get_display_height(current_display)*0.5
-   );
+   int current_display_flags = al_get_display_flags(current_display);
+   bool this_display_is_fullscreen = current_display_flags & ALLEGRO_FULLSCREEN_WINDOW;
+   bool this_display_is_windowed = !this_display_is_fullscreen;
+
+   //if (this_display_is_fullscreen)
+   //{
+      //throw std::runtime_error("this_display_is_fullscreen");
+   //}
+   //else
+   //{
+      //throw std::runtime_error("this_display_is_not_fullscreen");
+   //}
+
+
+   //ALLEGRO_FULLSCREEN_WINDOW
+
+
+   if (this_display_is_windowed)
+   {
+      if (current_display)
+      {
+         al_set_mouse_xy(
+            current_display,
+            al_get_display_width(current_display)*0.5,
+            al_get_display_height(current_display)*0.5
+         );
+      }
+   }
 
 
    //float x_delta = ev->mouse->dx;
