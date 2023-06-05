@@ -513,7 +513,7 @@ void Screen::load_dialog_node_bank()
               "If you'd like, we can still look around this gallery.",
               "Otherwise, we can move on to another gallery?",
               //"If you'd like, you can still look around this gallery.",
-              "To go to another gallery, press the ESCAPE key and go to the Galary Select Screen.",
+              "To go to another gallery, press the ESCAPE key while you're walking around.",
               //"Or, just return to the Galary Select Screen by pressing the ESCAPE key.",
               //"
            }
