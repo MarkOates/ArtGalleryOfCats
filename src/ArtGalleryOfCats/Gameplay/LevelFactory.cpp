@@ -365,11 +365,11 @@ void LevelFactory::load_gallery_01()
    camera->get_placement_ref().position.z = spawn_point.y;
 
    // Create a collectable
-   ArtGalleryOfCats::Gameplay::Entities::Base* collectable_object = entity_factory.create_collectable_object(
-      AllegroFlare::Vec3D(24.0, 0.5, 17.0),
-      "rounded_unit_cube-01.obj"
-   );
-   entity_pool->add(collectable_object);
+   //ArtGalleryOfCats::Gameplay::Entities::Base* collectable_object = entity_factory.create_collectable_object(
+      //AllegroFlare::Vec3D(24.0, 0.5, 17.0),
+      //"rounded_unit_cube-01.obj"
+   //);
+   //entity_pool->add(collectable_object);
 
    // Load objects from the TMJ file, as well as the riddle
    ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);

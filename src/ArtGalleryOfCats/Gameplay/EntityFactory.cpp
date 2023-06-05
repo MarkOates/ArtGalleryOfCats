@@ -90,6 +90,7 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::PLAYER_CAN_INTERACT);
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::ART_IDENTIFIER, art_identifier);
    result->set(ArtGalleryOfCats::Gameplay::EntityFlags::IS_SCULPTURE_ART);
+   result->set(ArtGalleryOfCats::Gameplay::EntityFlags::RENDERS_WITH_IRIDESCENT);
 
    for (auto &additional_entity_flag : additional_entity_flags)
    {

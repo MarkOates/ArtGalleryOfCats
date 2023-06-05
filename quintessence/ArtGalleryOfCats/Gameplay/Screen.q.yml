@@ -414,7 +414,7 @@ functions:
     body: |
       // TODO: Fix this section
       AllegroFlare::CubemapBuilder builder;
-      std::string cube_map_texture_filename = resources_path + "bitmaps/black_prism_1-01.png";
+      std::string cube_map_texture_filename = resources_path + "bitmaps/iridescent_prism_1-01.png";
       //std::string cube_map_texture_filename = "fixtures/bitmaps/black_prism_1-01.png"; // TODO: set the correct location
       cubemap = builder.glsl_create_cubemap_from_vertical_strip(cube_map_texture_filename.c_str());
 
@@ -579,6 +579,38 @@ functions:
                  "Up to almost 10 times longer!",
                  "Hmm...",
                  "I guess if I were a human, I'd be 25 years old."
+              }
+            )
+         },
+      
+
+         { "inspect_iridescent_sculpture_a", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              {
+                 //"Interesting fact! Hoomans are said to live much longer than us cats.",
+                 //"Up to almost 10 times longer!",
+                 //"Hmm...",
+                 //"I guess if I were a human, I'd be 25 years old."
+              }
+            )
+         },
+         { "inspect_iridescent_sculpture_b", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              {
+                 //"Interesting fact! Hoomans are said to live much longer than us cats.",
+                 //"Up to almost 10 times longer!",
+                 //"Hmm...",
+                 //"I guess if I were a human, I'd be 25 years old."
+              }
+            )
+         },
+         { "inspect_iridescent_sculpture_c", new AllegroFlare::DialogTree::Node(
+              "Mittens",
+              {
+                 //"Interesting fact! Hoomans are said to live much longer than us cats.",
+                 //"Up to almost 10 times longer!",
+                 //"Hmm...",
+                 //"I guess if I were a human, I'd be 25 years old."
               }
             )
          },
@@ -1385,6 +1417,9 @@ functions:
          "human_04",
          "human_05",
          "cat_years_to_human_years",
+         "iridescent_sculpture_a",
+         "iridescent_sculpture_b",
+         "iridescent_sculpture_c"
       };
 
       if (special_inspect_to_return_with_inspect_prefix.count(art_identifier) != 0)
