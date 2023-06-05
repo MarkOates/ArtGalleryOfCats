@@ -686,16 +686,19 @@ void Screen::load_dialog_node_bank()
       { "inspect_iridescent_sculpture_a", new AllegroFlare::DialogTree::Node(
            "Mittens",
            {
-              //"Interesting fact! Hoomans are said to live much longer than us cats.",
-              //"Up to almost 10 times longer!",
-              //"Hmm...",
-              //"I guess if I were a human, I'd be 25 years old."
+              "As a hint to solving the riddle to this gallery, you might inspect these iridescent sculptures."
            }
          )
       },
       { "inspect_iridescent_sculpture_b", new AllegroFlare::DialogTree::Node(
            "Mittens",
            {
+              "This first gallery, our Welcome Hall, features these inviting sculptures.",
+              "These are quite a prized collection, if you ask me!",
+              "I, Mittens, will be your guide through all of our galleries at the Art Gallery of Cats."
+              //"
+              //"I, ahem... Mittens, will help... ahem... guide you through 
+              //"The first gallery, our welcome hall, features these inviting sculptures."
               //"Interesting fact! Hoomans are said to live much longer than us cats.",
               //"Up to almost 10 times longer!",
               //"Hmm...",
@@ -706,6 +709,10 @@ void Screen::load_dialog_node_bank()
       { "inspect_iridescent_sculpture_c", new AllegroFlare::DialogTree::Node(
            "Mittens",
            {
+              "Yup! These sculptures are really shiny! Just like me, Mittens!",
+              "...",
+              "Did I mention my name was Mittens?",
+              "OK! Just want to be sure."
               //"Interesting fact! Hoomans are said to live much longer than us cats.",
               //"Up to almost 10 times longer!",
               //"Hmm...",
