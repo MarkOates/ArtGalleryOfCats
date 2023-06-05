@@ -124,7 +124,7 @@
                 }, 
                 {
                  "class":"wall_art",
-                 "height":96,
+                 "height":32,
                  "id":7,
                  "name":"art5",
                  "properties":[
@@ -141,12 +141,12 @@
                  "rotation":0,
                  "visible":true,
                  "width":32,
-                 "x":32,
-                 "y":288
+                 "x":16,
+                 "y":320
                 }, 
                 {
                  "class":"wall_art",
-                 "height":96,
+                 "height":32,
                  "id":10,
                  "name":"art6",
                  "properties":[
@@ -158,8 +158,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":32,
-                 "x":896,
-                 "y":288
+                 "x":912,
+                 "y":320
                 }, 
                 {
                  "class":"wall_art",
@@ -174,13 +174,13 @@
                         }],
                  "rotation":0,
                  "visible":true,
-                 "width":128,
-                 "x":416,
-                 "y":32
+                 "width":32,
+                 "x":464,
+                 "y":16
                 }, 
                 {
                  "class":"wall_art",
-                 "height":128,
+                 "height":32,
                  "id":13,
                  "name":"art7",
                  "properties":[
@@ -192,8 +192,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":32,
-                 "x":32,
-                 "y":528
+                 "x":16,
+                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
