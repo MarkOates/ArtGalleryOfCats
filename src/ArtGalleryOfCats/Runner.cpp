@@ -375,10 +375,31 @@ void Runner::initialize()
    game_won_outro_storyboard_screen.set_font_bin(font_bin);
    game_won_outro_storyboard_screen.get_storyboard_element_ref().set_pages({
        create_image_page(
-         "Well that was a wonderful adventure."
+          "Oh wow!"
        ),
        create_image_page(
-         "I hope you enjoyed your time here at the Art Gallery of Cats!"
+          "You solved all the riddles!"
+       ),
+       create_image_page(
+          "Amazing! Congratulations! Wonderful!"
+       ),
+       create_image_page(
+          "You've been such a brilliant guest! We've been so lucky to have you."
+       ),
+       create_image_page(
+          "We'd love it if you decided to stop by again."
+       ),
+       create_image_page(
+          "For you, we're open any time!"
+       ),
+       create_image_page(
+          "You can stop by the giftshop on your way out, if you like, at clubcatt.com!"
+       ),
+       create_image_page(
+          "Most of all, I hope you enjoyed your time here at the Art Gallery of Cats!"
+       ),
+       create_image_page(
+          "Take care now!"
        ),
        //page_factory.create_advancing_text_page(
          //"Well that was a wonderful adventure. I hope you enjoyed your time here at the Art Gallery of Cats.",
