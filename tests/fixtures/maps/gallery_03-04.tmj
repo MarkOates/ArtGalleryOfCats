@@ -181,7 +181,7 @@
                 }, 
                 {
                  "class":"wall_art",
-                 "height":32,
+                 "height":64,
                  "id":16,
                  "name":"human_05",
                  "properties":[
@@ -197,9 +197,9 @@
                         }],
                  "rotation":0,
                  "visible":true,
-                 "width":32,
-                 "x":144,
-                 "y":912
+                 "width":64,
+                 "x":128,
+                 "y":896
                 }, 
                 {
                  "class":"wall_art",
@@ -409,7 +409,7 @@
                 }, 
                 {
                  "class":"wall_art",
-                 "height":32,
+                 "height":64,
                  "id":33,
                  "name":"human_04",
                  "properties":[
@@ -425,9 +425,9 @@
                         }],
                  "rotation":0,
                  "visible":true,
-                 "width":32,
-                 "x":624,
-                 "y":912
+                 "width":64,
+                 "x":608,
+                 "y":896
                 }, 
                 {
                  "class":"wall_art",

@@ -94,6 +94,10 @@ void SceneRenderer::render()
       ArtGalleryOfCats::Gameplay::Entities::Base *as_agc_entity =
          static_cast<ArtGalleryOfCats::Gameplay::Entities::Base*>(entity);
 
+      // Skip if entity is flagged as "do not render"
+      if (as_agc_entity->exists(ArtGalleryOfCats::Gameplay::EntityFlags::DO_NOT_RENDER)) continue;
+
+
       AllegroFlare::Model3D *model = as_agc_entity->get_model();
       if (model)
       {

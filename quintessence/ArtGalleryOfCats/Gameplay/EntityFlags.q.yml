@@ -31,4 +31,10 @@ properties:
     static: true
     constexpr: true
 
+  - name: DO_NOT_RENDER
+    type: char*
+    init_with: '(char*)"do_not_render"'
+    static: true
+    constexpr: true
+
 
