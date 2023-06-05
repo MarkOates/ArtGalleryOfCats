@@ -36,9 +36,27 @@ properties:
     getter: true
     setter: true
 
+  - name: resources_path
+    type: std::string
+    init_with: DEFAULT_RESOURCES_PATH
+    constructor_arg: true
+    getter: true
+    setter: true
+
+  - name: DEFAULT_RESOURCES_PATH
+    type: char*
+    init_with: '(char*)"[unset-resources_path]"'
+    static: true
+    constexpr: true
 
 
 functions:
+
+
+  - name: has_non_default_resources_path
+    type: bool
+    body: |
+      return (resources_path != DEFAULT_RESOURCES_PATH);
 
 
   - name: object_parsed_callback
@@ -231,7 +249,7 @@ functions:
 
 
   - name: load_gallery_01
-    guards: [ bitmap_bin, model_bin, entity_pool, riddle, level ]
+    guards: [ bitmap_bin, model_bin, entity_pool, riddle, level, has_non_default_resources_path() ]
     body: |
       // Set the level name
       //level->set_name("gallery_01");
@@ -241,7 +259,7 @@ functions:
       entity_factory.set_bitmap_bin(bitmap_bin);
 
       // Define our source TMJ filename
-      std::string tmj_source_filename = "tests/fixtures/maps/gallery_01-14.tmj";
+      std::string tmj_source_filename = resources_path + "/maps/gallery_01-14.tmj";
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -300,7 +318,7 @@ functions:
 
 
   - name: load_gallery_02
-    guards: [ bitmap_bin, model_bin, entity_pool, riddle, level ]
+    guards: [ bitmap_bin, model_bin, entity_pool, riddle, level, has_non_default_resources_path() ]
     body: |
       ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
       entity_factory.set_model_bin(model_bin);
@@ -310,7 +328,7 @@ functions:
       //level->set_name("gallery_02");
 
       // Define our source TMJ filename
-      std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-07.tmj";
+      std::string tmj_source_filename = resources_path + "/maps/gallery_02-07.tmj";
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -362,7 +380,7 @@ functions:
 
 
   - name: load_primary_map
-    guards: [ bitmap_bin, model_bin, entity_pool, riddle ]
+    guards: [ bitmap_bin, model_bin, entity_pool, riddle, has_non_default_resources_path() ]
     body: |
       throw std::runtime_error("LevelFactory::load_primary_map - this gallery is obsolete");
 
@@ -371,7 +389,7 @@ functions:
       entity_factory.set_bitmap_bin(bitmap_bin);
 
       // Define our source TMJ filename
-      std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-11.tmj";
+      std::string tmj_source_filename = resources_path + "/maps/gallery-map-11.tmj";
 
       // Create the environment visual mesh
       ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(

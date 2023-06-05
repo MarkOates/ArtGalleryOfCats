@@ -32,6 +32,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_LevelFactoryTestWithAllegroRenderingFixture,
    level_factory.set_entity_pool(&entity_pool);
    level_factory.set_level(&level);
    level_factory.set_riddle(&riddle);
+   level_factory.set_resources_path("tests/fixtures/");
 
    level_factory.load_primary_map();
 
@@ -52,6 +53,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_LevelFactoryTestWithAllegroRenderingFixture, lo
    level_factory.set_entity_pool(&entity_pool);
    level_factory.set_level(&level);
    level_factory.set_riddle(&riddle);
+   level_factory.set_resources_path("tests/fixtures/");
 
    //level_factory.load_gallery_01();
    level_factory.load_gallery_02();

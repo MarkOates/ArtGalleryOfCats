@@ -18,12 +18,13 @@ namespace Gameplay
 {
 
 
-LevelFactory::LevelFactory(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool* entity_pool, ArtGalleryOfCats::Gameplay::Riddle* riddle, ArtGalleryOfCats::Gameplay::Level* level)
+LevelFactory::LevelFactory(AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::SceneGraph::EntityPool* entity_pool, ArtGalleryOfCats::Gameplay::Riddle* riddle, ArtGalleryOfCats::Gameplay::Level* level, std::string resources_path)
    : bitmap_bin(bitmap_bin)
    , model_bin(model_bin)
    , entity_pool(entity_pool)
    , riddle(riddle)
    , level(level)
+   , resources_path(resources_path)
 {
 }
 
@@ -63,6 +64,12 @@ void LevelFactory::set_level(ArtGalleryOfCats::Gameplay::Level* level)
 }
 
 
+void LevelFactory::set_resources_path(std::string resources_path)
+{
+   this->resources_path = resources_path;
+}
+
+
 AllegroFlare::BitmapBin* LevelFactory::get_bitmap_bin() const
 {
    return bitmap_bin;
@@ -92,6 +99,17 @@ ArtGalleryOfCats::Gameplay::Level* LevelFactory::get_level() const
    return level;
 }
 
+
+std::string LevelFactory::get_resources_path() const
+{
+   return resources_path;
+}
+
+
+bool LevelFactory::has_non_default_resources_path()
+{
+   return (resources_path != DEFAULT_RESOURCES_PATH);
+}
 
 void LevelFactory::object_parsed_callback(std::string name_property, std::string class_property, float x_property, float y_property, float width_property, float height_property, std::vector<std::pair<std::string, std::string>> custom_properties, void* user_data)
 {
@@ -290,6 +308,13 @@ void LevelFactory::load_gallery_01()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"level\" not met");
    }
+   if (!(has_non_default_resources_path()))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_01]: error: guard \"has_non_default_resources_path()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"has_non_default_resources_path()\" not met");
+   }
    // Set the level name
    //level->set_name("gallery_01");
 
@@ -298,7 +323,7 @@ void LevelFactory::load_gallery_01()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery_01-14.tmj";
+   std::string tmj_source_filename = resources_path + "/maps/gallery_01-14.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -389,6 +414,13 @@ void LevelFactory::load_gallery_02()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"level\" not met");
    }
+   if (!(has_non_default_resources_path()))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_02]: error: guard \"has_non_default_resources_path()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"has_non_default_resources_path()\" not met");
+   }
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
@@ -397,7 +429,7 @@ void LevelFactory::load_gallery_02()
    //level->set_name("gallery_02");
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-07.tmj";
+   std::string tmj_source_filename = resources_path + "/maps/gallery_02-07.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -474,6 +506,13 @@ void LevelFactory::load_primary_map()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"riddle\" not met");
    }
+   if (!(has_non_default_resources_path()))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_primary_map]: error: guard \"has_non_default_resources_path()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"has_non_default_resources_path()\" not met");
+   }
    throw std::runtime_error("LevelFactory::load_primary_map - this gallery is obsolete");
 
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
@@ -481,7 +520,7 @@ void LevelFactory::load_primary_map()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery-map-11.tmj";
+   std::string tmj_source_filename = resources_path + "/maps/gallery-map-11.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
