@@ -607,37 +607,78 @@ void Screen::load_dialog_node_bank()
 
       { "inspect_medium_statue", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "medium statue" }
+           {
+               "You know, the actual, proper pronunciation is quite different than how we say it.",
+               "It's true!  I actually studied pronunciation at Cat University.",
+               "The word is pronounced...",
+               "hheee... heeeeuu.... heeewwww",
+               "...eeewmons.",
+               "Yes! That's it! Hiewmons.",
+               "Anyway, the hoomans exibit is one of my favs.  What mystical creatures they are!"
+           }
          )
       },
       { "inspect_feature_statue", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "feature statue" }
+           {
+              "Wow! This is our most special exhibit. The Exhibit of the Mystical Creature!",
+              "In this gallery, there's art featuring the most mythical creature of all, the human.",
+              "Unlike cats, their ears are on the side of their heads.",
+              "Weird!"
+           }
          )
       },
       { "inspect_small_statues", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "small statues" }
+           { "Since we don't have any hard evidence, we can only imagine what color their furr might be." }
          )
       },
       { "inspect_human_01", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "human 01" }
+           {
+              "This depiction is just incredible. Stunning detail.",
+              "But... without furr... it's just so... naked-looking!",
+              "Eek!"
+           }
          )
       },
       { "inspect_human_02", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "human 02" }
+           { "Here they are, depicted with their ears on the side of their head." }
          )
       },
       { "inspect_human_03", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "human 03" }
+           { "The hooman myths go back centuries!  All the way back to ancient times." }
          )
       },
       { "inspect_human_04", new AllegroFlare::DialogTree::Node(
            "Mittens",
-           { "human 04" }
+           {
+              "This one is brilliant.  We can only imagine what the mystical hooman creature is like.",
+              "And here's a cat, looking in the mirror, imagining a human...",
+              "... and WE'RE here... looking at this art...",
+              "Maybe there's a hooman, looking at us right now!",
+              "Haha! What a crazy notion!",
+           }
+         )
+      },
+      { "inspect_human_05", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           {
+              "Of course our gallery would not be complete without this famous work,",
+              "The \"Vitruvian Hooman\" by Leonardo Meow Vinci."
+           }
+         )
+      },
+      { "inspect_cat_years_to_human_years", new AllegroFlare::DialogTree::Node(
+           "Mittens",
+           {
+              "Interesting fact! Hoomans are said to live much longer than us cats.",
+              "Up to almost 10 times longer!",
+              "Hmm...",
+              "I guess if I were a human, I'd be 25 years old."
+           }
          )
       },
 
@@ -1411,6 +1452,7 @@ std::string Screen::find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph
       "human_02",
       "human_03",
       "human_04",
+      "cat_years_to_human_years",
    };
 
    if (special_inspect_to_return_with_inspect_prefix.count(art_identifier) != 0)

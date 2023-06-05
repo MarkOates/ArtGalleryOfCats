@@ -339,7 +339,7 @@ void LevelFactory::load_gallery_01()
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = resources_path + "/maps/gallery_01-14.tmj";
+   std::string tmj_source_filename = resources_path + "/maps/gallery_01-15.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -544,7 +544,7 @@ void LevelFactory::load_gallery_03()
    //level->set_name("gallery_02");
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = resources_path + "/maps/gallery_03-04.tmj";
+   std::string tmj_source_filename = resources_path + "/maps/gallery_03-05.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
