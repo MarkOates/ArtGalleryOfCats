@@ -476,6 +476,105 @@ void LevelFactory::load_gallery_02()
    return;
 }
 
+void LevelFactory::load_gallery_03()
+{
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_03]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"bitmap_bin\" not met");
+   }
+   if (!(model_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_03]: error: guard \"model_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"model_bin\" not met");
+   }
+   if (!(entity_pool))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_03]: error: guard \"entity_pool\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"entity_pool\" not met");
+   }
+   if (!(riddle))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_03]: error: guard \"riddle\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"riddle\" not met");
+   }
+   if (!(level))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_03]: error: guard \"level\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"level\" not met");
+   }
+   if (!(has_non_default_resources_path()))
+   {
+      std::stringstream error_message;
+      error_message << "[LevelFactory::load_gallery_03]: error: guard \"has_non_default_resources_path()\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"has_non_default_resources_path()\" not met");
+   }
+   ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
+   entity_factory.set_model_bin(model_bin);
+   entity_factory.set_bitmap_bin(bitmap_bin);
+
+   // Set the level name
+   //level->set_name("gallery_02");
+
+   // Define our source TMJ filename
+   std::string tmj_source_filename = resources_path + "/maps/gallery_03-02.tmj";
+
+   // Create the environment visual mesh
+   ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
+      "gallery_03-02.obj",
+      "gallery_03-02.png"
+   );
+   entity_pool->add(environment_mesh);
+
+   // Create the environment visual mesh
+   ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* collision_tile_map =
+      entity_factory.create_collision_tile_map(tmj_source_filename);
+   collision_tile_map->set("collision_tile_map");
+   entity_pool->add(collision_tile_map);
+
+   // Create the camera, define it as the primary camera
+   ArtGalleryOfCats::Gameplay::Entities::Camera3D* camera = entity_factory.create_camera();
+   camera->set("primary_camera");
+   entity_pool->add(camera);
+
+   // Move our camera to the "spawn point"
+   AllegroFlare::Vec2D spawn_point = { 14.5, 25 }; // TODO: Update this spawn point to pull from map
+   camera->get_placement_ref().position.x = spawn_point.x;
+   camera->get_placement_ref().position.z = spawn_point.y;
+
+   // Load objects from the TMJ file, as well as the riddle
+   ArtGalleryOfCats::Gameplay::TMJObjectLoader tmj_object_loader(tmj_source_filename);
+   tmj_object_loader.set_object_parsed_callback(object_parsed_callback);
+   tmj_object_loader.set_object_parsed_callback_user_data(this);
+   tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
+   tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
+   tmj_object_loader.load();
+
+   // Validate name
+   std::string expected_name = "gallery_03";
+   std::string actual_name = level->get_name();
+   if (expected_name != actual_name)
+   {
+      throw std::runtime_error(
+         "ArtGalleryOfCats::Gameplay::LevelFactory names do not match \""
+         + expected_name + "\" != \"" + actual_name + "\""
+      );
+   }
+
+   return;
+}
+
 void LevelFactory::load_primary_map()
 {
    if (!(bitmap_bin))

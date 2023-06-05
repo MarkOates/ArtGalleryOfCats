@@ -53,6 +53,7 @@ namespace ArtGalleryOfCats
          static void map_properties_parsed_callback(std::vector<std::tuple<std::string, std::string, std::string>> map_custom_properties={}, void* user_data=nullptr);
          void load_gallery_01();
          void load_gallery_02();
+         void load_gallery_03();
          void load_primary_map();
       };
    }

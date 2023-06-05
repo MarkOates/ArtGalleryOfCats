@@ -56,9 +56,9 @@ TEST_F(ArtGalleryOfCats_Gameplay_LevelFactoryTestWithAllegroRenderingFixture, lo
    level_factory.set_resources_path("tests/fixtures/");
 
    //level_factory.load_gallery_01();
-   level_factory.load_gallery_02();
+   level_factory.load_gallery_03();
 
-   EXPECT_EQ(11, entity_pool.num_elements());
+   EXPECT_EQ(10, entity_pool.num_elements());
 }
 
 

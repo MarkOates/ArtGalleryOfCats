@@ -323,6 +323,10 @@ void Screen::load_level_by_identifier(std::string level_identifier)
          // TODO: Replace this with new map
          level_factory.load_gallery_02();
       }},
+      { "gallery_03", [this, &level_factory](){
+         // TODO: Replace this with new map
+         level_factory.load_gallery_03();
+      }},
    };
 
 
