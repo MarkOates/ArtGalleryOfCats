@@ -745,11 +745,12 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
       }
       else
       {
-         this->router.emit_route_event(
-            AllegroFlare::Routers::Standard::EVENT_ACTIVATE_LEVEL_SELECT_SCREEN,
-            nullptr,
-            al_get_time()
-         );
+         // If it's solved, don't do anything.  The dialog will tell you to return with the ESC key.
+         //this->router.emit_route_event(
+            //AllegroFlare::Routers::Standard::EVENT_ACTIVATE_LEVEL_SELECT_SCREEN,
+            //nullptr,
+            //al_get_time()
+         //);
       }
    }
 

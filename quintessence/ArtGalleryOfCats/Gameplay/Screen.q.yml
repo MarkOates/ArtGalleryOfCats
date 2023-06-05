@@ -411,7 +411,17 @@ functions:
 
          { "correct_riddle_answer", new AllegroFlare::DialogTree::Node(
               "Mittens",
-              { "CORRECT!", "You got it right! You are very attentive!", "Let's move on to another gallery, shall we?" }
+              {
+                 "CORRECT!",
+                 "You got it right! You are very attentive!",
+                 "Nice sluthing skills.",
+                 "If you'd like, we can still look around this gallery.",
+                 "Otherwise, we can move on to another gallery?",
+                 //"If you'd like, you can still look around this gallery.",
+                 "To go to another gallery, press the ESCAPE key and go to the Galary Select Screen.",
+                 //"Or, just return to the Galary Select Screen by pressing the ESCAPE key.",
+                 //"
+              }
            )
          },
          { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Node(
