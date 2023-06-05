@@ -211,7 +211,7 @@
                  "visible":true,
                  "width":16,
                  "x":272,
-                 "y":800
+                 "y":832
                 }, 
                 {
                  "class":"sculpture",
@@ -272,17 +272,22 @@
                  "class":"wall_art",
                  "height":32,
                  "id":24,
-                 "name":"art8",
+                 "name":"human_01",
                  "properties":[
                         {
                          "name":"facing",
                          "type":"string",
                          "value":"down"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"human\/human-01.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
                  "width":32,
-                 "x":480,
+                 "x":512,
                  "y":208
                 }, 
                 {
@@ -323,12 +328,17 @@
                  "class":"wall_art",
                  "height":32,
                  "id":27,
-                 "name":"art6",
+                 "name":"human_02",
                  "properties":[
                         {
                          "name":"facing",
                          "type":"string",
                          "value":"left"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"human\/human-02.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -357,12 +367,17 @@
                  "class":"wall_art",
                  "height":32,
                  "id":31,
-                 "name":"art8",
+                 "name":"human_03",
                  "properties":[
                         {
                          "name":"facing",
                          "type":"string",
                          "value":"up"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"human\/human-03.jpg"
                         }],
                  "rotation":0,
                  "visible":true,
@@ -391,6 +406,28 @@
                  "class":"wall_art",
                  "height":32,
                  "id":33,
+                 "name":"human_04",
+                 "properties":[
+                        {
+                         "name":"facing",
+                         "type":"string",
+                         "value":"up"
+                        }, 
+                        {
+                         "name":"image_identifier",
+                         "type":"string",
+                         "value":"human\/human-04.jpg"
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":32,
+                 "x":448,
+                 "y":912
+                }, 
+                {
+                 "class":"wall_art",
+                 "height":16,
+                 "id":34,
                  "name":"art8",
                  "properties":[
                         {
@@ -401,8 +438,8 @@
                  "rotation":0,
                  "visible":true,
                  "width":32,
-                 "x":448,
-                 "y":912
+                 "x":832,
+                 "y":432
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -411,7 +448,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":34,
+ "nextobjectid":35,
  "orientation":"orthogonal",
  "properties":[
         {

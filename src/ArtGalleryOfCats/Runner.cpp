@@ -333,6 +333,7 @@ void Runner::initialize()
       //{ "Wonderland Woods", "wonderland_woods" },
       { "Gallery 1", "gallery_01" },
       { "Gallery 2", "gallery_02" },
+      { "Gallery 3", "gallery_03" },
       //{ "3", "bubble_pop_bay" },
       //{ "4", "neon_city_nights" },
       //{ "5", "wonderland_woods" },
