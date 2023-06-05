@@ -226,6 +226,18 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
          // TODO: Pass in this value to the level
          this_factory->level->set_music_identifier(property_value);
       }
+      else if (property_name == "name")
+      {
+         // TODO: Validate not blank
+         // TODO: Pass in this value to the level
+         this_factory->level->set_name(property_value);
+      }
+      else if (property_name == "gallery_title")
+      {
+         // TODO: Validate not blank
+         // TODO: Pass in this value to the level
+         this_factory->level->set_title(property_value);
+      }
    }
 
    if (!found_riddle_text || !found_riddle_prompt_text || !found_riddle_answer)
@@ -278,12 +290,15 @@ void LevelFactory::load_gallery_01()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"level\" not met");
    }
+   // Set the level name
+   //level->set_name("gallery_01");
+
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
 
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery_01-13.tmj";
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery_01-14.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -322,6 +337,17 @@ void LevelFactory::load_gallery_01()
    tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
    tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
    tmj_object_loader.load();
+
+   // Validate name
+   std::string expected_name = "gallery_01";
+   std::string actual_name = level->get_name();
+   if (expected_name != actual_name)
+   {
+      throw std::runtime_error(
+         "ArtGalleryOfCats::Gameplay::LevelFactory names do not match \""
+         + expected_name + "\" != \"" + actual_name + "\""
+      );
+   }
 
    return;
 }
@@ -367,8 +393,11 @@ void LevelFactory::load_gallery_02()
    entity_factory.set_model_bin(model_bin);
    entity_factory.set_bitmap_bin(bitmap_bin);
 
+   // Set the level name
+   //level->set_name("gallery_02");
+
    // Define our source TMJ filename
-   std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-06.tmj";
+   std::string tmj_source_filename = "tests/fixtures/maps/gallery_02-07.tmj";
 
    // Create the environment visual mesh
    ArtGalleryOfCats::Gameplay::Entities::Base* environment_mesh = entity_factory.create_environment_mesh(
@@ -400,6 +429,17 @@ void LevelFactory::load_gallery_02()
    tmj_object_loader.set_map_properties_parsed_callback(map_properties_parsed_callback);
    tmj_object_loader.set_map_properties_parsed_callback_user_data(this);
    tmj_object_loader.load();
+
+   // Validate name
+   std::string expected_name = "gallery_02";
+   std::string actual_name = level->get_name();
+   if (expected_name != actual_name)
+   {
+      throw std::runtime_error(
+         "ArtGalleryOfCats::Gameplay::LevelFactory names do not match \""
+         + expected_name + "\" != \"" + actual_name + "\""
+      );
+   }
 
    return;
 }
