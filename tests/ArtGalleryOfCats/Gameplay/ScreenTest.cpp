@@ -78,7 +78,7 @@ TEST_F(ArtGalleryOfCats_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    screen.set_HACK_sysname(HACK_sysname);
    screen.initialize();
 
-   screen.load_level_by_identifier("gallery_03");
+   screen.load_level_by_identifier("gallery_01");
 
    framework_register_and_activate_screen("screen", &screen);
 
