@@ -42,6 +42,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , game_won_outro_storyboard_screen()
    , rolling_credits_screen()
    , primary_gameplay_screen()
+   , title_image_background(bitmap_bin, "title_screen_background-02.png")
    , solid_black_background(ALLEGRO_COLOR{0, 0, 0, 1})
    , light_blue_background(ALLEGRO_COLOR{148.0f/255, 191.0f/255, 226.0f/255, 1})
    , npc_conversations_background({})
@@ -162,6 +163,13 @@ void Runner::initialize()
 
 
 
+   //title_image_background.set_bitmap_bin(bitmap_bin);
+   //title_image_background.set_image_filename("title_screen_background-01.png");
+   //title_image_background.initialize();
+
+
+
+
    // TODO: Setup intro storyboard screen
    intro_storyboard_screen.set_event_emitter(event_emitter);
    intro_storyboard_screen.set_font_bin(font_bin);
@@ -188,8 +196,10 @@ void Runner::initialize()
    title_screen.set_font_bin(font_bin);
    std::string copyright_text = "© 2023 CLUBCATT Games         clubcatt.com         version " + release_info.get_version();
    title_screen.set_copyright_text(copyright_text);
-   title_screen.set_title_text("Art Gallery of Cats");
-   title_screen.set_background(&solid_black_background);
+   title_screen.set_title_text(""); //Art Gallery of Cats");
+   title_screen.set_copyright_text_color(ALLEGRO_COLOR{0.08, 0.08, 0.1, 0.4});
+   title_screen.set_background(&title_image_background);
+   //title_screen.set_background(&solid_black_background);
    //title_screen.initialize(); // NOTE: Initialization is not necessary for this screen
 
    // TODO: Setup achievements screen

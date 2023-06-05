@@ -99,6 +99,10 @@ properties:
     type: ArtGalleryOfCats::Gameplay::Screen
     init_with: ''
 
+  - name: title_image_background
+    type: AllegroFlare::Elements::Backgrounds::Image
+    init_with: 'bitmap_bin, "title_screen_background-02.png"'
+
   - name: solid_black_background
     type: AllegroFlare::Elements::Backgrounds::ClearToColor
     init_with: ALLEGRO_COLOR{0, 0, 0, 1}
@@ -222,6 +226,13 @@ functions:
          page_factory.create_image_page(bitmap_bin->operator[]("clubcatt-website-01.jpg")),
       });
 
+
+
+      //title_image_background.set_bitmap_bin(bitmap_bin);
+      //title_image_background.set_image_filename("title_screen_background-01.png");
+      //title_image_background.initialize();
+
+
       
 
       // TODO: Setup intro storyboard screen
@@ -250,8 +261,10 @@ functions:
       title_screen.set_font_bin(font_bin);
       std::string copyright_text = "© 2023 CLUBCATT Games         clubcatt.com         version " + release_info.get_version();
       title_screen.set_copyright_text(copyright_text);
-      title_screen.set_title_text("Art Gallery of Cats");
-      title_screen.set_background(&solid_black_background);
+      title_screen.set_title_text(""); //Art Gallery of Cats");
+      title_screen.set_copyright_text_color(ALLEGRO_COLOR{0.08, 0.08, 0.1, 0.4});
+      title_screen.set_background(&title_image_background);
+      //title_screen.set_background(&solid_black_background);
       //title_screen.initialize(); // NOTE: Initialization is not necessary for this screen
 
       // TODO: Setup achievements screen
@@ -954,5 +967,7 @@ dependencies:
     headers: [ AllegroFlare/Elements/RollingCredits/SectionFactory.hpp ]
   - symbol: AllegroFlare::SystemInfo
     headers: [ AllegroFlare/SystemInfo.hpp ]
+  - symbol: AllegroFlare::Elements::Backgrounds::Image
+    headers: [ AllegroFlare/Elements/Backgrounds/Image.hpp ]
 
 

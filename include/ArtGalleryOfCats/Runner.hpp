@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/Elements/Backgrounds/ClearToColor.hpp>
+#include <AllegroFlare/Elements/Backgrounds/Image.hpp>
 #include <AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp>
 #include <AllegroFlare/EventEmitter.hpp>
 #include <AllegroFlare/FontBin.hpp>
@@ -61,6 +62,7 @@ namespace ArtGalleryOfCats
       AllegroFlare::Screens::Storyboard game_won_outro_storyboard_screen;
       AllegroFlare::Screens::RollingCredits rolling_credits_screen;
       ArtGalleryOfCats::Gameplay::Screen primary_gameplay_screen;
+      AllegroFlare::Elements::Backgrounds::Image title_image_background;
       AllegroFlare::Elements::Backgrounds::ClearToColor solid_black_background;
       AllegroFlare::Elements::Backgrounds::ClearToColor light_blue_background;
       ArtGalleryOfCats::Elements::Backgrounds::NPCConversations npc_conversations_background;
