@@ -510,7 +510,7 @@ void Screen::load_dialog_node_bank()
            {
               "CORRECT!",
               "You got it right! You are very attentive!",
-              "Nice sluthing skills.",
+              "Nice sleuthing skills.",
               "If you'd like, we can still look around this gallery.",
               "Otherwise, we can move on to another gallery?",
               //"If you'd like, you can still look around this gallery.",
