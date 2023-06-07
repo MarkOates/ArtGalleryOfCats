@@ -1,88 +1,253 @@
 {
-  "AllegroFlare/SceneGraph/Entities/Base": [
+  "ALLEGRO_BITMAP": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations",
     "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "AllegroFlare/Elements/Backgrounds/Base": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations",
+    "ArtGalleryOfCats/Screens/UserTextInput"
+  ],
+  "AllegroFlare/ScreenCapture": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ALLEGRO_FONT": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "al_is_system_installed": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "al_get_current_display": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "al_color_html": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "al_is_primitives_addon_initialized": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "al_draw_filled_rounded_rectangle": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/FontBin": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner",
+    "ArtGalleryOfCats/Screens/UserTextInput"
+  ],
+  "AllegroFlare/Elements/DialogBoxes/Base": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Elements/DialogBoxes/Basic": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Placement2D": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Elements/DialogBoxFrame": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Elements/DialogButton": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Interpolators/": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/SceneGraph/Entities/Base": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Model3D": [
-    "ArtGalleryOfCats/Gameplay/Entities/Base"
-  ],
-  "ALLEGRO_BITMAP": [
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
   "AllegroFlare/Placement3D": [
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
+  "AllegroFlare/Physics/AABB2D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
   "ArtGalleryOfCats/Gameplay/Entities/Base": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
     "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap",
     "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Camera3D": [
-    "ArtGalleryOfCats/Gameplay/Entities/Camera3D"
+    "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/TileMaps/TileMap": [
-    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap"
-  ],
-  "AllegroFlare/BitmapBin": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory",
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/FontBin": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory",
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
+    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/ModelBin": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
   "ArtGalleryOfCats/Gameplay/Entities/Camera3D": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory"
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Prototypes/Platforming2D/TMJDataLoader": [
     "ArtGalleryOfCats/Gameplay/EntityFactory"
   ],
-  "ALLEGRO_EVENT": [
+  "AllegroFlare/Vec3D": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
     "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/EntityFlags": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/SceneGraph/EntityPool": [
+    "ArtGalleryOfCats/Gameplay/Level",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/Riddle": [
+    "ArtGalleryOfCats/Gameplay/Level",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/EntityFactory": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/TMJObjectLoader": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory"
+  ],
+  "ArtGalleryOfCats/Gameplay/LevelFactory": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Errors": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "ArtGalleryOfCats/Gameplay/Level": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Shaders/Cubemap": [
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ALLEGRO_COLOR": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ALLEGRO_EVENT": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/Screens/Base": [
     "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
+    "ArtGalleryOfCats/Runner",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/EventEmitter": [
     "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "al_is_primitives_addon_initialized": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Runner",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/Player": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/VirtualControllers/Base": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "ArtGalleryOfCats/Gameplay/Screen": [
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
-  "AllegroFlare/SceneGraph/EntityPool": [
-    "ArtGalleryOfCats/Gameplay/Screen"
-  ],
-  "ArtGalleryOfCats/Gameplay/EntityFactory": [
-    "ArtGalleryOfCats/Gameplay/Screen"
-  ],
   "AllegroFlare/VirtualControllers/GenericController": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/Physics/TileMapCollisionStepper": [
     "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Camera2D": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/SceneRenderer": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Cubemap": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/CubemapBuilder": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Routers/Standard": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/EventNames": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Vec2D": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Screens/UserTextInput": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/Storyboard": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/DialogTree/NodeBank": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "nlohmann/json": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "std/filesystem/exists": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "std/ifstream": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "std/function": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
   ],
   "AllegroFlare/Frameworks/Full": [
     "ArtGalleryOfCats/Runner"
@@ -91,12 +256,6 @@
     "ArtGalleryOfCats/Runner"
   ],
   "CubeShooter/Screen": [
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/Routers/Standard": [
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/Screens/Storyboard": [
     "ArtGalleryOfCats/Runner"
   ],
   "AllegroFlare/Screens/Achievements": [
@@ -140,5 +299,20 @@
   ],
   "ReleaseInfo": [
     "ArtGalleryOfCats/Runner"
+  ],
+  "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Elements/RollingCredits/SectionFactory": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/SystemInfo": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Elements/Backgrounds/Image": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/SoftwareKeyboard/SoftwareKeyboard": [
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ]
 }

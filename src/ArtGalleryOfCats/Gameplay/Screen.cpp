@@ -1078,6 +1078,11 @@ void Screen::scene_physics_updater()
       std::vector<AllegroFlare::Physics::TileMapCollisionStepperCollisionInfo> stepper_step_result =
          collision_stepper.step();
 
+      if (entity->exists("primary_camera"))
+      {
+         std::cout << "   position.y: " << placement.position.y << std::endl;
+      }
+
       placement.position = AllegroFlare::Vec3D(
          aabb2d.get_x() + box_h_size,
          placement.position.y,
@@ -1153,7 +1158,7 @@ void Screen::render_hud()
    {
       // Extract out the collision map
       ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* as_collision_tile_map = find_collision_tile_map();
-      AllegroFlare::TileMaps::TileMap<int> &collision_tile_map= as_collision_tile_map->get_collision_tile_map_ref();
+      AllegroFlare::TileMaps::TileMap<int> &collision_tile_map = as_collision_tile_map->get_collision_tile_map_ref();
 
 
 

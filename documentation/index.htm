@@ -49,14 +49,239 @@ table td
 <body>
 <h1>TOC</h1>
 <ul>
+  <li><a href="#quintessence/ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.q.yml">quintessence/ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.q.yml">quintessence/ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/EntityFlags.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFlags.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Level.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Level.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/LevelFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/LevelFactory.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Riddle.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Riddle.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/SceneRenderer.q.yml">quintessence/ArtGalleryOfCats/Gameplay/SceneRenderer.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Gameplay/TMJObjectLoader.q.yml">quintessence/ArtGalleryOfCats/Gameplay/TMJObjectLoader.q.yml</a></li>
   <li><a href="#quintessence/ArtGalleryOfCats/Runner.q.yml">quintessence/ArtGalleryOfCats/Runner.q.yml</a></li>
+  <li><a href="#quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml">quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.q.yml">quintessence/ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
+  <td class="property">dialog_bubble_bitmap_identifier</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">inv_scale</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">capture</td>
+  <td class="property">ALLEGRO_BITMAP*</td>
+</tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_INV_SCALE</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">set_inv_scale(int inv_scale=DEFAULT_INV_SCALE)</td>
+</tr>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">destroy()</td>
+</tr>
+<tr>
+  <td class="method">refresh_capture()</td>
+</tr>
+<tr>
+  <td class="method">activate()</td>
+</tr>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::Backgrounds::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/Backgrounds/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ScreenCapture&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ScreenCapture.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.q.yml">quintessence/ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">current_page_text</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">width</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">height</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">font_name</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">font_size</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">text_padding_x</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">text_padding_y</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">num_revealed_characters</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">is_finished</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">page_is_finished</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">page_finished_at</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">at_last_page</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">age</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_FONT_NAME</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_FONT_SIZE</td>
+  <td class="property">int</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+<tr>
+  <td class="private_method">draw_special_state_empty_text(float width=1, float height=1)</td>
+</tr>
+<tr>
+  <td class="private_method">draw_action_text(std::string text=&quot;[unset-action-text]&quot;, float width=1, float height=1)</td>
+</tr>
+<tr>
+  <td class="method">draw_styled_revealed_text(float max_width=1, std::string text=&quot;[unset-text]&quot;, int num_revealed_characters=999)</td>
+</tr>
+<tr>
+  <td class="private_method">concat_text(std::string source_text=&quot;&quot;, int length=0)</td>
+</tr>
+<tr>
+  <td class="private_method">obtain_dialog_font()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_system_installed&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_get_current_display&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_primitives_addon_initialized&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_filled_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::DialogBoxes::Base*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/DialogBoxes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::DialogBoxes::Basic*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Placement2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Placement2D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::DialogBoxFrame&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/DialogBoxFrame.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::DialogButton&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/DialogButton.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Interpolators::*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Interpolators.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::DialogBoxes::Basic&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/DialogBoxes/Basic.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Interpolators::&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Interpolators.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
 <ul>
   <div class="component">
     <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml</h3>
@@ -82,6 +307,10 @@ table td
   <td class="property">AllegroFlare::Placement3D</td>
 </tr>
 <tr>
+  <td class="property">hit_box_2d</td>
+  <td class="property">AllegroFlare::Physics::AABB2D</td>
+</tr>
+<tr>
   <td class="property">TYPE</td>
   <td class="property">char*</td>
 </tr>
@@ -101,6 +330,9 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Placement3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Placement3D.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Physics::AABB2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Physics/AABB2D.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -108,10 +340,6 @@ table td
   <div class="component">
     <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml</h3>
      <table>
-<tr>
-  <td class="property">type</td>
-  <td class="property">std::string</td>
-</tr>
 <tr>
   <td class="property">TYPE</td>
   <td class="property">char*</td>
@@ -170,16 +398,29 @@ table td
   <td class="property">model_bin</td>
   <td class="property">AllegroFlare::ModelBin*</td>
 </tr>
+<tr>
+  <td class="property">DEFAULT_WALL_ART_SCALE</td>
+  <td class="property">float</td>
+</tr>
     </table>
      <table>
 <tr>
-  <td class="method">create_environment_mesh()</td>
+  <td class="method">create_sculpture_art(std::string art_identifier=&quot;[unset-art_identifier]&quot;, std::string model_filename=&quot;[unset-model_filename]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;, AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, AllegroFlare::Physics::AABB2D hit_box_2d={}, std::vector&lt;std::string&gt; additional_entity_flags={})</td>
+</tr>
+<tr>
+  <td class="method">create_wall_art(std::string art_identifier=&quot;[unset-art_identifier]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;, AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, float art_scale=DEFAULT_WALL_ART_SCALE, AllegroFlare::Physics::AABB2D hit_box_2d={}, std::vector&lt;std::string&gt; additional_entity_flags={})</td>
+</tr>
+<tr>
+  <td class="method">create_environment_mesh(std::string model_filename=&quot;[unset-model_filename]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">create_collectable_object(AllegroFlare::Vec3D position={}, std::string model_filename=&quot;[unset-model_filename]&quot;)</td>
 </tr>
 <tr>
   <td class="method">create_camera()</td>
 </tr>
 <tr>
-  <td class="method">create_collision_tile_map()</td>
+  <td class="method">create_collision_tile_map(std::string tmj_filename=&quot;[unset-tmj_filename]&quot;)</td>
 </tr>
     </table>
      <table>
@@ -203,6 +444,254 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Prototypes::Platforming2D::TMJDataLoader&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Prototypes/Platforming2D/TMJDataLoader.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Vec3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::EntityFlags&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/EntityFlags.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Physics::AABB2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Physics/AABB2D.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/EntityFlags.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFlags.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">PLAYER_CAN_INTERACT</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">IS_WALL_ART</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">IS_SCULPTURE_ART</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">RENDERS_WITH_IRIDESCENT</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">ART_IDENTIFIER</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">DO_NOT_RENDER</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Level.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Level.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">name</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">title</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">entity_pool</td>
+  <td class="property">AllegroFlare::SceneGraph::EntityPool</td>
+</tr>
+<tr>
+  <td class="property">current_riddle</td>
+  <td class="property">ArtGalleryOfCats::Gameplay::Riddle</td>
+</tr>
+<tr>
+  <td class="property">music_identifier</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">riddle_is_solved</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_MUSIC_IDENTIFIER</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">has_custom_music()</td>
+</tr>
+<tr>
+  <td class="method">destroy()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SceneGraph::EntityPool&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SceneGraph/EntityPool.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Riddle&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Riddle.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/LevelFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/LevelFactory.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">bitmap_bin</td>
+  <td class="property">AllegroFlare::BitmapBin*</td>
+</tr>
+<tr>
+  <td class="property">model_bin</td>
+  <td class="property">AllegroFlare::ModelBin*</td>
+</tr>
+<tr>
+  <td class="property">entity_pool</td>
+  <td class="property">AllegroFlare::SceneGraph::EntityPool*</td>
+</tr>
+<tr>
+  <td class="property">riddle</td>
+  <td class="property">ArtGalleryOfCats::Gameplay::Riddle*</td>
+</tr>
+<tr>
+  <td class="property">level</td>
+  <td class="property">ArtGalleryOfCats::Gameplay::Level*</td>
+</tr>
+<tr>
+  <td class="property">resources_path</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_RESOURCES_PATH</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">has_non_default_resources_path()</td>
+</tr>
+<tr>
+  <td class="method">object_parsed_callback(std::string name_property=&quot;[unset-name_property]&quot;, std::string class_property=&quot;[unset-class_property]&quot;, float x_property=0.0f, float y_property=0.0f, float width_property=0.0f, float height_property=0.0f, bool visible_property=true, std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; custom_properties={}, void* user_data=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">map_properties_parsed_callback(std::vector&lt;std::tuple&lt;std::string, std::string, std::string&gt;&gt; map_custom_properties={}, void* user_data=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">load_gallery_01()</td>
+</tr>
+<tr>
+  <td class="method">load_gallery_02()</td>
+</tr>
+<tr>
+  <td class="method">load_gallery_03()</td>
+</tr>
+<tr>
+  <td class="method">load_primary_map()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ModelBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ModelBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::EntityFactory&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/EntityFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SceneGraph::EntityPool&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SceneGraph/EntityPool.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::EntityFlags&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/EntityFlags.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::TMJObjectLoader&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/TMJObjectLoader.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::LevelFactory&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/LevelFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Riddle&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Riddle.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Errors&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Errors.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Level&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Level.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Riddle.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Riddle.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">riddle_text</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">riddle_prompt_text</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">riddle_answer</td>
+  <td class="property">std::string</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">matches_answer(std::string answer_guess=&quot;[unset-answer_guess]&quot;)</td>
+</tr>
+    </table>
+     <table>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/SceneRenderer.q.yml">quintessence/ArtGalleryOfCats/Gameplay/SceneRenderer.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">cubemap_shader</td>
+  <td class="property">AllegroFlare::Shaders::Cubemap*</td>
+</tr>
+<tr>
+  <td class="property">entity_pool</td>
+  <td class="property">AllegroFlare::SceneGraph::EntityPool*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::Camera3D&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/Camera3D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SceneGraph::EntityPool&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SceneGraph/EntityPool.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shaders::Cubemap&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shaders/Cubemap.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::EntityFlags&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/EntityFlags.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -228,8 +717,40 @@ table td
   <td class="property">AllegroFlare::ModelBin*</td>
 </tr>
 <tr>
-  <td class="property">entity_pool</td>
-  <td class="property">AllegroFlare::SceneGraph::EntityPool</td>
+  <td class="property">resources_path</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">user_text_input_screen</td>
+  <td class="property">ArtGalleryOfCats::Screens::UserTextInput*</td>
+</tr>
+<tr>
+  <td class="property">npc_conversations_screen</td>
+  <td class="property">AllegroFlare::Screens::Storyboard*</td>
+</tr>
+<tr>
+  <td class="property">solved_level_names</td>
+  <td class="property">std::set&lt;std::string&gt;*</td>
+</tr>
+<tr>
+  <td class="property">dialog_node_bank</td>
+  <td class="property">AllegroFlare::DialogTree::NodeBank</td>
+</tr>
+<tr>
+  <td class="property">riddle_is_solved</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">riddle_is_showing</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">inspect_hint_is_showing</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">last_user_text_input_value</td>
+  <td class="property">std::string</td>
 </tr>
 <tr>
   <td class="property">current_level_identifier</td>
@@ -237,7 +758,31 @@ table td
 </tr>
 <tr>
   <td class="property">current_level</td>
-  <td class="property">void*</td>
+  <td class="property">ArtGalleryOfCats::Gameplay::Level*</td>
+</tr>
+<tr>
+  <td class="property">player_velocity</td>
+  <td class="property">AllegroFlare::Vec2D</td>
+</tr>
+<tr>
+  <td class="property">player_right_pressed</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">player_left_pressed</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">player_up_pressed</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">player_down_pressed</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">entity_player_is_currently_colliding_with</td>
+  <td class="property">AllegroFlare::SceneGraph::Entities::Base*</td>
 </tr>
 <tr>
   <td class="property">on_finished_callback_func</td>
@@ -248,11 +793,31 @@ table td
   <td class="property">void*</td>
 </tr>
 <tr>
+  <td class="property">cubemap_shader</td>
+  <td class="property">AllegroFlare::Shaders::Cubemap</td>
+</tr>
+<tr>
+  <td class="property">cubemap</td>
+  <td class="property">AllegroFlare::Cubemap*</td>
+</tr>
+<tr>
+  <td class="property">HACK_sysname</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
   <td class="property">initialized</td>
   <td class="property">bool</td>
 </tr>
 <tr>
   <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_RESOURCES_PATH</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">DEFAULT_HACK_SYSNAME</td>
   <td class="property">char*</td>
 </tr>
     </table>
@@ -270,13 +835,46 @@ table td
   <td class="method">set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr)</td>
 </tr>
 <tr>
+  <td class="method">set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH)</td>
+</tr>
+<tr>
+  <td class="method">set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">set_solved_level_names(std::set&lt;std::string&gt;* solved_level_names=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">set_HACK_sysname(std::string HACK_sysname=DEFAULT_HACK_SYSNAME)</td>
+</tr>
+<tr>
   <td class="method">load_level_by_identifier(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
 </tr>
 <tr>
-  <td class="private_method">load_level()</td>
+  <td class="method">start_level_music()</td>
+</tr>
+<tr>
+  <td class="private_method">emit_event_to_set_input_hints_bar_to_room_controls()</td>
+</tr>
+<tr>
+  <td class="private_method">emit_event_to_set_input_hints()</td>
+</tr>
+<tr>
+  <td class="method">get_entity_pool()</td>
+</tr>
+<tr>
+  <td class="method">get_current_riddle()</td>
 </tr>
 <tr>
   <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="private_method">load_dialog_node_bank()</td>
+</tr>
+<tr>
+  <td class="method">activate_npc_dialog_by_identifier(std::string dialog_node_identifier=&quot;[unset-dialog_node_identifier]&quot;)</td>
 </tr>
 <tr>
   <td class="method">on_activate()</td>
@@ -285,7 +883,28 @@ table td
   <td class="method">on_deactivate()</td>
 </tr>
 <tr>
+  <td class="method">hide_input_hints()</td>
+</tr>
+<tr>
+  <td class="method">show_input_hints()</td>
+</tr>
+<tr>
   <td class="method">update()</td>
+</tr>
+<tr>
+  <td class="method">calculate_strafe_xy(float spin=0.0f, float displacement=0.0f)</td>
+</tr>
+<tr>
+  <td class="method">calculate_forward_back_xy(float spin=0.0f, float displacement=0.0f)</td>
+</tr>
+<tr>
+  <td class="method">find_primary_camera()</td>
+</tr>
+<tr>
+  <td class="method">find_collision_tile_map()</td>
+</tr>
+<tr>
+  <td class="method">update_entity_player_is_currently_colliding_with()</td>
 </tr>
 <tr>
   <td class="private_method">scene_physics_updater()</td>
@@ -297,6 +916,15 @@ table td
   <td class="private_method">scene_renderer_render()</td>
 </tr>
 <tr>
+  <td class="private_method">render_hud()</td>
+</tr>
+<tr>
+  <td class="method">render_tile_map(AllegroFlare::TileMaps::TileMap&lt;int&gt;* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f)</td>
+</tr>
+<tr>
+  <td class="method">render_aabb2d(AllegroFlare::Physics::AABB2D* aabb2d=nullptr, bool adjacent_to_top_edge=false, bool adjacent_to_right_edge=false, bool adjacent_to_bottom_edge=false, bool adjacent_to_left_edge=false)</td>
+</tr>
+<tr>
   <td class="method">call_on_finished_callback_func()</td>
 </tr>
 <tr>
@@ -306,19 +934,13 @@ table td
   <td class="method">player_spin_change(float delta=0.0f)</td>
 </tr>
 <tr>
+  <td class="method">player_tilt_change(float delta=0.0f)</td>
+</tr>
+<tr>
   <td class="method">player_stop_moving()</td>
 </tr>
 <tr>
-  <td class="method">player_strafe_right()</td>
-</tr>
-<tr>
-  <td class="method">player_strafe_left()</td>
-</tr>
-<tr>
-  <td class="method">player_move_forward()</td>
-</tr>
-<tr>
-  <td class="method">player_move_backward()</td>
+  <td class="method">infer_player_velocity_from_keypress()</td>
 </tr>
 <tr>
   <td class="method">virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
@@ -327,13 +949,67 @@ table td
   <td class="method">virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
 </tr>
 <tr>
+  <td class="method">activate_npc_conversations_screen()</td>
+</tr>
+<tr>
+  <td class="method">find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">interact_with_focused_object()</td>
+</tr>
+<tr>
+  <td class="method">attempt_to_solve_riddle()</td>
+</tr>
+<tr>
+  <td class="method">toggle_riddle_visibility()</td>
+</tr>
+<tr>
+  <td class="method">hide_riddle()</td>
+</tr>
+<tr>
+  <td class="method">show_inspect_hint()</td>
+</tr>
+<tr>
+  <td class="method">hide_inspect_hint()</td>
+</tr>
+<tr>
   <td class="method">virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">emit_event_to_return_to_the_level_select_screen()</td>
+</tr>
+<tr>
+  <td class="method">key_down_func(ALLEGRO_EVENT* ev=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">key_up_func(ALLEGRO_EVENT* ev=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">mouse_down_func(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
   <td class="method">mouse_axes_func(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
+<tr>
+  <td class="method">create_image_page(std::string text=&quot;[unset-text]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">obtain_riddle_font()</td>
+</tr>
+<tr>
+  <td class="method">obtain_inspect_hint_icon_font()</td>
+</tr>
+<tr>
+  <td class="method">obtain_inspect_hint_text_font()</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
@@ -382,6 +1058,134 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Physics::TileMapCollisionStepper&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Physics/TileMapCollisionStepper.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Camera2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Camera2D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Camera3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Camera3D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::TileMaps::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/TileMaps/TileMap.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Physics::AABB2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Physics/AABB2D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::LevelFactory&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/LevelFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::SceneRenderer&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/SceneRenderer.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shaders::Cubemap&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shaders/Cubemap.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Cubemap&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Cubemap.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::CubemapBuilder&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/CubemapBuilder.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::RouteEventDatas::ActivateScreenByIdentifier&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Routers::Standard&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Routers/Standard.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::EventNames&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/EventNames.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Vec2D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec2D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Vec3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SceneGraph::Entities::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SceneGraph/Entities/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::EntityFlags&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/EntityFlags.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Screens::UserTextInput&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Screens/UserTextInput.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Riddle&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Riddle.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Gameplay::Level&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Gameplay/Level.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_html&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens::Storyboard&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens/Storyboard.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::DialogTree::NodeBank&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/DialogTree/NodeBank.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/TMJObjectLoader.q.yml">quintessence/ArtGalleryOfCats/Gameplay/TMJObjectLoader.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">filename</td>
+  <td class="property">std::string</td>
+</tr>
+<tr>
+  <td class="property">loaded</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">object_parsed_callback</td>
+  <td class="property">std::function&lt;void(std::string, std::string, float, float, float, float, bool, std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;, void*)&gt;</td>
+</tr>
+<tr>
+  <td class="property">object_parsed_callback_user_data</td>
+  <td class="property">void*</td>
+</tr>
+<tr>
+  <td class="property">map_properties_parsed_callback</td>
+  <td class="property">std::function&lt;void(std::vector&lt;std::tuple&lt;std::string, std::string, std::string&gt;&gt;, void*)&gt;</td>
+</tr>
+<tr>
+  <td class="property">map_properties_parsed_callback_user_data</td>
+  <td class="property">void*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">load()</td>
+</tr>
+<tr>
+  <td class="private_method">file_exists(std::string filename=&quot;[unset-filename]&quot;)</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;nlohmann::json&quot;, &quot;headers&quot;=&gt;[&quot;lib/nlohmann/json.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::filesystem::exists&quot;, &quot;headers&quot;=&gt;[&quot;filesystem&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::ifstream&quot;, &quot;headers&quot;=&gt;[&quot;fstream&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Errors&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Errors.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::function&quot;, &quot;headers&quot;=&gt;[&quot;functional&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
@@ -408,6 +1212,10 @@ table td
 <tr>
   <td class="property">model_bin</td>
   <td class="property">AllegroFlare::ModelBin*</td>
+</tr>
+<tr>
+  <td class="property">resources_path</td>
+  <td class="property">std::string</td>
 </tr>
 <tr>
   <td class="property">router</td>
@@ -450,6 +1258,14 @@ table td
   <td class="property">AllegroFlare::Screens::GameWonScreen</td>
 </tr>
 <tr>
+  <td class="property">npc_conversations_screen</td>
+  <td class="property">AllegroFlare::Screens::Storyboard</td>
+</tr>
+<tr>
+  <td class="property">user_text_input_screen</td>
+  <td class="property">ArtGalleryOfCats::Screens::UserTextInput</td>
+</tr>
+<tr>
   <td class="property">game_won_outro_storyboard_screen</td>
   <td class="property">AllegroFlare::Screens::Storyboard</td>
 </tr>
@@ -462,8 +1278,28 @@ table td
   <td class="property">ArtGalleryOfCats::Gameplay::Screen</td>
 </tr>
 <tr>
+  <td class="property">title_image_background</td>
+  <td class="property">AllegroFlare::Elements::Backgrounds::Image</td>
+</tr>
+<tr>
   <td class="property">solid_black_background</td>
   <td class="property">AllegroFlare::Elements::Backgrounds::ClearToColor</td>
+</tr>
+<tr>
+  <td class="property">light_blue_background</td>
+  <td class="property">AllegroFlare::Elements::Backgrounds::ClearToColor</td>
+</tr>
+<tr>
+  <td class="property">npc_conversations_background</td>
+  <td class="property">ArtGalleryOfCats::Elements::Backgrounds::NPCConversations</td>
+</tr>
+<tr>
+  <td class="property">levels_list</td>
+  <td class="property">std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;</td>
+</tr>
+<tr>
+  <td class="property">solved_level_names</td>
+  <td class="property">std::set&lt;std::string&gt;</td>
 </tr>
 <tr>
   <td class="property">release_info</td>
@@ -472,6 +1308,14 @@ table td
 <tr>
   <td class="property">initialized</td>
   <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">NPC_CONVERSATIONS_SCREEN</td>
+  <td class="property">char*</td>
+</tr>
+<tr>
+  <td class="property">USER_TEXT_INPUT_SCREEN</td>
+  <td class="property">char*</td>
 </tr>
 <tr>
   <td class="property">EVENT_ACTIVATE_PRIMARY_GAMEPLAY_SCREEN</td>
@@ -492,8 +1336,17 @@ table td
 <tr>
   <td class="method">run(std::string deployment_environment_mode=&quot;[unset-deployment_environment_mode]&quot;)</td>
 </tr>
+<tr>
+  <td class="method">game_event_func(AllegroFlare::GameEvent* ev=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">create_image_page(std::string text=&quot;[unset-text]&quot;)</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens/Base.hpp&quot;]}</td>
 </tr>
@@ -569,96 +1422,401 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ReleaseInfo&quot;, &quot;headers&quot;=&gt;[&quot;ReleaseInfo.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Elements::Backgrounds::NPCConversations&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ArtGalleryOfCats::Screens::UserTextInput&quot;, &quot;headers&quot;=&gt;[&quot;ArtGalleryOfCats/Screens/UserTextInput.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::RollingCredits::SectionFactory&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/RollingCredits/SectionFactory.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SystemInfo&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SystemInfo.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::Backgrounds::Image&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/Backgrounds/Image.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml">quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">event_emitter</td>
+  <td class="property">AllegroFlare::EventEmitter*</td>
+</tr>
+<tr>
+  <td class="property">font_bin</td>
+  <td class="property">AllegroFlare::FontBin*</td>
+</tr>
+<tr>
+  <td class="property">software_keyboard</td>
+  <td class="property">AllegroFlare::SoftwareKeyboard::SoftwareKeyboard</td>
+</tr>
+<tr>
+  <td class="property">background</td>
+  <td class="property">AllegroFlare::Elements::Backgrounds::Base*</td>
+</tr>
+<tr>
+  <td class="property">mode</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
+<tr>
+  <td class="property">MODE_USING_VIRTUAL_CONTROLS</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">MODE_USING_KEYBOARD</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">TYPE</td>
+  <td class="property">char*</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">initialize()</td>
+</tr>
+<tr>
+  <td class="method">on_activate()</td>
+</tr>
+<tr>
+  <td class="method">on_deactivate()</td>
+</tr>
+<tr>
+  <td class="method">primary_timer_func()</td>
+</tr>
+<tr>
+  <td class="method">set_font_name(std::string font_name=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_FONT_NAME)</td>
+</tr>
+<tr>
+  <td class="method">set_font_size(int font_size=1)</td>
+</tr>
+<tr>
+  <td class="method">set_prompt_text(std::string prompt_text=&quot;[unset-prompt_text]&quot;)</td>
+</tr>
+<tr>
+  <td class="method">get_result_string_value()</td>
+</tr>
+<tr>
+  <td class="method">set_event_to_emit_on_pressing_ok_key(std::string event_to_emit_on_pressing_ok_key=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_OK_KEY)</td>
+</tr>
+<tr>
+  <td class="method">mode_is_using_keyboard()</td>
+</tr>
+<tr>
+  <td class="method">mode_is_using_virtual_controls()</td>
+</tr>
+<tr>
+  <td class="method">set_mode_to_using_keyboard()</td>
+</tr>
+<tr>
+  <td class="method">set_mode_to_using_virtual_controls()</td>
+</tr>
+<tr>
+  <td class="method">virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
+</tr>
+<tr>
+  <td class="method">key_char_func(ALLEGRO_EVENT* event=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Screens::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Screens/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::EventEmitter&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/EventEmitter.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::SoftwareKeyboard::SoftwareKeyboard&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/SoftwareKeyboard/SoftwareKeyboard.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Player&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Player.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::VirtualControllers::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/VirtualControllers/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::VirtualControllers::GenericController&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/VirtualControllers/GenericController.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Elements::Backgrounds::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Elements/Backgrounds/Base.hpp&quot;]}</td>
+</tr>
     </table>
   </div>
 </ul>
 <h1>Dependents</h1>
 <pre>
 {
-  "AllegroFlare/SceneGraph/Entities/Base": [
+  "ALLEGRO_BITMAP": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations",
     "ArtGalleryOfCats/Gameplay/Entities/Base"
+  ],
+  "AllegroFlare/Elements/Backgrounds/Base": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations",
+    "ArtGalleryOfCats/Screens/UserTextInput"
+  ],
+  "AllegroFlare/ScreenCapture": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ALLEGRO_FONT": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "al_is_system_installed": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "al_get_current_display": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "al_color_html": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "al_is_primitives_addon_initialized": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "al_draw_filled_rounded_rectangle": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/FontBin": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner",
+    "ArtGalleryOfCats/Screens/UserTextInput"
+  ],
+  "AllegroFlare/Elements/DialogBoxes/Base": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Elements/DialogBoxes/Basic": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Placement2D": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Elements/DialogBoxFrame": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Elements/DialogButton": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/Interpolators/": [
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble",
+    "ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble"
+  ],
+  "AllegroFlare/SceneGraph/Entities/Base": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Model3D": [
-    "ArtGalleryOfCats/Gameplay/Entities/Base"
-  ],
-  "ALLEGRO_BITMAP": [
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
   "AllegroFlare/Placement3D": [
     "ArtGalleryOfCats/Gameplay/Entities/Base"
   ],
+  "AllegroFlare/Physics/AABB2D": [
+    "ArtGalleryOfCats/Gameplay/Entities/Base",
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
   "ArtGalleryOfCats/Gameplay/Entities/Base": [
     "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
     "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap",
     "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Camera3D": [
-    "ArtGalleryOfCats/Gameplay/Entities/Camera3D"
+    "ArtGalleryOfCats/Gameplay/Entities/Camera3D",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/TileMaps/TileMap": [
-    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap"
-  ],
-  "AllegroFlare/BitmapBin": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory",
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/FontBin": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory",
-    "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
+    "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/ModelBin": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
   "ArtGalleryOfCats/Gameplay/Entities/Camera3D": [
     "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap": [
-    "ArtGalleryOfCats/Gameplay/EntityFactory"
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "AllegroFlare/Prototypes/Platforming2D/TMJDataLoader": [
     "ArtGalleryOfCats/Gameplay/EntityFactory"
   ],
-  "ALLEGRO_EVENT": [
+  "AllegroFlare/Vec3D": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
     "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/EntityFlags": [
+    "ArtGalleryOfCats/Gameplay/EntityFactory",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/SceneGraph/EntityPool": [
+    "ArtGalleryOfCats/Gameplay/Level",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/Riddle": [
+    "ArtGalleryOfCats/Gameplay/Level",
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/EntityFactory": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/TMJObjectLoader": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory"
+  ],
+  "ArtGalleryOfCats/Gameplay/LevelFactory": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Errors": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "ArtGalleryOfCats/Gameplay/Level": [
+    "ArtGalleryOfCats/Gameplay/LevelFactory",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Shaders/Cubemap": [
+    "ArtGalleryOfCats/Gameplay/SceneRenderer",
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Elements/StoryboardPages/ImageWithAdvancingText": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ALLEGRO_COLOR": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "ALLEGRO_EVENT": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/Screens/Base": [
     "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
+    "ArtGalleryOfCats/Runner",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/EventEmitter": [
     "ArtGalleryOfCats/Gameplay/Screen",
-    "ArtGalleryOfCats/Runner"
-  ],
-  "al_is_primitives_addon_initialized": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Runner",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/Player": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/VirtualControllers/Base": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "ArtGalleryOfCats/Gameplay/Screen": [
     "ArtGalleryOfCats/Gameplay/Screen",
     "ArtGalleryOfCats/Runner"
   ],
-  "AllegroFlare/SceneGraph/EntityPool": [
-    "ArtGalleryOfCats/Gameplay/Screen"
-  ],
-  "ArtGalleryOfCats/Gameplay/EntityFactory": [
-    "ArtGalleryOfCats/Gameplay/Screen"
-  ],
   "AllegroFlare/VirtualControllers/GenericController": [
-    "ArtGalleryOfCats/Gameplay/Screen"
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ],
   "AllegroFlare/Physics/TileMapCollisionStepper": [
     "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Camera2D": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Gameplay/SceneRenderer": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Cubemap": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/CubemapBuilder": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Routers/Standard": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/EventNames": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/Vec2D": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "ArtGalleryOfCats/Screens/UserTextInput": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Screens/Storyboard": [
+    "ArtGalleryOfCats/Gameplay/Screen",
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/DialogTree/NodeBank": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "nlohmann/json": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "std/filesystem/exists": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "std/ifstream": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
+  ],
+  "std/function": [
+    "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
   ],
   "AllegroFlare/Frameworks/Full": [
     "ArtGalleryOfCats/Runner"
@@ -667,12 +1825,6 @@ table td
     "ArtGalleryOfCats/Runner"
   ],
   "CubeShooter/Screen": [
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/Routers/Standard": [
-    "ArtGalleryOfCats/Runner"
-  ],
-  "AllegroFlare/Screens/Storyboard": [
     "ArtGalleryOfCats/Runner"
   ],
   "AllegroFlare/Screens/Achievements": [
@@ -716,6 +1868,21 @@ table td
   ],
   "ReleaseInfo": [
     "ArtGalleryOfCats/Runner"
+  ],
+  "ArtGalleryOfCats/Elements/Backgrounds/NPCConversations": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Elements/RollingCredits/SectionFactory": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/SystemInfo": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/Elements/Backgrounds/Image": [
+    "ArtGalleryOfCats/Runner"
+  ],
+  "AllegroFlare/SoftwareKeyboard/SoftwareKeyboard": [
+    "ArtGalleryOfCats/Screens/UserTextInput"
   ]
 }
 </pre>
