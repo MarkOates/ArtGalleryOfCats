@@ -173,9 +173,9 @@ std::string UserTextInput::get_result_string_value()
    return software_keyboard.get_result_string();
 }
 
-void UserTextInput::set_event_to_emit_on_pressing_ok_key(std::string event_to_emit_on_pressing_ok_key)
+void UserTextInput::set_event_to_emit_on_pressing_submit_key(std::string event_to_emit_on_pressing_submit_key)
 {
-   software_keyboard.set_event_to_emit_on_pressing_ok_key(event_to_emit_on_pressing_ok_key);
+   software_keyboard.set_event_to_emit_on_pressing_submit_key(event_to_emit_on_pressing_submit_key);
    return;
 }
 
@@ -283,7 +283,7 @@ void UserTextInput::key_char_func(ALLEGRO_EVENT* event)
       case ALLEGRO_KEY_ENTER:
          {
             bool shift = (event->keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
-            if (shift) { software_keyboard.press_key_by_name("OK"); }
+            if (shift) { software_keyboard.press_key_by_name("SUBMIT"); }
             else { software_keyboard.press_key_under_cursor(); }
          }
       break;
