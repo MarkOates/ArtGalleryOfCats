@@ -1080,7 +1080,7 @@ void Screen::scene_physics_updater()
 
       if (entity->exists("primary_camera"))
       {
-         std::cout << "   position.y: " << placement.position.y << std::endl;
+         //std::cout << "   position.y: " << placement.position.y << std::endl;
       }
 
       placement.position = AllegroFlare::Vec3D(
