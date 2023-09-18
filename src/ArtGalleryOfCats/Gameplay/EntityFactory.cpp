@@ -234,8 +234,6 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* EntityFactory::create_camera()
 {
    ArtGalleryOfCats::Gameplay::Entities::Camera3D* result = new ArtGalleryOfCats::Gameplay::Entities::Camera3D();
 
-   // DEBUG:
-
    //result->position = { 0, 1.2, 0 };
    result->stepout = { 0, 1.2, 0 };
    //result->stepout = { 0, 1.2, 0 };

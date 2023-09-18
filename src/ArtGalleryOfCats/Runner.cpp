@@ -42,7 +42,7 @@ Runner::Runner(AllegroFlare::Frameworks::Full* framework, AllegroFlare::EventEmi
    , game_won_outro_storyboard_screen()
    , rolling_credits_screen()
    , primary_gameplay_screen()
-   , title_image_background(bitmap_bin, "title_screen_background-02.png")
+   , title_image_background(bitmap_bin, "title_screen_background-01.png")
    , solid_black_background(ALLEGRO_COLOR{0, 0, 0, 1})
    , light_blue_background(ALLEGRO_COLOR{148.0f/255, 191.0f/255, 226.0f/255, 1})
    , npc_conversations_background({})

@@ -101,7 +101,7 @@ properties:
 
   - name: title_image_background
     type: AllegroFlare::Elements::Backgrounds::Image
-    init_with: 'bitmap_bin, "title_screen_background-02.png"'
+    init_with: 'bitmap_bin, "title_screen_background-01.png"'
 
   - name: solid_black_background
     type: AllegroFlare::Elements::Backgrounds::ClearToColor
