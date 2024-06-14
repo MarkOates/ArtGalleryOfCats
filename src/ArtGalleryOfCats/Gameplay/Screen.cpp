@@ -5,6 +5,7 @@
 #include <AllegroFlare/Camera2D.hpp>
 #include <AllegroFlare/Camera3D.hpp>
 #include <AllegroFlare/CubemapBuilder.hpp>
+#include <AllegroFlare/DialogTree/Nodes/MultipageWithOptions.hpp>
 #include <AllegroFlare/EventNames.hpp>
 #include <AllegroFlare/Physics/TileMapCollisionStepper.hpp>
 #include <AllegroFlare/RouteEventDatas/ActivateScreenByIdentifier.hpp>
@@ -175,9 +176,9 @@ void Screen::set_event_emitter(AllegroFlare::EventEmitter* event_emitter)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_event_emitter]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_event_emitter]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_event_emitter: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_event_emitter]: error: guard \"(!initialized)\" not met");
    }
    this->event_emitter = event_emitter;
    return;
@@ -188,9 +189,9 @@ void Screen::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_bitmap_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met");
    }
    this->bitmap_bin = bitmap_bin;
    return;
@@ -201,9 +202,9 @@ void Screen::set_font_bin(AllegroFlare::FontBin* font_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_font_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_font_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_font_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_font_bin]: error: guard \"(!initialized)\" not met");
    }
    this->font_bin = font_bin;
    return;
@@ -214,9 +215,9 @@ void Screen::set_model_bin(AllegroFlare::ModelBin* model_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_model_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_model_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_model_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_model_bin]: error: guard \"(!initialized)\" not met");
    }
    this->model_bin = model_bin;
    return;
@@ -227,9 +228,9 @@ void Screen::set_resources_path(std::string resources_path)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_resources_path]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_resources_path]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_resources_path: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_resources_path]: error: guard \"(!initialized)\" not met");
    }
    this->resources_path = resources_path;
    return;
@@ -240,9 +241,9 @@ void Screen::set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_user_text_input_screen]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_user_text_input_screen]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_user_text_input_screen: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_user_text_input_screen]: error: guard \"(!initialized)\" not met");
    }
    this->user_text_input_screen = user_text_input_screen;
    return;
@@ -253,9 +254,9 @@ void Screen::set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_npc_conversations_screen]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_npc_conversations_screen]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_npc_conversations_screen: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_npc_conversations_screen]: error: guard \"(!initialized)\" not met");
    }
    this->npc_conversations_screen = npc_conversations_screen;
    return;
@@ -266,9 +267,9 @@ void Screen::set_solved_level_names(std::set<std::string>* solved_level_names)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_solved_level_names]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_solved_level_names]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_solved_level_names: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_solved_level_names]: error: guard \"(!initialized)\" not met");
    }
    this->solved_level_names = solved_level_names;
    return;
@@ -279,9 +280,9 @@ void Screen::set_HACK_sysname(std::string HACK_sysname)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_HACK_sysname]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::set_HACK_sysname]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_HACK_sysname: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::set_HACK_sysname]: error: guard \"(!initialized)\" not met");
    }
    this->HACK_sysname = HACK_sysname;
    return;
@@ -316,14 +317,14 @@ void Screen::load_level_by_identifier(std::string level_identifier)
 
 
    std::map<std::string, std::function<void()>> items_map = {
-      { "gallery_01", [this, &level_factory](){
+      { "gallery_01", [&level_factory](){
          level_factory.load_gallery_01();
       }},
-      { "gallery_02", [this, &level_factory](){
+      { "gallery_02", [&level_factory](){
          // TODO: Replace this with new map
          level_factory.load_gallery_02();
       }},
-      { "gallery_03", [this, &level_factory](){
+      { "gallery_03", [&level_factory](){
          // TODO: Replace this with new map
          level_factory.load_gallery_03();
       }},
@@ -376,9 +377,9 @@ void Screen::emit_event_to_set_input_hints_bar_to_room_controls()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::emit_event_to_set_input_hints_bar_to_room_controls]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::emit_event_to_set_input_hints_bar_to_room_controls]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::emit_event_to_set_input_hints_bar_to_room_controls: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::emit_event_to_set_input_hints_bar_to_room_controls]: error: guard \"initialized\" not met");
    }
    event_emitter->emit_set_input_hints_bar_event({
       "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
@@ -399,9 +400,9 @@ void Screen::emit_event_to_set_input_hints()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::emit_event_to_set_input_hints]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::emit_event_to_set_input_hints]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::emit_event_to_set_input_hints: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::emit_event_to_set_input_hints]: error: guard \"initialized\" not met");
    }
    //if (fixed_room_2d.inventory_is_open()) emit_event_to_set_input_hints_bar_to_inventory_controls();
    else emit_event_to_set_input_hints_bar_to_room_controls();
@@ -414,9 +415,9 @@ AllegroFlare::SceneGraph::EntityPool* Screen::get_entity_pool()
    if (!(current_level))
    {
       std::stringstream error_message;
-      error_message << "[Screen::get_entity_pool]: error: guard \"current_level\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::get_entity_pool]: error: guard \"current_level\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::get_entity_pool: error: guard \"current_level\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::get_entity_pool]: error: guard \"current_level\" not met");
    }
    // TODO: Add "guards: [ current_level ]"
    //return &entity_pool; // TODO: Swap this out with the current level entity_pool (comment below)
@@ -428,9 +429,9 @@ ArtGalleryOfCats::Gameplay::Riddle* Screen::get_current_riddle()
    if (!(current_level))
    {
       std::stringstream error_message;
-      error_message << "[Screen::get_current_riddle]: error: guard \"current_level\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::get_current_riddle]: error: guard \"current_level\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::get_current_riddle: error: guard \"current_level\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::get_current_riddle]: error: guard \"current_level\" not met");
    }
    //return &current_riddle; // TODO: Swap this out with the current level entity_pool (comment below)
    return &current_level->get_current_riddle_ref();
@@ -441,79 +442,79 @@ void Screen::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"(!initialized)\" not met");
    }
    if (!(al_is_system_installed()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_system_installed()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"al_is_system_installed()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_system_installed()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"al_is_system_installed()\" not met");
    }
    if (!(al_is_primitives_addon_initialized()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_primitives_addon_initialized()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met");
    }
    if (!(al_is_font_addon_initialized()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_font_addon_initialized()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"event_emitter\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"event_emitter\" not met");
    }
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"bitmap_bin\" not met");
    }
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"font_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"font_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"model_bin\" not met");
    }
    if (!(solved_level_names))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"solved_level_names\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"solved_level_names\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"solved_level_names\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"solved_level_names\" not met");
    }
    if (!((resources_path != DEFAULT_RESOURCES_PATH)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"(resources_path != DEFAULT_RESOURCES_PATH)\" not met");
    }
    if (!((HACK_sysname != DEFAULT_HACK_SYSNAME)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"(HACK_sysname != DEFAULT_HACK_SYSNAME)\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"(HACK_sysname != DEFAULT_HACK_SYSNAME)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"(HACK_sysname != DEFAULT_HACK_SYSNAME)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::initialize]: error: guard \"(HACK_sysname != DEFAULT_HACK_SYSNAME)\" not met");
    }
    // TODO: Fix this section
    AllegroFlare::CubemapBuilder builder;
@@ -536,7 +537,7 @@ void Screen::load_dialog_node_bank()
 
       // Riddle responses
 
-      { "correct_riddle_answer", new AllegroFlare::DialogTree::Node(
+      { "correct_riddle_answer", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "CORRECT!",
@@ -551,7 +552,7 @@ void Screen::load_dialog_node_bank()
            }
         )
       },
-      { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Node(
+      { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "Hmm, that's not the correct answer to the riddle.", "That's ok! You can try as many times as you like." }
         )
@@ -559,37 +560,37 @@ void Screen::load_dialog_node_bank()
 
       // Default and fallback dialog
 
-      { "fallback_dialog", new AllegroFlare::DialogTree::Node(
+      { "fallback_dialog", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "That's interesting." }
          )
       },
-      { "default_inspect_1", new AllegroFlare::DialogTree::Node(
+      { "default_inspect_1", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "The artist has such a good sense of form and balance!" }
          )
       },
-      { "default_inspect_2", new AllegroFlare::DialogTree::Node(
+      { "default_inspect_2", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "I really like this art!" }
          )
       },
-      { "default_inspect_3", new AllegroFlare::DialogTree::Node(
+      { "default_inspect_3", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "This art is fantastic! It nourishes the spirit!" }
          )
       },
-      { "default_inspect_4", new AllegroFlare::DialogTree::Node(
+      { "default_inspect_4", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "Works like this one are always a favorite of mine!" }
          )
       },
-      { "default_inspect_5", new AllegroFlare::DialogTree::Node(
+      { "default_inspect_5", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "Such striking composition!" }
          )
       },
-      { "default_inspect_6", new AllegroFlare::DialogTree::Node(
+      { "default_inspect_6", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "Hmm, an interesting work!" }
          )
@@ -597,7 +598,7 @@ void Screen::load_dialog_node_bank()
 
       // Special inspections (colorful cats)
 
-      { "inspect_on_black_and_white_cats_art", new AllegroFlare::DialogTree::Node(
+      { "inspect_on_black_and_white_cats_art", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "This one is quite striking!", "The black and white creates such a strong contrast." }
          )
@@ -605,7 +606,7 @@ void Screen::load_dialog_node_bank()
 
       // Special inspections (humans exhibit)
 
-      { "inspect_medium_statue", new AllegroFlare::DialogTree::Node(
+      { "inspect_medium_statue", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
                "You know, the actual, proper pronunciation is quite different than how we say it.",
@@ -618,7 +619,7 @@ void Screen::load_dialog_node_bank()
            }
          )
       },
-      { "inspect_feature_statue", new AllegroFlare::DialogTree::Node(
+      { "inspect_feature_statue", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "Wow! This is our most special exhibit. The Exhibit of the Mystical Creature!",
@@ -628,12 +629,12 @@ void Screen::load_dialog_node_bank()
            }
          )
       },
-      { "inspect_small_statues", new AllegroFlare::DialogTree::Node(
+      { "inspect_small_statues", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "Since we don't have any hard evidence, we can only imagine what color their furr might be." }
          )
       },
-      { "inspect_human_01", new AllegroFlare::DialogTree::Node(
+      { "inspect_human_01", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "This depiction is just incredible. Stunning detail.",
@@ -642,17 +643,17 @@ void Screen::load_dialog_node_bank()
            }
          )
       },
-      { "inspect_human_02", new AllegroFlare::DialogTree::Node(
+      { "inspect_human_02", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "Here they are, depicted with their ears on the side of their head." }
          )
       },
-      { "inspect_human_03", new AllegroFlare::DialogTree::Node(
+      { "inspect_human_03", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            { "The hooman myths go back centuries!  All the way back to ancient times." }
          )
       },
-      { "inspect_human_04", new AllegroFlare::DialogTree::Node(
+      { "inspect_human_04", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "This one is brilliant.  We can only imagine what the mystical hooman creature is like.",
@@ -663,7 +664,7 @@ void Screen::load_dialog_node_bank()
            }
          )
       },
-      { "inspect_human_05", new AllegroFlare::DialogTree::Node(
+      { "inspect_human_05", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "Of course our gallery would not be complete without this famous work,",
@@ -671,7 +672,7 @@ void Screen::load_dialog_node_bank()
            }
          )
       },
-      { "inspect_cat_years_to_human_years", new AllegroFlare::DialogTree::Node(
+      { "inspect_cat_years_to_human_years", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "Interesting fact! Hoomans are said to live much longer than us cats.",
@@ -683,14 +684,14 @@ void Screen::load_dialog_node_bank()
       },
 
 
-      { "inspect_iridescent_sculpture_a", new AllegroFlare::DialogTree::Node(
+      { "inspect_iridescent_sculpture_a", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "As a hint to solving the riddle to this gallery, you might inspect these iridescent sculptures."
            }
          )
       },
-      { "inspect_iridescent_sculpture_b", new AllegroFlare::DialogTree::Node(
+      { "inspect_iridescent_sculpture_b", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "This first gallery, our Welcome Hall, features these inviting sculptures.",
@@ -706,7 +707,7 @@ void Screen::load_dialog_node_bank()
            }
          )
       },
-      { "inspect_iridescent_sculpture_c", new AllegroFlare::DialogTree::Node(
+      { "inspect_iridescent_sculpture_c", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
            "Mittens",
            {
               "Yup! These sculptures are really shiny! Just like me, Mittens!",
@@ -736,7 +737,10 @@ void Screen::activate_npc_dialog_by_identifier(std::string dialog_node_identifie
    // TODO: Erase the current npc dialog pages (delete them)
 
    // Get dialog pages from node
-   AllegroFlare::DialogTree::Node* dialog_node = dialog_node_bank.find_node_by_name(dialog_node_identifier);
+   AllegroFlare::DialogTree::Nodes::Base* dialog_node_base = dialog_node_bank.find_node_by_name(dialog_node_identifier);
+   auto dialog_node = static_cast<AllegroFlare::DialogTree::Nodes::MultipageWithOptions*>(dialog_node_base);
+   // TODO: Confirm dialog type
+
    std::vector<std::string> dialog_pages = dialog_node->get_pages();
 
    // Create storyboard pages from the dialog pages
@@ -761,16 +765,16 @@ void Screen::on_activate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_activate]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::on_activate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::on_activate]: error: guard \"initialized\" not met");
    }
    if (!(current_level))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_activate]: error: guard \"current_level\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::on_activate]: error: guard \"current_level\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_activate: error: guard \"current_level\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::on_activate]: error: guard \"current_level\" not met");
    }
    hide_riddle();
    hide_inspect_hint();
@@ -847,9 +851,9 @@ void Screen::on_deactivate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_deactivate]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::on_deactivate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_deactivate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::on_deactivate]: error: guard \"initialized\" not met");
    }
    hide_input_hints();
    return;
@@ -927,9 +931,9 @@ ArtGalleryOfCats::Gameplay::Entities::Camera3D* Screen::find_primary_camera()
    if (!(get_entity_pool()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::find_primary_camera]: error: guard \"get_entity_pool()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::find_primary_camera]: error: guard \"get_entity_pool()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::find_primary_camera: error: guard \"get_entity_pool()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::find_primary_camera]: error: guard \"get_entity_pool()\" not met");
    }
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
    // Extract our out camera
@@ -946,9 +950,9 @@ ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap* Screen::find_collision_t
    if (!(get_entity_pool()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::find_collision_tile_map]: error: guard \"get_entity_pool()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::find_collision_tile_map]: error: guard \"get_entity_pool()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::find_collision_tile_map: error: guard \"get_entity_pool()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::find_collision_tile_map]: error: guard \"get_entity_pool()\" not met");
    }
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
    // Extract our out collision_tile_map
@@ -965,9 +969,9 @@ void Screen::update_entity_player_is_currently_colliding_with()
    if (!(get_entity_pool()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::update_entity_player_is_currently_colliding_with]: error: guard \"get_entity_pool()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::update_entity_player_is_currently_colliding_with]: error: guard \"get_entity_pool()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::update_entity_player_is_currently_colliding_with: error: guard \"get_entity_pool()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::update_entity_player_is_currently_colliding_with]: error: guard \"get_entity_pool()\" not met");
    }
    // TODO: Implement this function
    //entity_player_is_currently_colliding_with
@@ -1031,9 +1035,9 @@ void Screen::scene_physics_updater()
    if (!(get_entity_pool()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::scene_physics_updater]: error: guard \"get_entity_pool()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::scene_physics_updater]: error: guard \"get_entity_pool()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::scene_physics_updater: error: guard \"get_entity_pool()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::scene_physics_updater]: error: guard \"get_entity_pool()\" not met");
    }
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
@@ -1113,9 +1117,9 @@ void Screen::scene_renderer_render()
    if (!(get_entity_pool()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::scene_renderer_render]: error: guard \"get_entity_pool()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::scene_renderer_render]: error: guard \"get_entity_pool()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::scene_renderer_render: error: guard \"get_entity_pool()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::scene_renderer_render]: error: guard \"get_entity_pool()\" not met");
    }
    ArtGalleryOfCats::Gameplay::SceneRenderer scene_renderer;
    scene_renderer.set_entity_pool(get_entity_pool());
@@ -1129,16 +1133,16 @@ void Screen::render_hud()
    if (!(get_entity_pool()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::render_hud]: error: guard \"get_entity_pool()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::render_hud]: error: guard \"get_entity_pool()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::render_hud: error: guard \"get_entity_pool()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::render_hud]: error: guard \"get_entity_pool()\" not met");
    }
    // Local vars;
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
    AllegroFlare::Camera2D hud_camera;
    ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
-   hud_camera.setup_dimentional_projection(render_surface);
+   hud_camera.setup_dimensional_projection(render_surface);
 
    hud_camera.position.x = -800;
    hud_camera.position.y = -400;
@@ -1252,9 +1256,9 @@ void Screen::render_tile_map(AllegroFlare::TileMaps::TileMap<int>* tile_map, flo
    if (!(tile_map))
    {
       std::stringstream error_message;
-      error_message << "[Screen::render_tile_map]: error: guard \"tile_map\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::render_tile_map]: error: guard \"tile_map\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::render_tile_map: error: guard \"tile_map\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::render_tile_map]: error: guard \"tile_map\" not met");
    }
    if (!al_is_primitives_addon_initialized()) throw std::runtime_error("render_tile_map: primitives must be init");
 
@@ -1290,9 +1294,9 @@ void Screen::render_aabb2d(AllegroFlare::Physics::AABB2D* aabb2d, bool adjacent_
    if (!(aabb2d))
    {
       std::stringstream error_message;
-      error_message << "[Screen::render_aabb2d]: error: guard \"aabb2d\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::render_aabb2d]: error: guard \"aabb2d\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::render_aabb2d: error: guard \"aabb2d\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::render_aabb2d]: error: guard \"aabb2d\" not met");
    }
    al_draw_filled_rectangle(aabb2d->get_x(), aabb2d->get_y(), aabb2d->get_right_edge(), aabb2d->get_bottom_edge(),
       ALLEGRO_COLOR{1.0, 1.0, 1.0, 1.0});
@@ -1331,9 +1335,9 @@ void Screen::primary_timer_func()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::primary_timer_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::primary_timer_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::primary_timer_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::primary_timer_func]: error: guard \"initialized\" not met");
    }
    update();
    render();
@@ -1395,9 +1399,9 @@ void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, Allegr
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_button_up_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met");
    }
 
    switch(virtual_controller_button_num)
@@ -1433,9 +1437,9 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_button_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met");
    }
    // TODO: validate virtual controller type
 
@@ -1519,9 +1523,9 @@ void Screen::interact_with_focused_object()
    if (!(npc_conversations_screen))
    {
       std::stringstream error_message;
-      error_message << "[Screen::interact_with_focused_object]: error: guard \"npc_conversations_screen\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::interact_with_focused_object]: error: guard \"npc_conversations_screen\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::interact_with_focused_object: error: guard \"npc_conversations_screen\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::interact_with_focused_object]: error: guard \"npc_conversations_screen\" not met");
    }
    if (!entity_player_is_currently_colliding_with)
    {
@@ -1624,9 +1628,9 @@ void Screen::attempt_to_solve_riddle()
    if (!(user_text_input_screen))
    {
       std::stringstream error_message;
-      error_message << "[Screen::attempt_to_solve_riddle]: error: guard \"user_text_input_screen\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::attempt_to_solve_riddle]: error: guard \"user_text_input_screen\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::attempt_to_solve_riddle: error: guard \"user_text_input_screen\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::attempt_to_solve_riddle]: error: guard \"user_text_input_screen\" not met");
    }
    player_stop_moving();
 
@@ -1676,9 +1680,9 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_axis_change_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met");
    }
    //if (ev->mouse
    //result->tilt = 0.13;            // look up(-)/down(+)
@@ -1702,16 +1706,16 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::key_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::key_down_func]: error: guard \"initialized\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_down_func]: error: guard \"event_emitter\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::key_down_func]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_down_func: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::key_down_func]: error: guard \"event_emitter\" not met");
    }
    // This method is DEBUGGING
    switch(ev->keyboard.keycode)
@@ -1765,16 +1769,16 @@ void Screen::key_up_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_up_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::key_up_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_up_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::key_up_func]: error: guard \"initialized\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_up_func]: error: guard \"event_emitter\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::key_up_func]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_up_func: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::key_up_func]: error: guard \"event_emitter\" not met");
    }
    // This method is DEBUGGING
    switch(ev->keyboard.keycode)
@@ -1808,9 +1812,9 @@ void Screen::mouse_down_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::mouse_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::mouse_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::mouse_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::mouse_down_func]: error: guard \"initialized\" not met");
    }
    //interact_with_focused_object();
    return;
@@ -1821,9 +1825,9 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::mouse_axes_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::Screen::mouse_axes_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::mouse_axes_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::Screen::mouse_axes_func]: error: guard \"initialized\" not met");
    }
    // TODO: Validate spin change
    float spin_delta = ev->mouse.dx;

@@ -57,16 +57,16 @@ void SceneRenderer::render()
    if (!(entity_pool))
    {
       std::stringstream error_message;
-      error_message << "[SceneRenderer::render]: error: guard \"entity_pool\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::SceneRenderer::render]: error: guard \"entity_pool\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("SceneRenderer::render: error: guard \"entity_pool\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::SceneRenderer::render]: error: guard \"entity_pool\" not met");
    }
    if (!(cubemap_shader))
    {
       std::stringstream error_message;
-      error_message << "[SceneRenderer::render]: error: guard \"cubemap_shader\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::SceneRenderer::render]: error: guard \"cubemap_shader\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("SceneRenderer::render: error: guard \"cubemap_shader\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::SceneRenderer::render]: error: guard \"cubemap_shader\" not met");
    }
    // Extract out the camera and render the scene
    AllegroFlare::SceneGraph::Entities::Base *entity = entity_pool->find_with_attribute("primary_camera");

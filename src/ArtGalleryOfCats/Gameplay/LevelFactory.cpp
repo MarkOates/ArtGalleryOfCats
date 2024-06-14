@@ -116,9 +116,9 @@ void LevelFactory::object_parsed_callback(std::string name_property, std::string
    if (!(user_data))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::object_parsed_callback]: error: guard \"user_data\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::object_parsed_callback]: error: guard \"user_data\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::object_parsed_callback: error: guard \"user_data\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::object_parsed_callback]: error: guard \"user_data\" not met");
    }
    ArtGalleryOfCats::Gameplay::LevelFactory *this_factory =
       static_cast<ArtGalleryOfCats::Gameplay::LevelFactory*>(user_data);
@@ -219,9 +219,9 @@ void LevelFactory::map_properties_parsed_callback(std::vector<std::tuple<std::st
    if (!(user_data))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::map_properties_parsed_callback]: error: guard \"user_data\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::map_properties_parsed_callback]: error: guard \"user_data\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::map_properties_parsed_callback: error: guard \"user_data\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::map_properties_parsed_callback]: error: guard \"user_data\" not met");
    }
    ArtGalleryOfCats::Gameplay::LevelFactory *this_factory =
       static_cast<ArtGalleryOfCats::Gameplay::LevelFactory*>(user_data);
@@ -292,44 +292,44 @@ void LevelFactory::load_gallery_01()
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_01]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_01]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"model_bin\" not met");
    }
    if (!(entity_pool))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_01]: error: guard \"entity_pool\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"entity_pool\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"entity_pool\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"entity_pool\" not met");
    }
    if (!(riddle))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_01]: error: guard \"riddle\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"riddle\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"riddle\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"riddle\" not met");
    }
    if (!(level))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_01]: error: guard \"level\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"level\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"level\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"level\" not met");
    }
    if (!(has_non_default_resources_path()))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_01]: error: guard \"has_non_default_resources_path()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"has_non_default_resources_path()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_01: error: guard \"has_non_default_resources_path()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_01]: error: guard \"has_non_default_resources_path()\" not met");
    }
    // Set the level name
    //level->set_name("gallery_01");
@@ -398,44 +398,44 @@ void LevelFactory::load_gallery_02()
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_02]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_02]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"model_bin\" not met");
    }
    if (!(entity_pool))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_02]: error: guard \"entity_pool\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"entity_pool\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"entity_pool\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"entity_pool\" not met");
    }
    if (!(riddle))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_02]: error: guard \"riddle\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"riddle\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"riddle\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"riddle\" not met");
    }
    if (!(level))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_02]: error: guard \"level\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"level\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"level\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"level\" not met");
    }
    if (!(has_non_default_resources_path()))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_02]: error: guard \"has_non_default_resources_path()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"has_non_default_resources_path()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_02: error: guard \"has_non_default_resources_path()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_02]: error: guard \"has_non_default_resources_path()\" not met");
    }
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
@@ -497,44 +497,44 @@ void LevelFactory::load_gallery_03()
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_03]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_03]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"model_bin\" not met");
    }
    if (!(entity_pool))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_03]: error: guard \"entity_pool\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"entity_pool\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"entity_pool\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"entity_pool\" not met");
    }
    if (!(riddle))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_03]: error: guard \"riddle\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"riddle\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"riddle\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"riddle\" not met");
    }
    if (!(level))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_03]: error: guard \"level\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"level\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"level\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"level\" not met");
    }
    if (!(has_non_default_resources_path()))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_gallery_03]: error: guard \"has_non_default_resources_path()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"has_non_default_resources_path()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_gallery_03: error: guard \"has_non_default_resources_path()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_gallery_03]: error: guard \"has_non_default_resources_path()\" not met");
    }
    ArtGalleryOfCats::Gameplay::EntityFactory entity_factory;
    entity_factory.set_model_bin(model_bin);
@@ -596,37 +596,37 @@ void LevelFactory::load_primary_map()
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_primary_map]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_primary_map]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"model_bin\" not met");
    }
    if (!(entity_pool))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_primary_map]: error: guard \"entity_pool\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"entity_pool\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"entity_pool\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"entity_pool\" not met");
    }
    if (!(riddle))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_primary_map]: error: guard \"riddle\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"riddle\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"riddle\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"riddle\" not met");
    }
    if (!(has_non_default_resources_path()))
    {
       std::stringstream error_message;
-      error_message << "[LevelFactory::load_primary_map]: error: guard \"has_non_default_resources_path()\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"has_non_default_resources_path()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("LevelFactory::load_primary_map: error: guard \"has_non_default_resources_path()\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::LevelFactory::load_primary_map]: error: guard \"has_non_default_resources_path()\" not met");
    }
    throw std::runtime_error("LevelFactory::load_primary_map - this gallery is obsolete");
 

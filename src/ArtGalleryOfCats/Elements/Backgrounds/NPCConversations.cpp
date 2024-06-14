@@ -67,16 +67,16 @@ void NPCConversations::set_inv_scale(int inv_scale)
    if (!((inv_scale >= 1)))
    {
       std::stringstream error_message;
-      error_message << "[NPCConversations::set_inv_scale]: error: guard \"(inv_scale >= 1)\" not met.";
+      error_message << "[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::set_inv_scale]: error: guard \"(inv_scale >= 1)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("NPCConversations::set_inv_scale: error: guard \"(inv_scale >= 1)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::set_inv_scale]: error: guard \"(inv_scale >= 1)\" not met");
    }
    if (!((inv_scale <= 20)))
    {
       std::stringstream error_message;
-      error_message << "[NPCConversations::set_inv_scale]: error: guard \"(inv_scale <= 20)\" not met.";
+      error_message << "[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::set_inv_scale]: error: guard \"(inv_scale <= 20)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("NPCConversations::set_inv_scale: error: guard \"(inv_scale <= 20)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::set_inv_scale]: error: guard \"(inv_scale <= 20)\" not met");
    }
    this->inv_scale = inv_scale;
    if (initialized) refresh_capture();
@@ -88,16 +88,16 @@ void NPCConversations::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[NPCConversations::initialize]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::initialize]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("NPCConversations::initialize: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::initialize]: error: guard \"(!initialized)\" not met");
    }
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[NPCConversations::initialize]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::initialize]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("NPCConversations::initialize: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Elements::Backgrounds::NPCConversations::initialize]: error: guard \"bitmap_bin\" not met");
    }
    refresh_capture();
    bitmap_bin->preload(dialog_bubble_bitmap_identifier); // TODO: this may need to be after init

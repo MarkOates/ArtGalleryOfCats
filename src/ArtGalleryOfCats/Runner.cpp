@@ -64,44 +64,44 @@ void Runner::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Runner::initialize]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::initialize]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::initialize: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::initialize]: error: guard \"(!initialized)\" not met");
    }
    if (!(framework))
    {
       std::stringstream error_message;
-      error_message << "[Runner::initialize]: error: guard \"framework\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::initialize]: error: guard \"framework\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::initialize: error: guard \"framework\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::initialize]: error: guard \"framework\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Runner::initialize]: error: guard \"event_emitter\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::initialize]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::initialize: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::initialize]: error: guard \"event_emitter\" not met");
    }
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[Runner::initialize]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::initialize]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::initialize: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::initialize]: error: guard \"bitmap_bin\" not met");
    }
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Runner::initialize]: error: guard \"font_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::initialize]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::initialize: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::initialize]: error: guard \"font_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[Runner::initialize]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::initialize]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::initialize: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::initialize]: error: guard \"model_bin\" not met");
    }
 
    AllegroFlare::SystemInfo HACK_system_info;
@@ -742,16 +742,16 @@ void Runner::game_event_func(AllegroFlare::GameEvent* ev)
    if (!(ev))
    {
       std::stringstream error_message;
-      error_message << "[Runner::game_event_func]: error: guard \"ev\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::game_event_func]: error: guard \"ev\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::game_event_func: error: guard \"ev\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::game_event_func]: error: guard \"ev\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Runner::game_event_func]: error: guard \"event_emitter\" not met.";
+      error_message << "[ArtGalleryOfCats::Runner::game_event_func]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Runner::game_event_func: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Runner::game_event_func]: error: guard \"event_emitter\" not met");
    }
    // NOTE: This is an older way to handle this signal flow, specifically for submitting the user input text. For
    // now, for this hackathon, it should work fine.

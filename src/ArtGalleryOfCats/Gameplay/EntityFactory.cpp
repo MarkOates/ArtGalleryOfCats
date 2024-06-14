@@ -69,16 +69,16 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_sculpture_art(
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_sculpture_art]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_sculpture_art]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_sculpture_art: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_sculpture_art]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_sculpture_art]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_sculpture_art]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_sculpture_art: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_sculpture_art]: error: guard \"model_bin\" not met");
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
    AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
@@ -111,16 +111,16 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_wall_art(std::
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_wall_art]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_wall_art]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_wall_art: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_wall_art]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_wall_art]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_wall_art]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_wall_art: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_wall_art]: error: guard \"model_bin\" not met");
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
    //AllegroFlare::Model3D* model = model_bin->auto_get(model_filename);
@@ -162,16 +162,16 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_environment_me
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_environment_mesh]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_environment_mesh]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_environment_mesh: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_environment_mesh]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_environment_mesh]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_environment_mesh]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_environment_mesh: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_environment_mesh]: error: guard \"model_bin\" not met");
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 
@@ -198,16 +198,16 @@ ArtGalleryOfCats::Gameplay::Entities::Base* EntityFactory::create_collectable_ob
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_collectable_object]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_collectable_object]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_collectable_object: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_collectable_object]: error: guard \"bitmap_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[EntityFactory::create_collectable_object]: error: guard \"model_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Gameplay::EntityFactory::create_collectable_object]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("EntityFactory::create_collectable_object: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Gameplay::EntityFactory::create_collectable_object]: error: guard \"model_bin\" not met");
    }
    ArtGalleryOfCats::Gameplay::Entities::Base* result = new ArtGalleryOfCats::Gameplay::Entities::Base();
 

@@ -296,14 +296,14 @@ functions:
 
 
       std::map<std::string, std::function<void()>> items_map = {
-         { "gallery_01", [this, &level_factory](){
+         { "gallery_01", [&level_factory](){
             level_factory.load_gallery_01();
          }},
-         { "gallery_02", [this, &level_factory](){
+         { "gallery_02", [&level_factory](){
             // TODO: Replace this with new map
             level_factory.load_gallery_02();
          }},
-         { "gallery_03", [this, &level_factory](){
+         { "gallery_03", [&level_factory](){
             // TODO: Replace this with new map
             level_factory.load_gallery_03();
          }},
@@ -437,7 +437,7 @@ functions:
 
          // Riddle responses
 
-         { "correct_riddle_answer", new AllegroFlare::DialogTree::Node(
+         { "correct_riddle_answer", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "CORRECT!",
@@ -452,7 +452,7 @@ functions:
               }
            )
          },
-         { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Node(
+         { "incorrect_riddle_answer", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "Hmm, that's not the correct answer to the riddle.", "That's ok! You can try as many times as you like." }
            )
@@ -460,37 +460,37 @@ functions:
 
          // Default and fallback dialog
 
-         { "fallback_dialog", new AllegroFlare::DialogTree::Node(
+         { "fallback_dialog", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "That's interesting." }
             )
          },
-         { "default_inspect_1", new AllegroFlare::DialogTree::Node(
+         { "default_inspect_1", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "The artist has such a good sense of form and balance!" }
             )
          },
-         { "default_inspect_2", new AllegroFlare::DialogTree::Node(
+         { "default_inspect_2", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "I really like this art!" }
             )
          },
-         { "default_inspect_3", new AllegroFlare::DialogTree::Node(
+         { "default_inspect_3", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "This art is fantastic! It nourishes the spirit!" }
             )
          },
-         { "default_inspect_4", new AllegroFlare::DialogTree::Node(
+         { "default_inspect_4", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "Works like this one are always a favorite of mine!" }
             )
          },
-         { "default_inspect_5", new AllegroFlare::DialogTree::Node(
+         { "default_inspect_5", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "Such striking composition!" }
             )
          },
-         { "default_inspect_6", new AllegroFlare::DialogTree::Node(
+         { "default_inspect_6", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "Hmm, an interesting work!" }
             )
@@ -498,7 +498,7 @@ functions:
 
          // Special inspections (colorful cats)
 
-         { "inspect_on_black_and_white_cats_art", new AllegroFlare::DialogTree::Node(
+         { "inspect_on_black_and_white_cats_art", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "This one is quite striking!", "The black and white creates such a strong contrast." }
             )
@@ -506,7 +506,7 @@ functions:
 
          // Special inspections (humans exhibit)
 
-         { "inspect_medium_statue", new AllegroFlare::DialogTree::Node(
+         { "inspect_medium_statue", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                   "You know, the actual, proper pronunciation is quite different than how we say it.",
@@ -519,7 +519,7 @@ functions:
               }
             )
          },
-         { "inspect_feature_statue", new AllegroFlare::DialogTree::Node(
+         { "inspect_feature_statue", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "Wow! This is our most special exhibit. The Exhibit of the Mystical Creature!",
@@ -529,12 +529,12 @@ functions:
               }
             )
          },
-         { "inspect_small_statues", new AllegroFlare::DialogTree::Node(
+         { "inspect_small_statues", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "Since we don't have any hard evidence, we can only imagine what color their furr might be." }
             )
          },
-         { "inspect_human_01", new AllegroFlare::DialogTree::Node(
+         { "inspect_human_01", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "This depiction is just incredible. Stunning detail.",
@@ -543,17 +543,17 @@ functions:
               }
             )
          },
-         { "inspect_human_02", new AllegroFlare::DialogTree::Node(
+         { "inspect_human_02", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "Here they are, depicted with their ears on the side of their head." }
             )
          },
-         { "inspect_human_03", new AllegroFlare::DialogTree::Node(
+         { "inspect_human_03", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               { "The hooman myths go back centuries!  All the way back to ancient times." }
             )
          },
-         { "inspect_human_04", new AllegroFlare::DialogTree::Node(
+         { "inspect_human_04", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "This one is brilliant.  We can only imagine what the mystical hooman creature is like.",
@@ -564,7 +564,7 @@ functions:
               }
             )
          },
-         { "inspect_human_05", new AllegroFlare::DialogTree::Node(
+         { "inspect_human_05", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "Of course our gallery would not be complete without this famous work,",
@@ -572,7 +572,7 @@ functions:
               }
             )
          },
-         { "inspect_cat_years_to_human_years", new AllegroFlare::DialogTree::Node(
+         { "inspect_cat_years_to_human_years", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "Interesting fact! Hoomans are said to live much longer than us cats.",
@@ -584,14 +584,14 @@ functions:
          },
       
 
-         { "inspect_iridescent_sculpture_a", new AllegroFlare::DialogTree::Node(
+         { "inspect_iridescent_sculpture_a", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "As a hint to solving the riddle to this gallery, you might inspect these iridescent sculptures."
               }
             )
          },
-         { "inspect_iridescent_sculpture_b", new AllegroFlare::DialogTree::Node(
+         { "inspect_iridescent_sculpture_b", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "This first gallery, our Welcome Hall, features these inviting sculptures.",
@@ -607,7 +607,7 @@ functions:
               }
             )
          },
-         { "inspect_iridescent_sculpture_c", new AllegroFlare::DialogTree::Node(
+         { "inspect_iridescent_sculpture_c", new AllegroFlare::DialogTree::Nodes::MultipageWithOptions(
               "Mittens",
               {
                  "Yup! These sculptures are really shiny! Just like me, Mittens!",
@@ -624,6 +624,8 @@ functions:
 
       });
       return;
+    body_dependency_symbols:
+      - AllegroFlare::DialogTree::Nodes::MultipageWithOptions
 
 
   - name: activate_npc_dialog_by_identifier
@@ -641,7 +643,10 @@ functions:
       // TODO: Erase the current npc dialog pages (delete them)
 
       // Get dialog pages from node
-      AllegroFlare::DialogTree::Node* dialog_node = dialog_node_bank.find_node_by_name(dialog_node_identifier);
+      AllegroFlare::DialogTree::Nodes::Base* dialog_node_base = dialog_node_bank.find_node_by_name(dialog_node_identifier);
+      auto dialog_node = static_cast<AllegroFlare::DialogTree::Nodes::MultipageWithOptions*>(dialog_node_base);
+      // TODO: Confirm dialog type
+
       std::vector<std::string> dialog_pages = dialog_node->get_pages();
 
       // Create storyboard pages from the dialog pages
@@ -1021,7 +1026,7 @@ functions:
 
       AllegroFlare::Camera2D hud_camera;
       ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
-      hud_camera.setup_dimentional_projection(render_surface);
+      hud_camera.setup_dimensional_projection(render_surface);
 
       hud_camera.position.x = -800;
       hud_camera.position.y = -400;
@@ -1931,5 +1936,9 @@ dependencies:
     headers: [ AllegroFlare/Screens/Storyboard.hpp ]
   - symbol: AllegroFlare::DialogTree::NodeBank
     headers: [ AllegroFlare/DialogTree/NodeBank.hpp ]
+  - symbol: AllegroFlare::DialogTree::Nodes/Base
+    headers: [ AllegroFlare/DialogTree/Nodes/Base.hpp ]
+  - symbol: AllegroFlare::DialogTree::Nodes::MultipageWithOptions
+    headers: [ AllegroFlare/DialogTree/Nodes/MultipageWithOptions.hpp ]
 
 

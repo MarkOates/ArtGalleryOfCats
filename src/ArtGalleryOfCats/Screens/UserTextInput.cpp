@@ -60,31 +60,31 @@ void UserTextInput::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::initialize]: error: guard \"(!initialized)\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::initialize]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::initialize: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::initialize]: error: guard \"(!initialized)\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::initialize]: error: guard \"event_emitter\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::initialize]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::initialize: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::initialize]: error: guard \"event_emitter\" not met");
    }
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::initialize]: error: guard \"font_bin\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::initialize]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::initialize: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::initialize]: error: guard \"font_bin\" not met");
    }
    software_keyboard.set_event_emitter(event_emitter);
    software_keyboard.set_font_bin(font_bin);
    software_keyboard.initialize();
    software_keyboard.set_keys(AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::build_boilerplate_keyboard_keys());
-   AllegroFlare::Vec2D keyboard_dimentions =
-   AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::calculate_boilerplate_keyboard_dimentions();
-   software_keyboard.set_keyboard_dimentions(keyboard_dimentions.x, keyboard_dimentions.y);
+   AllegroFlare::Vec2D keyboard_dimensions =
+   AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::calculate_boilerplate_keyboard_dimensions();
+   software_keyboard.set_keyboard_dimensions(keyboard_dimensions.x, keyboard_dimensions.y);
    software_keyboard.set_keyboard_position(1920/2, 1080/12*7 + 20);
    software_keyboard.set_prompt_text("What is the answer to the riddle?");
    initialized = true;
@@ -96,9 +96,9 @@ void UserTextInput::on_activate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::on_activate]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::on_activate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::on_activate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::on_activate]: error: guard \"initialized\" not met");
    }
    if (background) background->activate();
    software_keyboard.reset();
@@ -110,9 +110,9 @@ void UserTextInput::on_deactivate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::on_deactivate]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::on_deactivate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::on_deactivate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::on_deactivate]: error: guard \"initialized\" not met");
    }
    if (background) background->deactivate();
    return;
@@ -123,9 +123,9 @@ void UserTextInput::primary_timer_func()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::primary_timer_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::primary_timer_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::primary_timer_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::primary_timer_func]: error: guard \"initialized\" not met");
    }
    if (background) background->update();
    if (background) background->render();
@@ -152,9 +152,9 @@ void UserTextInput::set_prompt_text(std::string prompt_text)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::set_prompt_text]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::set_prompt_text]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::set_prompt_text: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::set_prompt_text]: error: guard \"initialized\" not met");
    }
    // TODO: guards, cannot be zero (or maybe this should be a guard in the bin if it is not)
    software_keyboard.set_prompt_text(prompt_text);
@@ -166,9 +166,9 @@ std::string UserTextInput::get_result_string_value()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::get_result_string_value]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::get_result_string_value]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::get_result_string_value: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::get_result_string_value]: error: guard \"initialized\" not met");
    }
    return software_keyboard.get_result_string();
 }
@@ -206,9 +206,9 @@ void UserTextInput::virtual_control_button_down_func(AllegroFlare::Player* playe
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::virtual_control_button_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::virtual_control_button_down_func]: error: guard \"initialized\" not met");
    }
    if (mode != MODE_USING_VIRTUAL_CONTROLS) return;
 
@@ -249,16 +249,16 @@ void UserTextInput::key_char_func(ALLEGRO_EVENT* event)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::key_char_func]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::key_char_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::key_char_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::key_char_func]: error: guard \"initialized\" not met");
    }
    if (!(event))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::key_char_func]: error: guard \"event\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::key_char_func]: error: guard \"event\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::key_char_func: error: guard \"event\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::key_char_func]: error: guard \"event\" not met");
    }
    if (mode != MODE_USING_KEYBOARD) return;
 
@@ -309,9 +309,9 @@ void UserTextInput::render()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[UserTextInput::render]: error: guard \"initialized\" not met.";
+      error_message << "[ArtGalleryOfCats::Screens::UserTextInput::render]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("UserTextInput::render: error: guard \"initialized\" not met");
+      throw std::runtime_error("[ArtGalleryOfCats::Screens::UserTextInput::render]: error: guard \"initialized\" not met");
    }
    software_keyboard.render();
    return;
