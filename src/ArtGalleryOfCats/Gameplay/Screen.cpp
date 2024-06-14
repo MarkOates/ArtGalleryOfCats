@@ -1141,7 +1141,8 @@ void Screen::render_hud()
    AllegroFlare::SceneGraph::Entities::Base *entity = nullptr;
 
    AllegroFlare::Camera2D hud_camera;
-   ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
+   //ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
+   ALLEGRO_BITMAP *render_surface = al_get_target_bitmap();
    hud_camera.setup_dimensional_projection(render_surface);
 
    hud_camera.position.x = -800;
