@@ -63,6 +63,9 @@ TEST_F(ArtGalleryOfCats_Gameplay_SceneRendererTestWithAllegroRenderingFixtureTes
    collectable->get_placement_ref().rotation.z = 0.03547;
    entity_pool.add(collectable);
 
+   ALLEGRO_BITMAP *render_surface = al_get_backbuffer(al_get_current_display()); // TODO: replace with render surface
+   al_set_target_bitmap(render_surface);
+
    // Render the scene
    int frames = 20;
    for (int i=0; i<frames; i++)

@@ -237,6 +237,12 @@
   "AllegroFlare/DialogTree/NodeBank": [
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
+  "AllegroFlare/DialogTree/Nodes/Base": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/DialogTree/Nodes/MultipageWithOptions": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
   "nlohmann/json": [
     "ArtGalleryOfCats/Gameplay/TMJObjectLoader"
   ],

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <head>
 <style>
+html
+{
+  background-color: #09090c;
+  color: #dfdfdf;
+}
 *
 {
   font-family: 'Arial';
@@ -12,16 +17,16 @@ table td
 }
 .property
 {
-  color: blue;
+  color: dodgerblue;
 }
 .private_property
 {
-  color: lightblue;
+  color: aliceblue;
 }
 
 .method
 {
-  color: red;
+  color: orange;
 }
 
 .private_method
@@ -31,14 +36,14 @@ table td
 
 .dependency
 {
-  color: green;
+  color: #9f9fa1;
 }
 
 .component
 {
   padding: 20 10 20 10;
   margin: 20 10 20 10;
-  background-color: #dfdfdf;
+  background-color: #1a1a1c;
 }
 
 .component h3
@@ -66,8 +71,12 @@ table td
   <li><a href="#quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml">quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.q.yml">quintessence/ArtGalleryOfCats/Elements/Backgrounds/NPCConversations.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -102,22 +111,28 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">set_inv_scale(int inv_scale=DEFAULT_INV_SCALE)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_inv_scale</b>(int inv_scale=DEFAULT_INV_SCALE)</td>
 </tr>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">destroy()</td>
+  <td class="method">void</td>
+  <td class="method"><b>destroy</b>()</td>
 </tr>
 <tr>
-  <td class="method">refresh_capture()</td>
+  <td class="method">void</td>
+  <td class="method"><b>refresh_capture</b>()</td>
 </tr>
 <tr>
-  <td class="method">activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -137,8 +152,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.q.yml">quintessence/ArtGalleryOfCats/Elements/DialogBoxRenderers/Bubble.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -209,22 +228,28 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">draw_special_state_empty_text(float width=1, float height=1)</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>draw_special_state_empty_text</b>(float width=1, float height=1)</td>
 </tr>
 <tr>
-  <td class="private_method">draw_action_text(std::string text=&quot;[unset-action-text]&quot;, float width=1, float height=1)</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>draw_action_text</b>(std::string text=&quot;[unset-action-text]&quot;, float width=1, float height=1)</td>
 </tr>
 <tr>
-  <td class="method">draw_styled_revealed_text(float max_width=1, std::string text=&quot;[unset-text]&quot;, int num_revealed_characters=999)</td>
+  <td class="method">void</td>
+  <td class="method"><b>draw_styled_revealed_text</b>(float max_width=1, std::string text=&quot;[unset-text]&quot;, int num_revealed_characters=999)</td>
 </tr>
 <tr>
-  <td class="private_method">concat_text(std::string source_text=&quot;&quot;, int length=0)</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>concat_text</b>(std::string source_text=&quot;&quot;, int length=0)</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_dialog_font()</td>
+  <td class="private_method">ALLEGRO_FONT*</td>
+  <td class="private_method"><b>obtain_dialog_font</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -286,8 +311,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Base.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -342,8 +371,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/Camera3D.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -365,8 +398,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Entities/CollisionTileMap.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -392,8 +429,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFactory.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -416,22 +457,28 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">create_sculpture_art(std::string art_identifier=&quot;[unset-art_identifier]&quot;, std::string model_filename=&quot;[unset-model_filename]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;, AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, AllegroFlare::Physics::AABB2D hit_box_2d={}, std::vector&lt;std::string&gt; additional_entity_flags={})</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::Base*</td>
+  <td class="method"><b>create_sculpture_art</b>(std::string art_identifier=&quot;[unset-art_identifier]&quot;, std::string model_filename=&quot;[unset-model_filename]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;, AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, AllegroFlare::Physics::AABB2D hit_box_2d={}, std::vector&lt;std::string&gt; additional_entity_flags={})</td>
 </tr>
 <tr>
-  <td class="method">create_wall_art(std::string art_identifier=&quot;[unset-art_identifier]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;, AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, float art_scale=DEFAULT_WALL_ART_SCALE, AllegroFlare::Physics::AABB2D hit_box_2d={}, std::vector&lt;std::string&gt; additional_entity_flags={})</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::Base*</td>
+  <td class="method"><b>create_wall_art</b>(std::string art_identifier=&quot;[unset-art_identifier]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;, AllegroFlare::Vec3D model_position={}, float model_rotation_y=0.0f, float art_scale=DEFAULT_WALL_ART_SCALE, AllegroFlare::Physics::AABB2D hit_box_2d={}, std::vector&lt;std::string&gt; additional_entity_flags={})</td>
 </tr>
 <tr>
-  <td class="method">create_environment_mesh(std::string model_filename=&quot;[unset-model_filename]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;)</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::Base*</td>
+  <td class="method"><b>create_environment_mesh</b>(std::string model_filename=&quot;[unset-model_filename]&quot;, std::string texture_filename=&quot;[unset-texture_filename]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">create_collectable_object(AllegroFlare::Vec3D position={}, std::string model_filename=&quot;[unset-model_filename]&quot;)</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::Base*</td>
+  <td class="method"><b>create_collectable_object</b>(AllegroFlare::Vec3D position={}, std::string model_filename=&quot;[unset-model_filename]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">create_camera()</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::Camera3D*</td>
+  <td class="method"><b>create_camera</b>()</td>
 </tr>
 <tr>
-  <td class="method">create_collision_tile_map(std::string tmj_filename=&quot;[unset-tmj_filename]&quot;)</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*</td>
+  <td class="method"><b>create_collision_tile_map</b>(std::string tmj_filename=&quot;[unset-tmj_filename]&quot;)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -469,8 +516,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/EntityFlags.q.yml">quintessence/ArtGalleryOfCats/Gameplay/EntityFlags.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -504,8 +555,12 @@ table td
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Level.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Level.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -540,10 +595,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">has_custom_music()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>has_custom_music</b>()</td>
 </tr>
 <tr>
-  <td class="method">destroy()</td>
+  <td class="method">void</td>
+  <td class="method"><b>destroy</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -557,8 +614,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/LevelFactory.q.yml">quintessence/ArtGalleryOfCats/Gameplay/LevelFactory.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -593,25 +654,32 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">has_non_default_resources_path()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>has_non_default_resources_path</b>()</td>
 </tr>
 <tr>
-  <td class="method">object_parsed_callback(std::string name_property=&quot;[unset-name_property]&quot;, std::string class_property=&quot;[unset-class_property]&quot;, float x_property=0.0f, float y_property=0.0f, float width_property=0.0f, float height_property=0.0f, bool visible_property=true, std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; custom_properties={}, void* user_data=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>object_parsed_callback</b>(std::string name_property=&quot;[unset-name_property]&quot;, std::string class_property=&quot;[unset-class_property]&quot;, float x_property=0.0f, float y_property=0.0f, float width_property=0.0f, float height_property=0.0f, bool visible_property=true, std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; custom_properties={}, void* user_data=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">map_properties_parsed_callback(std::vector&lt;std::tuple&lt;std::string, std::string, std::string&gt;&gt; map_custom_properties={}, void* user_data=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>map_properties_parsed_callback</b>(std::vector&lt;std::tuple&lt;std::string, std::string, std::string&gt;&gt; map_custom_properties={}, void* user_data=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">load_gallery_01()</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_gallery_01</b>()</td>
 </tr>
 <tr>
-  <td class="method">load_gallery_02()</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_gallery_02</b>()</td>
 </tr>
 <tr>
-  <td class="method">load_gallery_03()</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_gallery_03</b>()</td>
 </tr>
 <tr>
-  <td class="method">load_primary_map()</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_primary_map</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -649,8 +717,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Riddle.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Riddle.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -669,14 +741,19 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">matches_answer(std::string answer_guess=&quot;[unset-answer_guess]&quot;)</td>
+  <td class="method">bool</td>
+  <td class="method"><b>matches_answer</b>(std::string answer_guess=&quot;[unset-answer_guess]&quot;)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/SceneRenderer.q.yml">quintessence/ArtGalleryOfCats/Gameplay/SceneRenderer.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -691,7 +768,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -714,8 +792,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml">quintessence/ArtGalleryOfCats/Gameplay/Screen.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -842,184 +924,244 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_event_emitter</b>(AllegroFlare::EventEmitter* event_emitter=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_bitmap_bin</b>(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_font_bin(AllegroFlare::FontBin* font_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_font_bin</b>(AllegroFlare::FontBin* font_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_model_bin</b>(AllegroFlare::ModelBin* model_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_resources_path(std::string resources_path=DEFAULT_RESOURCES_PATH)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_resources_path</b>(std::string resources_path=DEFAULT_RESOURCES_PATH)</td>
 </tr>
 <tr>
-  <td class="method">set_user_text_input_screen(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_user_text_input_screen</b>(ArtGalleryOfCats::Screens::UserTextInput* user_text_input_screen=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_npc_conversations_screen(AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_npc_conversations_screen</b>(AllegroFlare::Screens::Storyboard* npc_conversations_screen=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_solved_level_names(std::set&lt;std::string&gt;* solved_level_names=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_solved_level_names</b>(std::set&lt;std::string&gt;* solved_level_names=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_HACK_sysname(std::string HACK_sysname=DEFAULT_HACK_SYSNAME)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_HACK_sysname</b>(std::string HACK_sysname=DEFAULT_HACK_SYSNAME)</td>
 </tr>
 <tr>
-  <td class="method">load_level_by_identifier(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_level_by_identifier</b>(std::string level_identifier=&quot;[unset-level_identifier]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">start_level_music()</td>
+  <td class="method">void</td>
+  <td class="method"><b>start_level_music</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">emit_event_to_set_input_hints_bar_to_room_controls()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>emit_event_to_set_input_hints_bar_to_room_controls</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">emit_event_to_set_input_hints()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>emit_event_to_set_input_hints</b>()</td>
 </tr>
 <tr>
-  <td class="method">get_entity_pool()</td>
+  <td class="method">AllegroFlare::SceneGraph::EntityPool*</td>
+  <td class="method"><b>get_entity_pool</b>()</td>
 </tr>
 <tr>
-  <td class="method">get_current_riddle()</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Riddle*</td>
+  <td class="method"><b>get_current_riddle</b>()</td>
 </tr>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">load_dialog_node_bank()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>load_dialog_node_bank</b>()</td>
 </tr>
 <tr>
-  <td class="method">activate_npc_dialog_by_identifier(std::string dialog_node_identifier=&quot;[unset-dialog_node_identifier]&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>activate_npc_dialog_by_identifier</b>(std::string dialog_node_identifier=&quot;[unset-dialog_node_identifier]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">on_activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>on_activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">on_deactivate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>on_deactivate</b>()</td>
 </tr>
 <tr>
-  <td class="method">hide_input_hints()</td>
+  <td class="method">void</td>
+  <td class="method"><b>hide_input_hints</b>()</td>
 </tr>
 <tr>
-  <td class="method">show_input_hints()</td>
+  <td class="method">void</td>
+  <td class="method"><b>show_input_hints</b>()</td>
 </tr>
 <tr>
-  <td class="method">update()</td>
+  <td class="method">void</td>
+  <td class="method"><b>update</b>()</td>
 </tr>
 <tr>
-  <td class="method">calculate_strafe_xy(float spin=0.0f, float displacement=0.0f)</td>
+  <td class="method">AllegroFlare::Vec3D</td>
+  <td class="method"><b>calculate_strafe_xy</b>(float spin=0.0f, float displacement=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">calculate_forward_back_xy(float spin=0.0f, float displacement=0.0f)</td>
+  <td class="method">AllegroFlare::Vec3D</td>
+  <td class="method"><b>calculate_forward_back_xy</b>(float spin=0.0f, float displacement=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">find_primary_camera()</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::Camera3D*</td>
+  <td class="method"><b>find_primary_camera</b>()</td>
 </tr>
 <tr>
-  <td class="method">find_collision_tile_map()</td>
+  <td class="method">ArtGalleryOfCats::Gameplay::Entities::CollisionTileMap*</td>
+  <td class="method"><b>find_collision_tile_map</b>()</td>
 </tr>
 <tr>
-  <td class="method">update_entity_player_is_currently_colliding_with()</td>
+  <td class="method">void</td>
+  <td class="method"><b>update_entity_player_is_currently_colliding_with</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">scene_physics_updater()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>scene_physics_updater</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">scene_renderer_render()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>scene_renderer_render</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">render_hud()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>render_hud</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_tile_map(AllegroFlare::TileMaps::TileMap&lt;int&gt;* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_tile_map</b>(AllegroFlare::TileMaps::TileMap&lt;int&gt;* tile_map=nullptr, float tile_width=16.0f, float tile_height=16.0f)</td>
 </tr>
 <tr>
-  <td class="method">render_aabb2d(AllegroFlare::Physics::AABB2D* aabb2d=nullptr, bool adjacent_to_top_edge=false, bool adjacent_to_right_edge=false, bool adjacent_to_bottom_edge=false, bool adjacent_to_left_edge=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_aabb2d</b>(AllegroFlare::Physics::AABB2D* aabb2d=nullptr, bool adjacent_to_top_edge=false, bool adjacent_to_right_edge=false, bool adjacent_to_bottom_edge=false, bool adjacent_to_left_edge=false)</td>
 </tr>
 <tr>
-  <td class="method">call_on_finished_callback_func()</td>
+  <td class="method">void</td>
+  <td class="method"><b>call_on_finished_callback_func</b>()</td>
 </tr>
 <tr>
-  <td class="method">primary_timer_func()</td>
+  <td class="method">void</td>
+  <td class="method"><b>primary_timer_func</b>()</td>
 </tr>
 <tr>
-  <td class="method">player_spin_change(float delta=0.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>player_spin_change</b>(float delta=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">player_tilt_change(float delta=0.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>player_tilt_change</b>(float delta=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">player_stop_moving()</td>
+  <td class="method">void</td>
+  <td class="method"><b>player_stop_moving</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_player_velocity_from_keypress()</td>
+  <td class="method">AllegroFlare::Vec2D</td>
+  <td class="method"><b>infer_player_velocity_from_keypress</b>()</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_button_up_func</b>(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_button_down_func</b>(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
 </tr>
 <tr>
-  <td class="method">activate_npc_conversations_screen()</td>
+  <td class="method">void</td>
+  <td class="method"><b>activate_npc_conversations_screen</b>()</td>
 </tr>
 <tr>
-  <td class="method">find_custom_dialog_for_this_inspect(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on=nullptr)</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>find_custom_dialog_for_this_inspect</b>(AllegroFlare::SceneGraph::Entities::Base* entity_inspecting_on=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">interact_with_focused_object()</td>
+  <td class="method">void</td>
+  <td class="method"><b>interact_with_focused_object</b>()</td>
 </tr>
 <tr>
-  <td class="method">attempt_to_solve_riddle()</td>
+  <td class="method">void</td>
+  <td class="method"><b>attempt_to_solve_riddle</b>()</td>
 </tr>
 <tr>
-  <td class="method">toggle_riddle_visibility()</td>
+  <td class="method">void</td>
+  <td class="method"><b>toggle_riddle_visibility</b>()</td>
 </tr>
 <tr>
-  <td class="method">hide_riddle()</td>
+  <td class="method">void</td>
+  <td class="method"><b>hide_riddle</b>()</td>
 </tr>
 <tr>
-  <td class="method">show_inspect_hint()</td>
+  <td class="method">void</td>
+  <td class="method"><b>show_inspect_hint</b>()</td>
 </tr>
 <tr>
-  <td class="method">hide_inspect_hint()</td>
+  <td class="method">void</td>
+  <td class="method"><b>hide_inspect_hint</b>()</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_axis_change_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">emit_event_to_return_to_the_level_select_screen()</td>
+  <td class="method">void</td>
+  <td class="method"><b>emit_event_to_return_to_the_level_select_screen</b>()</td>
 </tr>
 <tr>
-  <td class="method">key_down_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>key_down_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">key_up_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>key_up_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">mouse_down_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>mouse_down_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">mouse_axes_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>mouse_axes_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">create_image_page(std::string text=&quot;[unset-text]&quot;)</td>
+  <td class="method">AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText*</td>
+  <td class="method"><b>create_image_page</b>(std::string text=&quot;[unset-text]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">obtain_riddle_font()</td>
+  <td class="method">ALLEGRO_FONT*</td>
+  <td class="method"><b>obtain_riddle_font</b>()</td>
 </tr>
 <tr>
-  <td class="method">obtain_inspect_hint_icon_font()</td>
+  <td class="method">ALLEGRO_FONT*</td>
+  <td class="method"><b>obtain_inspect_hint_icon_font</b>()</td>
 </tr>
 <tr>
-  <td class="method">obtain_inspect_hint_text_font()</td>
+  <td class="method">ALLEGRO_FONT*</td>
+  <td class="method"><b>obtain_inspect_hint_text_font</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1150,11 +1292,21 @@ table td
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::DialogTree::NodeBank&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/DialogTree/NodeBank.hpp&quot;]}</td>
 </tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::DialogTree::Nodes/Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/DialogTree/Nodes/Base.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::DialogTree::Nodes::MultipageWithOptions&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/DialogTree/Nodes/MultipageWithOptions.hpp&quot;]}</td>
+</tr>
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Gameplay/TMJObjectLoader.q.yml">quintessence/ArtGalleryOfCats/Gameplay/TMJObjectLoader.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1185,10 +1337,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">load()</td>
+  <td class="method">void</td>
+  <td class="method"><b>load</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">file_exists(std::string filename=&quot;[unset-filename]&quot;)</td>
+  <td class="private_method">bool</td>
+  <td class="private_method"><b>file_exists</b>(std::string filename=&quot;[unset-filename]&quot;)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1211,8 +1365,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Runner.q.yml">quintessence/ArtGalleryOfCats/Runner.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1351,19 +1509,24 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">setup_router()</td>
+  <td class="method">void</td>
+  <td class="method"><b>setup_router</b>()</td>
 </tr>
 <tr>
-  <td class="method">run(std::string deployment_environment_mode=&quot;[unset-deployment_environment_mode]&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>run</b>(std::string deployment_environment_mode=&quot;[unset-deployment_environment_mode]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">game_event_func(AllegroFlare::GameEvent* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>game_event_func</b>(AllegroFlare::GameEvent* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">create_image_page(std::string text=&quot;[unset-text]&quot;)</td>
+  <td class="method">AllegroFlare::Elements::StoryboardPages::ImageWithAdvancingText*</td>
+  <td class="method"><b>create_image_page</b>(std::string text=&quot;[unset-text]&quot;)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1467,8 +1630,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
+    <h3 id="quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml">quintessence/ArtGalleryOfCats/Screens/UserTextInput.q.yml</h3>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1511,52 +1678,68 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">on_activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>on_activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">on_deactivate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>on_deactivate</b>()</td>
 </tr>
 <tr>
-  <td class="method">primary_timer_func()</td>
+  <td class="method">void</td>
+  <td class="method"><b>primary_timer_func</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_font_name(std::string font_name=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_FONT_NAME)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_font_name</b>(std::string font_name=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_FONT_NAME)</td>
 </tr>
 <tr>
-  <td class="method">set_font_size(int font_size=1)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_font_size</b>(int font_size=1)</td>
 </tr>
 <tr>
-  <td class="method">set_prompt_text(std::string prompt_text=&quot;[unset-prompt_text]&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_prompt_text</b>(std::string prompt_text=&quot;[unset-prompt_text]&quot;)</td>
 </tr>
 <tr>
-  <td class="method">get_result_string_value()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>get_result_string_value</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_event_to_emit_on_pressing_submit_key(std::string event_to_emit_on_pressing_submit_key=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_SUBMIT_KEY)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_event_to_emit_on_pressing_submit_key</b>(std::string event_to_emit_on_pressing_submit_key=AllegroFlare::SoftwareKeyboard::SoftwareKeyboard::DEFAULT_EVENT_TO_EMIT_ON_PRESSING_SUBMIT_KEY)</td>
 </tr>
 <tr>
-  <td class="method">mode_is_using_keyboard()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>mode_is_using_keyboard</b>()</td>
 </tr>
 <tr>
-  <td class="method">mode_is_using_virtual_controls()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>mode_is_using_virtual_controls</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_mode_to_using_keyboard()</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_mode_to_using_keyboard</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_mode_to_using_virtual_controls()</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_mode_to_using_virtual_controls</b>()</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_button_down_func</b>(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
 </tr>
 <tr>
-  <td class="method">key_char_func(ALLEGRO_EVENT* event=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>key_char_func</b>(ALLEGRO_EVENT* event=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1830,6 +2013,12 @@ table td
     "ArtGalleryOfCats/Runner"
   ],
   "AllegroFlare/DialogTree/NodeBank": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/DialogTree/Nodes/Base": [
+    "ArtGalleryOfCats/Gameplay/Screen"
+  ],
+  "AllegroFlare/DialogTree/Nodes/MultipageWithOptions": [
     "ArtGalleryOfCats/Gameplay/Screen"
   ],
   "nlohmann/json": [
