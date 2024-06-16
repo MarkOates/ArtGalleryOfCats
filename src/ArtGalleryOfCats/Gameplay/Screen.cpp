@@ -872,9 +872,9 @@ void Screen::show_input_hints()
       "%SEPARATOR",
       "MOUSE", "%SPACER", "LABEL>>", "Look",
       "%SEPARATOR",
-      "R", "%SPACER", "LABEL>>", "Toggle the Riddle",
+      "T", "%SPACER", "LABEL>>", "Toggle the Riddle",
       "%SEPARATOR",
-      "S", "%SPACER", "LABEL>>", "Solve the Riddle",
+      "R", "%SPACER", "LABEL>>", "Solve the Riddle",
       "%SEPARATOR",
       "I", "%SPACER", "LABEL>>", "Inspect",
       "%SEPARATOR",
@@ -1721,18 +1721,22 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
    // This method is DEBUGGING
    switch(ev->keyboard.keycode)
    {
+      case ALLEGRO_KEY_W:
       case ALLEGRO_KEY_UP: {
          player_up_pressed = true;
       } break;
 
+      case ALLEGRO_KEY_A:
       case ALLEGRO_KEY_LEFT: {
          player_left_pressed = true;
       } break;
 
+      case ALLEGRO_KEY_S:
       case ALLEGRO_KEY_DOWN: {
          player_down_pressed = true;
       } break;
 
+      case ALLEGRO_KEY_D:
       case ALLEGRO_KEY_RIGHT: {
          player_right_pressed = true;
       } break;
@@ -1743,12 +1747,12 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
          interact_with_focused_object();
       } break;
 
-      case ALLEGRO_KEY_S: {
+      case ALLEGRO_KEY_R: {
          //interact_with_focused_object();
          attempt_to_solve_riddle();
       } break;
 
-      case ALLEGRO_KEY_R: {
+      case ALLEGRO_KEY_T: {
          toggle_riddle_visibility();
       } break;
 
@@ -1784,18 +1788,22 @@ void Screen::key_up_func(ALLEGRO_EVENT* ev)
    // This method is DEBUGGING
    switch(ev->keyboard.keycode)
    {
+      case ALLEGRO_KEY_UP:
       case ALLEGRO_KEY_W: {
          player_up_pressed = false;
       } break;
 
+      case ALLEGRO_KEY_LEFT:
       case ALLEGRO_KEY_A: {
          player_left_pressed = false;
       } break;
 
+      case ALLEGRO_KEY_DOWN:
       case ALLEGRO_KEY_S: {
          player_down_pressed = false;
       } break;
 
+      case ALLEGRO_KEY_RIGHT:
       case ALLEGRO_KEY_D: {
          player_right_pressed = false;
       } break;
