@@ -384,7 +384,7 @@ void Screen::emit_event_to_set_input_hints_bar_to_room_controls()
    event_emitter->emit_set_input_hints_bar_event({
       "UP", "%SPACE", "DOWN", "%SPACE", "LEFT", "%SPACE", "RIGHT", "%SPACER", "LABEL>>", "Move pointer",
       "%SEPARATOR",
-      "ENTER", "%SPACER", "LABEL>>", "Inspect object",
+      "E", "%SPACER", "LABEL>>", "Inspect object",
       "%SEPARATOR",
       "I", "%SPACER", "LABEL>>", "Toggle Chronicle",
       "%SEPARATOR",
@@ -1101,6 +1101,9 @@ void Screen::scene_physics_updater()
    // HACK: Extract out the camera and assign it's position
    // TODO: Create a separate entity, then assign the camera values to the live camera (or something)
    as_camera->AllegroFlare::Camera3D::position = as_camera->get_placement_ref().position;
+   // Set the vertical position just a meter and a half above
+   as_camera->AllegroFlare::Camera3D::position.y = 1.2;
+
 
    return;
 }
@@ -1742,7 +1745,7 @@ void Screen::key_down_func(ALLEGRO_EVENT* ev)
       } break;
 
       case ALLEGRO_KEY_SPACE:
-      case ALLEGRO_KEY_ENTER:
+      case ALLEGRO_KEY_E:
       case ALLEGRO_KEY_I: {
          interact_with_focused_object();
       } break;
