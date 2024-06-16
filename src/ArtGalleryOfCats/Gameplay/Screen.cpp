@@ -1160,7 +1160,7 @@ void Screen::render_hud()
 
 
    // Render the mini-map
-   bool render_mini_map = false;
+   bool render_mini_map = true;
 
    if (render_mini_map)
    {
